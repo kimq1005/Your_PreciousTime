@@ -1,4 +1,6 @@
 package com.example.your_precioustime.SecondActivity
 
-class BusItem {
-}
+data class BusItem (
+    val busid : String,
+    val waitbusstop:String
+        )

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.your_precioustime.R
 import kotlinx.android.synthetic.main.activity_second.*
+import kotlinx.android.synthetic.main.bus_fragment.*
 
 class SecondActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -11,6 +12,7 @@ class SecondActivity : AppCompatActivity() {
         setContentView(R.layout.activity_second)
 
         ClickFragment()
+
 
 
     }
