@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import com.example.your_precioustime.SecondActivity.SecondActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun nextfadePageGO(activity: Activity) {
 
-        val intent = Intent(this,SecondActivity::class.java)
+        val intent = Intent(this, SecondActivity::class.java)
         startActivity(intent)
         activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
 
