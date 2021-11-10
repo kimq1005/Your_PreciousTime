@@ -18,8 +18,7 @@
         app:helperText="정류소를 입력해주세요"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:startIconDrawable="@drawable/ic_baseline_search_24">
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/RealSearchEditText"
@@ -28,13 +27,22 @@
             android:maxLength="20"
             android:textColorHint="@color/black" />
 
-        <ImageView
-            android:id="@+id/clickhere"
-            android:src="@drawable/ic_baseline_search_24"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/clickhere"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="13dp"
+        app:layout_constraintBottom_toBottomOf="@+id/SearchEditText"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_baseline_search_24"
+        app:layout_constraintEnd_toEndOf="@+id/SearchEditText"
+        android:layout_width="35dp"
+        android:layout_height="35dp"/>
+
+
+
 
 
     <TextView
@@ -68,36 +76,16 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/myview2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myview1"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
 
 
 
-    <View
-        android:id="@+id/myview2"
-        android:layout_width="400dp"
-        android:layout_height="1dp"
-        android:layout_marginBottom="5dp"
-        android:background="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/SubwayWarning_TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-
-        android:id="@+id/SubwayWarning_TextView"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:padding="10dp"
-        android:text="위치 등등이 정확하지 않을 수 있슴"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 
 

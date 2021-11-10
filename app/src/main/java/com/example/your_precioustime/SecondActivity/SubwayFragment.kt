@@ -24,17 +24,28 @@ class SubwayFragment:Fragment(R.layout.subway_fragment) {
     }
 
     private fun setRecyclerView()=with(binding) {
+
+        val hello:String = ""
         subWayAdapter = SubWayAdapter()
         val hi = listOf(
-            SubwayItem("ㄴㄴㄴ","24234234")
+            SubwayItem("매탄권선","역5")
         )
 
-        subwayRecyclerView.apply {
-            adapter = subWayAdapter
-            subWayAdapter.submitList(hi)
-            layoutManager = LinearLayoutManager(context)
+        clickhere.setOnClickListener {
+            SubwayStopNameTextView.text = RealSearchEditText.text.toString()
+            RealSearchEditText.setText("")
 
+            subwayRecyclerView.apply {
+                adapter = subWayAdapter
+                subWayAdapter.submitList(hi)
+                layoutManager = LinearLayoutManager(context)
+
+
+            }
 
         }
+
+
+
     }
 }
