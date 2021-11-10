@@ -3,13 +3,18 @@ package com.example.your_precioustime.SecondActivity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.your_precioustime.R
-import kotlinx.android.synthetic.main.activity_second.*
-import kotlinx.android.synthetic.main.bus_fragment.*
+import com.example.your_precioustime.databinding.ActivitySecondBinding
+
 
 class SecondActivity : AppCompatActivity() {
+
+    private var secondBinding : ActivitySecondBinding? =null
+    private val binding get() = secondBinding!!
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_second)
+        secondBinding = ActivitySecondBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         ClickFragment()
 
@@ -23,13 +28,13 @@ class SecondActivity : AppCompatActivity() {
             .replace(R.id.SecondFragment, BusFragment())
             .commit()
 
-        BusInfo_Btn.setOnClickListener {
+        binding.BusInfoBtn.setOnClickListener {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.SecondFragment, BusFragment())
                 .commit()
         }
 
-        SubInfo_Btn.setOnClickListener {
+        binding.SubInfoBtn.setOnClickListener {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.SecondFragment,SubwayFragment())
                 .commit()
