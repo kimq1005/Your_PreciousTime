@@ -7,6 +7,7 @@ import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.your_precioustime.R
+import com.example.your_precioustime.Retrofit.Retrofit_Manager
 import com.example.your_precioustime.databinding.BusFragmentBinding
 
 
@@ -27,6 +28,8 @@ class BusFragment:Fragment(R.layout.bus_fragment) {
 
         busbinding = BusFragmentBinding.bind(view)
 
+        Retrofit_Manager.retrofitManager.GETBUS()
+
 
         ClickSearchBtn()
 
@@ -36,11 +39,14 @@ class BusFragment:Fragment(R.layout.bus_fragment) {
     }
 
     private fun ClickSearchBtn() =with(binding) {
+
+
         clickhere.setOnClickListener {
             val BusStopName = RealSearchEditText.text.toString()
             BusStopNameTextView.text= BusStopName
             GoawayTextView.visibility = View.INVISIBLE
             SetRecyclerView()
+
         }
 
     }
