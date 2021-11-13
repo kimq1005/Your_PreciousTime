@@ -1,8 +1,10 @@
 package com.example.your_precioustime.Retrofit
 
 import com.example.your_precioustime.Model.BusModel
+import com.example.your_precioustime.Model.PillInfo
 import com.example.your_precioustime.Url
 import com.google.gson.JsonElement
+import com.tickaroo.tikxml.TikXml
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -16,5 +18,5 @@ interface Retrofit_InterFace {
         @Query("cityCode") cityCode:String?,
         @Query("nodeId") nodeId:String?
 
-    ): Call<BusModel>
+    ): Call<PillInfo>
 }
