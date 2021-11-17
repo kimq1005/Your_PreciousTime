@@ -2,13 +2,22 @@ package com.example.your_precioustime.SecondActivity
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.your_precioustime.Model.Bus
+import com.example.your_precioustime.Model.Item
 import com.example.your_precioustime.R
+import com.example.your_precioustime.Retrofit.Retrofit_Client
+import com.example.your_precioustime.Retrofit.Retrofit_InterFace
 import com.example.your_precioustime.Retrofit.Retrofit_Manager
+import com.example.your_precioustime.Url
+import com.example.your_precioustime.Util.Companion.TAG
 import com.example.your_precioustime.databinding.BusFragmentBinding
+import retrofit2.Call
+import retrofit2.Response
 
 
 class BusFragment:Fragment(R.layout.bus_fragment) {
@@ -16,6 +25,9 @@ class BusFragment:Fragment(R.layout.bus_fragment) {
     lateinit var upAdpater : UpAdpater
     private var busbinding : BusFragmentBinding? =null
     private val binding get() = busbinding!!
+
+    private var retrofitInterface: Retrofit_InterFace =
+        Retrofit_Client.getClient(Url.BUS_MAIN_URL).create(Retrofit_InterFace::class.java)
 
 
     override fun onAttach(context: Context) {
@@ -28,7 +40,7 @@ class BusFragment:Fragment(R.layout.bus_fragment) {
 
         busbinding = BusFragmentBinding.bind(view)
 
-        Retrofit_Manager.retrofitManager.GETBUS()
+//        Retrofit_Manager.retrofitManager.GETBUS()
 
 
         ClickSearchBtn()
@@ -54,9 +66,10 @@ class BusFragment:Fragment(R.layout.bus_fragment) {
     private fun SetRecyclerView()=with(binding) {
 
         val hi = listOf(
-            BusItem("99","4"),
-            BusItem("62-1","2"),
-            BusItem("92-1","5")
+            Item(99,2),
+            Item(62-1,6),
+            Item(92-1,9)
+
         )
         upAdpater = UpAdpater()
         busRecyclerView.apply {
@@ -64,6 +77,30 @@ class BusFragment:Fragment(R.layout.bus_fragment) {
             upAdpater.submitList(hi)
             layoutManager = LinearLayoutManager(context)
         }
+
+        val call = retrofitInterface.BusGet("25","DJB8001793")
+
+        call.enqueue(object:retrofit2.Callback<Bus>{
+            override fun onResponse(call: Call<Bus>, response: Response<Bus>) {
+                val body = response.body()
+                val higg = body?.body?.items
+                Log.d(TAG, "onResponse: ${higg}")
+                body?.let{Bus->
+                    upAdpater.submitList(Bus.body.items.item)
+
+                }
+            }
+
+            override fun onFailure(call: Call<Bus>, t: Throwable) {
+                Log.d(TAG, "onFailure: $t")
+            }
+
+        })
+
+
+
+
+
     }
 }
 

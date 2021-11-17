@@ -3,8 +3,10 @@ package com.example.your_precioustime.Model
 import com.tickaroo.tikxml.annotation.Element
 import com.tickaroo.tikxml.annotation.PropertyElement
 import com.tickaroo.tikxml.annotation.Xml
+import org.simpleframework.xml.Root
 
 import java.io.Serializable
+import javax.xml.bind.annotation.*
 
 data class BusModel(
     val nodeid:String,
@@ -18,38 +20,137 @@ data class BusModel(
 ):Serializable
 
 
+//@Xml(name="response")
+//data class PillInfo(
+//    @Element
+//    val header: Header,
+//
+//    @Element
+//    val body:Body
+//)
+//
+
+//@Xml(name="header")
+//data class Header(
+//    @PropertyElement
+//    val resultCode:Int,
+//
+//    @PropertyElement
+//    val resultMsg:String
+//)
+//
+//
+//@Xml(name = "body")
+//data class Body(
+//    @PropertyElement
+//    val item :Item
+//)
+//
+//@Xml
+//data class Item(
+//    @PropertyElement(name="arrtime")
+//    val arrtime: String,
+//
+//    @PropertyElement(name="nodenm")
+//    val nodenm: String,
+//
+//)
+
+//
+//@XmlRootElement(name="response")
+//@XmlAccessorType(XmlAccessType.FIELD)
+//data class holy(
+//    @field:XmlElementWrapper(name = "header")
+//    @field:XmlElement(name = "resultCode")
+////    val resultCode:String? = null,
+//    val resultMsg:String? =null,
+//
+//        )
+//
+//
+//@XmlRootElement(name="item")
+//@XmlAccessorType(XmlAccessType.FIELD)
+//data class item(
+//    val arrtime:String?=null,
+//    val nodenm:String?=null
+//)
+//
+//
+//@Root(name = "response" , strict = false)
+//class XmlResponse{ @field:Element(name="header")
+//var mHeader:XmlHeader? = null
+//    get() = field
+//    set(value)
+//    { field = value
+//    }
+//
+//}
+//
+//@Root(name = "header",strict = false)
+//class XmlHeader{
+//    @field:Element()
+//    var resultCode:String? = null
+//        get() = field
+//        set(value) {
+//            field = value
+//        }
+//    @field:Element()
+//    var resultMsg:String? = null
+//        get() = field
+//        set(value) {
+//            field = value
+//        }
+//}
+
+
+
+
+
 @Xml(name="response")
-data class PillInfo(
+data class Bus(
     @Element
     val header: Header,
-
     @Element
-    val body:Body
+    val body: Body,
 )
 
-
-@Xml(name="header")
+@Xml(name = "header")
 data class Header(
     @PropertyElement
-    val resultCode:Int,
-
+    val resultCode: Int,
     @PropertyElement
-    val resultMsg:String
+    val resultMsg: String,
 )
-
 
 @Xml(name = "body")
 data class Body(
+    @Element
+    val items: Items,
     @PropertyElement
-    val item :item
+    val numOfRows: Int,
+    @PropertyElement
+    val pageNo: Int,
+    @PropertyElement
+    val totalCount: Int,
 )
-
-@Xml(name="item")
-data class item(
-    @PropertyElement
-    val arrtime: String,
-
-    @PropertyElement
-    val nodenm: String,
-
+//
+@Xml
+data class Items(
+    @Element(name = "item")
+    val item: List<Item>
 )
+//
+@Xml
+data class Item(
+    @PropertyElement(name="routeno") var routeno : Int?, //노선 번호
+    @PropertyElement(name="arrprevstationcnt") var arrprevstationcnt : Int?,    //남은 정류장  번호
+//    @PropertyElement(name="arrtime") var arrtime : Int? // 남은 시간
+
+){
+    constructor() : this(null,null)
+}
+
+
+
+
+

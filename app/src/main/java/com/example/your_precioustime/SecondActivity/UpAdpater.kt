@@ -5,17 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.your_precioustime.Model.Bus
+import com.example.your_precioustime.Model.Item
 import com.example.your_precioustime.R
 import com.example.your_precioustime.databinding.BusitemLayoutBinding
 
 
 class UpAdpater:RecyclerView.Adapter<UpAdpater.MyViewHolder>() {
-    lateinit var busItem: List<BusItem>
+    private var item: List<Item>? = null
 
     class MyViewHolder(val binding:BusitemLayoutBinding): RecyclerView.ViewHolder(binding.root){
-        fun bind(busItem: BusItem){
-            binding.BusNumber.text =busItem.busid
-            binding.waitBusNumber.text = busItem.waitbusstop
+
+        fun bind(item: Item){
+            binding.BusNumber.text =item.routeno.toString()
+            binding.waitBusNumber.text = item.arrprevstationcnt.toString()
         }
     }
 
@@ -25,17 +28,19 @@ class UpAdpater:RecyclerView.Adapter<UpAdpater.MyViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(busItem[position])
+        item?.get(position)?.let { holder.bind(it) }
+    }
+
+
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun submitList(list:List<Item>){
+        item = list
+        notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int {
-       return busItem.count()
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    fun submitList(list:List<BusItem>){
-        busItem = list
-        notifyDataSetChanged()
+        return item?.size!!
     }
 
 
