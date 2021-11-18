@@ -41,11 +41,7 @@ class BusFragment:Fragment(R.layout.bus_fragment) {
         busbinding = BusFragmentBinding.bind(view)
 
 //        Retrofit_Manager.retrofitManager.GETBUS()
-
-
         ClickSearchBtn()
-
-
 
 
     }
@@ -66,17 +62,15 @@ class BusFragment:Fragment(R.layout.bus_fragment) {
     private fun SetRecyclerView()=with(binding) {
 
         val hi = listOf(
-            Item(99,2),
-            Item(62-1,6),
-            Item(92-1,9)
+            Item(null,null)
 
         )
         upAdpater = UpAdpater()
-        busRecyclerView.apply {
-            adapter=upAdpater
-            upAdpater.submitList(hi)
-            layoutManager = LinearLayoutManager(context)
-        }
+//        busRecyclerView.apply {
+//            adapter=upAdpater
+//            upAdpater.submitList(hi)
+//            layoutManager = LinearLayoutManager(context)
+//        }
 
         val call = retrofitInterface.BusGet("25","DJB8001793")
 
@@ -86,7 +80,12 @@ class BusFragment:Fragment(R.layout.bus_fragment) {
                 val higg = body?.body?.items
                 Log.d(TAG, "onResponse: ${higg}")
                 body?.let{Bus->
-                    upAdpater.submitList(Bus.body.items.item)
+
+                    busRecyclerView.apply {
+                        adapter=upAdpater
+                        upAdpater.submitList(Bus.body.items.item)
+                        layoutManager = LinearLayoutManager(context)
+                    }
 
                 }
             }
@@ -96,9 +95,6 @@ class BusFragment:Fragment(R.layout.bus_fragment) {
             }
 
         })
-
-
-
 
 
     }

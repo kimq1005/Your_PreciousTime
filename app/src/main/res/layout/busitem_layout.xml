@@ -19,11 +19,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:text="99번"
+        android:text="99"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/busicon"
         app:layout_constraintTop_toTopOf="@+id/busicon" />
+
+    <TextView
+        android:textSize="17sp"
+        android:layout_marginLeft="5dp"
+        android:text="번"
+        android:id="@+id/gd"
+        app:layout_constraintBottom_toBottomOf="@+id/Bus_Number"
+        app:layout_constraintStart_toEndOf="@+id/Bus_Number"
+        app:layout_constraintTop_toTopOf="@+id/Bus_Number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 
     <LinearLayout
@@ -47,6 +58,23 @@
 
 
     </LinearLayout>
+
+    <TextView
+        android:text="99999"
+        android:textColor="@color/black"
+        android:id="@+id/DB_BusNumberTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:text="dsfsfsdf"
+        android:id="@+id/DB_arriveStationTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 
     <View
