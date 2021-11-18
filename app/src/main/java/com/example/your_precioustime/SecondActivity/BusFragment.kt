@@ -52,7 +52,6 @@ class BusFragment:Fragment(R.layout.bus_fragment) {
         clickhere.setOnClickListener {
             val BusStopName = RealSearchEditText.text.toString()
             BusStopNameTextView.text= BusStopName
-            GoawayTextView.visibility = View.INVISIBLE
             SetRecyclerView()
 
         }

@@ -42,11 +42,13 @@
         android:layout_height="0dp">
 
         <TextView
-            android:text="99 번"
+            android:id="@+id/busnum_textView"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="99 번" />
 
         <TextView
+            android:id="@+id/arrivestation_textView"
             android:text="5 전"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
