@@ -16,6 +16,7 @@ import com.example.your_precioustime.Retrofit.Retrofit_Manager
 import com.example.your_precioustime.Url
 import com.example.your_precioustime.Util.Companion.TAG
 import com.example.your_precioustime.databinding.BusFragmentBinding
+import kotlinx.android.synthetic.main.subway_fragment.*
 import retrofit2.Call
 import retrofit2.Response
 
@@ -50,8 +51,6 @@ class BusFragment:Fragment(R.layout.bus_fragment) {
 
 
         clickhere.setOnClickListener {
-            val BusStopName = RealSearchEditText.text.toString()
-            BusStopNameTextView.text= BusStopName
             SetRecyclerView()
 
         }
@@ -81,8 +80,9 @@ class BusFragment:Fragment(R.layout.bus_fragment) {
                 body?.let{Bus->
 
                     busRecyclerView.apply {
+                        val hello = Bus.body.items.item
                         adapter=upAdpater
-                        upAdpater.submitList(Bus.body.items.item)
+                        upAdpater.submitList(hello)
                         layoutManager = LinearLayoutManager(context)
                     }
 

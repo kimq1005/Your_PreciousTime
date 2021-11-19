@@ -4,41 +4,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/mybackground"
+    android:background="#F0F5FB"
     tools:context=".SecondActivity.SecondActivity">
+
+    <TextView
+        android:background="@color/white"
+        android:gravity="center"
+        android:padding="10dp"
+        android:id="@+id/second_mainlogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nanumbrushscript_regular"
+        android:text="Your Precious Time"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
 
 
     <LinearLayout
+        android:background="@color/white"
         android:id="@+id/Btn_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/second_mainlogo"
+       >
 
-        <com.google.android.material.button.MaterialButton
+        <TextView
             android:layout_margin="2dp"
             android:id="@+id/BusInfo_Btn"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_height="40dp"
             android:layout_weight="1"
-            android:backgroundTint="#B39283"
             android:fontFamily="@font/nanumbrushscript_regular"
-            android:text="Bus"
+            android:text="@string/Bus"
             android:textColor="@color/black"
             android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.button.MaterialButton
+        <TextView
+            android:gravity="center"
             android:layout_margin="2dp"
             android:id="@+id/SubInfo_Btn"
-            android:backgroundTint="#B39283"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="0dp"
-            android:layout_height="60dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:fontFamily="@font/nanumbrushscript_regular"
             android:text="Subway"
@@ -60,6 +77,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="0dp"
         android:layout_height="0dp"/>
+
+    <View
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Btn_layout"
+        android:background="#EFEFEF"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
 
 
 
