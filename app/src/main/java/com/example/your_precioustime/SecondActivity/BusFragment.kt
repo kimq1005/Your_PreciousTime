@@ -1,6 +1,7 @@
 package com.example.your_precioustime.SecondActivity
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -13,6 +14,7 @@ import com.example.your_precioustime.R
 import com.example.your_precioustime.Retrofit.Retrofit_Client
 import com.example.your_precioustime.Retrofit.Retrofit_InterFace
 import com.example.your_precioustime.Retrofit.Retrofit_Manager
+import com.example.your_precioustime.ThridActivity.BusSubwayActivity
 import com.example.your_precioustime.Url
 import com.example.your_precioustime.Util.Companion.TAG
 import com.example.your_precioustime.databinding.BusFragmentBinding
@@ -43,6 +45,10 @@ class BusFragment:Fragment(R.layout.bus_fragment) {
 
 //        Retrofit_Manager.retrofitManager.GETBUS()
         ClickSearchBtn()
+        binding.FavoritesBtn.setOnClickListener {
+            val intent = Intent(context,BusSubwayActivity::class.java)
+            startActivity(intent)
+        }
 
 
     }

@@ -1,27 +1,27 @@
 package com.example.your_precioustime.SecondActivity
 
 import android.annotation.SuppressLint
-import android.app.AlertDialog
 import android.content.Intent
+import android.os.AsyncTask
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.your_precioustime.Model.Bus
+import com.example.your_precioustime.App
 import com.example.your_precioustime.Model.Item
-import com.example.your_precioustime.R
+import com.example.your_precioustime.SecondActivity.DB.BUSDataBase
+import com.example.your_precioustime.SecondActivity.DB.BUSEntity
 import com.example.your_precioustime.ThridActivity.BusSubwayActivity
 import com.example.your_precioustime.Util.Companion.TAG
-import com.example.your_precioustime.databinding.BusFragmentBinding
 import com.example.your_precioustime.databinding.BusitemLayoutBinding
-import com.example.your_precioustime.databinding.MydialogBinding
+import kotlinx.android.synthetic.main.busitem_layout.view.*
 
-
+@SuppressLint("StaticFieldLeak")
 class UpAdpater:RecyclerView.Adapter<UpAdpater.MyViewHolder>() {
     private var item: List<Item>? = null
+    lateinit var busEntity: List<BUSEntity>
+    lateinit var busDataBase: BUSDataBase
 
     class MyViewHolder(val binding:BusitemLayoutBinding): RecyclerView.ViewHolder(binding.root){
 
@@ -43,20 +43,38 @@ class UpAdpater:RecyclerView.Adapter<UpAdpater.MyViewHolder>() {
             holder.bind(it)
         }
 
-        holder.itemView.setOnClickListener {
+        holder.itemView.SaveBtn.setOnClickListener {
+
             val busnumber = item?.get(position)?.routeno.toString()
             val arriveStaion = item?.get(position)?.arrprevstationcnt.toString()
-//
-            val intent = Intent(holder.itemView.context,BusSubwayActivity::class.java)
 
-            intent.apply{
-                putExtra("busnum",busnumber)
-                putExtra("arriveStation",arriveStaion)
-            }
 
-            holder.itemView.context.startActivity(intent)
+            val bushi = BUSEntity(
+                null,
+                busnumber,
+                arriveStaion,
+                null
+            )
 
+            Toast.makeText(holder.itemView.context,"저장되었습니다. $bushi",Toast.LENGTH_SHORT).show()
+            businsert(bushi)
         }
+
+
+//        holder.itemView.setOnClickListener {
+//            val busnumber = item?.get(position)?.routeno.toString()
+//            val arriveStaion = item?.get(position)?.arrprevstationcnt.toString()
+//
+//            val intent = Intent(holder.itemView.context, BusSubwayActivity::class.java)
+//
+//            intent.apply{
+//                putExtra("busnum",busnumber)
+//                putExtra("arriveStation",arriveStaion)
+//            }
+//
+//            holder.itemView.context.startActivity(intent)
+//
+//        }
     }
 
 
@@ -70,6 +88,37 @@ class UpAdpater:RecyclerView.Adapter<UpAdpater.MyViewHolder>() {
     override fun getItemCount(): Int {
         return item?.size!!
     }
+
+
+
+
+
+    private fun businsert(busEntity: BUSEntity){
+
+        busDataBase = BUSDataBase.getinstance(App.instance)!!
+
+        var businsertTask = (object : AsyncTask<Unit,Unit,Unit>(){
+            override fun doInBackground(vararg params: Unit?) {
+                busDataBase.busDAO().businsert(busEntity)
+            }
+
+            override fun onPostExecute(result: Unit?) {
+                super.onPostExecute(result)
+                busGetAll()
+            }
+        }).execute()
+
+    }
+
+    private fun busGetAll(){
+        val busGetAllTask = (object:AsyncTask<Unit,Unit,Unit>(){
+            override fun doInBackground(vararg params: Unit?) {
+                busEntity=busDataBase.busDAO().busgetAll()
+            }
+        }).execute()
+    }
+
+
 
 
 

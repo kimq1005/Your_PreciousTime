@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.your_precioustime.SecondActivity.UpAdpater
 
 
 @Database(entities = arrayOf(BUSEntity::class),version = 1)
@@ -13,7 +14,7 @@ abstract class BUSDataBase : RoomDatabase(){
     companion object{
         private var INSTANCE : BUSDataBase? =null
 
-        fun getinstance(context:Context) : BUSDataBase?{
+        fun getinstance(context: Context) : BUSDataBase?{
             if(INSTANCE==null){
                 synchronized(BUSDataBase::class){
                     INSTANCE = Room.databaseBuilder(context.applicationContext,
