@@ -124,8 +124,9 @@ data class Header(
 
 @Xml(name = "body")
 data class Body(
-    @Element
-    val items: Items,
+    @Element(name="items")
+    val items: Itemds,
+
     @PropertyElement
     val numOfRows: Int,
     @PropertyElement
@@ -135,7 +136,7 @@ data class Body(
 )
 //
 @Xml
-data class Items(
+data class Itemds(
     @Element(name = "item")
     val item: List<Item>
 )

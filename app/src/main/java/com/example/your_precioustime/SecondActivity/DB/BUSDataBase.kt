@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.your_precioustime.SecondActivity.UpAdpater
+
 
 
 @Database(entities = arrayOf(BUSEntity::class),version = 1)

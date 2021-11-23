@@ -56,4 +56,47 @@ object Retrofit_Client {
         return retrofitClient
 
     }
+
+    fun getFuckClient(baseurl:String):Retrofit{
+
+        val client = OkHttpClient.Builder()
+
+
+        val baseInterceptor: Interceptor = (object : Interceptor {
+            override fun intercept(chain: Interceptor.Chain): Response {
+
+                val realRequest = chain.request()
+
+                val goaddurl = realRequest
+                    .url()
+                    .newBuilder()
+                    .addQueryParameter("serviceKey",BUS_API_KEY)
+                    .build()
+
+                val lastRequest = realRequest.newBuilder()
+                    .url(goaddurl)
+                    .build()
+
+                return chain.proceed(lastRequest)
+            }
+
+        })
+
+
+        client.addInterceptor(baseInterceptor)
+
+        val retrofitFuckClient = Retrofit.Builder()
+            .baseUrl(baseurl)
+            .client(client.build())
+            .addConverterFactory(TikXmlConverterFactory.create(TikXml.Builder().exceptionOnUnreadXml(false).build()))
+//            .addConverterFactory(SimpleXmlConverterFactory.create())
+//            .addConverterFactory(GsonConverterFactory.create())
+
+
+//            .addConverterFactory(JaxbConverterFactory.create())
+            .build()
+
+        return retrofitFuckClient
+
+    }
 }

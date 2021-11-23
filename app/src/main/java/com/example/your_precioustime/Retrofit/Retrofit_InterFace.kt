@@ -1,8 +1,6 @@
 package com.example.your_precioustime.Retrofit
 
-import com.example.your_precioustime.Model.Bus
-import com.example.your_precioustime.Model.BusModel
-
+import com.example.your_precioustime.Model.*
 
 
 import com.example.your_precioustime.Url
@@ -24,5 +22,22 @@ interface Retrofit_InterFace {
         @Query("nodeId") nodeId:String
 
     ): Call<Bus>
+
+
+    @GET(Url.BUS_NAME_SEARCH)
+    fun StationNameGet(
+        @Query("cityCode") cityCode:String,
+        @Query("nodeNm") staionName:String?,
+//        @Query("nodeNo") nodeNo: Int?
+    ) :Call<StationBus>
+
+
+
+    @GET(Url.BUS_CITY_URL)
+    fun CityGet(
+//        @Query("serviceKey") serviceKey:String
+    ) :Call<City>
+
+
 }
 
