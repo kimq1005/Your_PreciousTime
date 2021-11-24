@@ -1,11 +1,14 @@
 package com.example.your_precioustime.SecondActivity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.your_precioustime.Model.StationItem
+import com.example.your_precioustime.ThridActivity.DeepStationInfoActivity
 import com.example.your_precioustime.databinding.BusStationSearchitemLayoutBinding
 
 class Bus_Station_Search_Adapter:RecyclerView.Adapter<Bus_Station_Search_Adapter.MyViewHolder>() {
@@ -16,6 +19,7 @@ class Bus_Station_Search_Adapter:RecyclerView.Adapter<Bus_Station_Search_Adapter
         fun bind(stationItem: StationItem){
             binding.StationNameTextView.text = stationItem.nodenm
             binding.StationNodeIDTextView.text = stationItem.nodeno
+
         }
 
     }
@@ -28,6 +32,20 @@ class Bus_Station_Search_Adapter:RecyclerView.Adapter<Bus_Station_Search_Adapter
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         stationItem?.get(position)?.let { holder.bind(it) }
+
+        val stationName = stationItem?.get(position)?.nodenm.toString()
+        val stationNodeNumber = stationItem?.get(position)?.nodeid.toString()
+
+
+        holder.itemView.setOnClickListener{
+
+            val intent = Intent(holder.itemView.context,DeepStationInfoActivity::class.java)
+            intent.putExtra("stationName" , stationName)
+            intent.putExtra("stationNodeNumber", stationNodeNumber)
+            holder.itemView.context.startActivity(intent)
+
+            Toast.makeText(holder.itemView.context, "정류소 이름: $stationName//정류소 노드넘버: $stationNodeNumber",Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun getItemCount(): Int {

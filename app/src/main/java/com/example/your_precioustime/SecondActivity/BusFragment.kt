@@ -103,7 +103,6 @@ class BusFragment:Fragment(R.layout.bus_fragment) {
 
     private fun SetRecyclerView(citycode:String,stationName:String)=with(binding) {
 
-        upAdpater = UpAdpater()
         val stationcalls= retrofitInterface.StationNameGet(
             cityCode = citycode,
             staionName = stationName
@@ -118,12 +117,11 @@ class BusFragment:Fragment(R.layout.bus_fragment) {
                 busStationSearchAdapter = Bus_Station_Search_Adapter()
 
 //                val code = body?.body?.items?.item?.nodeid.toString()
-                Log.d(TAG, "onResponse: ${response.body()}")
+//                Log.d(TAG, "onResponse: ${response.body()}")
 
 
                 body?.let{it->
                     val hello = body.body.items.item
-
                     busRecyclerView.apply {
                         adapter = busStationSearchAdapter
                         layoutManager = LinearLayoutManager(context)

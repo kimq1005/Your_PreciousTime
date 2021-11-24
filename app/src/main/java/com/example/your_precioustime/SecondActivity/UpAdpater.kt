@@ -43,38 +43,25 @@ class UpAdpater:RecyclerView.Adapter<UpAdpater.MyViewHolder>() {
             holder.bind(it)
         }
 
-        holder.itemView.SaveBtn.setOnClickListener {
-
-            val busnumber = item?.get(position)?.routeno.toString()
-            val arriveStaion = item?.get(position)?.arrprevstationcnt.toString()
-
-
-            val bushi = BUSEntity(
-                null,
-                busnumber,
-                arriveStaion,
-                null
-            )
-
-            Toast.makeText(holder.itemView.context,"저장되었습니다. $bushi",Toast.LENGTH_SHORT).show()
-            businsert(bushi)
-        }
-
-
-//        holder.itemView.setOnClickListener {
+//        holder.itemView.SaveBtn.setOnClickListener {
+//
 //            val busnumber = item?.get(position)?.routeno.toString()
 //            val arriveStaion = item?.get(position)?.arrprevstationcnt.toString()
 //
-//            val intent = Intent(holder.itemView.context, BusSubwayActivity::class.java)
 //
-//            intent.apply{
-//                putExtra("busnum",busnumber)
-//                putExtra("arriveStation",arriveStaion)
-//            }
+//            val bushi = BUSEntity(
+//                null,
+//                busnumber,
+//                arriveStaion,
+//                null
+//            )
 //
-//            holder.itemView.context.startActivity(intent)
-//
+//            Toast.makeText(holder.itemView.context,"저장되었습니다. $bushi",Toast.LENGTH_SHORT).show()
+//            businsert(bushi)
 //        }
+
+
+
     }
 
 
