@@ -124,8 +124,8 @@ data class Header(
 
 @Xml(name = "body")
 data class Body(
-    @Element(name="items")
-    val items: Itemds,
+    @Element
+    val items: Items,
 
     @PropertyElement
     val numOfRows: Int,
@@ -136,14 +136,14 @@ data class Body(
 )
 //
 @Xml
-data class Itemds(
+data class Items(
     @Element(name = "item")
     val item: List<Item>
 )
 //
 @Xml
 data class Item(
-    @PropertyElement(name="routeno") var routeno : Int?, //노선 번호
+    @PropertyElement(name="routeno") var routeno : String?, //노선 번호
     @PropertyElement(name="arrprevstationcnt") var arrprevstationcnt : Int?,    //남은 정류장  번호
 //    @PropertyElement(name="arrtime") var arrtime : Int? // 남은 시간
 

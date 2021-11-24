@@ -44,7 +44,7 @@ data class StationItems(
 data class StationItem(
     @PropertyElement(name="nodeid") var nodeid : String?,
     @PropertyElement(name="nodenm") var nodenm : String?,
-    @PropertyElement(name="nodeno") var nodeno : Int?
+    @PropertyElement(name="nodeno") var nodeno : String?
 //    @PropertyElement(name="arrtime") var arrtime : Int? // 남은 시간
 
 ){

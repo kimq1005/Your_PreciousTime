@@ -74,10 +74,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SearchEditText"
-        tools:text="우남퍼스트빌아파트" />
+        android:text="우남퍼스트빌아파트" />
+
+    <View
+        android:background="#AAA9A9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/BusStopName_TextView"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:padding="10dp"
+        android:layout_marginTop="2dp"
         android:id="@+id/busRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
