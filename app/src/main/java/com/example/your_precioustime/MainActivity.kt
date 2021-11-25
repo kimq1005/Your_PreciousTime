@@ -31,11 +31,6 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-
-
-
-
-
     }
 
     private fun nextfadePageGO(activity: Activity) {

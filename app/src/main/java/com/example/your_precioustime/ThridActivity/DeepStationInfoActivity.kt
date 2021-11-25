@@ -39,6 +39,8 @@ class DeepStationInfoActivity : AppCompatActivity() {
         binding.BusStationName.text = stationName
         SetBusStationRecyclerView()
 
+
+
     }
 
     private fun SetBusStationRecyclerView()=with(binding) {
@@ -62,10 +64,8 @@ class DeepStationInfoActivity : AppCompatActivity() {
                         upAdpater.submitList(wow)
                     }
 
+
                 }
-
-
-
 
             }
 

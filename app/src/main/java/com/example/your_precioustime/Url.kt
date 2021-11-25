@@ -10,5 +10,13 @@ class Url {
 
 
         const val BUS_CITY_URL= "ArvlInfoInqireService/getCtyCodeList"
+
+        const val TMAP_BASE_URL="https://apis.openapi.sk.com/"
+        const val TMAP_LOCATION_URL="tmap/pois"
+        const val TMAP_API_KEY ="l7xx84883d1977714ff8a5c2568c34903e85"
+
+        const val ODSAY_BASE_URL ="https://api.odsay.com/"
+        const val ODSAY_POI_URL ="v1/api/pointSearch"
+        const val ODSAY_API_KEY="P0AqcoST/h1VEbQSLktxxv6OqLdACYARAIrxgmcYC5E"
     }
 }

@@ -42,6 +42,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
+        android:id="@+id/firstunderline"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/black"
@@ -61,28 +62,7 @@
         app:layout_constraintTop_toTopOf="@+id/SearchEditText" />
 
 
-    <TextView
-        android:id="@+id/BusStopName_TextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:background="@color/white"
-        android:padding="10dp"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SearchEditText"
-        android:text="우남퍼스트빌아파트" />
 
-    <View
-        android:background="#AAA9A9"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/BusStopName_TextView"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"/>
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -92,21 +72,14 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/FavoritesBtn"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BusStopName_TextView"
+        app:layout_constraintTop_toBottomOf="@+id/firstunderline"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Button
-        android:id="@+id/FavoritesBtn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="gogo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,16 +1,13 @@
 package com.example.your_precioustime.Retrofit
 
 import com.example.your_precioustime.Model.*
+import com.example.your_precioustime.Model.OdsayModel.OdasyModel
+import com.example.your_precioustime.Model.PoiModel.MapPoiModel
 
 
 import com.example.your_precioustime.Url
-import com.google.gson.JsonElement
-import com.tickaroo.tikxml.TikXml
-import com.tickaroo.tikxml.annotation.Xml
-import org.xmlpull.v1.builder.XmlElement
 import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.Header
 import retrofit2.http.Query
 
 interface Retrofit_InterFace {
@@ -37,6 +34,23 @@ interface Retrofit_InterFace {
     fun CityGet(
 //        @Query("serviceKey") serviceKey:String
     ) :Call<City>
+
+    @GET(Url.TMAP_LOCATION_URL)
+    fun MapLocationGet(
+        @Query("version") version:Int=1,
+        @Query("appKey") appKey:String= Url.TMAP_API_KEY,
+        @Query("searchKeyword") searchKeyword:String
+    ): Call<MapPoiModel>
+
+
+    @GET(Url.ODSAY_POI_URL)
+    fun ODSAYMapLocationGet(
+//        @Query("apiKey") apiKey:String="P0AqcoST/h1VEbQSLktxxv6OqLdACYARAIrxgmcYC5E",
+        @Query("lang") lang:Int = 0,
+        @Query("x") xm:Double?,
+        @Query("y") ym:Double?,
+        @Query("stationClass") stationClass:Int = 2
+    ):Call<OdasyModel>
 
 
 }

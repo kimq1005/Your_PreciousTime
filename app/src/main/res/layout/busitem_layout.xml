@@ -15,6 +15,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:textColor="@color/black"
         android:id="@+id/Bus_Number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,6 +30,7 @@
         android:textSize="17sp"
         android:layout_marginLeft="5dp"
         android:text="번"
+        android:textColor="@color/black"
         android:id="@+id/gd"
         app:layout_constraintBottom_toBottomOf="@+id/Bus_Number"
         app:layout_constraintStart_toEndOf="@+id/Bus_Number"
@@ -46,12 +48,14 @@
 
 
         <TextView
+            android:textColor="@color/black"
             android:id="@+id/waitBusNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="5 " />
 
         <TextView
+            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="전" />

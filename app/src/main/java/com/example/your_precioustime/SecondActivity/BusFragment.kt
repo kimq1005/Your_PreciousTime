@@ -63,7 +63,7 @@ class BusFragment:Fragment(R.layout.bus_fragment) {
         clickhere.setOnClickListener {
             val suwoncitycode:String = "31010"
             val StationEditName = SearchEditText.text.toString()
-            SetRecyclerView(suwoncitycode,"우남")
+            SetRecyclerView(suwoncitycode,StationEditName)
 //            hellomy(suwoncitycode,"GGB203000129")
 
        }
