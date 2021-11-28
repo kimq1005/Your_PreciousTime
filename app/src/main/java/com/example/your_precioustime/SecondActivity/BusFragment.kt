@@ -39,7 +39,7 @@ class BusFragment:Fragment(R.layout.bus_fragment) {
         Retrofit_Client.getClient(Url.BUS_MAIN_URL).create(Retrofit_InterFace::class.java)
 
     private var retrofitFuckInterFace:Retrofit_InterFace=
-        Retrofit_Client.getFuckClient("http://openapi.tago.go.kr/openapi/service/").create(Retrofit_InterFace::class.java)
+        Retrofit_Client.getFuckClient(Url.ODSAY_BASE_URL).create(Retrofit_InterFace::class.java)
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

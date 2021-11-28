@@ -13,6 +13,7 @@ import com.example.your_precioustime.Retrofit.Retrofit_InterFace
 import com.example.your_precioustime.Url
 import com.example.your_precioustime.Util.Companion.TAG
 import com.example.your_precioustime.databinding.SubwayFragmentBinding
+import com.google.gson.JsonElement
 import retrofit2.Call
 import retrofit2.Response
 
@@ -98,12 +99,12 @@ class SubwayFragment:Fragment(R.layout.subway_fragment) {
             ym = 37.25324165
         )
 
-        call.enqueue(object :retrofit2.Callback<OdasyModel>{
-            override fun onResponse(call: Call<OdasyModel>, response: Response<OdasyModel>) {
+        call.enqueue(object :retrofit2.Callback<JsonElement>{
+            override fun onResponse(call: Call<JsonElement>, response: Response<JsonElement>) {
                 Log.d(TAG, "onResponse: ${response.raw()}")
             }
 
-            override fun onFailure(call: Call<OdasyModel>, t: Throwable) {
+            override fun onFailure(call: Call<JsonElement>, t: Throwable) {
                 Log.d(TAG, "onFailure:$t")
             }
 

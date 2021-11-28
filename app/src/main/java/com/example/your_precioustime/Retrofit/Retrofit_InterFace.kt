@@ -6,8 +6,10 @@ import com.example.your_precioustime.Model.PoiModel.MapPoiModel
 
 
 import com.example.your_precioustime.Url
+import com.google.gson.JsonElement
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface Retrofit_InterFace {
@@ -45,12 +47,12 @@ interface Retrofit_InterFace {
 
     @GET(Url.ODSAY_POI_URL)
     fun ODSAYMapLocationGet(
-//        @Query("apiKey") apiKey:String="P0AqcoST/h1VEbQSLktxxv6OqLdACYARAIrxgmcYC5E",
+//        @Query("apiKey") apiKey:String?,
         @Query("lang") lang:Int = 0,
         @Query("x") xm:Double?,
         @Query("y") ym:Double?,
         @Query("stationClass") stationClass:Int = 2
-    ):Call<OdasyModel>
+    ):Call<JsonElement>
 
 
 }
