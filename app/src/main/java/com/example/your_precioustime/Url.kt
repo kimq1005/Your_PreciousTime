@@ -17,6 +17,6 @@ class Url {
 
         const val ODSAY_BASE_URL ="https://api.odsay.com/"
         const val ODSAY_POI_URL ="v1/api/pointSearch"
-        const val ODSAY_API_KEY="P0AqcoST/h1VEbQSLktxxv6OqLdACYARAIrxgmcYC5E"
+        const val ODSAY_API_KEY="pupe3RG3T5+/2e3NTHbseT5jWQ4daRwk4Rh2v/kceJ0"
     }
 }

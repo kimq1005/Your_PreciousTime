@@ -47,11 +47,11 @@ interface Retrofit_InterFace {
 
     @GET(Url.ODSAY_POI_URL)
     fun ODSAYMapLocationGet(
-//        @Query("apiKey") apiKey:String?,
+//        @ParameterName("dddd") Header: Int =0,
         @Query("lang") lang:Int = 0,
         @Query("x") xm:Double?,
         @Query("y") ym:Double?,
-        @Query("stationClass") stationClass:Int = 2
+//        @Query("stationClass") stationClass:Int = 2
     ):Call<JsonElement>
 
 

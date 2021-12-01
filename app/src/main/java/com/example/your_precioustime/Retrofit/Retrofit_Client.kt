@@ -115,7 +115,7 @@ object Retrofit_Client {
                 val goaddurl = realRequest
                     .url()
                     .newBuilder()
-                    .addQueryParameter("apiKey", "pupe3RG3T5+/2e3NTHbseT5jWQ4daRwk4Rh2v/kceJ0")
+                    .addQueryParameter("apiKey", Url.ODSAY_API_KEY)
                     .build()
 
                 val lastRequest = realRequest.newBuilder()

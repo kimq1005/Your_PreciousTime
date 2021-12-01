@@ -22,7 +22,7 @@ class SubwayFragment:Fragment(R.layout.subway_fragment) {
     private val binding get() = setbinding!!
 
     lateinit var subWayAdapter: SubWayAdapter
-    private var retrofitInterface: Retrofit_InterFace = Retrofit_Client.getJsonClienet(Url.ODSAY_BASE_URL).create(
+    private var retrofitInterface: Retrofit_InterFace = Retrofit_Client.getJsonClienet("https://api.odsay.com/").create(
         Retrofit_InterFace::class.java
     )
 
@@ -95,6 +95,7 @@ class SubwayFragment:Fragment(R.layout.subway_fragment) {
 
     private fun ODSAYAPI(){
         val call = retrofitInterface.ODSAYMapLocationGet(
+
             xm = 127.04055197,
             ym = 37.25324165
         )

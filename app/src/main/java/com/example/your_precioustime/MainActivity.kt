@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
 
             startActivity(intent)
 //            Toast.makeText(this,"gdgd",Toast.LENGTH_SHORT).show()
+            //하 인생
         }
 
 

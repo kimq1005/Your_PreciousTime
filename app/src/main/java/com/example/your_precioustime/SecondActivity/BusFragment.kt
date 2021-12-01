@@ -41,6 +41,7 @@ class BusFragment:Fragment(R.layout.bus_fragment) {
     private var retrofitFuckInterFace:Retrofit_InterFace=
         Retrofit_Client.getFuckClient(Url.ODSAY_BASE_URL).create(Retrofit_InterFace::class.java)
 
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
     }
