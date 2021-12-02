@@ -15,6 +15,8 @@ class MainActivity : AppCompatActivity() {
     private var mainActivitybinding : ActivityMainBinding? = null
     private val binding get() = mainActivitybinding!!
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainActivitybinding = ActivityMainBinding.inflate(layoutInflater) // getRoot 메서드로 레이아웃 내부의 최상위 위치 뷰의 // 인스턴스를 활용하여 생성된 뷰를 액티비티에 표시
@@ -41,6 +43,8 @@ class MainActivity : AppCompatActivity() {
         activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
 
     }
+
+
 
 
 }

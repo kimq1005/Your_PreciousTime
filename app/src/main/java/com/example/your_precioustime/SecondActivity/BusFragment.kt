@@ -7,11 +7,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.your_precioustime.Model.*
 import com.example.your_precioustime.R
+import com.example.your_precioustime.Retrofit.Coroutines_InterFace
 import com.example.your_precioustime.Retrofit.Retrofit_Client
 import com.example.your_precioustime.Retrofit.Retrofit_InterFace
 import com.example.your_precioustime.Retrofit.Retrofit_Manager
@@ -20,13 +22,16 @@ import com.example.your_precioustime.Url
 import com.example.your_precioustime.Util.Companion.TAG
 import com.example.your_precioustime.databinding.BusFragmentBinding
 import kotlinx.android.synthetic.main.subway_fragment.*
+import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.create
+import kotlin.Exception
+import kotlin.coroutines.CoroutineContext
 
 
-class BusFragment:Fragment(R.layout.bus_fragment) {
+class BusFragment:Fragment(R.layout.bus_fragment),CoroutineScope {
 
     lateinit var upAdpater : UpAdpater
     private var busbinding :BusFragmentBinding? =null
@@ -35,12 +40,20 @@ class BusFragment:Fragment(R.layout.bus_fragment) {
     lateinit var busStationSearchAdapter: Bus_Station_Search_Adapter
 
 
+    lateinit var job:Job
+
+    override val coroutineContext : CoroutineContext
+        get() = Dispatchers.Main + job
+
+
     private var retrofitInterface: Retrofit_InterFace =
         Retrofit_Client.getClient(Url.BUS_MAIN_URL).create(Retrofit_InterFace::class.java)
 
     private var retrofitFuckInterFace:Retrofit_InterFace=
         Retrofit_Client.getFuckClient(Url.ODSAY_BASE_URL).create(Retrofit_InterFace::class.java)
 
+    private var coroutinesInterface : Coroutines_InterFace =
+        Retrofit_Client.getClient(Url.BUS_MAIN_URL).create(Coroutines_InterFace::class.java)
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -51,20 +64,28 @@ class BusFragment:Fragment(R.layout.bus_fragment) {
         super.onViewCreated(view, savedInstanceState)
 
         busbinding = BusFragmentBinding.bind(view)
+        job = Job()
 
 //        Retrofit_Manager.retrofitManager.GETBUS()
-        ClickSearchBtn()
+//        ClickSearchBtn()
+
+        binding.clickhere.setOnClickListener {
+            CoroutinesCall("31010","우남")
+            Log.d(TAG, "onViewCreated: sdfafasfasdfadfafd")
+        }
+
+
+
 
 
     }
 
     private fun ClickSearchBtn() =with(binding) {
 
-
         clickhere.setOnClickListener {
             val suwoncitycode:String = "31010"
             val StationEditName = SearchEditText.text.toString()
-            SetRecyclerView(suwoncitycode,StationEditName)
+            SetRecyclerView(suwoncitycode,"우남")
 //            hellomy(suwoncitycode,"GGB203000129")
 
        }
@@ -117,9 +138,6 @@ class BusFragment:Fragment(R.layout.bus_fragment) {
                 val body = response.body()
                 busStationSearchAdapter = Bus_Station_Search_Adapter()
 
-//                val code = body?.body?.items?.item?.nodeid.toString()
-//                Log.d(TAG, "onResponse: ${response.body()}")
-
 
                 body?.let{it->
                     val hello = body.body.items.item
@@ -129,10 +147,6 @@ class BusFragment:Fragment(R.layout.bus_fragment) {
                         busStationSearchAdapter.submitList(hello)
                     }
 
-//                    val hellodd =it.body.items.item.nodeid.toString()
-//                    hicityCode = hellodd
-//
-//                    hellomy("31010",hellodd)
 
 
                 }
@@ -211,6 +225,27 @@ class BusFragment:Fragment(R.layout.bus_fragment) {
 
         })
 
+    }
+
+
+    private fun CoroutinesCall(citycode:String,stationName: String)=with(binding){
+        launch(coroutineContext) {
+            try{
+                withContext(Dispatchers.IO){
+                    val response = Retrofit_Client.Retrofit_Object.Coroutines_BUS_NAMEGET(citycode,stationName)
+
+                    if(response.isSuccessful){
+                        val body = response.body()
+                        withContext(Dispatchers.Main){
+                            Log.d(TAG, "CoroutinesCall:${response.body()}")
+                        }
+                    }
+                }
+            }catch (e:Exception){
+                e.printStackTrace()
+                Log.d(TAG, "CoroutinesCall:에러다에러다에러")
+            }
+        }
     }
 }
 

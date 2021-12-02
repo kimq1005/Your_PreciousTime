@@ -12,9 +12,12 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.jaxb.JaxbConverterFactory
 import retrofit2.converter.simplexml.SimpleXmlConverterFactory
+import retrofit2.create
 
 
 object Retrofit_Client {
+
+    val Retrofit_Object: Coroutines_InterFace by lazy{ getClient(Url.BUS_MAIN_URL).create(Coroutines_InterFace::class.java)}
 
     fun getClient(baseurl:String):Retrofit{
 
