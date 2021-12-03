@@ -52,6 +52,9 @@ class BusFragment:Fragment(R.layout.bus_fragment),CoroutineScope {
     private var retrofitFuckInterFace:Retrofit_InterFace=
         Retrofit_Client.getFuckClient(Url.ODSAY_BASE_URL).create(Retrofit_InterFace::class.java)
 
+    private var retrofitFuckInterddFace:Retrofit_InterFace=
+        Retrofit_Client.getFuckClient(Url.ODSAY_BASE_URL).create(Retrofit_InterFace::class.java)
+
     private var coroutinesInterface : Coroutines_InterFace =
         Retrofit_Client.getClient(Url.BUS_MAIN_URL).create(Coroutines_InterFace::class.java)
 
