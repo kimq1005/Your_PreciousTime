@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.your_precioustime.Model.OdsayModel.OdasyModel
 import com.example.your_precioustime.Model.PoiModel.MapPoiModel
+import com.example.your_precioustime.Model.SubwayModel.ErrorMessage
+import com.example.your_precioustime.Model.SubwayModel.SubwayModel
 import com.example.your_precioustime.R
 import com.example.your_precioustime.Retrofit.Retrofit_Client
 import com.example.your_precioustime.Retrofit.Retrofit_InterFace
@@ -26,6 +28,11 @@ class SubwayFragment:Fragment(R.layout.subway_fragment) {
         Retrofit_InterFace::class.java
     )
 
+    private var seoulRetrofit_InterFace:Retrofit_InterFace = Retrofit_Client.getJsonClienet(Url.SEOUL_SUBWAY_MAIN_URL).create(
+        Retrofit_InterFace::class.java
+    )
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -33,12 +40,34 @@ class SubwayFragment:Fragment(R.layout.subway_fragment) {
         setbinding = SubwayFragmentBinding.bind(view)
 
         binding.clickhere.setOnClickListener {
-//            testAPI("매탄권선")
-            ODSAYAPI()
+           SeoulSubwayGet("수원")
         }
 
 //        setRecyclerView()
 
+    }
+
+    private fun SeoulSubwayGet(statNm:String){
+        val call = seoulRetrofit_InterFace.SUBWAYGET(
+            statnNm = statNm
+        )
+
+
+        call.enqueue(object :retrofit2.Callback<SubwayModel>{
+            override fun onResponse(call: Call<SubwayModel>, response: Response<SubwayModel>) {
+                val body = response.body()
+
+                body?.let{
+
+                }
+                Log.d(TAG, "지하철 정보를보거라 쉽색기야: ${response.body()}")
+            }
+
+            override fun onFailure(call: Call<SubwayModel>, t: Throwable) {
+                Log.d(TAG, "onFailure: $t")
+            }
+
+        })
     }
 
     private fun setRecyclerView()=with(binding) {

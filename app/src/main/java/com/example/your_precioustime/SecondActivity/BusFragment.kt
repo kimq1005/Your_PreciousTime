@@ -52,11 +52,6 @@ class BusFragment:Fragment(R.layout.bus_fragment),CoroutineScope {
     private var retrofitFuckInterFace:Retrofit_InterFace=
         Retrofit_Client.getFuckClient(Url.ODSAY_BASE_URL).create(Retrofit_InterFace::class.java)
 
-    private var retrofitFuckInterddFace:Retrofit_InterFace=
-        Retrofit_Client.getFuckClient(Url.ODSAY_BASE_URL).create(Retrofit_InterFace::class.java)
-
-    private var coroutinesInterface : Coroutines_InterFace =
-        Retrofit_Client.getClient(Url.BUS_MAIN_URL).create(Coroutines_InterFace::class.java)
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -70,26 +65,28 @@ class BusFragment:Fragment(R.layout.bus_fragment),CoroutineScope {
         job = Job()
 
 //        Retrofit_Manager.retrofitManager.GETBUS()
-//        ClickSearchBtn()
+////        ClickSearchBtn()
+//
+//        binding.clickhere.setOnClickListener {
+//            CoroutinesCall("31010","우남")
+//            Log.d(TAG, "onViewCreated: sdfafasfasdfadfafd")
+//        }
 
-        binding.clickhere.setOnClickListener {
-            CoroutinesCall("31010","우남")
-            Log.d(TAG, "onViewCreated: sdfafasfasdfadfafd")
-        }
-
-
+        ClickSearchBtn()
 
 
 
     }
+
 
     private fun ClickSearchBtn() =with(binding) {
 
         clickhere.setOnClickListener {
             val suwoncitycode:String = "31010"
             val StationEditName = SearchEditText.text.toString()
-            SetRecyclerView(suwoncitycode,"우남")
+            SetRecyclerView(suwoncitycode,StationEditName)
 //            hellomy(suwoncitycode,"GGB203000129")
+            //경
 
        }
 

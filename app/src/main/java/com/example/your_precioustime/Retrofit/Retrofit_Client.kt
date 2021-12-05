@@ -107,38 +107,41 @@ object Retrofit_Client {
 
     fun getJsonClienet(baseUrl:String) :Retrofit{
 
-        val client = OkHttpClient.Builder()
-
-
-        val baseInterceptor: Interceptor = (object : Interceptor {
-            override fun intercept(chain: Interceptor.Chain): Response {
-
-                val realRequest = chain.request()
-
-                val goaddurl = realRequest
-                    .url()
-                    .newBuilder()
-                    .addQueryParameter("apiKey", Url.ODSAY_API_KEY)
-                    .build()
-
-                val lastRequest = realRequest.newBuilder()
-                    .url(goaddurl)
-                    .build()
-
-                return chain.proceed(lastRequest)
-            }
-
-        })
-
-
-        client.addInterceptor(baseInterceptor)
+//        val client = OkHttpClient.Builder()
+//
+//
+//        val baseInterceptor: Interceptor = (object : Interceptor {
+//            override fun intercept(chain: Interceptor.Chain): Response {
+//
+//                val realRequest = chain.request()
+//
+//                val goaddurl = realRequest
+//                    .url()
+//                    .newBuilder()
+//                    .addQueryParameter("apiKey", Url.ODSAY_API_KEY)
+//                    .build()
+//
+//                val lastRequest = realRequest.newBuilder()
+//                    .url(goaddurl)
+//                    .build()
+//
+//                return chain.proceed(lastRequest)
+//            }
+//
+//        })
+//
+//
+//        client.addInterceptor(baseInterceptor)
 
         val retrofitclient = Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
-            .client(client.build())
             .build()
 
         return retrofitclient
     }
+
+
+
+
 }

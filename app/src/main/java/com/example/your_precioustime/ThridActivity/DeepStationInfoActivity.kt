@@ -37,6 +37,10 @@ class DeepStationInfoActivity : AppCompatActivity() {
 //        Log.d(TAG, "onCreate: $stationName , $stationNodeNumber")
 
         binding.BusStationName.text = stationName
+        binding.backbtn.setOnClickListener {
+            onBackPressed()
+        }
+
         SetBusStationRecyclerView()
 
 
