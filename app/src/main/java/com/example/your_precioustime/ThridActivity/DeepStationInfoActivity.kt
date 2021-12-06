@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.your_precioustime.Model.Bus
+import com.example.your_precioustime.Model.Item
 import com.example.your_precioustime.Retrofit.Retrofit_Client
 import com.example.your_precioustime.Retrofit.Retrofit_InterFace
 import com.example.your_precioustime.SecondActivity.UpAdpater
@@ -91,56 +92,35 @@ class DeepStationInfoActivity : AppCompatActivity() {
 
 
 
-                    val test = hello[1]
-                    val test2 = hello[2]
-                    val test3 = hello[3]
-                    val test4 = hello[4]
-                    val test5 = hello[5]
-
-
-                    val hi = mutableListOf<String>()
+                    val hi = mutableListOf<Item>()
 
                     for(i in hello.indices){
                         val busNm:String
                         val waitbus:Int
 
-                        busNm = hello.get(i).toString()
-                        hi.add(busNm)
+                        busNm = hello.get(i).routeno!!
+                        waitbus = hello.get(i).arrprevstationcnt!!
+                        hi.add(Item(
+                            busNm,waitbus
+                        ))
 
                     }
                     Log.d(TAG, "\n 홀리퍼큉쉣맨: $hi\n\n\n")
 
-//                    val afafafa= hi.filter { it.length % 2 == 1 }
-//                    Log.d(TAG, "onResponse: ${afafafa.indices}")
-
-//                    for(i in 0..hi.size){
-//                        hi.removeAt(i+1)
-//                        Log.d(TAG, "onResponse:$hi")
-//                    }
-
-                    Log.d(TAG, "onResponse:${hi.size.toInt()}")
-
-
                     Log.d(TAG, "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ\n")
-//                    hi.removeAt(1)
-//                    hi.removeAt(2)
-//                    hi.removeAt(3)
-//                    Log.d(TAG, "onResponse: $hi")
 
-//                    val hfifaf = hi.filter { it.length % 2 == 0 }
-//                    Log.d(TAG, "afafafafafadaf: $hfifaf")
+                    val afafafa= hi.filterIndexed { index, i ->
+                        index %2 ==0
+                    }
 
+                    Log.d(TAG, "onResponse: ${afafafa}")
 
 
-//                    Log.d(TAG, "버스노선정보: ${hi.distinct()}")6
-
-
-
-//                    deepstationinfoRecyclerView.apply {
-//                        adapter = upAdpater
-//                        layoutManager = LinearLayoutManager(context)
-//                        upAdpater.submitList(wow)
-//                    }
+                    deepstationinfoRecyclerView.apply {
+                        adapter = upAdpater
+                        layoutManager = LinearLayoutManager(context)
+                        upAdpater.submitList(afafafa)
+                    }
 
 
                 }
