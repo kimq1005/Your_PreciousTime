@@ -33,7 +33,6 @@ class SubwayFragment:Fragment(R.layout.subway_fragment) {
     )
 
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -41,6 +40,7 @@ class SubwayFragment:Fragment(R.layout.subway_fragment) {
 
         binding.clickhere.setOnClickListener {
            SeoulSubwayGet("수원")
+
         }
 
 //        setRecyclerView()

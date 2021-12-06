@@ -10,10 +10,8 @@ import com.example.your_precioustime.Model.SubwayModel.SubwayModel
 import com.example.your_precioustime.Url
 import com.google.gson.JsonElement
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
+import retrofit2.http.Header
 
 interface Retrofit_InterFace {
 
@@ -47,10 +45,9 @@ interface Retrofit_InterFace {
         @Query("searchKeyword") searchKeyword:String
     ): Call<MapPoiModel>
 
-
     @GET(Url.ODSAY_POI_URL)
     fun ODSAYMapLocationGet(
-//        @ParameterName("dddd") Header: Int =0,
+        @Query("apiKey") apiKey:String ="ZkqhFIasLHBpaDaOdYx5CYwRwh8r2UFgYg7NazJgWXw",
         @Query("lang") lang:Int = 0,
         @Query("x") xm:Double?,
         @Query("y") ym:Double?,

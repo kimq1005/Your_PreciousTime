@@ -198,34 +198,7 @@ class BusFragment:Fragment(R.layout.bus_fragment),CoroutineScope {
 
     }
 
-    private fun hellomy(citycode: String,nodeId:String)= with(binding){
-        val buscall = retrofitInterface.BusGet(citycode,nodeId)
 
-        buscall.enqueue(object:retrofit2.Callback<Bus>{
-            override fun onResponse(call: Call<Bus>, response: Response<Bus>) {
-                val body = response.body()
-
-                body?.let{Bus->
-
-                    busRecyclerView.apply {
-                        val hello = Bus.body.items.item
-                        adapter=upAdpater
-                        upAdpater.submitList(hello)
-                        layoutManager = LinearLayoutManager(context)
-                    }
-
-                }
-
-                Log.d(TAG, "이거도 두번쨰임: ${response.body()}")
-            }
-
-            override fun onFailure(call: Call<Bus>, t: Throwable) {
-                Log.d(TAG, "이건 두번째: $t")
-            }
-
-        })
-
-    }
 
 
     private fun CoroutinesCall(citycode:String,stationName: String)=with(binding){

@@ -62,11 +62,85 @@ class DeepStationInfoActivity : AppCompatActivity() {
                 body?.let{
 
                     val wow = body.body.items.item
-                    deepstationinfoRecyclerView.apply {
-                        adapter = upAdpater
-                        layoutManager = LinearLayoutManager(context)
-                        upAdpater.submitList(wow)
+
+                    val hello =body.body.items.item
+//
+//                    val hi = mutableListOf<String>()
+//
+//                    for ( i in hello.indices){
+//
+//                        val wowowowwo = hello[i]
+//
+//                        hi.add(wowowowwo.toString())
+//
+//                    }
+//
+//
+//
+//                    Log.d(TAG, "꾸에에에ㅔㅔ에엑: $hi ")
+//
+//                    for ( i in hi){
+//                        val fuckcckckckchisaf = hi.filter { it.length % 2 == 1 }
+//                        Log.d(TAG, "onResponse: $fuckcckckckchisaf")
+//                    }
+//                    val studingfuck = hi.length
+//                    Log.d(TAG, "야이시발되라고 좀 진짜 아 ㅡ: $studingfuck")
+//
+//                    val hoyo = hi.filter { it.length % 2 == 1 }
+//                    Log.d(TAG, "이에에에에ㅔ에에에ㅔㄱ : ${hoyo} ")
+
+
+
+                    val test = hello[1]
+                    val test2 = hello[2]
+                    val test3 = hello[3]
+                    val test4 = hello[4]
+                    val test5 = hello[5]
+
+
+                    val hi = mutableListOf<String>()
+
+                    for(i in hello.indices){
+                        val busNm:String
+                        val waitbus:Int
+
+                        busNm = hello.get(i).toString()
+                        hi.add(busNm)
+
                     }
+                    Log.d(TAG, "\n 홀리퍼큉쉣맨: $hi\n\n\n")
+
+//                    val afafafa= hi.filter { it.length % 2 == 1 }
+//                    Log.d(TAG, "onResponse: ${afafafa.indices}")
+
+//                    for(i in 0..hi.size){
+//                        hi.removeAt(i+1)
+//                        Log.d(TAG, "onResponse:$hi")
+//                    }
+
+                    Log.d(TAG, "onResponse:${hi.size.toInt()}")
+
+
+                    Log.d(TAG, "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ\n")
+//                    hi.removeAt(1)
+//                    hi.removeAt(2)
+//                    hi.removeAt(3)
+//                    Log.d(TAG, "onResponse: $hi")
+
+//                    val hfifaf = hi.filter { it.length % 2 == 0 }
+//                    Log.d(TAG, "afafafafafadaf: $hfifaf")
+
+
+
+//                    Log.d(TAG, "버스노선정보: ${hi.distinct()}")6
+
+
+
+//                    deepstationinfoRecyclerView.apply {
+//                        adapter = upAdpater
+//                        layoutManager = LinearLayoutManager(context)
+//                        upAdpater.submitList(wow)
+//                    }
 
 
                 }
