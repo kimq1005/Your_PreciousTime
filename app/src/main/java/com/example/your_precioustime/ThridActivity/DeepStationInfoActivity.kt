@@ -65,31 +65,6 @@ class DeepStationInfoActivity : AppCompatActivity() {
                     val wow = body.body.items.item
 
                     val hello =body.body.items.item
-//
-//                    val hi = mutableListOf<String>()
-//
-//                    for ( i in hello.indices){
-//
-//                        val wowowowwo = hello[i]
-//
-//                        hi.add(wowowowwo.toString())
-//
-//                    }
-//
-//
-//
-//                    Log.d(TAG, "꾸에에에ㅔㅔ에엑: $hi ")
-//
-//                    for ( i in hi){
-//                        val fuckcckckckchisaf = hi.filter { it.length % 2 == 1 }
-//                        Log.d(TAG, "onResponse: $fuckcckckckchisaf")
-//                    }
-//                    val studingfuck = hi.length
-//                    Log.d(TAG, "야이시발되라고 좀 진짜 아 ㅡ: $studingfuck")
-//
-//                    val hoyo = hi.filter { it.length % 2 == 1 }
-//                    Log.d(TAG, "이에에에에ㅔ에에에ㅔㄱ : ${hoyo} ")
-
 
 
                     val hi = mutableListOf<Item>()
@@ -105,22 +80,62 @@ class DeepStationInfoActivity : AppCompatActivity() {
                         ))
 
                     }
-                    Log.d(TAG, "\n 홀리퍼큉쉣맨: $hi\n\n\n")
+                    Log.d(TAG, "\n 전체값 리스트다 질문받는다: $hi \n")
 
                     Log.d(TAG, "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ\n")
 
-                    val afafafa= hi.filterIndexed { index, i ->
-                        index %2 ==0
+                    val firstList= hi.filterIndexed { index, i ->
+//                        Log.d(TAG, "인덱스값이 뭔지 확인하기 : $index , $i")
+                        index % 2 ==0    //이건 그냥 말그대로 짝수만을 가져온거야
                     }
 
-                    Log.d(TAG, "onResponse: ${afafafa}")
-
-
-                    deepstationinfoRecyclerView.apply {
-                        adapter = upAdpater
-                        layoutManager = LinearLayoutManager(context)
-                        upAdpater.submitList(afafafa)
+                    val secondList = hi.filterIndexed{index, item ->
+                        index % 2 ==1
                     }
+
+//                    Log.d(TAG, "fristList다: ${firstList}\n")
+//                    Log.d(TAG, "secondList다: ${secondList}")
+
+                    val ResultList = mutableListOf<Item>()
+
+                    firstList.forEach {
+                        val ARouteNo = it.routeno
+                        val AWaittime = it.arrprevstationcnt
+                        var found = false
+
+//            Log.d(TAG, "onCreate: $AWaittime")
+
+
+                        secondList.forEach {
+                            val BRouteNo = it.routeno
+                            val BWaittime = it.arrprevstationcnt
+
+
+                            if(ARouteNo==BRouteNo){
+                                if(AWaittime!! > BWaittime!!){
+//                                    Log.d(TAG, "onCreate: $it")
+                                    ResultList.add(Item(it.routeno,it.arrprevstationcnt))
+
+                                }else{
+                                    ResultList.add(Item(ARouteNo,AWaittime))
+                                }
+
+                                Log.d(TAG, "지막 그거여 확인혀: $ResultList")
+                            }
+
+
+                        }
+
+                        deepstationinfoRecyclerView.apply {
+                            adapter = upAdpater
+                            layoutManager = LinearLayoutManager(context)
+                            upAdpater.submitList(ResultList)
+                        }
+
+
+                    }
+
+
 
 
                 }

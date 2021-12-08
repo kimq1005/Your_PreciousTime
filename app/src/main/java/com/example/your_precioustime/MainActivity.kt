@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.widget.Toast
 import com.example.your_precioustime.SecondActivity.SecondActivity
+import com.example.your_precioustime.ThridActivity.BusSubwayActivity
 import com.example.your_precioustime.databinding.ActivityMainBinding
 
 
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity() {
 //            },2000)
 
         binding.MainLogoDd.setOnClickListener {
+//            val intent = Intent(this,SecondActivity::class.java)
             val intent = Intent(this,SecondActivity::class.java)
 
             startActivity(intent)

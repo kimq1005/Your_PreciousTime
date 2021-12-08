@@ -4,11 +4,13 @@ import android.annotation.SuppressLint
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.your_precioustime.App
+import com.example.your_precioustime.Model.Item
 import com.example.your_precioustime.SecondActivity.DB.BUSDataBase
 import com.example.your_precioustime.SecondActivity.DB.BUSEntity
 import com.example.your_precioustime.Util.Companion.TAG
@@ -27,7 +29,6 @@ class BusSubwayActivity : AppCompatActivity() {
 
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         busSubwayActivityBinding = ActivityBusSubwayBinding.inflate(layoutInflater)
@@ -35,35 +36,67 @@ class BusSubwayActivity : AppCompatActivity() {
 
         busDataBase = BUSDataBase.getinstance(this)!!
 
-//        binding.fuckingbutton.setOnClickListener {
-//            val hi = busEntity?.size
-//            Log.d(TAG, "onCreate: $hi ")
+        val fuckGodt = mutableListOf<Item>()
+
+        val fucklist1 = listOf(
+            Item(routeno="92-1", arrprevstationcnt=9),
+            Item(routeno="62-1", arrprevstationcnt=7),
+            Item(routeno="99", arrprevstationcnt=3)
+        )
+
+
+
+        val fucklist2 = listOf(
+            Item(routeno="92-1", arrprevstationcnt=12),
+            Item(routeno="62-1", arrprevstationcnt=6),
+            Item(routeno="99", arrprevstationcnt=23)
+        )
+
+        val kingfucklist = mutableListOf<Item>()
+
+        fucklist1.forEach {
+            val ARouteNo = it.routeno
+            val AWaittime = it.arrprevstationcnt
+            var found = false
+
+//            Log.d(TAG, "onCreate: $AWaittime")
+
+            
+            fucklist2.forEach {
+                val BRouteNo = it.routeno
+                val BWaittime = it.arrprevstationcnt
+
+
+                if(ARouteNo==BRouteNo){
+                    if(AWaittime!! > BWaittime!!){
+                        Log.d(TAG, "onCreate: $it")
+                        fuckGodt.add(Item(it.routeno,it.arrprevstationcnt))
+
+                    }else{
+                        fuckGodt.add(Item(ARouteNo,AWaittime))
+                    }
+
+                    Log.d(TAG, "onCreate: $fuckGodt")
+                }
+
+
+            }
+
+
+        }
+
+
+//        for(i in 0..fucklist1.size-1){
+//            Log.d(TAG, "onCreate: $i hi")
+//
 //        }
 
-//        val fubusid = intent.getStringExtra("busnum")
-//        val fuwaitstaion = intent.getStringExtra("arriveStation")
-//
-//
-//        binding.fuckBusnum.text = fubusid
-//        binding.fuckWaitstation.text = fuwaitstaion
+
+
+
+
 
         binding.fuckingbutton.setOnClickListener {
-//
-//            val fuck = BUSEntity(
-//                null,
-//                fubusid,
-//                fuwaitstaion,
-//                null
-//            )
-
-            getAllBus()
-//
-//
-//            businsert(fuck)
-//            Toast.makeText(this,"저장완료다 이련아 $busEntity",Toast.LENGTH_SHORT).show()
-//        }
-//
-//        binding.fuckingRecyclerbutton.setOnClickListener {
 
         }
 
@@ -75,6 +108,8 @@ class BusSubwayActivity : AppCompatActivity() {
 
 
     }
+
+
 
 //    private fun businsert(busEntity: BUSEntity){
 //
