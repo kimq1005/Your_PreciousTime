@@ -28,3 +28,26 @@ abstract class BUSDataBase : RoomDatabase(){
         }
     }
 }
+
+
+@Database(entities = arrayOf(BUSNumEntity::class),version = 1)
+abstract class BUSDNumberDataBase : RoomDatabase(){
+    abstract fun busnumDAO() : BusNumberDAO
+
+    companion object{
+        private var INSTANCE : BUSDNumberDataBase? =null
+
+        fun getinstance(context: Context) : BUSDNumberDataBase?{
+            if(INSTANCE==null){
+                synchronized(BUSDNumberDataBase::class){
+                    INSTANCE = Room.databaseBuilder(context.applicationContext,
+                        BUSDNumberDataBase::class.java, "busnum.db")
+                        .fallbackToDestructiveMigration()
+                        .build()
+                }
+            }
+
+            return INSTANCE
+        }
+    }
+}

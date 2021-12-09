@@ -12,3 +12,12 @@ data class BUSEntity(
     var arriveStation:String? = null,
     var waitTime:String? = null
 )
+
+
+@Entity(tableName = "busNum")
+data class BUSNumEntity(
+    @PrimaryKey(autoGenerate = true)
+    var id : Long?,
+
+    var busNumber: String?
+)

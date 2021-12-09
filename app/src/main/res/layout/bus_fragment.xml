@@ -80,6 +80,24 @@
         app:layout_constraintVertical_bias="0.0" />
 
 
+    <TextView
+        android:padding="10dp"
+        android:layout_marginTop="2dp"
+        android:id="@+id/noResultTextView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:visibility="invisible"
+        android:text="버스가 없어요 다시 입력하십쇼"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/firstunderline"
+        app:layout_constraintVertical_bias="0.0"/>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

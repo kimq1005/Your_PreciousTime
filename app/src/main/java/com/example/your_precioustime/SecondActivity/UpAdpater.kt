@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.your_precioustime.App
 import com.example.your_precioustime.Model.Item
+import com.example.your_precioustime.R
 import com.example.your_precioustime.SecondActivity.DB.BUSDataBase
 import com.example.your_precioustime.SecondActivity.DB.BUSEntity
 import com.example.your_precioustime.ThridActivity.BusSubwayActivity
@@ -17,11 +18,18 @@ import com.example.your_precioustime.Util.Companion.TAG
 import com.example.your_precioustime.databinding.BusitemLayoutBinding
 import kotlinx.android.synthetic.main.busitem_layout.view.*
 
+
+import android.view.View
+import com.example.your_precioustime.SecondActivity.DB.BUSDNumberDataBase
+import com.example.your_precioustime.SecondActivity.DB.BUSNumEntity
+
+
 @SuppressLint("StaticFieldLeak")
 class UpAdpater:RecyclerView.Adapter<UpAdpater.MyViewHolder>() {
     private var item: List<Item>? = null
-    lateinit var busEntity: List<BUSEntity>
-    lateinit var busDataBase: BUSDataBase
+    lateinit var busnumEntity: List<BUSNumEntity>
+    lateinit var busnumDataBase: BUSDNumberDataBase
+
 
     class MyViewHolder(val binding:BusitemLayoutBinding): RecyclerView.ViewHolder(binding.root){
 
@@ -42,6 +50,34 @@ class UpAdpater:RecyclerView.Adapter<UpAdpater.MyViewHolder>() {
         item?.get(position)?.let {
             holder.bind(it)
         }
+
+        var checkstars:Boolean = true
+
+        holder.itemView.stars.setOnClickListener {
+            if (checkstars == true) {
+                holder.itemView.stars.setImageResource(R.drawable.shinigstar)
+                checkstars = false
+
+                val busnumber = item?.get(position)?.routeno
+                val bussavenumber = BUSNumEntity(
+                    null,
+                    busnumber
+                )
+                BUSNumInsert(bussavenumber)
+                //DB저장
+
+                Toast.makeText(holder.itemView.context,"즐겨찾기에 등록 되었습니다 ",Toast.LENGTH_SHORT).show()
+            } else {
+                holder.itemView.stars.setImageResource(R.drawable.star)
+                checkstars = true
+
+                //DB삭제
+
+
+                Toast.makeText(holder.itemView.context,"즐겨찾기에서 해제 되었습니다",Toast.LENGTH_SHORT).show()
+            }
+        }
+
 
 //        holder.itemView.SaveBtn.setOnClickListener {
 //
@@ -79,28 +115,52 @@ class UpAdpater:RecyclerView.Adapter<UpAdpater.MyViewHolder>() {
 
 
 
+//    private fun businsert(busEntity: BUSEntity){
+//
+//        busDataBase = BUSDataBase.getinstance(App.instance)!!
+//
+//        var businsertTask = (object : AsyncTask<Unit,Unit,Unit>(){
+//            override fun doInBackground(vararg params: Unit?) {
+//                busDataBase.busDAO().businsert(busEntity)
+//            }
+//
+//            override fun onPostExecute(result: Unit?) {
+//                super.onPostExecute(result)
+//                busGetAll()
+//            }
+//        }).execute()
+//
+//    }
+//
+//    private fun busGetAll(){
+//        val busGetAllTask = (object:AsyncTask<Unit,Unit,Unit>(){
+//            override fun doInBackground(vararg params: Unit?) {
+//                busEntity=busDataBase.busDAO().busgetAll()
+//            }
+//        }).execute()
+//    }
 
-    private fun businsert(busEntity: BUSEntity){
+    private fun BUSNumInsert(busnumEntity: BUSNumEntity){
 
-        busDataBase = BUSDataBase.getinstance(App.instance)!!
+        busnumDataBase = BUSDNumberDataBase.getinstance(App.instance)!!
 
         var businsertTask = (object : AsyncTask<Unit,Unit,Unit>(){
             override fun doInBackground(vararg params: Unit?) {
-                busDataBase.busDAO().businsert(busEntity)
+                busnumDataBase.busnumDAO().busnumInsert(busnumEntity)
             }
 
             override fun onPostExecute(result: Unit?) {
                 super.onPostExecute(result)
-                busGetAll()
+                busnumGetAll()
             }
         }).execute()
 
     }
 
-    private fun busGetAll(){
+    private fun busnumGetAll(){
         val busGetAllTask = (object:AsyncTask<Unit,Unit,Unit>(){
             override fun doInBackground(vararg params: Unit?) {
-                busEntity=busDataBase.busDAO().busgetAll()
+                busnumEntity= busnumDataBase.busnumDAO().busnumGetAll()
             }
         }).execute()
     }

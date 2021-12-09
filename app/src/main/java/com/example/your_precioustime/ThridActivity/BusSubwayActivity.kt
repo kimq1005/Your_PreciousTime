@@ -11,8 +11,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.your_precioustime.App
 import com.example.your_precioustime.Model.Item
+import com.example.your_precioustime.SecondActivity.DB.BUSDNumberDataBase
 import com.example.your_precioustime.SecondActivity.DB.BUSDataBase
 import com.example.your_precioustime.SecondActivity.DB.BUSEntity
+import com.example.your_precioustime.SecondActivity.DB.BUSNumEntity
 import com.example.your_precioustime.Util.Companion.TAG
 import com.example.your_precioustime.databinding.ActivityBusSubwayBinding
 @SuppressLint("StaticFieldLeak")
@@ -20,10 +22,14 @@ import com.example.your_precioustime.databinding.ActivityBusSubwayBinding
 class BusSubwayActivity : AppCompatActivity() {
     private var busSubwayActivityBinding : ActivityBusSubwayBinding? =null
     private val binding get() = busSubwayActivityBinding!!
-    private lateinit var busDataBase: BUSDataBase
     private lateinit var busCallAdpater: BusCallAdpater
 
+
+    private lateinit var busDataBase: BUSDataBase
+    private lateinit var busnumDataBase : BUSDNumberDataBase
+
     private var busEntity:List<BUSEntity>? = null
+    private var busNumEntity : List<BUSNumEntity>? =null
 
 //    private var busEntity:List<BUSEntity>? = null
 
@@ -35,55 +41,9 @@ class BusSubwayActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         busDataBase = BUSDataBase.getinstance(this)!!
-
-        val fuckGodt = mutableListOf<Item>()
-
-        val fucklist1 = listOf(
-            Item(routeno="92-1", arrprevstationcnt=9),
-            Item(routeno="62-1", arrprevstationcnt=7),
-            Item(routeno="99", arrprevstationcnt=3)
-        )
+        busnumDataBase = BUSDNumberDataBase.getinstance(this)!!
 
 
-
-        val fucklist2 = listOf(
-            Item(routeno="92-1", arrprevstationcnt=12),
-            Item(routeno="62-1", arrprevstationcnt=6),
-            Item(routeno="99", arrprevstationcnt=23)
-        )
-
-        val kingfucklist = mutableListOf<Item>()
-
-        fucklist1.forEach {
-            val ARouteNo = it.routeno
-            val AWaittime = it.arrprevstationcnt
-            var found = false
-
-//            Log.d(TAG, "onCreate: $AWaittime")
-
-            
-            fucklist2.forEach {
-                val BRouteNo = it.routeno
-                val BWaittime = it.arrprevstationcnt
-
-
-                if(ARouteNo==BRouteNo){
-                    if(AWaittime!! > BWaittime!!){
-                        Log.d(TAG, "onCreate: $it")
-                        fuckGodt.add(Item(it.routeno,it.arrprevstationcnt))
-
-                    }else{
-                        fuckGodt.add(Item(ARouteNo,AWaittime))
-                    }
-
-                    Log.d(TAG, "onCreate: $fuckGodt")
-                }
-
-
-            }
-
-
-        }
 
 
 //        for(i in 0..fucklist1.size-1){
@@ -94,10 +54,59 @@ class BusSubwayActivity : AppCompatActivity() {
 
 
 
-
+        binding.fuckingRecyclerbutton.setOnClickListener {
+            getNumAllBus()
+        }
 
         binding.fuckingbutton.setOnClickListener {
+            val fuckGodt = mutableListOf<Item>()
 
+            val fucklist1 = listOf(
+                Item(routeno="92-1", arrprevstationcnt=9),
+                Item(routeno="62-1", arrprevstationcnt=7),
+                Item(routeno="99", arrprevstationcnt=3)
+            )
+
+
+
+            val fucklist2 = listOf(
+                Item(routeno="92-1", arrprevstationcnt=12),
+                Item(routeno="62-1", arrprevstationcnt=6),
+                Item(routeno="99", arrprevstationcnt=23)
+            )
+
+            val kingfucklist = mutableListOf<Item>()
+
+            fucklist1.forEach {
+                val ARouteNo = it.routeno
+                val AWaittime = it.arrprevstationcnt
+                var found = false
+
+//            Log.d(TAG, "onCreate: $AWaittime")
+
+
+                fucklist2.forEach {
+                    val BRouteNo = it.routeno
+                    val BWaittime = it.arrprevstationcnt
+
+
+                    if(ARouteNo==BRouteNo){
+                        if(AWaittime!! > BWaittime!!){
+                            Log.d(TAG, "onCreate: $it")
+                            fuckGodt.add(Item(it.routeno,it.arrprevstationcnt))
+
+                        }else{
+                            fuckGodt.add(Item(ARouteNo,AWaittime))
+                        }
+
+                        Log.d(TAG, "onCreate: $fuckGodt")
+                    }
+
+
+                }
+
+
+            }
         }
 
 
@@ -136,7 +145,7 @@ class BusSubwayActivity : AppCompatActivity() {
 //    }
 //
 //
-//    @SuppressLint("StaticFieldLeak")
+    @SuppressLint("StaticFieldLeak")
     private fun getAllBus(){
         val getAllTast = (object:AsyncTask<Unit,Unit,Unit>(){
             override fun doInBackground(vararg params: Unit?) {
@@ -161,5 +170,22 @@ class BusSubwayActivity : AppCompatActivity() {
             layoutManager = GridLayoutManager(App.instance,2, GridLayoutManager.VERTICAL,false)
 
         }
+    }
+
+
+    @SuppressLint("StaticFieldLeak")
+    private fun getNumAllBus(){
+        val getAllTast = (object:AsyncTask<Unit,Unit,Unit>(){
+            override fun doInBackground(vararg params: Unit?) {
+                busNumEntity = busnumDataBase.busnumDAO().busnumGetAll()
+                Log.d(TAG, "doInBackground: $busNumEntity")
+            }
+
+            override fun onPostExecute(result: Unit?) {
+                super.onPostExecute(result)
+//                setRecyclerView()
+            }
+
+        }).execute()
     }
 }

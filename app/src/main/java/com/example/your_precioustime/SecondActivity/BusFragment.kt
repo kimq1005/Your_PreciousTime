@@ -40,6 +40,7 @@ class BusFragment:Fragment(R.layout.bus_fragment),CoroutineScope {
     lateinit var busStationSearchAdapter: Bus_Station_Search_Adapter
 
 
+
     lateinit var job:Job
 
     override val coroutineContext : CoroutineContext
@@ -87,8 +88,11 @@ class BusFragment:Fragment(R.layout.bus_fragment),CoroutineScope {
             SetRecyclerView(suwoncitycode,StationEditName)
 //            hellomy(suwoncitycode,"GGB203000129")
             //경
-
        }
+
+        SearchEditText.setOnClickListener {
+            noResultTextView.visibility = View.INVISIBLE
+        }
 
     }
 
@@ -141,26 +145,24 @@ class BusFragment:Fragment(R.layout.bus_fragment),CoroutineScope {
 
                 body?.let{it->
                     val hello = body.body.items.item
+
+
                     busRecyclerView.apply {
                         adapter = busStationSearchAdapter
                         layoutManager = LinearLayoutManager(context)
                         busStationSearchAdapter.submitList(hello)
                     }
 
-
-
                 }
-
-
-
-
-
-
 
            }
 
             override fun onFailure(call: Call<StationBus>, t: Throwable) {
                 Log.d(TAG, "onFailure:$t")
+                noResultTextView.visibility = View.VISIBLE
+
+
+
             }
 
         })

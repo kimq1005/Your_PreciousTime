@@ -20,3 +20,15 @@ interface BusDAO {
     fun busDelete(busEntity: BUSEntity)
 
 }
+
+@Dao
+interface BusNumberDAO{
+    @Insert(onConflict = REPLACE)
+    fun busnumInsert(BUSNumEntity: BUSNumEntity)
+
+    @Query("SELECT * FROM busNum")
+    fun busnumGetAll() : List<BUSNumEntity>
+
+    @Delete
+    fun busnumDelete(BUSNumEntity: BUSNumEntity)
+}
