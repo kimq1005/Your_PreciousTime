@@ -1,8 +1,10 @@
 package com.example.your_precioustime.Retrofit
 
+import com.example.your_precioustime.Model.OdsayModel.OdasyModel
 import com.example.your_precioustime.Url
 import com.example.your_precioustime.Url.Companion.BUS_API_KEY
 import com.google.gson.Gson
+import com.odsay.odsayandroidsdk.ODsayService
 import com.tickaroo.tikxml.TikXml
 import com.tickaroo.tikxml.retrofit.TikXmlConverterFactory
 import okhttp3.Interceptor
@@ -107,35 +109,39 @@ object Retrofit_Client {
 
     fun getJsonClienet(baseUrl:String) :Retrofit{
 
-//        val client = OkHttpClient.Builder()
-//
-//
-//        val baseInterceptor: Interceptor = (object : Interceptor {
-//            override fun intercept(chain: Interceptor.Chain): Response {
-//
-//                val realRequest = chain.request()
-//
-//                val goaddurl = realRequest
-//                    .url()
-//                    .newBuilder()
-//                    .addQueryParameter("apiKey", Url.ODSAY_API_KEY)
-//                    .build()
-//
-//                val lastRequest = realRequest.newBuilder()
-//                    .url(goaddurl)
-//                    .build()
-//
-//                return chain.proceed(lastRequest)
-//            }
-//
-//        })
-//
-//
-//        client.addInterceptor(baseInterceptor)
+        val client = OkHttpClient.Builder()
+
+
+        val baseInterceptor: Interceptor = (object : Interceptor {
+            override fun intercept(chain: Interceptor.Chain): Response {
+
+                val realRequest = chain.request()
+
+                val oDsayService:ODsayService
+
+
+                val goaddurl = realRequest
+                    .url()
+                    .newBuilder()
+                    .addQueryParameter("apiKey", Url.ODSAY_API_KEY)
+                    .build()
+
+                val lastRequest = realRequest.newBuilder()
+                    .url(goaddurl)
+                    .build()
+
+                return chain.proceed(lastRequest)
+            }
+
+        })
+
+
+        client.addInterceptor(baseInterceptor)
 
         val retrofitclient = Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
+            .client(client.build())
             .build()
 
         return retrofitclient

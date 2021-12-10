@@ -39,7 +39,8 @@ class SubwayFragment:Fragment(R.layout.subway_fragment) {
         setbinding = SubwayFragmentBinding.bind(view)
 
         binding.clickhere.setOnClickListener {
-           SeoulSubwayGet("수원")
+//           SeoulSubwayGet("수원")
+            ODSAYAPI()
 
         }
 

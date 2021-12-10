@@ -1,26 +1,36 @@
 package com.example.your_precioustime.ThridActivity
 
+import android.annotation.SuppressLint
+import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.your_precioustime.App
 import com.example.your_precioustime.Model.Bus
 import com.example.your_precioustime.Model.Item
+import com.example.your_precioustime.R
 import com.example.your_precioustime.Retrofit.Retrofit_Client
 import com.example.your_precioustime.Retrofit.Retrofit_InterFace
+import com.example.your_precioustime.SecondActivity.DB.BUSStationNameDataBase
+import com.example.your_precioustime.SecondActivity.DB.BUSStationNameEntity
 import com.example.your_precioustime.SecondActivity.UpAdpater
 import com.example.your_precioustime.Url
 import com.example.your_precioustime.Util.Companion.TAG
 import com.example.your_precioustime.databinding.ActivityDeepStationInfoBinding
 import retrofit2.Call
 import retrofit2.Response
-
+@SuppressLint("StaticFieldLeak")
 class DeepStationInfoActivity : AppCompatActivity() {
 
     private var deepStationbinding:ActivityDeepStationInfoBinding? =null
     private val binding get() = deepStationbinding!!
 
     private lateinit var upAdpater:UpAdpater
+
+
+    lateinit var busstationnameDB : BUSStationNameDataBase
+    lateinit var busstationnameEntity : List<BUSStationNameEntity>
 
 
 
@@ -44,7 +54,49 @@ class DeepStationInfoActivity : AppCompatActivity() {
 
         SetBusStationRecyclerView()
 
+        FavoriteStation()
 
+
+
+
+    }
+
+    private fun FavoriteStation()=with(binding) {
+        var checkBoolean=true
+        var dbBoolean:Boolean
+
+        countingstars.setOnClickListener {
+            if(checkBoolean==true){
+                countingstars.setImageResource(R.drawable.shinigstar)
+                checkBoolean=false
+
+                if(checkBoolean==false){
+                    dbBoolean=true
+                    if(dbBoolean==true){
+
+                    }
+                }
+
+//                val stationname = BusStationName.text.toString()
+//
+//                val busDblist =
+//                    BUSStationNameEntity(
+//                        id = null,
+//                        citycode = "31010",
+//                        busStationName = stationname
+//                )
+//
+//                BUSStationNameInsert(busDblist)
+//
+//                Log.d(TAG, "FavoriteStation: $checkBoolean")
+
+            }else{
+                countingstars.setImageResource(R.drawable.star)
+                //DB삭제
+                checkBoolean=true
+            }
+
+        }
 
     }
 
@@ -151,6 +203,32 @@ class DeepStationInfoActivity : AppCompatActivity() {
 
 
 
+    }
+
+    private fun BUSStationNameInsert(busStationNameEntity: BUSStationNameEntity){
+
+        busstationnameDB = BUSStationNameDataBase.getinstance(App.instance)!!
+
+
+        var businsertTask = (object : AsyncTask<Unit, Unit, Unit>(){
+            override fun doInBackground(vararg params: Unit?) {
+                busstationnameDB.busstationnameDao().busStationNameInsert(busStationNameEntity)
+            }
+
+            override fun onPostExecute(result: Unit?) {
+                super.onPostExecute(result)
+                busstationnameGetAll()
+            }
+        }).execute()
+
+    }
+
+    private fun busstationnameGetAll(){
+        val busGetAllTask = (object: AsyncTask<Unit, Unit, Unit>(){
+            override fun doInBackground(vararg params: Unit?) {
+                busstationnameEntity = busstationnameDB.busstationnameDao().busStationNameGetAll()
+            }
+        }).execute()
     }
 
 

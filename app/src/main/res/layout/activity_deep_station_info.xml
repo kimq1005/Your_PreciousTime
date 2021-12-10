@@ -24,7 +24,7 @@
         android:fontFamily="@font/nanumbrushscript_regular"
         android:gravity="center"
         android:padding="10dp"
-        android:text="Your Precious Time"
+        android:text="Main"
         android:textColor="@color/black"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,27 +40,49 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/second_mainlogo" />
 
+    <ImageView
+        android:id="@+id/countingstars"
+        android:src="@drawable/star"
+        app:layout_constraintEnd_toStartOf="@+id/BusStationName"
+        app:layout_constraintTop_toBottomOf="@+id/Upunderline"
+        app:layout_constraintBottom_toTopOf="@+id/downunderline"
+        android:layout_marginRight="5dp"
+        android:layout_width="17dp"
+        android:layout_height="17dp"/>
 
     <TextView
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Upunderline"
         android:id="@+id/BusStationName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
         android:text="나는 전설이다 정류장"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
+         />
+
+    <View
+        android:layout_marginTop="15dp"
+        android:id="@+id/downunderline"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/underline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Upunderline" />
+        app:layout_constraintTop_toBottomOf="@id/BusStationName" />
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="20dp"
         android:id="@+id/deepstationinfoRecyclerView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BusStationName"
+        app:layout_constraintTop_toBottomOf="@+id/downunderline"
         android:layout_width="0dp"
         android:layout_height="0dp" />
 

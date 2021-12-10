@@ -5,15 +5,15 @@
     android:layout_height="80dp">
 
 
-    <ImageView
-        android:layout_marginStart="5dp"
-        android:id="@+id/stars"
-        android:src="@drawable/star"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_width="27dp"
-        android:layout_height="27dp"/>
+<!--    <ImageView-->
+<!--        android:layout_marginStart="5dp"-->
+<!--        android:id="@+id/stars"-->
+<!--        android:src="@drawable/star"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        android:layout_width="27dp"-->
+<!--        android:layout_height="27dp"/>-->
 
     <ImageView
         android:layout_marginStart="10dp"
@@ -22,11 +22,11 @@
         android:layout_height="50dp"
         android:src="@drawable/ic_baseline_directions_bus_24"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/stars"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:textColor="@color/black"
+        android:textColor="#18551B"
         android:id="@+id/Bus_Number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,7 +40,6 @@
     <TextView
         android:textSize="17sp"
         android:layout_marginLeft="5dp"
-        android:text="번"
         android:textColor="@color/black"
         android:id="@+id/gd"
         app:layout_constraintBottom_toBottomOf="@+id/Bus_Number"

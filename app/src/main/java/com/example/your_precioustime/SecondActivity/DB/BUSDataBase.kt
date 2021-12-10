@@ -51,3 +51,25 @@ abstract class BUSDNumberDataBase : RoomDatabase(){
         }
     }
 }
+
+@Database(entities = arrayOf(BUSStationNameEntity::class),version = 1)
+abstract class BUSStationNameDataBase : RoomDatabase(){
+    abstract fun busstationnameDao() : BusStationNameDAO
+
+    companion object{
+        private var INSTANCE : BUSStationNameDataBase? =null
+
+        fun getinstance(context: Context) : BUSStationNameDataBase?{
+            if(INSTANCE==null){
+                synchronized(BUSStationNameDataBase::class){
+                    INSTANCE = Room.databaseBuilder(context.applicationContext,
+                        BUSStationNameDataBase::class.java, "busstationname.db")
+                        .fallbackToDestructiveMigration()
+                        .build()
+                }
+            }
+
+            return INSTANCE
+        }
+    }
+}

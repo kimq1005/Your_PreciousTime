@@ -17,7 +17,7 @@ class Url {
 
         const val ODSAY_BASE_URL ="https://api.odsay.com/"
         const val ODSAY_POI_URL ="v1/api/pointSearch"
-        const val ODSAY_API_KEY="pupe3RG3T5+/2e3NTHbseT5jWQ4daRwk4Rh2v/kceJ0"
+        const val ODSAY_API_KEY="ZkqhFIasLHBpaDaOdYx5CYwRwh8r2UFgYg7NazJgWXw"
 
 
         const val SEOUL_SUBWAY_MAIN_URL="http://swopenAPI.seoul.go.kr/"

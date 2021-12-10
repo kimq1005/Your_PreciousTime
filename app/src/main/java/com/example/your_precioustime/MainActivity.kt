@@ -27,8 +27,8 @@ class MainActivity : AppCompatActivity() {
 //            },2000)
 
         binding.MainLogoDd.setOnClickListener {
-            val intent = Intent(this,BusSubwayActivity::class.java)
-//            val intent = Intent(this,SecondActivity::class.java)
+//            val intent = Intent(this,BusSubwayActivity::class.java)
+            val intent = Intent(this,SecondActivity::class.java)
 
             startActivity(intent)
 //            Toast.makeText(this,"gdgd",Toast.LENGTH_SHORT).show()

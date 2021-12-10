@@ -32,3 +32,15 @@ interface BusNumberDAO{
     @Delete
     fun busnumDelete(BUSNumEntity: BUSNumEntity)
 }
+
+@Dao
+interface BusStationNameDAO{
+    @Insert(onConflict = REPLACE)
+    fun busStationNameInsert(bUSStationNameEntity:BUSStationNameEntity)
+
+    @Query("SELECT * FROM busStationName")
+    fun busStationNameGetAll() : List<BUSStationNameEntity>
+
+    @Delete
+    fun busStationNameDelete(bUSStationNameEntity: BUSStationNameEntity)
+}

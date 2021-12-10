@@ -47,7 +47,7 @@ interface Retrofit_InterFace {
 
     @GET(Url.ODSAY_POI_URL)
     fun ODSAYMapLocationGet(
-        @Query("apiKey") apiKey:String ="ZkqhFIasLHBpaDaOdYx5CYwRwh8r2UFgYg7NazJgWXw",
+//        @Query("apiKey") apiKey:String ="ZkqhFIasLHBpaDaOdYx5CYwRwh8r2UFgYg7NazJgWXw",
         @Query("lang") lang:Int = 0,
         @Query("x") xm:Double?,
         @Query("y") ym:Double?,

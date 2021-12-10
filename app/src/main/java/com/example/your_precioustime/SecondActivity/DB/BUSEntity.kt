@@ -21,3 +21,11 @@ data class BUSNumEntity(
 
     var busNumber: String?
 )
+
+@Entity(tableName = "busStationName")
+data class BUSStationNameEntity(
+    @PrimaryKey(autoGenerate = true)
+    var id : Long?,
+    var citycode:String="31010",
+    var busStationName: String?
+)
