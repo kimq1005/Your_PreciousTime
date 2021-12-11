@@ -31,7 +31,7 @@ class DeepStationInfoActivity : AppCompatActivity() {
 
     lateinit var busstationnameDB : BUSStationNameDataBase
     lateinit var busstationnameEntity : List<BUSStationNameEntity>
-
+    //일단주석이다
 
 
     private val retrofitInterface: Retrofit_InterFace = Retrofit_Client.getClient(Url.BUS_MAIN_URL).create(Retrofit_InterFace::class.java)
