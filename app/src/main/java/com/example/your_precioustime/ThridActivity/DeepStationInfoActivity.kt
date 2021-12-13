@@ -1,10 +1,12 @@
 package com.example.your_precioustime.ThridActivity
 
 import android.annotation.SuppressLint
+import android.content.SharedPreferences
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.your_precioustime.App
 import com.example.your_precioustime.Model.Bus
@@ -31,6 +33,8 @@ class DeepStationInfoActivity : AppCompatActivity() {
 
     lateinit var busstationnameDB : BUSStationNameDataBase
     lateinit var busstationnameEntity : List<BUSStationNameEntity>
+
+    private  var checkBoolean=true
     //일단주석이다ㄴㄴㄴㄴ
 
 
@@ -53,8 +57,8 @@ class DeepStationInfoActivity : AppCompatActivity() {
         }
 
         SetBusStationRecyclerView()
-
         FavoriteStation()
+        loadData()
 
 
 
@@ -62,43 +66,38 @@ class DeepStationInfoActivity : AppCompatActivity() {
     }
 
     private fun FavoriteStation()=with(binding) {
-        var checkBoolean=true
-        var dbBoolean:Boolean
+
 
         countingstars.setOnClickListener {
+            saveData(checkBoolean)
             if(checkBoolean==true){
+//                getSharedPrefrence()
                 countingstars.setImageResource(R.drawable.shinigstar)
+                Toast.makeText(this@DeepStationInfoActivity,"즐겨찾기에 저장되었습니다.",Toast.LENGTH_SHORT).show()
                 checkBoolean=false
-
-                if(checkBoolean==false){
-                    dbBoolean=true
-                    if(dbBoolean==true){
-
-                    }
-                }
-
-//                val stationname = BusStationName.text.toString()
-//
-//                val busDblist =
-//                    BUSStationNameEntity(
-//                        id = null,
-//                        citycode = "31010",
-//                        busStationName = stationname
-//                )
-//
-//                BUSStationNameInsert(busDblist)
-//
-//                Log.d(TAG, "FavoriteStation: $checkBoolean")
-
-            }else{
-                countingstars.setImageResource(R.drawable.star)
-                //DB삭제
-                checkBoolean=true
             }
 
         }
 
     }
+
+    private fun saveData(checkBoolean:Boolean)=with(binding) {
+        val pre = getSharedPreferences("test",0)
+        val edit = pre.edit()
+        edit.putBoolean("hellomyboolean",checkBoolean)
+        edit.commit()
+    }
+
+    private fun loadData()= with(binding){
+        val pre = getSharedPreferences("test",0)
+        val mytext = pre.getBoolean("hellomyboolean",false)
+        Toast.makeText(this@DeepStationInfoActivity,"hi : $mytext", Toast.LENGTH_SHORT).show()
+        if(mytext == true){
+            countingstars.setImageResource(R.drawable.shinigstar)
+        }
+
+    }
+
 
     private fun SetBusStationRecyclerView()=with(binding) {
         val stationName = intent.getStringExtra("stationName").toString()
@@ -161,7 +160,6 @@ class DeepStationInfoActivity : AppCompatActivity() {
                         secondList.forEach {
                             val BRouteNo = it.routeno
                             val BWaittime = it.arrprevstationcnt
-
 
                             if(ARouteNo==BRouteNo){
                                 if(AWaittime!! > BWaittime!!){

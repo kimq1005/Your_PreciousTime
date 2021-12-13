@@ -73,6 +73,11 @@ class BusFragment:Fragment(R.layout.bus_fragment),CoroutineScope {
 //            Log.d(TAG, "onViewCreated: sdfafasfasdfadfafd")
 //        }
 
+        val suwoncitycode:String = "31010"
+        val StationEditName = binding.SearchEditText.text.toString()
+        SetRecyclerView(suwoncitycode,null)
+//            hellomy(suwoncitycode,"GGB203000129")
+
         ClickSearchBtn()
 
 
@@ -127,7 +132,7 @@ class BusFragment:Fragment(R.layout.bus_fragment),CoroutineScope {
         })
     }
 
-    private fun SetRecyclerView(citycode:String,stationName:String)=with(binding) {
+    private fun SetRecyclerView(citycode:String,stationName:String?)=with(binding) {
 
         val stationcalls= retrofitInterface.StationNameGet(
             cityCode = citycode,
@@ -145,7 +150,6 @@ class BusFragment:Fragment(R.layout.bus_fragment),CoroutineScope {
 
                 body?.let{it->
                     val hello = body.body.items.item
-
 
                     busRecyclerView.apply {
                         adapter = busStationSearchAdapter

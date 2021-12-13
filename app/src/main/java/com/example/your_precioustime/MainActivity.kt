@@ -35,11 +35,6 @@ class MainActivity : AppCompatActivity() {
             //하 인생
         }
 
-
-
-
-
-
     }
 
     private fun nextfadePageGO(activity: Activity) {

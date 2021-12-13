@@ -8,14 +8,12 @@
     tools:context=".SecondActivity.SecondActivity">
 
     <TextView
-        android:textStyle="bold"
         android:background="@color/white"
         android:gravity="center"
-
         android:id="@+id/second_mainlogo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Your Precious Time"
+        android:text="MAIN"
         android:textColor="@color/black"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
