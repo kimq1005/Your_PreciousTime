@@ -20,7 +20,6 @@ class SubWayAdapter:ListAdapter<SubwayItem, SubWayAdapter.SubwayViewHolder>(diff
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SubwayViewHolder {
         val view = BusitemLayoutBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-
         return SubwayViewHolder(view)
     }
 

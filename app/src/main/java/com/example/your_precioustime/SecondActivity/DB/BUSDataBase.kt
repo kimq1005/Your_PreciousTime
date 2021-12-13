@@ -73,3 +73,25 @@ abstract class BUSStationNameDataBase : RoomDatabase(){
         }
     }
 }
+
+@Database(entities = arrayOf(TestFavoriteModel::class),version = 1)
+abstract class BusFavroiteDataBase : RoomDatabase(){
+    abstract fun busFavoriteDAO() : BusFavoriteDAO
+
+    companion object{
+        private var INSTANCE : BusFavroiteDataBase? =null
+
+        fun getinstance(context: Context) : BusFavroiteDataBase?{
+            if(INSTANCE==null){
+                synchronized(BusFavroiteDataBase::class){
+                    INSTANCE = Room.databaseBuilder(context.applicationContext,
+                        BusFavroiteDataBase::class.java, "busfravorite.db")
+                        .fallbackToDestructiveMigration()
+                        .build()
+                }
+            }
+
+            return INSTANCE
+        }
+    }
+}

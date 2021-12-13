@@ -10,7 +10,7 @@
         <entry key="app/src/main/res/drawable/mydialog.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/rectangle_radious.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/layout/activity_bus_subway.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/activity_deep_station_info.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/activity_deep_station_info.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_second.xml" value="0.335" />
         <entry key="app/src/main/res/layout/bus_fragment.xml" value="0.335" />

@@ -65,6 +65,13 @@
         android:textStyle="bold"
          />
 
+    <Button
+        android:id="@+id/logBtn"
+        app:layout_constraintTop_toBottomOf="@+id/Upunderline"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
     <View
         android:layout_marginTop="15dp"
         android:id="@+id/downunderline"

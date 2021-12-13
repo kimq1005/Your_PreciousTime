@@ -1,7 +1,6 @@
 package com.example.your_precioustime.ThridActivity
 
 import android.annotation.SuppressLint
-import android.content.SharedPreferences
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,8 +13,7 @@ import com.example.your_precioustime.Model.Item
 import com.example.your_precioustime.R
 import com.example.your_precioustime.Retrofit.Retrofit_Client
 import com.example.your_precioustime.Retrofit.Retrofit_InterFace
-import com.example.your_precioustime.SecondActivity.DB.BUSStationNameDataBase
-import com.example.your_precioustime.SecondActivity.DB.BUSStationNameEntity
+import com.example.your_precioustime.SecondActivity.DB.*
 import com.example.your_precioustime.SecondActivity.UpAdpater
 import com.example.your_precioustime.Url
 import com.example.your_precioustime.Util.Companion.TAG
@@ -31,8 +29,11 @@ class DeepStationInfoActivity : AppCompatActivity() {
     private lateinit var upAdpater:UpAdpater
 
 
-    lateinit var busstationnameDB : BUSStationNameDataBase
-    lateinit var busstationnameEntity : List<BUSStationNameEntity>
+    lateinit var busFavoriteDB : BusFavroiteDataBase
+    lateinit var busfavoriteEntity: List<TestFavoriteModel>
+
+
+    lateinit var fuckyou : TestFavoriteModel
 
     private  var checkBoolean=true
     //일단주석이다ㄴㄴㄴㄴ
@@ -47,6 +48,7 @@ class DeepStationInfoActivity : AppCompatActivity() {
 
         val stationName = intent.getStringExtra("stationName").toString()
         val stationNodeNumber = intent.getStringExtra("stationNodeNumber").toString()
+        //야 만약에 이페이지에서 별을 누르면 stationName, stationNodeNumber를 저장하면 되잖아 그리고 헷갈림을 방지하기위해서 일단 별모양 대신에 즐겨찾기 버튼이라거 하자 ㅇㅋ? 굳
 
 
 //        Log.d(TAG, "onCreate: $stationName , $stationNodeNumber")
@@ -56,13 +58,40 @@ class DeepStationInfoActivity : AppCompatActivity() {
             onBackPressed()
         }
 
+
+
+        binding.logBtn.setOnClickListener {
+            busFavoriteGetAll()
+        }
+
         SetBusStationRecyclerView()
-        FavoriteStation()
-        loadData()
+        savemystation()
+//        FavoriteStation()
+//        loadData()
+
+
+    }
+
+    private fun savemystation()=with(binding){
+
+        countingstars.setOnClickListener {
+            val stationName = intent.getStringExtra("stationName").toString()
+            val stationNodeNumber = intent.getStringExtra("stationNodeNumber").toString()
+
+            Toast.makeText(this@DeepStationInfoActivity,"정류소이름 : $stationName \n 노드넘버 : $stationNodeNumber",Toast.LENGTH_SHORT).show()
+            //db저장가즈아 하면돼 ㅇㅋ?
+
+            val hello = TestFavoriteModel(id = null,
+                checkBoolean =null,
+                stationName = stationName,
+                stationNodeNumber = stationNodeNumber
+            )
+
+            BUSFravoriteInsert(hello)
 
 
 
-
+        }
     }
 
     private fun FavoriteStation()=with(binding) {
@@ -203,29 +232,37 @@ class DeepStationInfoActivity : AppCompatActivity() {
 
     }
 
-    private fun BUSStationNameInsert(busStationNameEntity: BUSStationNameEntity){
+    private fun BUSFravoriteInsert(busfavoriteEntity:TestFavoriteModel){
 
-        busstationnameDB = BUSStationNameDataBase.getinstance(App.instance)!!
-
+        busFavoriteDB = BusFavroiteDataBase.getinstance(App.instance)!!
 
         var businsertTask = (object : AsyncTask<Unit, Unit, Unit>(){
             override fun doInBackground(vararg params: Unit?) {
-                busstationnameDB.busstationnameDao().busStationNameInsert(busStationNameEntity)
+                busFavoriteDB.busFavoriteDAO().busFavoriteInsert(busfavoriteEntity)
             }
 
             override fun onPostExecute(result: Unit?) {
                 super.onPostExecute(result)
-                busstationnameGetAll()
+                busFavoriteGetAll()
             }
         }).execute()
 
     }
 
-    private fun busstationnameGetAll(){
+
+
+    private fun busFavoriteGetAll(){
         val busGetAllTask = (object: AsyncTask<Unit, Unit, Unit>(){
             override fun doInBackground(vararg params: Unit?) {
-                busstationnameEntity = busstationnameDB.busstationnameDao().busStationNameGetAll()
+                busfavoriteEntity = busFavoriteDB.busFavoriteDAO().busFavoriteGetAll()
+
             }
+
+            override fun onPostExecute(result: Unit?) {
+                super.onPostExecute(result)
+                Log.d(TAG, "onPostExecute: $busfavoriteEntity")
+            }
+
         }).execute()
     }
 

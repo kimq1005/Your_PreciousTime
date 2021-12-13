@@ -6,37 +6,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/SearchEditText"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_margin="1dp"
-        android:textColorHint="@color/black"
-        app:boxBackgroundColor="@color/white"
-        app:boxStrokeWidth="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/RealSearchEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxLength="20"
-            android:textColorHint="@color/black" />
-
-
-    </com.google.android.material.textfield.TextInputLayout>
 
     <ImageView
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/clickhere"
-
-
-        app:layout_constraintBottom_toBottomOf="@+id/SearchEditText"
-        app:layout_constraintTop_toTopOf="@+id/SearchEditText"
         android:src="@drawable/ic_baseline_search_24"
-        app:layout_constraintEnd_toEndOf="@+id/SearchEditText"
+
         android:layout_width="35dp"
         android:layout_height="25dp"
         android:layout_marginRight="5dp"
@@ -47,18 +23,18 @@
 
 
     <TextView
+        android:gravity="center"
         android:id="@+id/SubwayStopName_TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
         android:padding="10dp"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SearchEditText"
-        tools:text="우남퍼스트빌아파트" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="즐겨찾기" />
 
 
     <View

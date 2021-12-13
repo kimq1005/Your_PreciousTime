@@ -175,6 +175,12 @@ class UpAdpater:RecyclerView.Adapter<UpAdpater.MyViewHolder>() {
             override fun doInBackground(vararg params: Unit?) {
                 busstationnameEntity = busstationnameDB.busstationnameDao().busStationNameGetAll()
             }
+
+            override fun onPostExecute(result: Unit?) {
+                super.onPostExecute(result)
+
+                Log.d(TAG, "onPostExecute: $busstationnameEntity")
+            }
         }).execute()
     }
 

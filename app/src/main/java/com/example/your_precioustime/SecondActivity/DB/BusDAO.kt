@@ -44,3 +44,16 @@ interface BusStationNameDAO{
     @Delete
     fun busStationNameDelete(bUSStationNameEntity: BUSStationNameEntity)
 }
+
+
+@Dao
+interface BusFavoriteDAO{
+    @Insert(onConflict = REPLACE)
+    fun busFavoriteInsert(testFavoriteModel: TestFavoriteModel)
+
+    @Query("SELECT * FROM FavoriteModel")
+    fun busFavoriteGetAll() : List<TestFavoriteModel>
+
+    @Delete
+    fun busFavoriteDelete(testFavoriteModel: TestFavoriteModel)
+}
