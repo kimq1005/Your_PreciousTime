@@ -77,6 +77,7 @@ class DeepStationInfoActivity : AppCompatActivity() {
         countingstars.setOnClickListener {
             val stationName = intent.getStringExtra("stationName").toString()
             val stationNodeNumber = intent.getStringExtra("stationNodeNumber").toString()
+            val stationNodeNode = intent.getStringExtra("stationnodenode").toString()
 
             Toast.makeText(this@DeepStationInfoActivity,"정류소이름 : $stationName \n 노드넘버 : $stationNodeNumber",Toast.LENGTH_SHORT).show()
             //db저장가즈아 하면돼 ㅇㅋ?

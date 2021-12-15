@@ -132,7 +132,7 @@ class BusFragment:Fragment(R.layout.bus_fragment),CoroutineScope {
         })
     }
 
-    private fun SetRecyclerView(citycode:String,stationName:String?)=with(binding) {
+    fun SetRecyclerView(citycode:String,stationName:String?)=with(binding) {
 
         val stationcalls= retrofitInterface.StationNameGet(
             cityCode = citycode,
@@ -164,7 +164,6 @@ class BusFragment:Fragment(R.layout.bus_fragment),CoroutineScope {
             override fun onFailure(call: Call<StationBus>, t: Throwable) {
                 Log.d(TAG, "onFailure:$t")
                 noResultTextView.visibility = View.VISIBLE
-
 
 
             }

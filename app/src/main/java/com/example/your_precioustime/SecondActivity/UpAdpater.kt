@@ -38,7 +38,6 @@ class UpAdpater:RecyclerView.Adapter<UpAdpater.MyViewHolder>() {
             binding.waitBusNumber.text = item.arrprevstationcnt.toString()
         }
 
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {

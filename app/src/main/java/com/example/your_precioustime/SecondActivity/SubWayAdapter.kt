@@ -5,21 +5,24 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.your_precioustime.databinding.BusitemLayoutBinding
+import com.example.your_precioustime.Model.StationItem
+import com.example.your_precioustime.SecondActivity.DB.TestFavoriteModel
+import com.example.your_precioustime.databinding.BusStationSearchitemLayoutBinding
 
 
-class SubWayAdapter:ListAdapter<SubwayItem, SubWayAdapter.SubwayViewHolder>(diffUtil) {
 
-    class SubwayViewHolder(val binding: BusitemLayoutBinding):RecyclerView.ViewHolder(binding.root){
-        fun bind(subwayItem: SubwayItem){
-            binding.BusNumber.text = subwayItem.subwayid
-            binding.waitBusNumber.text =subwayItem.waitsubwaystop
+class SubWayAdapter:ListAdapter<TestFavoriteModel,SubWayAdapter.SubwayViewHolder>(diffUtil) {
+
+    class SubwayViewHolder(val binding: BusStationSearchitemLayoutBinding):RecyclerView.ViewHolder(binding.root){
+        fun bind(testFavoriteModel: TestFavoriteModel){
+            binding.StationNameTextView.text = testFavoriteModel.stationName
+            binding.StationNodeIDTextView.text =testFavoriteModel.stationNodeNumber
 
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SubwayViewHolder {
-        val view = BusitemLayoutBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val view = BusStationSearchitemLayoutBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return SubwayViewHolder(view)
     }
 
@@ -29,12 +32,12 @@ class SubWayAdapter:ListAdapter<SubwayItem, SubWayAdapter.SubwayViewHolder>(diff
 
     companion object {
 
-        val diffUtil= object : DiffUtil.ItemCallback<SubwayItem>(){
-            override fun areItemsTheSame(oldItem: SubwayItem, newItem: SubwayItem): Boolean {
+        val diffUtil= object : DiffUtil.ItemCallback<TestFavoriteModel>(){
+            override fun areItemsTheSame(oldItem: TestFavoriteModel, newItem: TestFavoriteModel): Boolean {
                 return oldItem == newItem
             }
 
-            override fun areContentsTheSame(oldItem: SubwayItem, newItem: SubwayItem): Boolean {
+            override fun areContentsTheSame(oldItem: TestFavoriteModel, newItem: TestFavoriteModel): Boolean {
                 return oldItem==newItem
 
             }
