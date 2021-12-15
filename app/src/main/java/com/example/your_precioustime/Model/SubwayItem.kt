@@ -1,4 +1,4 @@
-package com.example.your_precioustime.SecondActivity
+package com.example.your_precioustime.Model
 
 data class SubwayItem(
     val subwayid : String,

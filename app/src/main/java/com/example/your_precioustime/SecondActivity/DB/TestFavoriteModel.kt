@@ -10,7 +10,7 @@ data class TestFavoriteModel (
     var id:Long?,
 
     var checkBoolean: Boolean?,
-
+    var stationnodenode:String,
     var stationName:String,
     var stationNodeNumber:String
 )

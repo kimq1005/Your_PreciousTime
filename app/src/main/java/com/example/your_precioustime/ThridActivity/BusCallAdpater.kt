@@ -1,15 +1,11 @@
 package com.example.your_precioustime.ThridActivity
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.view.menu.MenuView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.your_precioustime.SecondActivity.BusItem
 import com.example.your_precioustime.SecondActivity.DB.BUSEntity
-import com.example.your_precioustime.SecondActivity.SubwayItem
 import com.example.your_precioustime.databinding.FavoritesbusitemLayoutBinding
 
 class BusCallAdpater:ListAdapter<BUSEntity, BusCallAdpater.BusCallViewHolder>(diffUtil) {

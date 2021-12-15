@@ -28,10 +28,6 @@ class SubwayFragment:Fragment(R.layout.subway_fragment), OnDeleteInterFace {
 
     lateinit var subwayAdapter: SubWayAdapter
 
-    private var retrofitInterface: Retrofit_InterFace =
-        Retrofit_Client.getClient(Url.BUS_MAIN_URL).create(Retrofit_InterFace::class.java)
-
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -39,11 +35,8 @@ class SubwayFragment:Fragment(R.layout.subway_fragment), OnDeleteInterFace {
         setbinding = SubwayFragmentBinding.bind(view)
         busFavoriteDB = BusFavroiteDataBase.getinstance(App.instance)!!
 
-        binding.clickhere.setOnClickListener {
-            getAll()
-//            setFavoriteBusStation("31010","우남")
+        getAll()
 
-        }
 
     }
 
@@ -60,7 +53,6 @@ class SubwayFragment:Fragment(R.layout.subway_fragment), OnDeleteInterFace {
 
                 Log.d(TAG, "onPostExecute: $busfavoriteEntity")
                 setRecyclerViewfuck()
-
 
             }
         }).execute()

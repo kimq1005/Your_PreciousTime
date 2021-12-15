@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ThridActivity.DeepStationInfoActivity">
+    tools:context=".SecondActivity.FavoriteDeepInfo">
 
     <ImageView
         android:id="@+id/backbtn"
@@ -25,7 +25,7 @@
         android:fontFamily="@font/nanumbrushscript_regular"
         android:gravity="center"
         android:padding="10dp"
-        android:text="Main"
+        android:text="즐겨찾기"
         android:textColor="@color/black"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,15 +41,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/second_mainlogo" />
 
-    <ImageView
-        android:id="@+id/countingstars"
-        android:src="@drawable/star"
-        app:layout_constraintEnd_toStartOf="@+id/BusStationName"
-        app:layout_constraintTop_toBottomOf="@+id/Upunderline"
-        app:layout_constraintBottom_toTopOf="@+id/downunderline"
-        android:layout_marginRight="5dp"
-        android:layout_width="17dp"
-        android:layout_height="17dp"/>
+
 
     <TextView
         app:layout_constraintStart_toStartOf="parent"
@@ -64,14 +56,8 @@
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
-         />
+        />
 
-    <Button
-        android:id="@+id/logBtn"
-        app:layout_constraintTop_toBottomOf="@+id/Upunderline"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
 
     <View
         android:layout_marginTop="15dp"
@@ -86,13 +72,12 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_marginTop="20dp"
-        android:id="@+id/deepstationinfoRecyclerView"
+        android:id="@+id/FravroitestationinfoRecyclerView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/downunderline"
         android:layout_width="0dp"
         android:layout_height="0dp" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

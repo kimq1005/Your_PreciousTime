@@ -84,9 +84,11 @@ class DeepStationInfoActivity : AppCompatActivity() {
 
             val hello = TestFavoriteModel(id = null,
                 checkBoolean =null,
+                stationnodenode=stationNodeNode,
                 stationName = stationName,
                 stationNodeNumber = stationNodeNumber
             )
+
 
             BUSFravoriteInsert(hello)
 
@@ -156,6 +158,7 @@ class DeepStationInfoActivity : AppCompatActivity() {
 
                         busNm = hello.get(i).routeno!!
                         waitbus = hello.get(i).arrprevstationcnt!!
+
                         hi.add(Item(
                             busNm,waitbus
                         ))
@@ -174,8 +177,6 @@ class DeepStationInfoActivity : AppCompatActivity() {
                         index % 2 ==1
                     }
 
-//                    Log.d(TAG, "fristList다: ${firstList}\n")
-//                    Log.d(TAG, "secondList다: ${secondList}")
 
                     val ResultList = mutableListOf<Item>()
 

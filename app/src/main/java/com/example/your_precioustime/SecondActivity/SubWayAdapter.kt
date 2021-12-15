@@ -1,5 +1,6 @@
 package com.example.your_precioustime.SecondActivity
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
@@ -18,7 +19,7 @@ class SubWayAdapter(var onDeleteInterFace: OnDeleteInterFace):ListAdapter<TestFa
     class SubwayViewHolder(val binding: FavoritelistItemBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(testFavoriteModel: TestFavoriteModel){
             binding.FavoriteNameTextView.text = testFavoriteModel.stationName
-            binding.FavoriteNodeIDTextView.text =testFavoriteModel.stationNodeNumber
+            binding.FavoriteNodeIDTextView.text =testFavoriteModel.stationnodenode
 
         }
     }
@@ -32,12 +33,29 @@ class SubWayAdapter(var onDeleteInterFace: OnDeleteInterFace):ListAdapter<TestFa
         val favoriteModelList = currentList[position]
 
         holder.bind(currentList[position])
+        val favoriteStationName = favoriteModelList.stationName
+        val favoritenodenum=favoriteModelList.stationNodeNumber
+
+        holder.itemView.setOnClickListener {
+
+            val intent = Intent(holder.itemView.context,FavoriteDeepInfo::class.java).apply {
+                putExtra("favoriteStationName",favoriteStationName)
+                putExtra("favoritenodenum",favoritenodenum)
+            }
+
+
+            holder.itemView.context.startActivity(intent)
+
+
+
+        }
 
         holder.binding.stardeletebtn.setOnClickListener {
             onDeleteInterFace.onDeleteFavroitelist(favoriteModelList)
             Toast.makeText(holder.itemView.context,"즐겨찾기에서 삭제 되었슴다.",Toast.LENGTH_SHORT).show()
         }
     }
+
 
     companion object {
 

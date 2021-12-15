@@ -7,36 +7,6 @@
 
 
 
-    <ImageView
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/clickhere"
-        android:src="@drawable/ic_baseline_search_24"
-
-        android:layout_width="35dp"
-        android:layout_height="25dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginEnd="5dp" />
-
-
-
-
-
-    <TextView
-        android:gravity="center"
-        android:id="@+id/SubwayStopName_TextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="즐겨찾기" />
-
-
     <View
         android:id="@+id/myview1"
         android:layout_width="match_parent"
@@ -45,12 +15,14 @@
         android:background="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SubwayStopName_TextView" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/subwayRecyclerView"
         android:layout_width="match_parent"
+        android:background="@color/white"
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
