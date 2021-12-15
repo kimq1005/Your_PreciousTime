@@ -5,26 +5,21 @@ import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.your_precioustime.App
-import com.example.your_precioustime.Model.Item
-import com.example.your_precioustime.Model.StationBus
 import com.example.your_precioustime.R
 import com.example.your_precioustime.Retrofit.Retrofit_Client
 import com.example.your_precioustime.Retrofit.Retrofit_InterFace
 import com.example.your_precioustime.SecondActivity.DB.BusFavroiteDataBase
+import com.example.your_precioustime.SecondActivity.DB.OnDeleteInterFace
 import com.example.your_precioustime.SecondActivity.DB.TestFavoriteModel
-import com.example.your_precioustime.SecondActivity.DB.wowyeah
 import com.example.your_precioustime.Url
 import com.example.your_precioustime.Util.Companion.TAG
 import com.example.your_precioustime.databinding.SubwayFragmentBinding
-import retrofit2.Call
-import retrofit2.Response
 
 @SuppressLint("StaticFieldLeak")
-class SubwayFragment:Fragment(R.layout.subway_fragment) {
+class SubwayFragment:Fragment(R.layout.subway_fragment), OnDeleteInterFace {
     private var setbinding: SubwayFragmentBinding? = null
     private val binding get() = setbinding!!
 
@@ -42,6 +37,7 @@ class SubwayFragment:Fragment(R.layout.subway_fragment) {
         super.onViewCreated(view, savedInstanceState)
 
         setbinding = SubwayFragmentBinding.bind(view)
+        busFavoriteDB = BusFavroiteDataBase.getinstance(App.instance)!!
 
         binding.clickhere.setOnClickListener {
             getAll()
@@ -52,7 +48,7 @@ class SubwayFragment:Fragment(R.layout.subway_fragment) {
     }
 
     private fun getAll(){
-        busFavoriteDB = BusFavroiteDataBase.getinstance(App.instance)!!
+
 
         val getAllTask = (object :AsyncTask<Unit,Unit,Unit>(){
             override fun doInBackground(vararg params: Unit?) {
@@ -66,36 +62,15 @@ class SubwayFragment:Fragment(R.layout.subway_fragment) {
                 setRecyclerViewfuck()
 
 
-//                val myList = arrayListOf<wowyeah>()
-//                val myFavoriteList = arrayListOf<wowyeah>()
-//
-//                for(i in busfavoriteEntity.indices){
-//                    val hellomyList = arrayListOf<wowyeah>()
-//
-//
-//                    val stationName = busfavoriteEntity.get(i).stationName
-//                    val stationNodeNum = busfavoriteEntity.get(i).stationNodeNumber
-//
-//
-//                    val testfuck = wowyeah(
-//                        stationName,
-//                        stationNodeNum
-//                    )
-//
-//                    myFavoriteList.add(testfuck)
-//
-//                }
-//
-//                Log.d(TAG, "onPostExecute: $myFavoriteList.get")
-
-
-
             }
         }).execute()
     }
 
+
+
     private fun setRecyclerViewfuck()=with(binding){
-        subwayAdapter = SubWayAdapter()
+
+        subwayAdapter = SubWayAdapter(this@SubwayFragment)
 
         subwayRecyclerView.apply {
             adapter = subwayAdapter
@@ -104,6 +79,26 @@ class SubwayFragment:Fragment(R.layout.subway_fragment) {
 
         }
 
+    }
+
+
+    private fun ondeleteList(testFavoriteModel: TestFavoriteModel){
+
+        val deleteTask = (object :AsyncTask<Unit,Unit,Unit>(){
+            override fun doInBackground(vararg params: Unit?) {
+                busFavoriteDB.busFavoriteDAO().busFavoriteDelete(testFavoriteModel)
+            }
+
+            override fun onPostExecute(result: Unit?) {
+                super.onPostExecute(result)
+                getAll()
+            }
+
+        }).execute()
+    }
+
+    override fun onDeleteFavroitelist(testFavoriteModel: TestFavoriteModel) {
+        ondeleteList(testFavoriteModel)
     }
 
 

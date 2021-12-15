@@ -2,32 +2,41 @@ package com.example.your_precioustime.SecondActivity
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.your_precioustime.Model.StationItem
+import com.example.your_precioustime.App
+import com.example.your_precioustime.SecondActivity.DB.OnDeleteInterFace
 import com.example.your_precioustime.SecondActivity.DB.TestFavoriteModel
-import com.example.your_precioustime.databinding.BusStationSearchitemLayoutBinding
+
+import com.example.your_precioustime.databinding.FavoritelistItemBinding
 
 
-
-class SubWayAdapter:ListAdapter<TestFavoriteModel,SubWayAdapter.SubwayViewHolder>(diffUtil) {
-
-    class SubwayViewHolder(val binding: BusStationSearchitemLayoutBinding):RecyclerView.ViewHolder(binding.root){
+class SubWayAdapter(var onDeleteInterFace: OnDeleteInterFace):ListAdapter<TestFavoriteModel,SubWayAdapter.SubwayViewHolder>(diffUtil) {
+    lateinit var testFavoriteModel: List<TestFavoriteModel>
+    class SubwayViewHolder(val binding: FavoritelistItemBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(testFavoriteModel: TestFavoriteModel){
-            binding.StationNameTextView.text = testFavoriteModel.stationName
-            binding.StationNodeIDTextView.text =testFavoriteModel.stationNodeNumber
+            binding.FavoriteNameTextView.text = testFavoriteModel.stationName
+            binding.FavoriteNodeIDTextView.text =testFavoriteModel.stationNodeNumber
 
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SubwayViewHolder {
-        val view = BusStationSearchitemLayoutBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val view = FavoritelistItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return SubwayViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: SubwayViewHolder, position: Int) {
-       holder.bind(currentList[position])
+        val favoriteModelList = currentList[position]
+
+        holder.bind(currentList[position])
+
+        holder.binding.stardeletebtn.setOnClickListener {
+            onDeleteInterFace.onDeleteFavroitelist(favoriteModelList)
+            Toast.makeText(holder.itemView.context,"즐겨찾기에서 삭제 되었슴다.",Toast.LENGTH_SHORT).show()
+        }
     }
 
     companion object {
