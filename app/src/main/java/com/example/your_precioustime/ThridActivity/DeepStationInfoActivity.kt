@@ -30,7 +30,7 @@ class DeepStationInfoActivity : AppCompatActivity() {
 
 
     lateinit var busFavoriteDB : BusFavroiteDataBase
-    lateinit var busfavoriteEntity: List<TestFavoriteModel>
+    lateinit var activitybusfavoriteEntity: List<TestFavoriteModel>
 
 
     lateinit var fuckyou : TestFavoriteModel
@@ -67,6 +67,7 @@ class DeepStationInfoActivity : AppCompatActivity() {
         SetBusStationRecyclerView()
         savemystation()
 //        FavoriteStation()
+        //주석가즈아
 //        loadData()
 
 
@@ -91,6 +92,8 @@ class DeepStationInfoActivity : AppCompatActivity() {
 
 
             BUSFravoriteInsert(hello)
+
+
 
 
 
@@ -240,12 +243,17 @@ class DeepStationInfoActivity : AppCompatActivity() {
 
         var businsertTask = (object : AsyncTask<Unit, Unit, Unit>(){
             override fun doInBackground(vararg params: Unit?) {
+
                 busFavoriteDB.busFavoriteDAO().busFavoriteInsert(busfavoriteEntity)
             }
 
             override fun onPostExecute(result: Unit?) {
                 super.onPostExecute(result)
-                busFavoriteGetAll()
+                activitybusfavoriteEntity = busFavoriteDB.busFavoriteDAO().busFavoriteGetAll()
+//                busFavoriteGetAll()
+
+
+
             }
         }).execute()
 
@@ -256,13 +264,14 @@ class DeepStationInfoActivity : AppCompatActivity() {
     private fun busFavoriteGetAll(){
         val busGetAllTask = (object: AsyncTask<Unit, Unit, Unit>(){
             override fun doInBackground(vararg params: Unit?) {
-                busfavoriteEntity = busFavoriteDB.busFavoriteDAO().busFavoriteGetAll()
+                activitybusfavoriteEntity = busFavoriteDB.busFavoriteDAO().busFavoriteGetAll()
 
             }
 
             override fun onPostExecute(result: Unit?) {
                 super.onPostExecute(result)
-                Log.d(TAG, "onPostExecute: $busfavoriteEntity")
+                Log.d(TAG, "여기에있는거확인하는거여ㅡㅡ: $activitybusfavoriteEntity")
+
             }
 
         }).execute()
