@@ -34,10 +34,7 @@ class DeepStationInfoActivity : AppCompatActivity() {
 
 
     lateinit var fuckyou : TestFavoriteModel
-
     private  var checkBoolean=true
-    //일단주석이다ㄴㄴㄴㄴ
-
 
     private val retrofitInterface: Retrofit_InterFace = Retrofit_Client.getClient(Url.BUS_MAIN_URL).create(Retrofit_InterFace::class.java)
 
@@ -46,12 +43,16 @@ class DeepStationInfoActivity : AppCompatActivity() {
         deepStationbinding = ActivityDeepStationInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        busFavoriteDB = BusFavroiteDataBase.getinstance(App.instance)!!
+
+
         val stationName = intent.getStringExtra("stationName").toString()
         val stationNodeNumber = intent.getStringExtra("stationNodeNumber").toString()
-        //야 만약에 이페이지에서 별을 누르면 stationName, stationNodeNumber를 저장하면 되잖아 그리고 헷갈림을 방지하기위해서 일단 별모양 대신에 즐겨찾기 버튼이라거 하자 ㅇㅋ? 굳
+
+        // 야 만약에 이페이지에서 별을 누르면 stationName, stationNodeNumber를 저장하면 되잖아 그리고 헷갈림을 방지하기위해서 일단 별모양 대신에 즐겨찾기 버튼이라거 하자 ㅇㅋ? 굳
 
 
-//        Log.d(TAG, "onCreate: $stationName , $stationNodeNumber")
+        // Log.d(TAG, "onCreate: $stationName , $stationNodeNumber")
 
         binding.BusStationName.text = stationName
         binding.backbtn.setOnClickListener {
@@ -64,10 +65,14 @@ class DeepStationInfoActivity : AppCompatActivity() {
             busFavoriteGetAll()
         }
 
+
+
+
         SetBusStationRecyclerView()
         savemystation()
 //        FavoriteStation()
-        //주석가즈아
+
+
 //        loadData()
 
 
@@ -83,7 +88,8 @@ class DeepStationInfoActivity : AppCompatActivity() {
             Toast.makeText(this@DeepStationInfoActivity,"정류소이름 : $stationName \n 노드넘버 : $stationNodeNumber",Toast.LENGTH_SHORT).show()
             //db저장가즈아 하면돼 ㅇㅋ?
 
-            val hello = TestFavoriteModel(id = null,
+            val hello = TestFavoriteModel(
+                id = null,
                 checkBoolean =null,
                 stationnodenode=stationNodeNode,
                 stationName = stationName,
@@ -94,14 +100,10 @@ class DeepStationInfoActivity : AppCompatActivity() {
             BUSFravoriteInsert(hello)
 
 
-
-
-
         }
     }
 
     private fun FavoriteStation()=with(binding) {
-
 
         countingstars.setOnClickListener {
             saveData(checkBoolean)
@@ -109,7 +111,7 @@ class DeepStationInfoActivity : AppCompatActivity() {
 //                getSharedPrefrence()
                 countingstars.setImageResource(R.drawable.shinigstar)
                 Toast.makeText(this@DeepStationInfoActivity,"즐겨찾기에 저장되었습니다.",Toast.LENGTH_SHORT).show()
-                checkBoolean=false
+
             }
 
         }
@@ -239,19 +241,34 @@ class DeepStationInfoActivity : AppCompatActivity() {
 
     private fun BUSFravoriteInsert(busfavoriteEntity:TestFavoriteModel){
 
-        busFavoriteDB = BusFavroiteDataBase.getinstance(App.instance)!!
 
         var businsertTask = (object : AsyncTask<Unit, Unit, Unit>(){
             override fun doInBackground(vararg params: Unit?) {
 
-                busFavoriteDB.busFavoriteDAO().busFavoriteInsert(busfavoriteEntity)
+                activitybusfavoriteEntity = busFavoriteDB.busFavoriteDAO().busFavoriteGetAll()
+
+
+                for(i in activitybusfavoriteEntity.indices){
+                    if(activitybusfavoriteEntity.get(i).stationName == "우남아파트") {
+                        //여기 이 우남아파트가 중복체크되는걸로 바꿔야해
+                        busFavoriteDB.busFavoriteDAO().busFavoriteInsert(busfavoriteEntity)
+                        Log.d(TAG, "즐겨찾기목록의 busFavoriteGetAll()임 ㅇㅋ?: $activitybusfavoriteEntity")
+//                        Toast.makeText(this@DeepStationInfoActivity,"우랔ㅇㄹㅋㄴ",Toast.LENGTH_SHORT).show()
+                    }
+                }
             }
 
             override fun onPostExecute(result: Unit?) {
                 super.onPostExecute(result)
-                activitybusfavoriteEntity = busFavoriteDB.busFavoriteDAO().busFavoriteGetAll()
 //                busFavoriteGetAll()
 
+                for(i in activitybusfavoriteEntity.indices){
+                    if(activitybusfavoriteEntity.get(i).stationName == "우남아파트") {
+//                        busFavoriteDB.busFavoriteDAO().busFavoriteInsert(busfavoriteEntity)
+//                        Log.d(TAG, "즐겨찾기목록의 busFavoriteGetAll()임 ㅇㅋ?: $activitybusfavoriteEntity")
+                        Toast.makeText(this@DeepStationInfoActivity,"우랔ㅇㄹㅋㄴ",Toast.LENGTH_SHORT).show()
+                    }
+                }
 
 
             }
@@ -265,12 +282,12 @@ class DeepStationInfoActivity : AppCompatActivity() {
         val busGetAllTask = (object: AsyncTask<Unit, Unit, Unit>(){
             override fun doInBackground(vararg params: Unit?) {
                 activitybusfavoriteEntity = busFavoriteDB.busFavoriteDAO().busFavoriteGetAll()
-
             }
 
             override fun onPostExecute(result: Unit?) {
                 super.onPostExecute(result)
-                Log.d(TAG, "여기에있는거확인하는거여ㅡㅡ: $activitybusfavoriteEntity")
+//                Log.d(TAG, "즐겨찾기목록의 busFavoriteGetAll()임 ㅇㅋ?: $activitybusfavoriteEntity")
+
 
             }
 

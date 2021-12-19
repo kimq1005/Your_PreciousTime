@@ -65,13 +65,6 @@ class BusFragment:Fragment(R.layout.bus_fragment),CoroutineScope {
         busbinding = BusFragmentBinding.bind(view)
         job = Job()
 
-//        Retrofit_Manager.retrofitManager.GETBUS()
-////        ClickSearchBtn()
-//
-//        binding.clickhere.setOnClickListener {
-//            CoroutinesCall("31010","우남")
-//            Log.d(TAG, "onViewCreated: sdfafasfasdfadfafd")
-//        }
 
         val suwoncitycode:String = "31010"
         val StationEditName = binding.SearchEditText.text.toString()
@@ -142,7 +135,6 @@ class BusFragment:Fragment(R.layout.bus_fragment),CoroutineScope {
 
         stationcalls.enqueue(object :retrofit2.Callback<StationBus>{
 
-
             override fun onResponse(call: Call<StationBus>, response: Response<StationBus>) {
                 val body = response.body()
                 busStationSearchAdapter = Bus_Station_Search_Adapter()
@@ -150,21 +142,16 @@ class BusFragment:Fragment(R.layout.bus_fragment),CoroutineScope {
 
                 body?.let{it->
                     val hello = body.body.items.item
-
                     busRecyclerView.apply {
                         adapter = busStationSearchAdapter
                         layoutManager = LinearLayoutManager(context)
                         busStationSearchAdapter.submitList(hello)
                     }
-
                 }
-
            }
-
             override fun onFailure(call: Call<StationBus>, t: Throwable) {
                 Log.d(TAG, "onFailure:$t")
                 noResultTextView.visibility = View.VISIBLE
-
 
             }
 
@@ -200,10 +187,7 @@ class BusFragment:Fragment(R.layout.bus_fragment),CoroutineScope {
 //
 //        })
 
-
     }
-
-
 
 
     private fun CoroutinesCall(citycode:String,stationName: String)=with(binding){
