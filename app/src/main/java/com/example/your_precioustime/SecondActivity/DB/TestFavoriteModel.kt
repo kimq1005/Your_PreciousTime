@@ -15,7 +15,14 @@ data class TestFavoriteModel (
     var stationNodeNumber:String
 )
 
-data class wowyeah(
-    var stationName: String,
-    var stationNodeNumber: String
+
+@Entity(tableName = "duplicationList")
+data class DuplicationList(
+    @PrimaryKey(autoGenerate = true)
+    var id:Long?,
+
+    var checkBoolean: Boolean?,
+    var stationnodenode:String,
+    var stationName:String,
+    var stationNodeNumber:String
 )

@@ -31,6 +31,7 @@ class DeepStationInfoActivity : AppCompatActivity() {
 
     lateinit var busFavoriteDB : BusFavroiteDataBase
     lateinit var activitybusfavoriteEntity: List<TestFavoriteModel>
+    lateinit var duplicationListList:List<DuplicationList>
 
 
     lateinit var fuckyou : TestFavoriteModel
@@ -246,30 +247,49 @@ class DeepStationInfoActivity : AppCompatActivity() {
             override fun doInBackground(vararg params: Unit?) {
 
                 activitybusfavoriteEntity = busFavoriteDB.busFavoriteDAO().busFavoriteGetAll()
+//                busFavoriteDB.busFavoriteDAO().busFavoriteInsert(busfavoriteEntity)
+
+//                Log.d(TAG, "즐겨찾기목록의 busFavoriteGetAll()임 ㅇㅋ?: $activitybusfavoriteEntity")
+                val duplicationCheckList = mutableListOf<TestFavoriteModel>()
 
 
                 for(i in activitybusfavoriteEntity.indices){
-                    if(activitybusfavoriteEntity.get(i).stationName == "우남아파트") {
-                        //여기 이 우남아파트가 중복체크되는걸로 바꿔야해
+                    if(activitybusfavoriteEntity.get(i).stationName !== binding.BusStationName.text) {
+                        //여기 이 우남아파트가 중복체크되는걸로 바꿔야
                         busFavoriteDB.busFavoriteDAO().busFavoriteInsert(busfavoriteEntity)
-                        Log.d(TAG, "즐겨찾기목록의 busFavoriteGetAll()임 ㅇㅋ?: $activitybusfavoriteEntity")
+
 //                        Toast.makeText(this@DeepStationInfoActivity,"우랔ㅇㄹㅋㄴ",Toast.LENGTH_SHORT).show()
                     }
                 }
+
+
+
+
+
+
             }
 
             override fun onPostExecute(result: Unit?) {
                 super.onPostExecute(result)
 //                busFavoriteGetAll()
 
+                val duplicationCheckList = mutableListOf<TestFavoriteModel>()
+
+
+//                if(activitybusfavoriteEntity.get(i).stationName != binding.BusStationName.text) {
+////                        busFavoriteDB.busFavoriteDAO().busFavoriteInsert(busfavoriteEntity)
+////                        Log.d(TAG, "즐겨찾기목록의 busFavoriteGetAll()임 ㅇㅋ?: $activitybusfavoriteEntity")
+//                    Toast.makeText(this@DeepStationInfoActivity,"즐겨찾기에 추가할래?.",Toast.LENGTH_SHORT).show()
+//                }
+
+
                 for(i in activitybusfavoriteEntity.indices){
-                    if(activitybusfavoriteEntity.get(i).stationName == "우남아파트") {
+                    if(activitybusfavoriteEntity.get(i).stationName != binding.BusStationName.text) {
 //                        busFavoriteDB.busFavoriteDAO().busFavoriteInsert(busfavoriteEntity)
-//                        Log.d(TAG, "즐겨찾기목록의 busFavoriteGetAll()임 ㅇㅋ?: $activitybusfavoriteEntity")
-                        Toast.makeText(this@DeepStationInfoActivity,"우랔ㅇㄹㅋㄴ",Toast.LENGTH_SHORT).show()
+                        Log.d(TAG, "즐겨찾기목록의 busFavoriteGetAll()임 ㅇㅋ?: $activitybusfavoriteEntity")
+//                        Toast.makeText(this@DeepStationInfoActivity,"즐겨찾기에 추가할래?.",Toast.LENGTH_SHORT).show()
                     }
                 }
-
 
             }
         }).execute()
