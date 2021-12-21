@@ -247,21 +247,20 @@ class DeepStationInfoActivity : AppCompatActivity() {
             override fun doInBackground(vararg params: Unit?) {
 
                 activitybusfavoriteEntity = busFavoriteDB.busFavoriteDAO().busFavoriteGetAll()
-//                busFavoriteDB.busFavoriteDAO().busFavoriteInsert(busfavoriteEntity)
+
 
 //                Log.d(TAG, "즐겨찾기목록의 busFavoriteGetAll()임 ㅇㅋ?: $activitybusfavoriteEntity")
                 val duplicationCheckList = mutableListOf<TestFavoriteModel>()
-
+                val hello = mutableListOf<String>()
 
                 for(i in activitybusfavoriteEntity.indices){
-                    if(activitybusfavoriteEntity.get(i).stationName !== binding.BusStationName.text) {
-                        //여기 이 우남아파트가 중복체크되는걸로 바꿔야
-                        busFavoriteDB.busFavoriteDAO().busFavoriteInsert(busfavoriteEntity)
-
-//                        Toast.makeText(this@DeepStationInfoActivity,"우랔ㅇㄹㅋㄴ",Toast.LENGTH_SHORT).show()
-                    }
+                    val stationname = activitybusfavoriteEntity.get(i).stationName
+                    hello.add(stationname)
                 }
 
+                if(binding.BusStationName.text !in hello){
+                    busFavoriteDB.busFavoriteDAO().busFavoriteInsert(busfavoriteEntity)
+                }
 
 
 
@@ -271,25 +270,52 @@ class DeepStationInfoActivity : AppCompatActivity() {
 
             override fun onPostExecute(result: Unit?) {
                 super.onPostExecute(result)
-//                busFavoriteGetAll()
+                val hello = mutableListOf<String>()
 
-                val duplicationCheckList = mutableListOf<TestFavoriteModel>()
+                for(i in activitybusfavoriteEntity.indices){
+                    val stationname = activitybusfavoriteEntity.get(i).stationName
+                    hello.add(stationname)
+                }
 
-
-//                if(activitybusfavoriteEntity.get(i).stationName != binding.BusStationName.text) {
-////                        busFavoriteDB.busFavoriteDAO().busFavoriteInsert(busfavoriteEntity)
-////                        Log.d(TAG, "즐겨찾기목록의 busFavoriteGetAll()임 ㅇㅋ?: $activitybusfavoriteEntity")
-//                    Toast.makeText(this@DeepStationInfoActivity,"즐겨찾기에 추가할래?.",Toast.LENGTH_SHORT).show()
+                if(binding.BusStationName.text in hello){
+                    Toast.makeText(this@DeepStationInfoActivity,"이미 즐겨찾기에 추가된 정류장입니다!",Toast.LENGTH_SHORT).show()
+                }else{
+                    Toast.makeText(this@DeepStationInfoActivity,"즐겨찾기에 추가 되었습니다!",Toast.LENGTH_SHORT).show()
+                }
+//                if( -1 !in 0..list.lastIndex){
+//
+//                    print("good")
+//
 //                }
 
 
-                for(i in activitybusfavoriteEntity.indices){
-                    if(activitybusfavoriteEntity.get(i).stationName != binding.BusStationName.text) {
-//                        busFavoriteDB.busFavoriteDAO().busFavoriteInsert(busfavoriteEntity)
-                        Log.d(TAG, "즐겨찾기목록의 busFavoriteGetAll()임 ㅇㅋ?: $activitybusfavoriteEntity")
-//                        Toast.makeText(this@DeepStationInfoActivity,"즐겨찾기에 추가할래?.",Toast.LENGTH_SHORT).show()
-                    }
-                }
+
+
+//
+//                for(i in activitybusfavoriteEntity.indices){
+//                    if(binding.BusStationName.text in activitybusfavoriteEntity.get(i).stationName) {
+//                        mycheckBoolean=true
+//                        }
+//                    else{
+//                        mycheckBoolean=false
+//                    }
+//
+//                }
+
+//                for(i in activitybusfavoriteEntity.indices) {
+//                    when (activitybusfavoriteEntity.get(i).stationName) {
+//                        binding.BusStationName.text -> {
+//                            mycheckBoolean = true
+//                        }
+//
+//                        else->{
+//                            mycheckBoolean = false
+//                        }
+//                    }
+//
+//                }
+
+
 
             }
         }).execute()
