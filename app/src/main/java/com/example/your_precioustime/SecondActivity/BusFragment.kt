@@ -65,7 +65,6 @@ class BusFragment:Fragment(R.layout.bus_fragment),CoroutineScope {
         busbinding = BusFragmentBinding.bind(view)
         job = Job()
 
-
         val suwoncitycode:String = "31010"
         val StationEditName = binding.SearchEditText.text.toString()
         SetRecyclerView(suwoncitycode,null)

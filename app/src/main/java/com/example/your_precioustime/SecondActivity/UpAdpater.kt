@@ -39,9 +39,7 @@ class UpAdpater:RecyclerView.Adapter<UpAdpater.MyViewHolder>() {
         fun bind(item: Item){
 
             val mytime = item.arrtime!!
-            Log.d(TAG, "bind: $mytime")
             val second = mytime/60
-            Log.d(TAG, "bind: $second")
 
             binding.BusNumber.text =item.routeno.toString()
             binding.waitBusNumber.text = item.arrprevstationcnt.toString()

@@ -43,12 +43,7 @@ class DeepStationInfoActivity : AppCompatActivity() {
 
 
         val stationName = intent.getStringExtra("stationName").toString()
-        val stationNodeNumber = intent.getStringExtra("stationNodeNumber").toString()
 
-        // 야 만약에 이페이지에서 별을 누르면 stationName, stationNodeNumber를 저장하면 되잖아 그리고 헷갈림을 방지하기위해서 일단 별모양 대신에 즐겨찾기 버튼이라거 하자 ㅇㅋ? 굳
-
-
-        // Log.d(TAG, "onCreate: $stationName , $stationNodeNumber")
 
         binding.BusStationName.text = stationName
         binding.backbtn.setOnClickListener {
@@ -57,11 +52,8 @@ class DeepStationInfoActivity : AppCompatActivity() {
         busFavoriteGetAll()
 
 
-
         SetBusStationRecyclerView()
         savemystation()
-//        FavoriteStation()
-//        loadData()
     }
 
     private fun savemystation()=with(binding){
@@ -90,7 +82,6 @@ class DeepStationInfoActivity : AppCompatActivity() {
 
 
     private fun SetBusStationRecyclerView()=with(binding) {
-        val stationName = intent.getStringExtra("stationName").toString()
         val stationNodeNumber = intent.getStringExtra("stationNodeNumber").toString()
 
         val citycode:String = "31010"
@@ -104,9 +95,10 @@ class DeepStationInfoActivity : AppCompatActivity() {
                 val body = response.body()
 
                 body?.let{
-
                     val hello =body.body.items.item
+
                     val hi = mutableListOf<Item>()
+
                     for(i in hello.indices){
                         val busNm:String
                         val waitbus:Int
@@ -121,18 +113,21 @@ class DeepStationInfoActivity : AppCompatActivity() {
                         ))
 
                     }
-                    Log.d(TAG, "\n 전체값 리스트다 질문받는다: $hi \n")
+                    Log.d(TAG, "\n 전체값 리스트 : $hi \n")
 
-                    Log.d(TAG, "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ\n")
 
                     val firstList= hi.filterIndexed { index, i ->
-//                        Log.d(TAG, "인덱스값이 뭔지 확인하기 : $index , $i")
-                        index % 2 ==0    //이건 그냥 말그대로 짝수만을 가져온거야
+
+                        index % 2 == 0
                     }
 
+//                    Log.d(TAG, "firstList: $firstList")
+
                     val secondList = hi.filterIndexed{index, item ->
-                        index % 2 ==1
+                        index % 2 == 1
                     }
+
+//                    Log.d(TAG, "secondList: $secondList")
 
 
                     val ResultList = mutableListOf<Item>()
@@ -143,24 +138,20 @@ class DeepStationInfoActivity : AppCompatActivity() {
                         val AWaitTime = it.arrtime
 
 
-//            Log.d(TAG, "onCreate: $AWaittime")
 
 
                         secondList.forEach {
                             val BRouteNo = it.routeno
                             val BWaitstation = it.arrprevstationcnt
-                            val BWaittime = it.arrtime
 
                             if(ARouteNo==BRouteNo){
                                 if(AWaitstation!! > BWaitstation!!){
-//                                    Log.d(TAG, "onCreate: $it")
                                     ResultList.add(Item(it.routeno,it.arrprevstationcnt,it.arrtime))
 
                                 }else{
                                     ResultList.add(Item(ARouteNo,AWaitstation,AWaitTime))
                                 }
 
-                                Log.d(TAG, "지막 그거여 확인혀: $ResultList")
                             }
 
 

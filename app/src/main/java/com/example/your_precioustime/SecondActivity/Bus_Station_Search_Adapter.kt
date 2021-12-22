@@ -46,7 +46,6 @@ class Bus_Station_Search_Adapter:RecyclerView.Adapter<Bus_Station_Search_Adapter
             intent.putExtra("stationNodeNumber", stationNodeNumber)
             holder.itemView.context.startActivity(intent)
 
-            Toast.makeText(holder.itemView.context, "정류소 이름: $stationName//정류소 노드넘버: $stationNodeNumber",Toast.LENGTH_SHORT).show()
         }
     }
 
