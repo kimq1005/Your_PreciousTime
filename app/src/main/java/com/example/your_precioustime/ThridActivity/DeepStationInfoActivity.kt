@@ -31,8 +31,6 @@ class DeepStationInfoActivity : AppCompatActivity() {
     lateinit var busFavoriteDB : BusFavroiteDataBase
     lateinit var activitybusfavoriteEntity: List<TestFavoriteModel>
 
-    private var checkBoolean=true
-    lateinit var mytestList:MutableList<String>
 
     private val retrofitInterface: Retrofit_InterFace = Retrofit_Client.getClient(Url.BUS_MAIN_URL).create(Retrofit_InterFace::class.java)
 
@@ -75,7 +73,6 @@ class DeepStationInfoActivity : AppCompatActivity() {
             val stationNodeNumber = intent.getStringExtra("stationNodeNumber").toString()
             val stationNodeNode = intent.getStringExtra("stationnodenode").toString()
 
-            Toast.makeText(this@DeepStationInfoActivity,"정류소이름 : $stationName \n 노드넘버 : $stationNodeNumber",Toast.LENGTH_SHORT).show()
             //db저장가즈아 하면돼 ㅇㅋ?
 
             val hello = TestFavoriteModel(
@@ -95,7 +92,9 @@ class DeepStationInfoActivity : AppCompatActivity() {
     private fun SetBusStationRecyclerView()=with(binding) {
         val stationName = intent.getStringExtra("stationName").toString()
         val stationNodeNumber = intent.getStringExtra("stationNodeNumber").toString()
+
         val citycode:String = "31010"
+
         val call = retrofitInterface.BusGet(citycode,stationNodeNumber)
         call.enqueue(object:retrofit2.Callback<Bus>{
             override fun onResponse(call: Call<Bus>, response: Response<Bus>) {
@@ -106,18 +105,19 @@ class DeepStationInfoActivity : AppCompatActivity() {
 
                 body?.let{
 
-                    val wow = body.body.items.item
                     val hello =body.body.items.item
                     val hi = mutableListOf<Item>()
                     for(i in hello.indices){
                         val busNm:String
                         val waitbus:Int
+                        val waittime:Int
 
                         busNm = hello.get(i).routeno!!
                         waitbus = hello.get(i).arrprevstationcnt!!
+                        waittime = hello.get(i).arrtime!!
 
                         hi.add(Item(
-                            busNm,waitbus
+                            busNm,waitbus,waittime
                         ))
 
                     }
@@ -139,23 +139,25 @@ class DeepStationInfoActivity : AppCompatActivity() {
 
                     firstList.forEach {
                         val ARouteNo = it.routeno
-                        val AWaittime = it.arrprevstationcnt
-                        var found = false
+                        val AWaitstation = it.arrprevstationcnt
+                        val AWaitTime = it.arrtime
+
 
 //            Log.d(TAG, "onCreate: $AWaittime")
 
 
                         secondList.forEach {
                             val BRouteNo = it.routeno
-                            val BWaittime = it.arrprevstationcnt
+                            val BWaitstation = it.arrprevstationcnt
+                            val BWaittime = it.arrtime
 
                             if(ARouteNo==BRouteNo){
-                                if(AWaittime!! > BWaittime!!){
+                                if(AWaitstation!! > BWaitstation!!){
 //                                    Log.d(TAG, "onCreate: $it")
-                                    ResultList.add(Item(it.routeno,it.arrprevstationcnt))
+                                    ResultList.add(Item(it.routeno,it.arrprevstationcnt,it.arrtime))
 
                                 }else{
-                                    ResultList.add(Item(ARouteNo,AWaittime))
+                                    ResultList.add(Item(ARouteNo,AWaitstation,AWaitTime))
                                 }
 
                                 Log.d(TAG, "지막 그거여 확인혀: $ResultList")

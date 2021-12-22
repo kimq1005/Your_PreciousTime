@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.busitem_layout.view.*
 
 import android.view.View
 import com.example.your_precioustime.SecondActivity.DB.*
+import java.util.concurrent.TimeUnit
 
 
 @SuppressLint("StaticFieldLeak")
@@ -33,9 +34,18 @@ class UpAdpater:RecyclerView.Adapter<UpAdpater.MyViewHolder>() {
 
     class MyViewHolder(val binding:BusitemLayoutBinding): RecyclerView.ViewHolder(binding.root){
 
+
+
         fun bind(item: Item){
+
+            val mytime = item.arrtime!!
+            Log.d(TAG, "bind: $mytime")
+            val second = mytime/60
+            Log.d(TAG, "bind: $second")
+
             binding.BusNumber.text =item.routeno.toString()
             binding.waitBusNumber.text = item.arrprevstationcnt.toString()
+            binding.waitTime.text = second.toString()
         }
 
     }

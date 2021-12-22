@@ -20,11 +20,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mainActivitybinding = ActivityMainBinding.inflate(layoutInflater) // getRoot 메서드로 레이아웃 내부의 최상위 위치 뷰의 // 인스턴스를 활용하여 생성된 뷰를 액티비티에 표시
+        mainActivitybinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        Handler().postDelayed({
-//                nextfadePageGO(this)
-//            },2000)
+
 
         binding.MainLogoDd.setOnClickListener {
 //            val intent = Intent(this,BusSubwayActivity::class.java)

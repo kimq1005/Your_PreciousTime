@@ -44,80 +44,69 @@ class BusSubwayActivity : AppCompatActivity() {
         busnumDataBase = BUSDNumberDataBase.getinstance(this)!!
 
 
-
-
 //        for(i in 0..fucklist1.size-1){
 //            Log.d(TAG, "onCreate: $i hi")
 //
 //        }
 
 
-
-
         binding.fuckingRecyclerbutton.setOnClickListener {
-            getNumAllBus()
+//            getNumAllBus()
         }
 
         binding.fuckingbutton.setOnClickListener {
             val fuckGodt = mutableListOf<Item>()
 
-            val fucklist1 = listOf(
-                Item(routeno="92-1", arrprevstationcnt=9),
-                Item(routeno="62-1", arrprevstationcnt=7),
-                Item(routeno="99", arrprevstationcnt=3)
-            )
+//            val fucklist1 = listOf(
+//                Item(routeno="92-1", arrprevstationcnt=9),
+//                Item(routeno="62-1", arrprevstationcnt=7),
+//                Item(routeno="99", arrprevstationcnt=3)
+//            )
+//
+//
+//
+//            val fucklist2 = listOf(
+//                Item(routeno="92-1", arrprevstationcnt=12),
+//                Item(routeno="62-1", arrprevstationcnt=6),
+//                Item(routeno="99", arrprevstationcnt=23)
+//            )
+
+//            val kingfucklist = mutableListOf<Item>()
+//
+//            fucklist1.forEach {
+//                val ARouteNo = it.routeno
+//                val AWaittime = it.arrprevstationcnt
+//                var found = false
+//
+////            Log.d(TAG, "onCreate: $AWaittime")
+//
+//
+//                fucklist2.forEach {
+//                    val BRouteNo = it.routeno
+//                    val BWaittime = it.arrprevstationcnt
+//
+//
+//                    if(ARouteNo==BRouteNo){
+//                        if(AWaittime!! > BWaittime!!){
+//                            Log.d(TAG, "onCreate: $it")
+//                            fuckGodt.add(Item(it.routeno,it.arrprevstationcnt))
+//
+//                        }else{
+//                            fuckGodt.add(Item(ARouteNo,AWaittime))
+//                        }
+//
+//                        Log.d(TAG, "onCreate: $fuckGodt")
+//                    }
+//
+//
+//                }
+//
+//
+//            }
+//        }
 
 
-
-            val fucklist2 = listOf(
-                Item(routeno="92-1", arrprevstationcnt=12),
-                Item(routeno="62-1", arrprevstationcnt=6),
-                Item(routeno="99", arrprevstationcnt=23)
-            )
-
-            val kingfucklist = mutableListOf<Item>()
-
-            fucklist1.forEach {
-                val ARouteNo = it.routeno
-                val AWaittime = it.arrprevstationcnt
-                var found = false
-
-//            Log.d(TAG, "onCreate: $AWaittime")
-
-
-                fucklist2.forEach {
-                    val BRouteNo = it.routeno
-                    val BWaittime = it.arrprevstationcnt
-
-
-                    if(ARouteNo==BRouteNo){
-                        if(AWaittime!! > BWaittime!!){
-                            Log.d(TAG, "onCreate: $it")
-                            fuckGodt.add(Item(it.routeno,it.arrprevstationcnt))
-
-                        }else{
-                            fuckGodt.add(Item(ARouteNo,AWaittime))
-                        }
-
-                        Log.d(TAG, "onCreate: $fuckGodt")
-                    }
-
-
-                }
-
-
-            }
         }
-
-
-
-
-
-
-
-
-    }
-
 
 
 //    private fun businsert(busEntity: BUSEntity){
@@ -136,7 +125,7 @@ class BusSubwayActivity : AppCompatActivity() {
 //
 //    }
 
-//    private fun busGetAll(){
+        //    private fun busGetAll(){
 //        val busGetAllTask = (object:AsyncTask<Unit,Unit,Unit>(){
 //            override fun doInBackground(vararg params: Unit?) {
 //                busEntity=busDataBase.busDAO().busgetAll()
@@ -145,47 +134,48 @@ class BusSubwayActivity : AppCompatActivity() {
 //    }
 //
 //
-    @SuppressLint("StaticFieldLeak")
-    private fun getAllBus(){
-        val getAllTast = (object:AsyncTask<Unit,Unit,Unit>(){
-            override fun doInBackground(vararg params: Unit?) {
-                busEntity = busDataBase.busDAO().busgetAll()
-            }
+//        @SuppressLint("StaticFieldLeak")
+//        private fun getAllBus() {
+//            val getAllTast = (object : AsyncTask<Unit, Unit, Unit>() {
+//                override fun doInBackground(vararg params: Unit?) {
+//                    busEntity = busDataBase.busDAO().busgetAll()
+//                }
+//
+//                override fun onPostExecute(result: Unit?) {
+//                    super.onPostExecute(result)
+//                    setRecyclerView()
+//                }
+//
+//            }).execute()
+//        }
 
-            override fun onPostExecute(result: Unit?) {
-                super.onPostExecute(result)
-                setRecyclerView()
-            }
-
-        }).execute()
-    }
-
-    private fun setRecyclerView() {
-
-        busCallAdpater = BusCallAdpater()
-        busCallAdpater.submitList(busEntity)
-
-        binding.busFVRecyclerView.apply {
-            adapter = busCallAdpater
-            layoutManager = GridLayoutManager(App.instance,2, GridLayoutManager.VERTICAL,false)
-
-        }
-    }
-
-
-    @SuppressLint("StaticFieldLeak")
-    private fun getNumAllBus(){
-        val getAllTast = (object:AsyncTask<Unit,Unit,Unit>(){
-            override fun doInBackground(vararg params: Unit?) {
-                busNumEntity = busnumDataBase.busnumDAO().busnumGetAll()
-                Log.d(TAG, "doInBackground: $busNumEntity")
-            }
-
-            override fun onPostExecute(result: Unit?) {
-                super.onPostExecute(result)
-//                setRecyclerView()
-            }
-
-        }).execute()
+//    private fun setRecyclerView() {
+//
+//        busCallAdpater = BusCallAdpater()
+//        busCallAdpater.submitList(busEntity)
+//
+//        binding.busFVRecyclerView.apply {
+//            adapter = busCallAdpater
+//            layoutManager = GridLayoutManager(App.instance,2, GridLayoutManager.VERTICAL,false)
+//
+//        }
+//    }
+//
+//
+//    @SuppressLint("StaticFieldLeak")
+//    private fun getNumAllBus(){
+//        val getAllTast = (object:AsyncTask<Unit,Unit,Unit>(){
+//            override fun doInBackground(vararg params: Unit?) {
+//                busNumEntity = busnumDataBase.busnumDAO().busnumGetAll()
+//                Log.d(TAG, "doInBackground: $busNumEntity")
+//            }
+//
+//            override fun onPostExecute(result: Unit?) {
+//                super.onPostExecute(result)
+////                setRecyclerView()
+//            }
+//
+//        }).execute()
+//    }
     }
 }

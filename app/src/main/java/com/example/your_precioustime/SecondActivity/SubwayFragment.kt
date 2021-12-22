@@ -42,7 +42,6 @@ class SubwayFragment:Fragment(R.layout.subway_fragment), OnDeleteInterFace {
 
     private fun getAll(){
 
-
         val getAllTask = (object :AsyncTask<Unit,Unit,Unit>(){
             override fun doInBackground(vararg params: Unit?) {
                 busfavoriteEntity = busFavoriteDB.busFavoriteDAO().busFavoriteGetAll()

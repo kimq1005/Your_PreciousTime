@@ -145,10 +145,10 @@ data class Items(
 data class Item(
     @PropertyElement(name="routeno") var routeno : String?, //노선 번호
     @PropertyElement(name="arrprevstationcnt") var arrprevstationcnt : Int?,    //남은 정류장  번호
-//    @PropertyElement(name="arrtime") var arrtime : Int? // 남은 시간
+    @PropertyElement(name="arrtime") var arrtime : Int? // 남은 시간
 
 ){
-    constructor() : this(null,null)
+    constructor() : this(null,null,null)
 }
 
 

@@ -3,6 +3,7 @@ package com.example.your_precioustime.SecondActivity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.your_precioustime.Model.Bus
@@ -29,6 +30,11 @@ class FavoriteDeepInfo : AppCompatActivity() {
 
         setApiRecyclerView()
 
+        binding.backbtn.setOnClickListener {
+            onBackPressed()
+        }
+
+
 
     }
 
@@ -44,8 +50,6 @@ class FavoriteDeepInfo : AppCompatActivity() {
                 Log.d(TAG, "onResponse: ${response.body()}")
                 val body = response.body()
 
-
-
                 body?.let {
                     val wow = body.body.items.item
                     val mylist = mutableListOf<Item>()
@@ -53,12 +57,15 @@ class FavoriteDeepInfo : AppCompatActivity() {
                     for(i in wow.indices){
                         val busNm:String
                         val waitbus:Int
+                        val waittime:Int
 
                         busNm = wow.get(i).routeno!!
                         waitbus = wow.get(i).arrprevstationcnt!!
+                        waittime = wow.get(i).arrtime!!
+
 
                         mylist.add(Item(
-                            busNm,waitbus
+                            busNm,waitbus,waittime
                         ))
 
                         val firstList= mylist.filterIndexed { index, i ->
@@ -74,22 +81,23 @@ class FavoriteDeepInfo : AppCompatActivity() {
 
                         firstList.forEach {
                             val ARouteNo = it.routeno
-                            val AWaittime = it.arrprevstationcnt
+                            val AWaitstation = it.arrprevstationcnt
+                            val AWaitTime = it.arrtime
                             var found = false
-
 
 
 
                             secondList.forEach {
                                 val BRouteNo = it.routeno
-                                val BWaittime = it.arrprevstationcnt
+                                val BWaitstation = it.arrprevstationcnt
+                                val BWaitTime = it.arrtime
 
                                 if(ARouteNo==BRouteNo){
-                                    if(AWaittime!! > BWaittime!!){
-                                        ResultList.add(Item(it.routeno,it.arrprevstationcnt))
+                                    if(AWaitstation!! > BWaitstation!!){
+                                        ResultList.add(Item(it.routeno,it.arrprevstationcnt,it.arrtime))
 
                                     }else{
-                                        ResultList.add(Item(ARouteNo,AWaittime))
+                                        ResultList.add(Item(ARouteNo,AWaitstation,AWaitTime))
                                     }
 
                                     Log.d(TAG, "지막 그거여 확인혀: $ResultList")
@@ -102,7 +110,7 @@ class FavoriteDeepInfo : AppCompatActivity() {
 
                             FravroitestationinfoRecyclerView.apply {
                                 adapter = DFadapter
-                                layoutManager = LinearLayoutManager(context)
+                                layoutManager = GridLayoutManager(this@FavoriteDeepInfo,2,GridLayoutManager.VERTICAL,false)
                                 DFadapter.submitList(ResultList)
                             }
 

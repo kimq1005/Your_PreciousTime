@@ -95,35 +95,7 @@ class BusFragment:Fragment(R.layout.bus_fragment),CoroutineScope {
     }
 
 
-    private fun citycodecall()= with(binding){
-        val call = retrofitInterface.CityGet()
 
-        call.enqueue(object :Callback<City>{
-            override fun onResponse(call: Call<City>, response: Response<City>) {
-                Log.d(TAG, "onResponse:${response.body()}")
-            }
-
-            override fun onFailure(call: Call<City>, t: Throwable) {
-                Log.d(TAG, "onFailure:$t")
-            }
-
-        })
-    }
-
-    private fun stationname(citycode:String , stationName:String){
-        val call = retrofitFuckInterFace.StationNameGet(citycode,stationName)
-
-        call.enqueue(object :retrofit2.Callback<StationBus>{
-            override fun onResponse(call: Call<StationBus>, response: Response<StationBus>) {
-                Log.d(TAG, "onResponse: ${response.body()}")
-            }
-
-            override fun onFailure(call: Call<StationBus>, t: Throwable) {
-                Log.d(TAG, "onFailure: $t")
-            }
-
-        })
-    }
 
     fun SetRecyclerView(citycode:String,stationName:String?)=with(binding) {
 
@@ -132,13 +104,11 @@ class BusFragment:Fragment(R.layout.bus_fragment),CoroutineScope {
             staionName = stationName
         )
 
-
         stationcalls.enqueue(object :retrofit2.Callback<StationBus>{
 
             override fun onResponse(call: Call<StationBus>, response: Response<StationBus>) {
                 val body = response.body()
                 busStationSearchAdapter = Bus_Station_Search_Adapter()
-
 
                 body?.let{it->
                     val hello = body.body.items.item
