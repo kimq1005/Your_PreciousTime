@@ -22,12 +22,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:fontFamily="@font/nanumbrushscript_regular"
+        android:fontFamily="@font/nanumgothic_bold"
         android:gravity="center"
         android:padding="10dp"
-        android:text="Main"
         android:textColor="@color/black"
-        android:textSize="30sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -66,12 +65,6 @@
         android:textStyle="bold"
          />
 
-    <Button
-        android:id="@+id/logBtn"
-        app:layout_constraintTop_toBottomOf="@+id/Upunderline"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
 
     <View
         android:layout_marginTop="15dp"

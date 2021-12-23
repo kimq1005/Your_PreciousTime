@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.your_precioustime.App
 import com.example.your_precioustime.R
@@ -65,7 +66,8 @@ class SubwayFragment:Fragment(R.layout.subway_fragment), OnDeleteInterFace {
 
         subwayRecyclerView.apply {
             adapter = subwayAdapter
-            layoutManager= LinearLayoutManager(context)
+//            layoutManager= LinearLayoutManager(context)
+            layoutManager= GridLayoutManager(App.instance,2,GridLayoutManager.VERTICAL,false)
             subwayAdapter.submitList(busfavoriteEntity)
 
         }

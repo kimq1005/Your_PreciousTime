@@ -19,7 +19,6 @@ class SecondActivity : AppCompatActivity() {
         ClickFragment()
 
 
-
     }
 
     private fun ClickFragment() {
