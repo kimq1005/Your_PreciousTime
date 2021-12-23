@@ -36,11 +36,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun nextfadePageGO(activity: Activity) {
-
         val intent = Intent(this, SecondActivity::class.java)
         startActivity(intent)
         activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
-
     }
 
 

@@ -25,8 +25,6 @@ import java.util.concurrent.TimeUnit
 @SuppressLint("StaticFieldLeak")
 class UpAdpater:RecyclerView.Adapter<UpAdpater.MyViewHolder>() {
     private var item: List<Item>? = null
-    lateinit var busnumEntity: List<BUSNumEntity>
-    lateinit var busnumDataBase: BUSDNumberDataBase
 
     lateinit var busstationnameDB : BUSStationNameDataBase
     lateinit var busstationnameEntity : List<BUSStationNameEntity>

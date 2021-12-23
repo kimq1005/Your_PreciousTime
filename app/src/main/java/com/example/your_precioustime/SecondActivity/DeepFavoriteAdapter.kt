@@ -13,13 +13,13 @@ import com.example.your_precioustime.Util
 import com.example.your_precioustime.databinding.BusitemLayoutBinding
 
 class DeepFavoriteAdapter:ListAdapter<Item, DeepFavoriteAdapter.myViewHolder>(diffUtil) {
-    inner class myViewHolder (var binding:BusitemLayoutBinding):RecyclerView.ViewHolder(binding.root){
 
+    inner class myViewHolder (var binding:BusitemLayoutBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(item:Item){
             val mytime = item.arrtime!!
-            Log.d(Util.TAG, "bind: $mytime")
+//            Log.d(Util.TAG, "bind: $mytime")
             val second = mytime/60
-            Log.d(Util.TAG, "bind: $second")
+//            Log.d(Util.TAG, "bind: $second")
 
             binding.BusNumber.text = item.routeno
             binding.waitBusNumber.text = item.arrprevstationcnt.toString()
