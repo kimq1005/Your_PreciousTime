@@ -34,7 +34,7 @@ class DeepFavoriteAdapter:ListAdapter<Item, DeepFavoriteAdapter.myViewHolder>(di
     }
 
     override fun onBindViewHolder(holder: myViewHolder, position: Int) {
-       holder.bind(currentList[position])
+        holder.bind(currentList[position])
     }
 
 
@@ -50,7 +50,6 @@ class DeepFavoriteAdapter:ListAdapter<Item, DeepFavoriteAdapter.myViewHolder>(di
                 return oldItem==newItem
 
             }
-
         }
 
     }

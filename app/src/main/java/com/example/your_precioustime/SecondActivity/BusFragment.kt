@@ -52,6 +52,7 @@ class BusFragment:Fragment(R.layout.bus_fragment),CoroutineScope {
 
     private var retrofitFuckInterFace:Retrofit_InterFace=
         Retrofit_Client.getFuckClient(Url.ODSAY_BASE_URL).create(Retrofit_InterFace::class.java)
+    //코루틴 연습 가자잇
 
 
     override fun onAttach(context: Context) {

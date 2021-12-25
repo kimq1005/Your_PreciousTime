@@ -21,9 +21,11 @@ class BusCallAdpater:ListAdapter<BUSEntity, BusCallAdpater.BusCallViewHolder>(di
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BusCallViewHolder {
-       val view = FavoritesbusitemLayoutBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+
+        val view = FavoritesbusitemLayoutBinding.inflate(LayoutInflater.from(parent.context),parent,false)
 
         return BusCallViewHolder(view)
+
     }
 
     override fun onBindViewHolder(holder: BusCallViewHolder, position: Int) {

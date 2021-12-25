@@ -86,7 +86,6 @@ class FavoriteDeepInfo : AppCompatActivity() {
                             var found = false
 
 
-
                             secondList.forEach {
                                 val BRouteNo = it.routeno
                                 val BWaitstation = it.arrprevstationcnt
@@ -100,7 +99,8 @@ class FavoriteDeepInfo : AppCompatActivity() {
                                         ResultList.add(Item(ARouteNo,AWaitstation,AWaitTime))
                                     }
 
-                                    Log.d(TAG, "지막 그거여 확인혀: $ResultList")
+//                                    Log.d(TAG, "지막 그거여 확인혀: $ResultList")
+                                    Log.d(TAG, "onResponse:내가 뭘할까 이련아")
                                 }
 
 

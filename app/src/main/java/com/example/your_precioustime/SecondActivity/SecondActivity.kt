@@ -22,7 +22,6 @@ class SecondActivity : AppCompatActivity() {
     }
 
     private fun ClickFragment() {
-
         supportFragmentManager.beginTransaction()
             .replace(R.id.SecondFragment, BusFragment())
             .commit()
@@ -38,7 +37,6 @@ class SecondActivity : AppCompatActivity() {
                 .replace(R.id.SecondFragment,SubwayFragment())
                 .commit()
         }
-
 
     }
 }

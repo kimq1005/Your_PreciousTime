@@ -31,7 +31,6 @@ class DeepStationInfoActivity : AppCompatActivity() {
     lateinit var busFavoriteDB : BusFavroiteDataBase
     lateinit var activitybusfavoriteEntity: List<TestFavoriteModel>
 
-
     private val retrofitInterface: Retrofit_InterFace = Retrofit_Client.getClient(Url.BUS_MAIN_URL).create(Retrofit_InterFace::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +39,6 @@ class DeepStationInfoActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         busFavoriteDB = BusFavroiteDataBase.getinstance(App.instance)!!
-
 
         val stationName = intent.getStringExtra("stationName").toString()
 
@@ -51,7 +49,6 @@ class DeepStationInfoActivity : AppCompatActivity() {
         }
         busFavoriteGetAll()
 
-
         SetBusStationRecyclerView()
         savemystation()
     }
@@ -60,12 +57,9 @@ class DeepStationInfoActivity : AppCompatActivity() {
 
         countingstars.setOnClickListener {
 
-
             val stationName = intent.getStringExtra("stationName").toString()
             val stationNodeNumber = intent.getStringExtra("stationNodeNumber").toString()
             val stationNodeNode = intent.getStringExtra("stationnodenode").toString()
-
-            //db저장가즈아 하면돼 ㅇㅋ?
 
             val hello = TestFavoriteModel(
                 id = null,
