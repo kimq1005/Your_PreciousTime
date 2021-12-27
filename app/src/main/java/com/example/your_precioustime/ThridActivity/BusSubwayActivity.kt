@@ -11,171 +11,85 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.your_precioustime.App
 import com.example.your_precioustime.Model.Item
+import com.example.your_precioustime.Retrofit.Coroutines_InterFace
+import com.example.your_precioustime.Retrofit.Retrofit_Client
+import com.example.your_precioustime.SecondActivity.Bus_Station_Search_Adapter
 import com.example.your_precioustime.SecondActivity.DB.BUSDNumberDataBase
 import com.example.your_precioustime.SecondActivity.DB.BUSDataBase
 import com.example.your_precioustime.SecondActivity.DB.BUSEntity
 import com.example.your_precioustime.SecondActivity.DB.BUSNumEntity
+import com.example.your_precioustime.Url.Companion.BUS_MAIN_URL
 import com.example.your_precioustime.Util.Companion.TAG
 import com.example.your_precioustime.databinding.ActivityBusSubwayBinding
+import kotlinx.coroutines.*
+import java.lang.Exception
+import kotlin.coroutines.CoroutineContext
+import kotlin.math.log
+
 @SuppressLint("StaticFieldLeak")
 
-class BusSubwayActivity : AppCompatActivity() {
+class BusSubwayActivity : AppCompatActivity() ,CoroutineScope {
     private var busSubwayActivityBinding : ActivityBusSubwayBinding? =null
     private val binding get() = busSubwayActivityBinding!!
-    private lateinit var busCallAdpater: BusCallAdpater
+
+    lateinit var busStationSearchAdapter: Bus_Station_Search_Adapter
 
 
-    private lateinit var busDataBase: BUSDataBase
-    private lateinit var busnumDataBase : BUSDNumberDataBase
+    private lateinit var job:Job
 
-    private var busEntity:List<BUSEntity>? = null
-    private var busNumEntity : List<BUSNumEntity>? =null
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main + job
 
-//    private var busEntity:List<BUSEntity>? = null
-
-
+    private val coroutinesInterface : Coroutines_InterFace=Retrofit_Client.getClient(BUS_MAIN_URL)
+        .create(Coroutines_InterFace::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         busSubwayActivityBinding = ActivityBusSubwayBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        busDataBase = BUSDataBase.getinstance(this)!!
-        busnumDataBase = BUSDNumberDataBase.getinstance(this)!!
-
-
-//        for(i in 0..fucklist1.size-1){
-//            Log.d(TAG, "onCreate: $i hi")
-//
-//        }
+        job = Job()
 
 
         binding.fuckingRecyclerbutton.setOnClickListener {
-//            getNumAllBus()
-        }
-
-        binding.fuckingbutton.setOnClickListener {
-            val fuckGodt = mutableListOf<Item>()
-
-//            val fucklist1 = listOf(
-//                Item(routeno="92-1", arrprevstationcnt=9),
-//                Item(routeno="62-1", arrprevstationcnt=7),
-//                Item(routeno="99", arrprevstationcnt=3)
-//            )
-//
-//
-//
-//            val fucklist2 = listOf(
-//                Item(routeno="92-1", arrprevstationcnt=12),
-//                Item(routeno="62-1", arrprevstationcnt=6),
-//                Item(routeno="99", arrprevstationcnt=23)
-//            )
-
-//            val kingfucklist = mutableListOf<Item>()
-//
-//            fucklist1.forEach {
-//                val ARouteNo = it.routeno
-//                val AWaittime = it.arrprevstationcnt
-//                var found = false
-//
-////            Log.d(TAG, "onCreate: $AWaittime")
-//
-//
-//                fucklist2.forEach {
-//                    val BRouteNo = it.routeno
-//                    val BWaittime = it.arrprevstationcnt
-//
-//
-//                    if(ARouteNo==BRouteNo){
-//                        if(AWaittime!! > BWaittime!!){
-//                            Log.d(TAG, "onCreate: $it")
-//                            fuckGodt.add(Item(it.routeno,it.arrprevstationcnt))
-//
-//                        }else{
-//                            fuckGodt.add(Item(ARouteNo,AWaittime))
-//                        }
-//
-//                        Log.d(TAG, "onCreate: $fuckGodt")
-//                    }
-//
-//
-//                }
-//
-//
-//            }
-//        }
-
-
+            fuckinyeah("31010","우남")
         }
 
 
-//    private fun businsert(busEntity: BUSEntity){
-//
-//        busDataBase = BUSDataBase.getinstance(App.instance)!!
-//        var businsertTask = (object : AsyncTask<Unit,Unit,Unit>(){
-//            override fun doInBackground(vararg params: Unit?) {
-//                busDataBase.busDAO().businsert(busEntity)
-//            }
-//
-//            override fun onPostExecute(result: Unit?) {
-//                super.onPostExecute(result)
-//                busGetAll()
-//            }
-//        }).execute()
-//
-//    }
-
-        //    private fun busGetAll(){
-//        val busGetAllTask = (object:AsyncTask<Unit,Unit,Unit>(){
-//            override fun doInBackground(vararg params: Unit?) {
-//                busEntity=busDataBase.busDAO().busgetAll()
-//            }
-//        }).execute()
-//    }
-//
-//
-//        @SuppressLint("StaticFieldLeak")
-//        private fun getAllBus() {
-//            val getAllTast = (object : AsyncTask<Unit, Unit, Unit>() {
-//                override fun doInBackground(vararg params: Unit?) {
-//                    busEntity = busDataBase.busDAO().busgetAll()
-//                }
-//
-//                override fun onPostExecute(result: Unit?) {
-//                    super.onPostExecute(result)
-//                    setRecyclerView()
-//                }
-//
-//            }).execute()
-//        }
-
-//    private fun setRecyclerView() {
-//
-//        busCallAdpater = BusCallAdpater()
-//        busCallAdpater.submitList(busEntity)
-//
-//        binding.busFVRecyclerView.apply {
-//            adapter = busCallAdpater
-//            layoutManager = GridLayoutManager(App.instance,2, GridLayoutManager.VERTICAL,false)
-//
-//        }
-//    }
-//
-//
-//    @SuppressLint("StaticFieldLeak")
-//    private fun getNumAllBus(){
-//        val getAllTast = (object:AsyncTask<Unit,Unit,Unit>(){
-//            override fun doInBackground(vararg params: Unit?) {
-//                busNumEntity = busnumDataBase.busnumDAO().busnumGetAll()
-//                Log.d(TAG, "doInBackground: $busNumEntity")
-//            }
-//
-//            override fun onPostExecute(result: Unit?) {
-//                super.onPostExecute(result)
-////                setRecyclerView()
-//            }
-//
-//        }).execute()
-//    }
     }
+
+    private fun fuckinyeah(citycode:String, stationName:String){
+        launch(coroutineContext) {
+            try {
+                withContext(Dispatchers.IO){
+                    val call = coroutinesInterface.Coroutines_BUS_NAMEGET(citycode,stationName)
+                    val body = call.body()
+
+                    Log.d(TAG, "fuckinyeah: $body")
+
+                    body?.let{
+                        val hello = body.body.items.item
+                        busStationSearchAdapter = Bus_Station_Search_Adapter()
+
+                        binding.fuckingshit.apply {
+                            adapter = busStationSearchAdapter
+                            layoutManager = LinearLayoutManager(this@BusSubwayActivity)
+                            busStationSearchAdapter.submitList(hello)
+
+                        }
+                    }
+
+
+
+
+                }
+
+            }catch (e:Exception){
+                Log.d(TAG, "fuckinyeah:히힛 에러당 힣힛")
+            }
+        }
+
+    }
+
+
 }

@@ -4,8 +4,6 @@ import com.tickaroo.tikxml.annotation.Element
 import com.tickaroo.tikxml.annotation.PropertyElement
 import com.tickaroo.tikxml.annotation.Xml
 
-
-
 data class BusCityModel(
     val hi : String
 )

@@ -27,19 +27,13 @@ class MainActivity : AppCompatActivity() {
         binding.MainLogoDd.setOnClickListener {
 //            val intent = Intent(this,BusSubwayActivity::class.java)
             val intent = Intent(this,SecondActivity::class.java)
-
+//
             startActivity(intent)
 //            Toast.makeText(this,"gdgd",Toast.LENGTH_SHORT).show()
-            //하 인생
         }
 
     }
 
-    private fun nextfadePageGO(activity: Activity) {
-        val intent = Intent(this, SecondActivity::class.java)
-        startActivity(intent)
-        activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
-    }
 
 
 
