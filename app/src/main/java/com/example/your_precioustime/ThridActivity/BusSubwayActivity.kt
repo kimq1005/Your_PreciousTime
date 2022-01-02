@@ -49,10 +49,12 @@ class BusSubwayActivity : AppCompatActivity() ,CoroutineScope {
         setContentView(binding.root)
 
         job = Job()
+        busStationSearchAdapter = Bus_Station_Search_Adapter()
 
 
         binding.fuckingRecyclerbutton.setOnClickListener {
             fuckinyeah("31010","우남")
+            /////
         }
 
 
@@ -69,6 +71,7 @@ class BusSubwayActivity : AppCompatActivity() ,CoroutineScope {
 
                     body?.let{
                         val hello = body.body.items.item
+
                         busStationSearchAdapter = Bus_Station_Search_Adapter()
 
                         binding.fuckingshit.apply {
@@ -78,8 +81,6 @@ class BusSubwayActivity : AppCompatActivity() ,CoroutineScope {
 
                         }
                     }
-
-
 
 
                 }

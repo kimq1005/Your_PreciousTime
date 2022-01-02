@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
         mainActivitybinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         binding.MainLogoDd.setOnClickListener {
 //            val intent = Intent(this,BusSubwayActivity::class.java)
             val intent = Intent(this,SecondActivity::class.java)

@@ -55,8 +55,6 @@ object Retrofit_Client {
             .addConverterFactory(TikXmlConverterFactory.create(TikXml.Builder().exceptionOnUnreadXml(false).build()))
 //            .addConverterFactory(SimpleXmlConverterFactory.create())
 //            .addConverterFactory(GsonConverterFactory.create())
-
-
 //            .addConverterFactory(JaxbConverterFactory.create())
             .build()
 
