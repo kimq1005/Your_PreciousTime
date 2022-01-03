@@ -12,7 +12,7 @@
         android:id="@+id/Btn_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="2"
+        android:weightSum="3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -21,11 +21,11 @@
         <TextView
             android:textStyle="bold"
             android:id="@+id/BusInfo_Btn"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:gravity="center"
             android:layout_height="40dp"
             android:layout_weight="1"
-            android:text="정류장 검색"
+            android:text="버스"
             android:textColor="@color/black"
             android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,9 +33,24 @@
 
         <TextView
             android:textStyle="bold"
+            android:id="@+id/Subwayinfo_Btn"
+            android:layout_width="0dp"
             android:gravity="center"
-            android:id="@+id/SubInfo_Btn"
-            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:text="지하철"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        <TextView
+            android:textStyle="bold"
+            android:gravity="center"
+            android:id="@+id/FavoriteInfo_Btn"
+            android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"
             android:text="즐겨찾기"

@@ -1,4 +1,4 @@
-package com.example.your_precioustime.ThridActivity
+package com.example.your_precioustime.SecondActivity.FavoriteFragment
 
 import android.annotation.SuppressLint
 import android.os.AsyncTask
@@ -14,7 +14,6 @@ import com.example.your_precioustime.R
 import com.example.your_precioustime.Retrofit.Retrofit_Client
 import com.example.your_precioustime.Retrofit.Retrofit_InterFace
 import com.example.your_precioustime.SecondActivity.DB.*
-import com.example.your_precioustime.SecondActivity.UpAdpater
 import com.example.your_precioustime.Url
 import com.example.your_precioustime.Util.Companion.TAG
 import com.example.your_precioustime.databinding.ActivityDeepStationInfoBinding
@@ -26,7 +25,7 @@ class DeepStationInfoActivity : AppCompatActivity() {
     private var deepStationbinding:ActivityDeepStationInfoBinding? =null
     private val binding get() = deepStationbinding!!
 
-    private lateinit var upAdpater:UpAdpater
+    private lateinit var upAdpater: UpAdpater
 
     lateinit var busFavoriteDB : BusFavroiteDataBase
     lateinit var activitybusfavoriteEntity: List<TestFavoriteModel>

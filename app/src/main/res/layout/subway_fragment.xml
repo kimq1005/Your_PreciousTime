@@ -1,40 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    tools:context=".SecondActivity.SubwayFragment.SubwayFragment">
 
-
-
-    <View
-        android:id="@+id/myview1"
+    <EditText
+        android:id="@+id/SearchEditText"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="5dp"
-        android:background="@color/underline"
+        android:layout_height="40dp"
+        android:background="@color/white"
+        android:hint="역을 입력하세요"
+        android:padding="5dp"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/firstunderline"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SearchEditText" />
+
+
+    <ImageView
+        android:id="@+id/clickhere"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="5dp"
+        android:src="@drawable/ic_baseline_search_24"
+        app:layout_constraintBottom_toBottomOf="@+id/SearchEditText"
+        app:layout_constraintEnd_toEndOf="@+id/SearchEditText"
+        app:layout_constraintTop_toTopOf="@+id/SearchEditText" />
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/subwayRecyclerView"
         android:layout_width="match_parent"
-        android:background="@color/white"
         android:layout_height="0dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/white"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myview1"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/firstunderline"
         app:layout_constraintVertical_bias="0.0" />
 
 
-
-
-
+    <TextView
+        android:id="@+id/noResultTextView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="버스가 없어요 다시 입력하십쇼"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/firstunderline"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

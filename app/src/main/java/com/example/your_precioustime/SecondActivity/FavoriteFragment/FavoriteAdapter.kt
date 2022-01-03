@@ -1,4 +1,4 @@
-package com.example.your_precioustime.SecondActivity
+package com.example.your_precioustime.SecondActivity.FavoriteFragment
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -7,14 +7,15 @@ import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.your_precioustime.App
 import com.example.your_precioustime.SecondActivity.DB.OnDeleteInterFace
 import com.example.your_precioustime.SecondActivity.DB.TestFavoriteModel
 
 import com.example.your_precioustime.databinding.FavoritelistItemBinding
 
 
-class SubWayAdapter(var onDeleteInterFace: OnDeleteInterFace):ListAdapter<TestFavoriteModel,SubWayAdapter.SubwayViewHolder>(diffUtil) {
+class FavoriteAdapter(var onDeleteInterFace: OnDeleteInterFace):ListAdapter<TestFavoriteModel, FavoriteAdapter.SubwayViewHolder>(
+    diffUtil
+) {
     lateinit var testFavoriteModel: List<TestFavoriteModel>
     class SubwayViewHolder(val binding: FavoritelistItemBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(testFavoriteModel: TestFavoriteModel){
@@ -38,7 +39,7 @@ class SubWayAdapter(var onDeleteInterFace: OnDeleteInterFace):ListAdapter<TestFa
 
         holder.itemView.setOnClickListener {
 
-            val intent = Intent(holder.itemView.context,FavoriteDeepInfo::class.java).apply {
+            val intent = Intent(holder.itemView.context, FavoriteDeepInfo::class.java).apply {
                 putExtra("favoriteStationName",favoriteStationName)
                 putExtra("favoritenodenum",favoritenodenum)
             }

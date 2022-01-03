@@ -19,11 +19,13 @@
         <entry key="app/src/main/res/layout/bus_station_searchitem_layout.xml" value="0.335" />
         <entry key="app/src/main/res/layout/busfragment.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/busitem_layout.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/favoritelist_fragment.xml" value="0.23541666666666666" />
         <entry key="app/src/main/res/layout/favoritelist_item.xml" value="0.25" />
         <entry key="app/src/main/res/layout/favoritesbusitem_layout.xml" value="0.335" />
         <entry key="app/src/main/res/layout/mydialog.xml" value="0.25" />
         <entry key="app/src/main/res/layout/network_config.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/subway_fragment.xml" value="0.22884012539184953" />
+        <entry key="app/src/main/res/layout/subway_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/subway_item.xml" value="0.335" />
         <entry key="app/src/main/res/layout/subwayfragment.xml" value="0.2953125" />
         <entry key="app/src/main/res/xml/network_config.xml" value="0.1" />
       </map>

@@ -16,13 +16,13 @@
         android:theme="@style/Theme.Your_PreciousTime"
         tools:targetApi="n">
         <activity
-            android:name=".SecondActivity.FavoriteDeepInfo"
+            android:name=".SecondActivity.FavoriteFragment.FavoriteDeepInfo"
             android:exported="false" />
         <activity
-            android:name=".ThridActivity.DeepStationInfoActivity"
+            android:name=".SecondActivity.FavoriteFragment.DeepStationInfoActivity"
             android:exported="false" />
         <activity
-            android:name=".ThridActivity.BusSubwayActivity"
+            android:name=".SecondActivity.SubwayFragment.SubwayFragment"
             android:exported="false" />
         <activity
             android:name=".SecondActivity.SecondActivity"

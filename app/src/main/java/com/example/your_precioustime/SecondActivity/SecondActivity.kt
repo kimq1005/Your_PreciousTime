@@ -3,6 +3,9 @@ package com.example.your_precioustime.SecondActivity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.your_precioustime.R
+import com.example.your_precioustime.SecondActivity.Busfragment.BusFragment
+import com.example.your_precioustime.SecondActivity.FavoriteFragment.FavroiteFragment
+import com.example.your_precioustime.SecondActivity.SubwayFragment.SubwayFragment
 import com.example.your_precioustime.databinding.ActivitySecondBinding
 
 
@@ -32,9 +35,16 @@ class SecondActivity : AppCompatActivity() {
                 .commit()
         }
 
-        binding.SubInfoBtn.setOnClickListener {
+        binding.SubwayinfoBtn.setOnClickListener {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.SecondFragment,SubwayFragment())
+                .replace(R.id.SecondFragment , SubwayFragment())
+                .commit()
+        }
+
+
+        binding.FavoriteInfoBtn.setOnClickListener {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.SecondFragment, FavroiteFragment())
                 .commit()
         }
 

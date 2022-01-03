@@ -1,15 +1,11 @@
-package com.example.your_precioustime.SecondActivity
+package com.example.your_precioustime.SecondActivity.FavoriteFragment
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.your_precioustime.Model.Item
-import com.example.your_precioustime.Model.StationItem
-import com.example.your_precioustime.SecondActivity.DB.TestFavoriteModel
-import com.example.your_precioustime.Util
 import com.example.your_precioustime.databinding.BusitemLayoutBinding
 
 class DeepFavoriteAdapter:ListAdapter<Item, DeepFavoriteAdapter.myViewHolder>(diffUtil) {

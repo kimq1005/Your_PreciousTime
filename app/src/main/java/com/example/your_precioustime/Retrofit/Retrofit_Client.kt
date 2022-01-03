@@ -4,7 +4,6 @@ import com.example.your_precioustime.Model.OdsayModel.OdasyModel
 import com.example.your_precioustime.Url
 import com.example.your_precioustime.Url.Companion.BUS_API_KEY
 import com.google.gson.Gson
-import com.odsay.odsayandroidsdk.ODsayService
 import com.tickaroo.tikxml.TikXml
 import com.tickaroo.tikxml.retrofit.TikXmlConverterFactory
 import okhttp3.Interceptor
@@ -115,7 +114,6 @@ object Retrofit_Client {
 
                 val realRequest = chain.request()
 
-                val oDsayService:ODsayService
 
 
                 val goaddurl = realRequest

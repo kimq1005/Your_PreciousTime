@@ -1,4 +1,4 @@
-package com.example.your_precioustime.SecondActivity
+package com.example.your_precioustime.SecondActivity.FavoriteFragment
 
 import android.annotation.SuppressLint
 import android.os.AsyncTask
@@ -7,33 +7,29 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.your_precioustime.App
 import com.example.your_precioustime.R
-import com.example.your_precioustime.Retrofit.Retrofit_Client
-import com.example.your_precioustime.Retrofit.Retrofit_InterFace
 import com.example.your_precioustime.SecondActivity.DB.BusFavroiteDataBase
 import com.example.your_precioustime.SecondActivity.DB.OnDeleteInterFace
 import com.example.your_precioustime.SecondActivity.DB.TestFavoriteModel
-import com.example.your_precioustime.Url
 import com.example.your_precioustime.Util.Companion.TAG
-import com.example.your_precioustime.databinding.SubwayFragmentBinding
+import com.example.your_precioustime.databinding.FavoritelistFragmentBinding
 
 @SuppressLint("StaticFieldLeak")
-class SubwayFragment:Fragment(R.layout.subway_fragment), OnDeleteInterFace {
-    private var setbinding: SubwayFragmentBinding? = null
+class FavroiteFragment:Fragment(R.layout.favoritelist_fragment), OnDeleteInterFace {
+    private var setbinding: FavoritelistFragmentBinding? = null
     private val binding get() = setbinding!!
 
     lateinit var busFavoriteDB : BusFavroiteDataBase
     lateinit var busfavoriteEntity: List<TestFavoriteModel>
 
-    lateinit var subwayAdapter: SubWayAdapter
+    lateinit var subwayAdapter: FavoriteAdapter
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setbinding = SubwayFragmentBinding.bind(view)
+        setbinding = FavoritelistFragmentBinding.bind(view)
         busFavoriteDB = BusFavroiteDataBase.getinstance(App.instance)!!
 
         getAll()
@@ -62,7 +58,7 @@ class SubwayFragment:Fragment(R.layout.subway_fragment), OnDeleteInterFace {
 
     private fun setRecyclerViewfuck()=with(binding){
 
-        subwayAdapter = SubWayAdapter(this@SubwayFragment)
+        subwayAdapter = FavoriteAdapter(this@FavroiteFragment)
 
         subwayRecyclerView.apply {
             adapter = subwayAdapter

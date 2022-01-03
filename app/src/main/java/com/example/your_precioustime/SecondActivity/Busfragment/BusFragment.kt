@@ -1,42 +1,29 @@
-package com.example.your_precioustime.SecondActivity
+package com.example.your_precioustime.SecondActivity.Busfragment
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.your_precioustime.Model.*
 import com.example.your_precioustime.R
-import com.example.your_precioustime.Retrofit.Coroutines_InterFace
 import com.example.your_precioustime.Retrofit.Retrofit_Client
 import com.example.your_precioustime.Retrofit.Retrofit_InterFace
-import com.example.your_precioustime.Retrofit.Retrofit_Manager
-import com.example.your_precioustime.ThridActivity.BusSubwayActivity
 import com.example.your_precioustime.Url
 import com.example.your_precioustime.Util.Companion.TAG
 import com.example.your_precioustime.databinding.BusFragmentBinding
-import kotlinx.android.synthetic.main.subway_fragment.*
 import kotlinx.coroutines.*
 import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.create
 import kotlin.Exception
 import kotlin.coroutines.CoroutineContext
 
 
 class BusFragment:Fragment(R.layout.bus_fragment),CoroutineScope {
 
-    lateinit var upAdpater : UpAdpater
     private var busbinding :BusFragmentBinding? =null
     private val binding get() = busbinding!!
-    private var hicityCode: String? = null
     lateinit var busStationSearchAdapter: Bus_Station_Search_Adapter
 
 

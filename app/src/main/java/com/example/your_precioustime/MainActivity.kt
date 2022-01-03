@@ -1,13 +1,9 @@
 package com.example.your_precioustime
 
-import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.widget.Toast
 import com.example.your_precioustime.SecondActivity.SecondActivity
-import com.example.your_precioustime.ThridActivity.BusSubwayActivity
 import com.example.your_precioustime.databinding.ActivityMainBinding
 
 

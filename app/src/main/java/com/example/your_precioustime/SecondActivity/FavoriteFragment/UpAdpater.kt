@@ -1,25 +1,18 @@
-package com.example.your_precioustime.SecondActivity
+package com.example.your_precioustime.SecondActivity.FavoriteFragment
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.AsyncTask
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.your_precioustime.App
 import com.example.your_precioustime.Model.Item
-import com.example.your_precioustime.R
-import com.example.your_precioustime.ThridActivity.BusSubwayActivity
 import com.example.your_precioustime.Util.Companion.TAG
 import com.example.your_precioustime.databinding.BusitemLayoutBinding
-import kotlinx.android.synthetic.main.busitem_layout.view.*
 
 
-import android.view.View
 import com.example.your_precioustime.SecondActivity.DB.*
-import java.util.concurrent.TimeUnit
 
 
 @SuppressLint("StaticFieldLeak")

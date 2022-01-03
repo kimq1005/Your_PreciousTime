@@ -1,14 +1,12 @@
-package com.example.your_precioustime.SecondActivity
+package com.example.your_precioustime.SecondActivity.Busfragment
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.your_precioustime.Model.StationItem
-import com.example.your_precioustime.ThridActivity.DeepStationInfoActivity
+import com.example.your_precioustime.SecondActivity.FavoriteFragment.DeepStationInfoActivity
 import com.example.your_precioustime.databinding.BusStationSearchitemLayoutBinding
 
 class Bus_Station_Search_Adapter:RecyclerView.Adapter<Bus_Station_Search_Adapter.MyViewHolder>() {
@@ -40,7 +38,7 @@ class Bus_Station_Search_Adapter:RecyclerView.Adapter<Bus_Station_Search_Adapter
 
         holder.itemView.setOnClickListener{
 
-            val intent = Intent(holder.itemView.context,DeepStationInfoActivity::class.java)
+            val intent = Intent(holder.itemView.context, DeepStationInfoActivity::class.java)
             intent.putExtra("stationName" , stationName)
             intent.putExtra("stationnodenode", stationnodenode)
             intent.putExtra("stationNodeNumber", stationNodeNumber)
