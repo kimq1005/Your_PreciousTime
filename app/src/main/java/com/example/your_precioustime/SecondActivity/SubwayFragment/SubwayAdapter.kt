@@ -7,18 +7,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.your_precioustime.Model.SubwayItem
 import com.example.your_precioustime.databinding.SubwayItemBinding
 
-class SubwayAdapter:RecyclerView.Adapter<SubwayAdapter.MyViewHolder>() {
+class SubwayAdapter : RecyclerView.Adapter<SubwayAdapter.MyViewHolder>() {
+
     lateinit var subwayItem: List<SubwayItem>
-    inner class MyViewHolder(val binding:SubwayItemBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bind(subwayItem:SubwayItem){
+
+    inner class MyViewHolder(val binding: SubwayItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(subwayItem: SubwayItem) {
             binding.subwayitemTrainLineNm.text = subwayItem.trainLineNm
             binding.subwayitemBstatnNm.text = subwayItem.bstatnNm
-            binding.subwayitemBarvlDt.text = subwayItem.barvlDt
+            binding.subwayitemBarvlDt.text = subwayItem.barvlDt.toString()
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = SubwayItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val view = SubwayItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
         return MyViewHolder(view)
     }
@@ -32,7 +35,7 @@ class SubwayAdapter:RecyclerView.Adapter<SubwayAdapter.MyViewHolder>() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun submitList(list:List<SubwayItem>){
+    fun submitList(list: List<SubwayItem>) {
         subwayItem = list
         notifyDataSetChanged()
     }
