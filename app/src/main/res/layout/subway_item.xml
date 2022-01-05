@@ -6,27 +6,40 @@
 
 
     <TextView
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
         android:id="@+id/subwayitem_trainLineNm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         android:text="성수행 - 역삼방면"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/subwayitem_subwayId"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/subwayitem_trainLineNm"
+        app:layout_constraintStart_toEndOf="@+id/subwayitem_trainLineNm"
+        app:layout_constraintTop_toTopOf="@+id/subwayitem_trainLineNm"
+        android:text="1"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 
 
 
     <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="7dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/subwayitem_trainLineNm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        app:layout_constraintTop_toBottomOf="@+id/subwayitem_trainLineNm">
 
         <TextView
             android:id="@+id/subwayitem_bstatnNm"
@@ -36,25 +49,31 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/subwayitem_trainLineNm" />
 
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="행"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subwayitem_trainLineNm" />
+
 
         <TextView
             android:id="@+id/subwayitem_barvlDt"
-            android:textColor="@color/red"
-            android:layout_marginLeft="18dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5" />
+            android:layout_marginLeft="18dp"
+            android:text="5"
+            android:textColor="@color/red" />
 
         <TextView
-            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
             android:text="분 후 도착"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:textColor="@color/black" />
 
     </LinearLayout>
-
-
 
 
     <View

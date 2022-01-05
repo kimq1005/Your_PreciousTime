@@ -8,7 +8,23 @@
         <entry key="app/src/main/res/drawable/ic_baseline_directions_bus_24.xml" value="0.31145833333333334" />
         <entry key="app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.25416666666666665" />
+        <entry key="app/src/main/res/drawable/line2_background.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/line3_background.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/line4_background.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/line5_background.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/line6_background.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/line7_background.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/line8_background.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/line9_background.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/line_UI_background.xml" value="0.2515625" />
+        <entry key="app/src/main/res/drawable/line_bundang_background.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/line_gyungchun_background.xml" value="0.2515625" />
+        <entry key="app/src/main/res/drawable/line_gyunge_background.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/line_jagibusang_background.xml" value="0.2515625" />
+        <entry key="app/src/main/res/drawable/line_sinbundang_background.xml" value="0.2515625" />
+        <entry key="app/src/main/res/drawable/line_ui_background.xml" value="0.24947916666666667" />
         <entry key="app/src/main/res/drawable/mydialog.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/radious_background.xml" value="0.24947916666666667" />
         <entry key="app/src/main/res/drawable/rectangle_radious.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/layout/activity_bus_subway.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_deep_station_info.xml" value="0.25" />

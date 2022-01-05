@@ -48,8 +48,7 @@ data class RealtimeArrival(
 //    val statnTid: String?,
 //    @SerializedName("subwayHeading")
 //    val subwayHeading: String?,
-//    @SerializedName("subwayId")
-//    val subwayId: String?,
+
 //    @SerializedName("subwayList")
 //    val subwayList: String?,
 //    @SerializedName("subwayNm")
@@ -61,6 +60,9 @@ data class RealtimeArrival(
 
 //    @SerializedName("updnLine")
 //    val updnLine: String?,
+
+    @SerializedName("subwayId")
+    val subwayId: String?,
 
     @SerializedName("trainLineNm")
     val trainLineNm: String?,
