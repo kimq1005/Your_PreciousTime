@@ -85,10 +85,10 @@ class SubwayFragment : Fragment(R.layout.subway_fragment) {
 
                         val trainLineNm = hello.get(i).trainLineNm
                         val bstatnNm = hello.get(i).bstatnNm
-                        val barvlDt = hello.get(i).barvlDt
+                        val arvlMsg2 = hello.get(i).arvlMsg2
 
                         subwaymodel.add(
-                            SubwayItem(firstsubwayId, trainLineNm, bstatnNm, barvlDt)
+                            SubwayItem(firstsubwayId, trainLineNm, bstatnNm, arvlMsg2)
                         )
 
                     }
@@ -134,17 +134,19 @@ class SubwayFragment : Fragment(R.layout.subway_fragment) {
                                 subwaymodel[i].subwayId="경의"
                             }
 
+                            "1065"->{
+                                subwaymodel[i].subwayId="공항"
+                            }
+
                             "1067"->{
                                 subwaymodel[i].subwayId="경춘"
                             }
+
 
                             "1075"->{
                                 subwaymodel[i].subwayId="수인"
                             }
 
-                            "1065"->{
-                                subwaymodel[i].subwayId="공항"
-                            }
 
                             "1077"->{
                                 subwaymodel[i].subwayId="신"

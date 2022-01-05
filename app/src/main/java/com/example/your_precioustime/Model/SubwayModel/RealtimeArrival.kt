@@ -73,10 +73,8 @@ data class RealtimeArrival(
     @SerializedName("barvlDt")
     val barvlDt: Int?,
 
-
-
-//    @SerializedName("arvlMsg2")
-//    val arvlMsg2: String?,
+    @SerializedName("arvlMsg2")
+    val arvlMsg2: String?,
 //
 //    @SerializedName("arvlMsg3")
 //    val arvlMsg3: String?,

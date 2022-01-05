@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:id="@+id/subwayitem_root"
     android:layout_height="80dp">
 
 
@@ -26,7 +27,7 @@
         app:layout_constraintTop_toTopOf="@+id/subwayitem_trainLineNm"
         android:text="1"
         android:gravity="center"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
@@ -66,12 +67,7 @@
             android:text="5"
             android:textColor="@color/red" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
-            android:text="분 후 도착"
-            android:textColor="@color/black" />
+
 
     </LinearLayout>
 

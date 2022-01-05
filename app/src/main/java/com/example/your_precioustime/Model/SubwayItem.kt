@@ -4,5 +4,6 @@ data class SubwayItem(
     var subwayId:String?,
     val trainLineNm : String?,
     val bstatnNm:String?,
-    val barvlDt:Int?
+    val arvlMsg2 : String?,
+//    val barvlDt:Int?
 )
