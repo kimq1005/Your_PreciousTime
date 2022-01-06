@@ -1,4 +1,4 @@
-package com.example.your_precioustime.SecondActivity.DB
+package com.example.your_precioustime.SecondActivity.DB.SubwayDB
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

@@ -146,26 +146,6 @@ class BusFragment:Fragment(R.layout.bus_fragment),CoroutineScope {
 
     }
 
-
-    private fun CoroutinesCall(citycode:String,stationName: String)=with(binding){
-        launch(coroutineContext) {
-            try{
-                withContext(Dispatchers.IO){
-                    val response = Retrofit_Client.Retrofit_Object.Coroutines_BUS_NAMEGET(citycode,stationName)
-
-                    if(response.isSuccessful){
-                        val body = response.body()
-                        withContext(Dispatchers.Main){
-                            Log.d(TAG, "CoroutinesCall:${response.body()}")
-                        }
-                    }
-                }
-            }catch (e:Exception){
-                e.printStackTrace()
-                Log.d(TAG, "CoroutinesCall:에러다에러다에러")
-            }
-        }
-    }
 }
 
 

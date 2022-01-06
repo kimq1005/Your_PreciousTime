@@ -11,7 +11,8 @@ import com.example.your_precioustime.App
 import com.example.your_precioustime.R
 import com.example.your_precioustime.SecondActivity.DB.BusFavroiteDataBase
 import com.example.your_precioustime.SecondActivity.DB.OnDeleteInterFace
-import com.example.your_precioustime.SecondActivity.DB.TestFavoriteModel
+import com.example.your_precioustime.SecondActivity.DB.SubwayDB.TestFavoriteModel
+import com.example.your_precioustime.SecondActivity.SubwayFragment.SubwayAdapter
 import com.example.your_precioustime.Util.Companion.TAG
 import com.example.your_precioustime.databinding.FavoritelistFragmentBinding
 
@@ -24,7 +25,7 @@ class FavroiteFragment:Fragment(R.layout.favoritelist_fragment), OnDeleteInterFa
     lateinit var busfavoriteEntity: List<TestFavoriteModel>
 
     lateinit var subwayAdapter: FavoriteAdapter
-
+    lateinit var testAdapter: SubwayAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -33,6 +34,8 @@ class FavroiteFragment:Fragment(R.layout.favoritelist_fragment), OnDeleteInterFa
         busFavoriteDB = BusFavroiteDataBase.getinstance(App.instance)!!
 
         getAll()
+        testAdapter = SubwayAdapter()
+
 
 
     }
@@ -60,7 +63,7 @@ class FavroiteFragment:Fragment(R.layout.favoritelist_fragment), OnDeleteInterFa
 
         subwayAdapter = FavoriteAdapter(this@FavroiteFragment)
 
-        subwayRecyclerView.apply {
+        favroitePageBusRecyclerView.apply {
             adapter = subwayAdapter
 //            layoutManager= LinearLayoutManager(context)
             layoutManager= GridLayoutManager(App.instance,2,GridLayoutManager.VERTICAL,false)

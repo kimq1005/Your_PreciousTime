@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.your_precioustime.SecondActivity.DB.OnDeleteInterFace
-import com.example.your_precioustime.SecondActivity.DB.TestFavoriteModel
+import com.example.your_precioustime.SecondActivity.DB.SubwayDB.TestFavoriteModel
 
 import com.example.your_precioustime.databinding.FavoritelistItemBinding
 

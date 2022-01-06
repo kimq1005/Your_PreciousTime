@@ -14,6 +14,7 @@ import com.example.your_precioustime.R
 import com.example.your_precioustime.Retrofit.Retrofit_Client
 import com.example.your_precioustime.Retrofit.Retrofit_InterFace
 import com.example.your_precioustime.SecondActivity.DB.*
+import com.example.your_precioustime.SecondActivity.DB.SubwayDB.TestFavoriteModel
 import com.example.your_precioustime.Url
 import com.example.your_precioustime.Util.Companion.TAG
 import com.example.your_precioustime.databinding.ActivityDeepStationInfoBinding
@@ -174,7 +175,7 @@ class DeepStationInfoActivity : AppCompatActivity() {
 
     }
 
-    private fun BUSFravoriteInsert(busfavoriteEntity:TestFavoriteModel){
+    private fun BUSFravoriteInsert(busfavoriteEntity: TestFavoriteModel){
 
 
         var businsertTask = (object : AsyncTask<Unit, Unit, Unit>(){
