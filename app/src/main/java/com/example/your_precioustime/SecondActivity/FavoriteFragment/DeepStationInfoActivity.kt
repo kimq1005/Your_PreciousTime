@@ -184,12 +184,10 @@ class DeepStationInfoActivity : AppCompatActivity() {
                 activitybusfavoriteEntity = busFavoriteDB.busFavoriteDAO().busFavoriteGetAll()
 
                 val stationnameList = mutableListOf<String>()
-
                 for(i in activitybusfavoriteEntity.indices){
                     val stationname = activitybusfavoriteEntity.get(i).stationName
                     stationnameList.add(stationname)
                 }
-
                 if(binding.BusStationName.text !in stationnameList){
                     busFavoriteDB.busFavoriteDAO().busFavoriteInsert(busfavoriteEntity)
                 }

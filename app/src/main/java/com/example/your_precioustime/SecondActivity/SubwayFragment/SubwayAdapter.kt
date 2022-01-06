@@ -15,6 +15,7 @@ import com.example.your_precioustime.Model.SubwayItem
 import com.example.your_precioustime.R
 import com.example.your_precioustime.SecondActivity.DB.SubwayDB.SubwayDataBase
 import com.example.your_precioustime.SecondActivity.DB.SubwayDB.SubwayEntity
+import com.example.your_precioustime.SecondActivity.DB.SubwayDB.TestFavoriteModel
 import com.example.your_precioustime.Util.Companion.TAG
 import com.example.your_precioustime.databinding.SubwayItemBinding
 
@@ -25,6 +26,7 @@ class SubwayAdapter : RecyclerView.Adapter<SubwayAdapter.MyViewHolder>() {
     lateinit var subwayDataBase: SubwayDataBase
 
 
+    lateinit var subwayEntity: List<SubwayEntity>
 
 
     inner class MyViewHolder(val binding: SubwayItemBinding) :
@@ -121,13 +123,16 @@ class SubwayAdapter : RecyclerView.Adapter<SubwayAdapter.MyViewHolder>() {
             val bstatnNm = subwayItem[position].bstatnNm
             val arvlMsg2 = subwayItem[position].arvlMsg2
 
-            val testmodel = mutableListOf<SubwayItem>()
+            var testmodel: ArrayList<SubwayEntity>
 
-            testmodel.add(
-                SubwayItem(subwayId, trainLineNm, bstatnNm, arvlMsg2)
-            )
+            val hi = SubwayEntity(null, subwayId, trainLineNm, bstatnNm, arvlMsg2)
 
+//            testmodel.add(
+//                SubwayEntity(null, subwayId, trainLineNm, bstatnNm, arvlMsg2)
+//            )
 
+            fuckinsert(hi)
+            Toast.makeText(holder.itemView.context, "즐겨찾기 저장 완료다", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -140,6 +145,19 @@ class SubwayAdapter : RecyclerView.Adapter<SubwayAdapter.MyViewHolder>() {
     fun submitList(list: List<SubwayItem>) {
         subwayItem = list
         notifyDataSetChanged()
+    }
+
+    private fun fuckinsert(subwayItem: SubwayEntity) {
+        subwayDataBase = SubwayDataBase.getinstance(App.instance)!!
+        val insertTask = (object : AsyncTask<Unit, Unit, Unit>() {
+            override fun doInBackground(vararg params: Unit?) {
+                subwayDataBase.subwayDAO().subwayInsert(subwayItem)
+                subwayEntity = subwayDataBase.subwayDAO().subwayGetAll()
+                Log.d(TAG, "onPostExecute: $subwayEntity")
+            }
+
+
+        }).execute()
     }
 
 

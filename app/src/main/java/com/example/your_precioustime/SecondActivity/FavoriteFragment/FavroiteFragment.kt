@@ -24,8 +24,9 @@ class FavroiteFragment:Fragment(R.layout.favoritelist_fragment), OnDeleteInterFa
     lateinit var busFavoriteDB : BusFavroiteDataBase
     lateinit var busfavoriteEntity: List<TestFavoriteModel>
 
-    lateinit var subwayAdapter: FavoriteAdapter
+    lateinit var favroiteAdapter: FavoriteAdapter
     lateinit var testAdapter: SubwayAdapter
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -61,13 +62,13 @@ class FavroiteFragment:Fragment(R.layout.favoritelist_fragment), OnDeleteInterFa
 
     private fun setRecyclerViewfuck()=with(binding){
 
-        subwayAdapter = FavoriteAdapter(this@FavroiteFragment)
+        favroiteAdapter = FavoriteAdapter(this@FavroiteFragment)
 
         favroitePageBusRecyclerView.apply {
-            adapter = subwayAdapter
+            adapter = favroiteAdapter
 //            layoutManager= LinearLayoutManager(context)
             layoutManager= GridLayoutManager(App.instance,2,GridLayoutManager.VERTICAL,false)
-            subwayAdapter.submitList(busfavoriteEntity)
+            favroiteAdapter.submitList(busfavoriteEntity)
 
         }
 

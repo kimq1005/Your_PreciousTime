@@ -45,7 +45,15 @@ class SubwayFragment : Fragment(R.layout.subway_fragment) {
         binding.clickhere.setOnClickListener {
             val searchtext = binding.SearchEditText.text.toString()
             getsubwayCall(searchtext)
+
         }
+
+//        binding.tetbtn.setOnClickListener {
+//            subwayAdapter = SubwayAdapter()
+//
+//        }
+
+
 
 //        setRecyclerView()
 
@@ -162,7 +170,6 @@ class SubwayFragment : Fragment(R.layout.subway_fragment) {
 
                         }
                     }
-
 
 
                     setRecyclerView(subwaymodel)
