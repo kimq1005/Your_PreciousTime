@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Your_PreciousTime"
         tools:targetApi="n">
         <activity
+            android:name=".SecondActivity.Busfragment.Bus_Activity"
+            android:exported="false" />
+        <activity
             android:name=".SecondActivity.FavoriteFragment.FavoriteDeepInfo"
             android:exported="false" />
         <activity

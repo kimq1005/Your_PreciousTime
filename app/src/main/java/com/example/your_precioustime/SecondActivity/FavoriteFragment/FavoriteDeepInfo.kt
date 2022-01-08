@@ -30,6 +30,7 @@ class FavoriteDeepInfo : AppCompatActivity() {
 
         binding.backbtn.setOnClickListener {
             onBackPressed()
+
         }
 
 

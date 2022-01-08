@@ -13,8 +13,6 @@ class MainActivity : AppCompatActivity() {
     private val binding get() = mainActivitybinding!!
     //hi
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainActivitybinding = ActivityMainBinding.inflate(layoutInflater)

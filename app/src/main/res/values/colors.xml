@@ -10,4 +10,6 @@
     <color name="mybackground">#F0F5FB</color>
     <color name="underline">#EFEFEF</color>
     <color name="red">#FF0600</color>
+    <color name="maincolor">#2D3038</color>
+    <color name="subcolor">#27292E</color>
 </resources>
