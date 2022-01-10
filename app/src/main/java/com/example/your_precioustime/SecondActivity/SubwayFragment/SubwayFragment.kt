@@ -57,7 +57,6 @@ class SubwayFragment : AppCompatActivity() {
 
         ToggleSet()
 
-
         binding.clickhere.setOnClickListener {
             val searchtext = binding.SearchEditText2.text.toString()
             binding.subtitleTextView.text = searchtext
