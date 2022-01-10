@@ -86,11 +86,11 @@ class SubwayAdapter : RecyclerView.Adapter<SubwayAdapter.MyViewHolder>() {
             }
 
 
-            "경의" -> {
+            "경" -> {
                 holder.binding.subwayitemSubwayId.setBackgroundResource(R.drawable.line_gyunge_background)
             }
 
-            "공항" -> {
+            "공" -> {
                 holder.binding.subwayitemSubwayId.setBackgroundResource(R.drawable.line_gonghang_background)
             }
 
@@ -99,7 +99,7 @@ class SubwayAdapter : RecyclerView.Adapter<SubwayAdapter.MyViewHolder>() {
             }
 
 
-            "수인" -> {
+            "수" -> {
                 holder.binding.subwayitemSubwayId.setBackgroundResource(R.drawable.line_bundang_background)
             }
 
@@ -108,32 +108,27 @@ class SubwayAdapter : RecyclerView.Adapter<SubwayAdapter.MyViewHolder>() {
                 holder.binding.subwayitemSubwayId.setBackgroundResource(R.drawable.line_sinbundang_background)
             }
 
-            "자기" -> {
+            "자" -> {
                 holder.binding.subwayitemSubwayId.setBackgroundResource(R.drawable.line_jagibusang_background)
             }
 
-            "우이" -> {
+            "우" -> {
                 holder.binding.subwayitemSubwayId.setBackgroundResource(R.drawable.line_ui_background)
             }
         }
 
-        holder.binding.saveBtn.setOnClickListener {
-            val subwayId = subwayItem[position].subwayId.toString()
-            val trainLineNm = subwayItem[position].trainLineNm
-            val bstatnNm = subwayItem[position].bstatnNm
-            val arvlMsg2 = subwayItem[position].arvlMsg2
-
-            var testmodel: ArrayList<SubwayEntity>
-
-            val hi = SubwayEntity(null, subwayId, trainLineNm, bstatnNm, arvlMsg2)
-
-//            testmodel.add(
-//                SubwayEntity(null, subwayId, trainLineNm, bstatnNm, arvlMsg2)
-//            )
-
-            fuckinsert(hi)
-            Toast.makeText(holder.itemView.context, "즐겨찾기 저장 완료다", Toast.LENGTH_SHORT).show()
-        }
+//        holder.binding.saveBtn.setOnClickListener {
+//            val subwayId = subwayItem[position].subwayId.toString()
+//            val trainLineNm = subwayItem[position].trainLineNm
+//            val bstatnNm = subwayItem[position].bstatnNm
+//            val arvlMsg2 = subwayItem[position].arvlMsg2
+//
+//            val hi = SubwayEntity(null, subwayId, trainLineNm, bstatnNm, arvlMsg2)
+//
+//            subwayinsert(hi)
+//
+//            Toast.makeText(holder.itemView.context, "즐겨찾기에 등록 되었습니다.", Toast.LENGTH_SHORT).show()
+//        }
     }
 
 
@@ -147,18 +142,24 @@ class SubwayAdapter : RecyclerView.Adapter<SubwayAdapter.MyViewHolder>() {
         notifyDataSetChanged()
     }
 
-    private fun fuckinsert(subwayItem: SubwayEntity) {
-        subwayDataBase = SubwayDataBase.getinstance(App.instance)!!
-        val insertTask = (object : AsyncTask<Unit, Unit, Unit>() {
-            override fun doInBackground(vararg params: Unit?) {
-                subwayDataBase.subwayDAO().subwayInsert(subwayItem)
-                subwayEntity = subwayDataBase.subwayDAO().subwayGetAll()
-                Log.d(TAG, "onPostExecute: $subwayEntity")
-            }
-
-
-        }).execute()
-    }
+//    private fun subwayinsert(subwayItem: SubwayEntity) {
+//        subwayDataBase = SubwayDataBase.getinstance(App.instance)!!
+//        val insertTask = (object : AsyncTask<Unit, Unit, Unit>() {
+//            override fun doInBackground(vararg params: Unit?) {
+//                subwayDataBase.subwayDAO().subwayInsert(subwayItem)
+//
+//                subwayEntity = subwayDataBase.subwayDAO().subwayGetAll()
+//                Log.d(TAG, "onPostExecute: $subwayEntity")
+//            }
+//
+//            override fun onPostExecute(result: Unit?) {
+//                super.onPostExecute(result)
+//                Toast.makeText(App.instance, "$subwayEntity",Toast.LENGTH_SHORT).show()
+//            }
+//
+//
+//        }).execute()
+//    }
 
 
 

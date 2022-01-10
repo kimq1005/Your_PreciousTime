@@ -1,9 +1,11 @@
 package com.example.your_precioustime.SecondActivity.Busfragment
 
+import android.animation.ObjectAnimator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.your_precioustime.Model.StationBus
 import com.example.your_precioustime.Retrofit.Retrofit_Client
@@ -20,6 +22,7 @@ class Bus_Activity : AppCompatActivity() {
 
     private var busBinding:ActivityBusBinding?=null
     private val binding get() = busBinding!!
+    private var isFabOpen = false
 
     lateinit var busStationSearchAdapter: Bus_Station_Search_Adapter
 
@@ -38,6 +41,10 @@ class Bus_Activity : AppCompatActivity() {
 //            hellomy(suwoncitycode,"GGB203000129")
 
         ClickSearchBtn()
+        binding.floatingBtn.setOnClickListener {
+            ToggleSet()
+        }
+
     }
 
     private fun ClickSearchBtn() =with(binding) {
@@ -53,6 +60,21 @@ class Bus_Activity : AppCompatActivity() {
         SearchEditText.setOnClickListener {
             noResultTextView.visibility = View.INVISIBLE
         }
+
+    }
+
+    private fun ToggleSet(){
+
+        if(isFabOpen){
+            ObjectAnimator.ofFloat(binding.BusfloatBtn,"translationY", 0f).apply { start() }
+            ObjectAnimator.ofFloat(binding.SubwayFloatBtn,"translationY", 0f).apply { start() }
+        }
+        else{
+            ObjectAnimator.ofFloat(binding.BusfloatBtn,"translationY", -150f).apply { start() }
+            ObjectAnimator.ofFloat(binding.SubwayFloatBtn,"translationY", -300f).apply { start() }
+        }
+
+        isFabOpen = !isFabOpen
 
     }
 

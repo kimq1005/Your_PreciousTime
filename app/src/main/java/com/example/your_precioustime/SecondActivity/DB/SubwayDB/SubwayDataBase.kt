@@ -5,9 +5,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = arrayOf(SubwayEntity::class), version = 1)
+@Database(entities = arrayOf(SubwayNameEntity::class), version = 2)
 abstract class SubwayDataBase : RoomDatabase() {
-    abstract fun subwayDAO(): SubwayDAO
+    abstract fun subwayNameDAO(): SubwayNameDAO
 
     companion object{
         private var INSTANCE: SubwayDataBase? = null
@@ -16,7 +16,7 @@ abstract class SubwayDataBase : RoomDatabase() {
             if(INSTANCE==null){
                 synchronized(SubwayDataBase::class){
                     INSTANCE = Room.databaseBuilder(context.applicationContext,
-                    SubwayDataBase::class.java,"subway.db")
+                    SubwayDataBase::class.java,"subwayname.db")
                         .fallbackToDestructiveMigration()
                         .build()
                 }

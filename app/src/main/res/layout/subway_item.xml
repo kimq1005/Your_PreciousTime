@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:id="@+id/subwayitem_root"
+    android:background="@color/maincolor"
     android:layout_height="80dp">
 
 
@@ -13,9 +14,8 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:text="성수행 - 역삼방면"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="16sp"
-        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -66,21 +66,12 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="18dp"
             android:text="5"
-            android:textColor="@color/red" />
+            android:textColor="@color/white" />
 
 
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/saveBtn"
-        android:layout_marginEnd="17dp"
-        app:layout_constraintTop_toTopOf="@+id/subwayitem_trainLineNm"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/subwayLinearlayout"
-        android:src="@drawable/star"
-        android:layout_width="20dp"
-        android:layout_height="20dp"/>
 
 
     <View

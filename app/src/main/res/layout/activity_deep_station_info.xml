@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/maincolor"
     tools:context=".SecondActivity.FavoriteFragment.DeepStationInfoActivity">
 
     <ImageView
@@ -21,7 +22,6 @@
         android:id="@+id/second_mainlogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/white"
         android:fontFamily="@font/nanumgothic_bold"
         android:gravity="center"
         android:padding="10dp"
@@ -51,6 +51,7 @@
         android:layout_height="17dp"/>
 
     <TextView
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/Upunderline"
@@ -60,7 +61,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
         android:text="나는 전설이다 정류장"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
          />

@@ -25,7 +25,7 @@ import com.example.your_precioustime.Util
 import com.example.your_precioustime.databinding.ActivitySecondBinding
 import com.example.your_precioustime.databinding.FavoritelistFragmentBinding
 
-
+@SuppressLint("StaticFieldLeak")
 class SecondActivity : AppCompatActivity(), OnDeleteInterFace {
 
     private var secondBinding : ActivitySecondBinding? =null
@@ -60,10 +60,9 @@ class SecondActivity : AppCompatActivity(), OnDeleteInterFace {
 
 
         binding.SubwayFloatBtn.setOnClickListener {
-
+            val intent = Intent(this,SubwayFragment::class.java)
+            startActivity(intent)
         }
-
-
 
 
 
@@ -72,22 +71,16 @@ class SecondActivity : AppCompatActivity(), OnDeleteInterFace {
 
 
 
-
-
-
-
     }
 
     private fun ToggleSet(){
-        Toast.makeText(this,"버튼이 입력되었습니다 $isFabOpen", Toast.LENGTH_SHORT).show()
-
         if(isFabOpen){
-            ObjectAnimator.ofFloat(binding.BusfloatBtn,"translationX", 0f).apply { start() }
+            ObjectAnimator.ofFloat(binding.BusfloatBtn,"translationY", 0f).apply { start() }
             ObjectAnimator.ofFloat(binding.SubwayFloatBtn,"translationY", 0f).apply { start() }
         }
         else{
-            ObjectAnimator.ofFloat(binding.BusfloatBtn,"translationX", -200f).apply { start() }
-            ObjectAnimator.ofFloat(binding.SubwayFloatBtn,"translationY", -400f).apply { start() }
+            ObjectAnimator.ofFloat(binding.BusfloatBtn,"translationY", -150f).apply { start() }
+            ObjectAnimator.ofFloat(binding.SubwayFloatBtn,"translationY", -300f).apply { start() }
         }
 
         isFabOpen = !isFabOpen
@@ -130,7 +123,8 @@ class SecondActivity : AppCompatActivity(), OnDeleteInterFace {
 
     private fun ondeleteList(testFavoriteModel: TestFavoriteModel){
 
-        val deleteTask = (object : AsyncTask<Unit, Unit, Unit>(){
+        val deleteTask = (
+        object : AsyncTask<Unit, Unit, Unit>(){
             override fun doInBackground(vararg params: Unit?) {
                 busFavoriteDB.busFavoriteDAO().busFavoriteDelete(testFavoriteModel)
             }

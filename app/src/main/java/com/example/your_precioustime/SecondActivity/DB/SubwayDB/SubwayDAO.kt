@@ -19,3 +19,16 @@ interface SubwayDAO {
     @Delete
     fun subwayDelete(subwayEntity: SubwayEntity)
 }
+
+
+@Dao
+interface SubwayNameDAO {
+    @Insert(onConflict = REPLACE)
+    fun subwayInsert(subwayNameEntity: SubwayNameEntity)
+
+    @Query("SELECT * FROM subwaynameEntity")
+    fun subwayGetAll() : List<SubwayNameEntity>
+
+    @Delete
+    fun subwayDelete(subwayNameEntity: SubwayNameEntity)
+}

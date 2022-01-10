@@ -12,4 +12,5 @@
     <color name="red">#FF0600</color>
     <color name="maincolor">#2D3038</color>
     <color name="subcolor">#27292E</color>
+    <color name="ovalcolor">#222222</color>
 </resources>
