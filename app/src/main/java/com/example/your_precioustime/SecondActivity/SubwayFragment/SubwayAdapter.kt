@@ -23,10 +23,7 @@ import com.example.your_precioustime.databinding.SubwayItemBinding
 class SubwayAdapter : RecyclerView.Adapter<SubwayAdapter.MyViewHolder>() {
 
     lateinit var subwayItem: List<SubwayItem>
-    lateinit var subwayDataBase: SubwayDataBase
 
-
-    lateinit var subwayEntity: List<SubwayEntity>
 
 
     inner class MyViewHolder(val binding: SubwayItemBinding) :

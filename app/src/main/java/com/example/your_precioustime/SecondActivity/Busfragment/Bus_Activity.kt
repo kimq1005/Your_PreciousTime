@@ -1,6 +1,7 @@
 package com.example.your_precioustime.SecondActivity.Busfragment
 
 import android.animation.ObjectAnimator
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -10,10 +11,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.your_precioustime.Model.StationBus
 import com.example.your_precioustime.Retrofit.Retrofit_Client
 import com.example.your_precioustime.Retrofit.Retrofit_InterFace
+import com.example.your_precioustime.SecondActivity.SecondActivity
+import com.example.your_precioustime.SecondActivity.SubwayFragment.SubwayFragment
 import com.example.your_precioustime.Url
 import com.example.your_precioustime.Util
 import com.example.your_precioustime.databinding.ActivityBusBinding
 import com.example.your_precioustime.databinding.BusFragmentBinding
+import kotlinx.android.synthetic.main.activity_bus.*
 import kotlinx.coroutines.Job
 import retrofit2.Call
 import retrofit2.Response
@@ -66,12 +70,24 @@ class Bus_Activity : AppCompatActivity() {
     private fun ToggleSet(){
 
         if(isFabOpen){
-            ObjectAnimator.ofFloat(binding.BusfloatBtn,"translationY", 0f).apply { start() }
+            ObjectAnimator.ofFloat(binding.FvBtnFloat,"translationY", 0f).apply { start() }
             ObjectAnimator.ofFloat(binding.SubwayFloatBtn,"translationY", 0f).apply { start() }
         }
         else{
-            ObjectAnimator.ofFloat(binding.BusfloatBtn,"translationY", -150f).apply { start() }
+            ObjectAnimator.ofFloat(binding.FvBtnFloat,"translationY", -150f).apply { start() }
             ObjectAnimator.ofFloat(binding.SubwayFloatBtn,"translationY", -300f).apply { start() }
+        }
+
+        binding.FvBtnFloat.setOnClickListener {
+            val intent = Intent(this, SecondActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        binding.SubwayFloatBtn.setOnClickListener {
+            val intent = Intent(this, SubwayFragment::class.java)
+            startActivity(intent)
+            finish()
         }
 
         isFabOpen = !isFabOpen

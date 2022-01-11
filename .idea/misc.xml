@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.25416666666666665" />
+        <entry key="app/src/main/res/drawable/bus_rectangle_background.xml" value="0.24923076923076923" />
         <entry key="app/src/main/res/drawable/fullstar.xml" value="0.24512820512820513" />
         <entry key="app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.2037037037037037" />
         <entry key="app/src/main/res/drawable/ic_baseline_directions_bus_24.xml" value="0.31145833333333334" />
@@ -32,7 +33,8 @@
         <entry key="app/src/main/res/drawable/rectangle_searchbackground.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/drawable/whitestar.xml" value="0.24512820512820513" />
         <entry key="app/src/main/res/layout-v21/activity_second.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_bus.xml" value="0.335" />
+        <entry key="app/src/main/res/layout-v21/subwayfavoritelist_item.xml" value="0.45" />
+        <entry key="app/src/main/res/layout/activity_bus.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_bus_subway.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_deep_station_info.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_favorite_deep_info.xml" value="0.25" />

@@ -2,20 +2,15 @@ package com.example.your_precioustime.SecondActivity.SubwayFragment
 
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
-import android.opengl.Visibility
 import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.your_precioustime.App
 import com.example.your_precioustime.Model.SubwayItem
-import com.example.your_precioustime.Model.SubwayModel.RealtimeArrival
 import com.example.your_precioustime.Model.SubwayModel.SubwayModel
 import com.example.your_precioustime.R
 import com.example.your_precioustime.Retrofit.Retrofit_Client
@@ -78,7 +73,7 @@ class SubwayFragment : AppCompatActivity() {
 
         }
 
-//        testgetAll()
+        testgetAll()
 
 
 

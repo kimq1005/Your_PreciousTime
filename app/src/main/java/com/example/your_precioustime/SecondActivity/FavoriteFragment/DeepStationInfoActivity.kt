@@ -1,6 +1,8 @@
 package com.example.your_precioustime.SecondActivity.FavoriteFragment
 
+import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,8 +15,11 @@ import com.example.your_precioustime.Model.Item
 import com.example.your_precioustime.R
 import com.example.your_precioustime.Retrofit.Retrofit_Client
 import com.example.your_precioustime.Retrofit.Retrofit_InterFace
+import com.example.your_precioustime.SecondActivity.Busfragment.Bus_Activity
 import com.example.your_precioustime.SecondActivity.DB.*
 import com.example.your_precioustime.SecondActivity.DB.SubwayDB.TestFavoriteModel
+import com.example.your_precioustime.SecondActivity.SecondActivity
+import com.example.your_precioustime.SecondActivity.SubwayFragment.SubwayFragment
 import com.example.your_precioustime.Url
 import com.example.your_precioustime.Util.Companion.TAG
 import com.example.your_precioustime.databinding.ActivityDeepStationInfoBinding
@@ -25,6 +30,8 @@ class DeepStationInfoActivity : AppCompatActivity() {
 
     private var deepStationbinding:ActivityDeepStationInfoBinding? =null
     private val binding get() = deepStationbinding!!
+
+    private var isFabOpen = false
 
     private lateinit var upAdpater: UpAdpater
 
@@ -47,11 +54,48 @@ class DeepStationInfoActivity : AppCompatActivity() {
         binding.backbtn.setOnClickListener {
             onBackPressed()
         }
-        busFavoriteGetAll()
 
+        binding.floatingBtn.setOnClickListener {
+            ToggleSet()
+        }
+        busFavoriteGetAll()
         SetBusStationRecyclerView()
         savemystation()
     }
+
+    private fun ToggleSet(){
+
+        if(isFabOpen){
+            ObjectAnimator.ofFloat(binding.FvBtnFloat,"translationY", 0f).apply { start() }
+            ObjectAnimator.ofFloat(binding.SubwayFloatBtn,"translationY", 0f).apply { start() }
+        }
+        else{
+            ObjectAnimator.ofFloat(binding.FvBtnFloat,"translationY", -150f).apply { start() }
+            ObjectAnimator.ofFloat(binding.SubwayFloatBtn,"translationY", -300f).apply { start() }
+        }
+
+        binding.FvBtnFloat.setOnClickListener {
+            val intent = Intent(this, SecondActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        binding.SubwayFloatBtn.setOnClickListener {
+            val intent = Intent(this, SubwayFragment::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        binding.BusfloatBtn.setOnClickListener {
+            val intent = Intent(this, Bus_Activity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        isFabOpen = !isFabOpen
+
+    }
+
 
     private fun savemystation()=with(binding){
 
@@ -71,8 +115,6 @@ class DeepStationInfoActivity : AppCompatActivity() {
             BUSFravoriteInsert(hello)
         }
     }
-
-
 
 
     private fun SetBusStationRecyclerView()=with(binding) {

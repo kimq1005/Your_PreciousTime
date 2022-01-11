@@ -140,6 +140,21 @@
         tools:ignore="ContentDescription" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/FvBtnFloat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/black"
+        android:src="@drawable/star"
+        app:borderWidth="0dp"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toBottomOf="@id/floatingBtn"
+        app:layout_constraintEnd_toEndOf="@id/floatingBtn"
+        app:layout_constraintStart_toStartOf="@id/floatingBtn"
+        app:layout_constraintTop_toTopOf="@id/floatingBtn"
+        tools:ignore="ContentDescription" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
