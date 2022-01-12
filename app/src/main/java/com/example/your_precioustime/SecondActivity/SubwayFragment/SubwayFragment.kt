@@ -40,7 +40,6 @@ class SubwayFragment : AppCompatActivity() {
 
     lateinit var subwayAdapter: SubwayAdapter
     lateinit var subwayDataBase: SubwayDataBase
-
     lateinit var subwayNameListEntity: List<SubwayNameEntity>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -105,7 +104,7 @@ class SubwayFragment : AppCompatActivity() {
         call.enqueue(object : retrofit2.Callback<SubwayModel> {
             override fun onResponse(call: Call<SubwayModel>, response: Response<SubwayModel>) {
                 val body = response.body()
-                var subwaymodel = mutableListOf<SubwayItem>()
+                val subwaymodel = mutableListOf<SubwayItem>()
                 val resultsubwaymodel = mutableListOf<SubwayItem>()
 
 
@@ -271,7 +270,6 @@ class SubwayFragment : AppCompatActivity() {
 
                 if(binding.subtitleTextView.text in stationnameList){
                     Toast.makeText(this@SubwayFragment,"이미 즐겨찾기에 추가된 역입니다!",Toast.LENGTH_SHORT).show()
-
                 }else{
                     Toast.makeText(this@SubwayFragment,"즐겨찾기에 추가 되었습니다!",Toast.LENGTH_SHORT).show()
                     binding.subwayfavroiteAddImageView.setImageResource(R.drawable.fullstar)
@@ -300,9 +298,10 @@ class SubwayFragment : AppCompatActivity() {
 
                 if(binding.subtitleTextView.text in stationnameList){
                     binding.subwayfavroiteAddImageView.setImageResource(R.drawable.fullstar)
-                }else{
-                    binding.subwayfavroiteAddImageView.setImageResource(R.drawable.star)
                 }
+//                else{
+//                    binding.subwayfavroiteAddImageView.setImageResource(R.drawable.star)
+//                }
 
             }
 
