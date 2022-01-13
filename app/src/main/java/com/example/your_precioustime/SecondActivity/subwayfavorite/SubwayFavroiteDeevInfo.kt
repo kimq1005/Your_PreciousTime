@@ -13,19 +13,31 @@ import com.example.your_precioustime.databinding.ActivitySubwayFavroiteDeevInfoB
 
 class SubwayFavroiteDeevInfo : AppCompatActivity() {
 
-    var subwayFavroiteDeevInfoBinding : ActivitySubwayFavroiteDeevInfoBinding? =null
+    var subwayFavroiteDeevInfoBinding: ActivitySubwayFavroiteDeevInfoBinding? = null
     val binding get() = subwayFavroiteDeevInfoBinding!!
 
     lateinit var subwayAdapter: SubwayAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        subwayFavroiteDeevInfoBinding = ActivitySubwayFavroiteDeevInfoBinding.inflate(layoutInflater)
+        subwayFavroiteDeevInfoBinding =
+            ActivitySubwayFavroiteDeevInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 
         setRecyclearView()
-        Myobject.myobject.ToggleSet(this,binding.floatingBtn,binding.FavroiteFloatBtn,binding.SubwayFloatBtn,binding.BusfloatBtn)
+
+        binding.backbtn.setOnClickListener {
+            onBackPressed()
+        }
+
+        Myobject.myobject.ToggleSet(
+            this,
+            binding.floatingBtn,
+            binding.FavroiteFloatBtn,
+            binding.SubwayFloatBtn,
+            binding.BusfloatBtn
+        )
 
 
     }
@@ -33,7 +45,7 @@ class SubwayFavroiteDeevInfo : AppCompatActivity() {
     private fun setRecyclearView() {
         val subwayname = intent.getStringExtra("subwayname").toString()
         binding.SubwayStationName.text = subwayname
-        retrofitManager.getsubwayCall(subwayname, mymodel = { subwaymodel->
+        retrofitManager.getsubwayCall(subwayname, mymodel = { subwaymodel ->
             subwayAdapter = SubwayAdapter()
             binding.SubwayFVDeepInFoRecyclerView.apply {
                 adapter = subwayAdapter

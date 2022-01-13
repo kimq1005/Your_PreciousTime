@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.your_precioustime.App
+import com.example.your_precioustime.Myobject
 import com.example.your_precioustime.R
 import com.example.your_precioustime.SecondActivity.Busfragment.BusFragment
 import com.example.your_precioustime.SecondActivity.Busfragment.Bus_Activity
@@ -36,7 +37,6 @@ class SecondActivity : AppCompatActivity(), OnDeleteInterFace, OnSubwayListDelet
 
     private var secondBinding: ActivitySecondBinding? = null
     private val binding get() = secondBinding!!
-    private var isFabOpen = false
 
     lateinit var busFavoriteDB: BusFavroiteDataBase
     lateinit var busfavoriteEntity: List<TestFavoriteModel>
@@ -55,30 +55,18 @@ class SecondActivity : AppCompatActivity(), OnDeleteInterFace, OnSubwayListDelet
         setContentView(binding.root)
 
         busFavoriteDB = BusFavroiteDataBase.getinstance(App.instance)!!
-//        ClickFragment()
-
         subwayDataBase = SubwayDataBase.getinstance(App.instance)!!
 
-        binding.floatingBtn.setOnClickListener {
-            ToggleSet()
-        }
 
-//        binding.BusfloatBtn.setOnClickListener {
-//            val intent = Intent(this, Bus_Activity::class.java)
-//            startActivity(intent)
-//        }
-//
-//
-//        binding.SubwayFloatBtn.setOnClickListener {
-//            val intent = Intent(this, SubwayFragment::class.java)
-//            startActivity(intent)
-//        }
-
-
-
+        Myobject.myobject.ToggleSet(
+            this,
+            binding.floatingBtn,
+            binding.FavroiteFloatBtn,
+            binding.SubwayFloatBtn,
+            binding.BusfloatBtn
+        )
         getAll()
         subwaygetAll()
-
 
         testAdapter = SubwayAdapter()
 
@@ -104,7 +92,7 @@ class SecondActivity : AppCompatActivity(), OnDeleteInterFace, OnSubwayListDelet
 
         subwayfavoriteAdpater = SubwayFavorite_Adpater(this@SecondActivity)
 
-        SubwayFvRecylerView.apply{
+        SubwayFvRecylerView.apply {
             adapter = subwayfavoriteAdpater
             layoutManager = LinearLayoutManager(context)
             subwayfavoriteAdpater.submitList(subwayNameEntity)
@@ -114,27 +102,6 @@ class SecondActivity : AppCompatActivity(), OnDeleteInterFace, OnSubwayListDelet
 
     }
 
-
-    private fun ToggleSet() {
-        if (isFabOpen) {
-            ObjectAnimator.ofFloat(binding.BusfloatBtn, "translationY", 0f).apply { start() }
-            ObjectAnimator.ofFloat(binding.SubwayFloatBtn, "translationY", 0f).apply { start() }
-        } else {
-            ObjectAnimator.ofFloat(binding.BusfloatBtn, "translationY", -150f).apply { start() }
-            ObjectAnimator.ofFloat(binding.SubwayFloatBtn, "translationY", -300f).apply { start() }
-        }
-        isFabOpen = !isFabOpen
-
-        binding.BusfloatBtn.setOnClickListener {
-            val intent = Intent(this, Bus_Activity::class.java)
-            startActivity(intent)
-
-        }
-        binding.SubwayFloatBtn.setOnClickListener {
-            val intent = Intent(this, SubwayFragment::class.java)
-            startActivity(intent)
-        }
-    }
 
     private fun getAll() {
 
@@ -169,8 +136,8 @@ class SecondActivity : AppCompatActivity(), OnDeleteInterFace, OnSubwayListDelet
     }
 
 
-    private fun onSubwayDelete(subwayNameEntity: SubwayNameEntity){
-        val deleteTask = (object :AsyncTask<Unit,Unit,Unit>(){
+    private fun onSubwayDelete(subwayNameEntity: SubwayNameEntity) {
+        val deleteTask = (object : AsyncTask<Unit, Unit, Unit>() {
             override fun doInBackground(vararg params: Unit?) {
                 subwayDataBase.subwayNameDAO().subwayDelete(subwayNameEntity)
             }
@@ -183,8 +150,6 @@ class SecondActivity : AppCompatActivity(), OnDeleteInterFace, OnSubwayListDelet
 
         }).execute()
     }
-
-
 
 
     private fun ondeleteList(testFavoriteModel: TestFavoriteModel) {

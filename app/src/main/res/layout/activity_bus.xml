@@ -78,16 +78,15 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:padding="3dp"
         android:id="@+id/busRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="2dp"
-        app:layout_constraintTop_toBottomOf="@+id/topview1"
+        android:padding="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-       />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topview1" />
 
 
     <TextView
@@ -109,6 +108,21 @@
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/FavroiteFloatBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/black"
+        android:src="@drawable/whitestar"
+        app:borderWidth="0dp"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toBottomOf="@id/floatingBtn"
+        app:layout_constraintEnd_toEndOf="@id/floatingBtn"
+        app:layout_constraintStart_toStartOf="@id/floatingBtn"
+        app:layout_constraintTop_toTopOf="@id/floatingBtn"
+        tools:ignore="ContentDescription" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/SubwayFloatBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -123,7 +137,6 @@
         app:layout_constraintTop_toTopOf="@id/floatingBtn"
         tools:ignore="ContentDescription" />
 
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/BusfloatBtn"
         android:layout_width="wrap_content"
@@ -131,21 +144,6 @@
         android:layout_margin="16dp"
         android:backgroundTint="@color/black"
         android:src="@drawable/ic_baseline_directions_bus_24"
-        app:borderWidth="0dp"
-        app:fabSize="mini"
-        app:layout_constraintBottom_toBottomOf="@id/floatingBtn"
-        app:layout_constraintEnd_toEndOf="@id/floatingBtn"
-        app:layout_constraintStart_toStartOf="@id/floatingBtn"
-        app:layout_constraintTop_toTopOf="@id/floatingBtn"
-        tools:ignore="ContentDescription" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/FvBtnFloat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:backgroundTint="@color/black"
-        android:src="@drawable/star"
         app:borderWidth="0dp"
         app:fabSize="mini"
         app:layout_constraintBottom_toBottomOf="@id/floatingBtn"

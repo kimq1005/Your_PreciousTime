@@ -53,15 +53,6 @@ class Myobject {
 
     }
 
-//    fun FVfloatBtnClick(floatbtn: View){
-//        floatbtn.setOnClickListener {
-//            val intent = Intent(App.instance,SecondActivity::class.java)
-//            App.instance.startActivity(intent)
-//        }
-//
-//    }
-
-
 
 
 }

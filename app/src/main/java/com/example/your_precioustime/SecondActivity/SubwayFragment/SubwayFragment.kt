@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.your_precioustime.Model.SubwayItem
 import com.example.your_precioustime.Model.SubwayModel.SubwayModel
+import com.example.your_precioustime.Myobject
 import com.example.your_precioustime.R
 import com.example.your_precioustime.Retrofit.Retrofit_Client
 import com.example.your_precioustime.Retrofit.Retrofit_InterFace
@@ -49,7 +50,8 @@ class SubwayFragment : AppCompatActivity() {
 
         subwayDataBase= SubwayDataBase.getinstance(this)!!
 
-        ToggleSet()
+        Myobject.myobject.ToggleSet(this,binding.floatingBtn,binding.FavroiteFloatBtn,binding.SubwayFloatBtn,binding.BusfloatBtn)
+
 
         binding.clickhere.setOnClickListener {
             val searchtext = binding.SearchEditText2.text.toString()
@@ -202,35 +204,7 @@ class SubwayFragment : AppCompatActivity() {
 
     }
 
-    private fun ToggleSet(){
 
-
-        binding.floatingBtn.setOnClickListener {
-            if(isFabOpen){
-                ObjectAnimator.ofFloat(binding.BusfloatBtn,"translationY", 0f).apply { start() }
-                ObjectAnimator.ofFloat(binding.SubwayFloatBtn,"translationY", 0f).apply { start() }
-            }
-            else{
-                ObjectAnimator.ofFloat(binding.BusfloatBtn,"translationY", -150f).apply { start() }
-                ObjectAnimator.ofFloat(binding.SubwayFloatBtn,"translationY", -300f).apply { start() }
-            }
-
-            isFabOpen = !isFabOpen
-        }
-
-
-        binding.SubwayFloatBtn.setOnClickListener {
-            val intent = Intent(this,SecondActivity::class.java)
-            startActivity(intent)
-        }
-
-        binding.BusfloatBtn.setOnClickListener {
-            val intent = Intent(this,Bus_Activity::class.java)
-            startActivity(intent)
-        }
-
-
-    }
 
     private fun subwayinsert(subwayNameEntity: SubwayNameEntity){
         val insertTask = (object: AsyncTask<Unit,Unit,Unit>(){

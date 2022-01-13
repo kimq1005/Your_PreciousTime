@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.your_precioustime.App
 import com.example.your_precioustime.Model.Bus
 import com.example.your_precioustime.Model.Item
+import com.example.your_precioustime.Myobject
 import com.example.your_precioustime.R
 import com.example.your_precioustime.Retrofit.Retrofit_Client
 import com.example.your_precioustime.Retrofit.Retrofit_InterFace
@@ -55,46 +56,20 @@ class DeepStationInfoActivity : AppCompatActivity() {
             onBackPressed()
         }
 
-        binding.floatingBtn.setOnClickListener {
-            ToggleSet()
-        }
+        Myobject.myobject.ToggleSet(
+            this,
+            binding.floatingBtn,
+            binding.FavroiteFloatBtn,
+            binding.SubwayFloatBtn,
+            binding.BusfloatBtn
+        )
+
+
         busFavoriteGetAll()
         SetBusStationRecyclerView()
         savemystation()
     }
 
-    private fun ToggleSet(){
-
-        if(isFabOpen){
-            ObjectAnimator.ofFloat(binding.FvBtnFloat,"translationY", 0f).apply { start() }
-            ObjectAnimator.ofFloat(binding.SubwayFloatBtn,"translationY", 0f).apply { start() }
-        }
-        else{
-            ObjectAnimator.ofFloat(binding.FvBtnFloat,"translationY", -150f).apply { start() }
-            ObjectAnimator.ofFloat(binding.SubwayFloatBtn,"translationY", -300f).apply { start() }
-        }
-
-        binding.FvBtnFloat.setOnClickListener {
-            val intent = Intent(this, SecondActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
-
-        binding.SubwayFloatBtn.setOnClickListener {
-            val intent = Intent(this, SubwayFragment::class.java)
-            startActivity(intent)
-            finish()
-        }
-
-        binding.BusfloatBtn.setOnClickListener {
-            val intent = Intent(this, Bus_Activity::class.java)
-            startActivity(intent)
-            finish()
-        }
-
-        isFabOpen = !isFabOpen
-
-    }
 
 
     private fun savemystation()=with(binding){
