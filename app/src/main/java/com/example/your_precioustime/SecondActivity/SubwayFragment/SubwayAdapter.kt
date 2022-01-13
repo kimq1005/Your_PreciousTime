@@ -114,6 +114,7 @@ class SubwayAdapter : RecyclerView.Adapter<SubwayAdapter.MyViewHolder>() {
             }
         }
 
+
 //        holder.binding.saveBtn.setOnClickListener {
 //            val subwayId = subwayItem[position].subwayId.toString()
 //            val trainLineNm = subwayItem[position].trainLineNm

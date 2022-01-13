@@ -116,36 +116,24 @@ class SecondActivity : AppCompatActivity(), OnDeleteInterFace, OnSubwayListDelet
 
 
     private fun ToggleSet() {
-
-
         if (isFabOpen) {
             ObjectAnimator.ofFloat(binding.BusfloatBtn, "translationY", 0f).apply { start() }
             ObjectAnimator.ofFloat(binding.SubwayFloatBtn, "translationY", 0f).apply { start() }
-//            ObjectAnimator.ofFloat(binding.FvBtnFloat, "translationY", 0f).apply { start() }
         } else {
             ObjectAnimator.ofFloat(binding.BusfloatBtn, "translationY", -150f).apply { start() }
             ObjectAnimator.ofFloat(binding.SubwayFloatBtn, "translationY", -300f).apply { start() }
-//            ObjectAnimator.ofFloat(binding.FvBtnFloat, "translationY", -450f).apply { start() }
         }
-
         isFabOpen = !isFabOpen
-
 
         binding.BusfloatBtn.setOnClickListener {
             val intent = Intent(this, Bus_Activity::class.java)
             startActivity(intent)
+
         }
-
-
         binding.SubwayFloatBtn.setOnClickListener {
             val intent = Intent(this, SubwayFragment::class.java)
             startActivity(intent)
         }
-
-//        binding.FvBtnFloat.setOnClickListener {
-//
-//        }
-
     }
 
     private fun getAll() {

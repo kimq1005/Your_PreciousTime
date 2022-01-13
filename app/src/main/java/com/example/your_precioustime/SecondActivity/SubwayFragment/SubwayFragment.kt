@@ -57,6 +57,7 @@ class SubwayFragment : AppCompatActivity() {
             getsubwayCall(searchtext)
 
             subwayfavroiteAddImageView.visibility= View.VISIBLE
+            testgetAll()
 
         }
 
@@ -69,15 +70,7 @@ class SubwayFragment : AppCompatActivity() {
             )
 
             subwayinsert(mylist)
-
         }
-
-        testgetAll()
-
-
-
-
-
 
 
     }
@@ -299,9 +292,9 @@ class SubwayFragment : AppCompatActivity() {
                 if(binding.subtitleTextView.text in stationnameList){
                     binding.subwayfavroiteAddImageView.setImageResource(R.drawable.fullstar)
                 }
-//                else{
-//                    binding.subwayfavroiteAddImageView.setImageResource(R.drawable.star)
-//                }
+                else{
+                    binding.subwayfavroiteAddImageView.setImageResource(R.drawable.star)
+                }
 
             }
 

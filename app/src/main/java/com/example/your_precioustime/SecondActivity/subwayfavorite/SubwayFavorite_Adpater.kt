@@ -1,6 +1,7 @@
 package com.example.your_precioustime.SecondActivity.subwayfavorite
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Adapter
@@ -29,10 +30,14 @@ class SubwayFavorite_Adpater(var onSubwayListDeleteInterFace: OnSubwayListDelete
 
     override fun onBindViewHolder(holder: SubwayFVHolder, position: Int) {
         val subway_delete_List = subwaynameEntity[position]
-
+        val subwayname=subwaynameEntity[position].subwayName
         holder.bind(subwaynameEntity[position])
         holder.itemView.setOnClickListener {
-            Toast.makeText(holder.itemView.context,"$position 번째 아이템",Toast.LENGTH_SHORT).show()
+
+            val intent = Intent(holder.itemView.context, SubwayFavroiteDeevInfo::class.java)
+            intent.putExtra("subwayname", subwayname)
+            holder.itemView.context.startActivity(intent)
+
         }
 
         holder.binding.stardeletebtn.setOnClickListener {
