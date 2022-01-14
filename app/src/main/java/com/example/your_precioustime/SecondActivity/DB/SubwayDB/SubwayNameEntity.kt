@@ -10,3 +10,16 @@ data class SubwayNameEntity(
     val id : Long?,
     var subwayName:String
 )
+
+@Entity(tableName = "testModelhi")
+data class MyTestModel(
+    @PrimaryKey(autoGenerate = true)
+    val id : Long?,
+
+    var subwayName: String?,
+    var subwayNumberList:List<MyTestSubwayList>
+)
+
+data class MyTestSubwayList(
+    var subwaynumber:String?
+)

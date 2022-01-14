@@ -54,5 +54,8 @@ class Myobject {
     }
 
 
+    fun suubwaynumbersend(i:String,completion:(String)->Unit){
+        completion(i)
+    }
 
 }

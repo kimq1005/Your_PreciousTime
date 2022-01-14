@@ -12,17 +12,20 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Database
 import com.example.your_precioustime.App
 import com.example.your_precioustime.Model.SubwayItem
+import com.example.your_precioustime.Myobject
 import com.example.your_precioustime.R
 import com.example.your_precioustime.SecondActivity.DB.SubwayDB.SubwayDataBase
 import com.example.your_precioustime.SecondActivity.DB.SubwayDB.SubwayEntity
 import com.example.your_precioustime.SecondActivity.DB.SubwayDB.TestFavoriteModel
 import com.example.your_precioustime.Util.Companion.TAG
 import com.example.your_precioustime.databinding.SubwayItemBinding
+import kotlinx.coroutines.processNextEventInCurrentThread
 
 @SuppressLint("StaticFieldLeak")
 class SubwayAdapter : RecyclerView.Adapter<SubwayAdapter.MyViewHolder>() {
 
     lateinit var subwayItem: List<SubwayItem>
+//    lateinit var hi:MutableList<String>
 
 
 
@@ -44,74 +47,94 @@ class SubwayAdapter : RecyclerView.Adapter<SubwayAdapter.MyViewHolder>() {
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bind(subwayItem[position])
-
         when (subwayItem[position].subwayId) {
+
             "1" -> {
                 holder.binding.subwayitemSubwayId.setBackgroundResource(R.drawable.line1_background)
+
             }
 
             "2" -> {
                 holder.binding.subwayitemSubwayId.setBackgroundResource(R.drawable.line2_background)
+
             }
 
             "3" -> {
                 holder.binding.subwayitemSubwayId.setBackgroundResource(R.drawable.line3_background)
+
             }
 
             "4" -> {
                 holder.binding.subwayitemSubwayId.setBackgroundResource(R.drawable.line4_background)
+
             }
 
             "5" -> {
                 holder.binding.subwayitemSubwayId.setBackgroundResource(R.drawable.line5_background)
+
             }
 
             "6" -> {
                 holder.binding.subwayitemSubwayId.setBackgroundResource(R.drawable.line6_background)
+
             }
 
             "7" -> {
                 holder.binding.subwayitemSubwayId.setBackgroundResource(R.drawable.line7_background)
+
             }
 
             "8" -> {
                 holder.binding.subwayitemSubwayId.setBackgroundResource(R.drawable.line8_background)
+
             }
 
             "9" -> {
                 holder.binding.subwayitemSubwayId.setBackgroundResource(R.drawable.line9_background)
+
             }
 
 
             "경" -> {
                 holder.binding.subwayitemSubwayId.setBackgroundResource(R.drawable.line_gyunge_background)
+
             }
 
             "공" -> {
                 holder.binding.subwayitemSubwayId.setBackgroundResource(R.drawable.line_gonghang_background)
+
             }
 
             "경춘" -> {
                 holder.binding.subwayitemSubwayId.setBackgroundResource(R.drawable.line_gyungchun_background)
+
             }
 
 
             "수" -> {
                 holder.binding.subwayitemSubwayId.setBackgroundResource(R.drawable.line_bundang_background)
+
             }
 
 
             "신" -> {
                 holder.binding.subwayitemSubwayId.setBackgroundResource(R.drawable.line_sinbundang_background)
+
             }
 
             "자" -> {
                 holder.binding.subwayitemSubwayId.setBackgroundResource(R.drawable.line_jagibusang_background)
+
             }
 
             "우" -> {
                 holder.binding.subwayitemSubwayId.setBackgroundResource(R.drawable.line_ui_background)
+
             }
+        }
+
+        holder.itemView.setOnClickListener {
+            Toast.makeText(holder.itemView.context , "되냐? : ${subwayItem.get(position).subwayId}",Toast.LENGTH_SHORT).show()
         }
 
 
@@ -139,26 +162,6 @@ class SubwayAdapter : RecyclerView.Adapter<SubwayAdapter.MyViewHolder>() {
         subwayItem = list
         notifyDataSetChanged()
     }
-
-//    private fun subwayinsert(subwayItem: SubwayEntity) {
-//        subwayDataBase = SubwayDataBase.getinstance(App.instance)!!
-//        val insertTask = (object : AsyncTask<Unit, Unit, Unit>() {
-//            override fun doInBackground(vararg params: Unit?) {
-//                subwayDataBase.subwayDAO().subwayInsert(subwayItem)
-//
-//                subwayEntity = subwayDataBase.subwayDAO().subwayGetAll()
-//                Log.d(TAG, "onPostExecute: $subwayEntity")
-//            }
-//
-//            override fun onPostExecute(result: Unit?) {
-//                super.onPostExecute(result)
-//                Toast.makeText(App.instance, "$subwayEntity",Toast.LENGTH_SHORT).show()
-//            }
-//
-//
-//        }).execute()
-//    }
-
 
 
 

@@ -228,6 +228,7 @@ class SubwayFragment : AppCompatActivity() {
             override fun onPostExecute(result: Unit?) {
                 super.onPostExecute(result)
 
+
                 val stationnameList = mutableListOf<String>()
 
                 for(i in subwayNameListEntity.indices){
