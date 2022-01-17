@@ -6,7 +6,7 @@ import android.util.Log
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.your_precioustime.Model.Bus
 import com.example.your_precioustime.Model.Item
-import com.example.your_precioustime.Myobject
+import com.example.your_precioustime.ObjectManager.Myobject
 import com.example.your_precioustime.Retrofit.Retrofit_Client
 import com.example.your_precioustime.Retrofit.Retrofit_InterFace
 import com.example.your_precioustime.Url

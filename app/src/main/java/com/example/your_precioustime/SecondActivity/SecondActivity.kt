@@ -1,36 +1,25 @@
 package com.example.your_precioustime.SecondActivity
 
-import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.your_precioustime.App
-import com.example.your_precioustime.Myobject
-import com.example.your_precioustime.R
-import com.example.your_precioustime.SecondActivity.Busfragment.BusFragment
-import com.example.your_precioustime.SecondActivity.Busfragment.Bus_Activity
+import com.example.your_precioustime.ObjectManager.Myobject
 import com.example.your_precioustime.SecondActivity.DB.BusFavroiteDataBase
 import com.example.your_precioustime.SecondActivity.DB.OnDeleteInterFace
 import com.example.your_precioustime.SecondActivity.DB.OnSubwayListDeleteInterFace
 import com.example.your_precioustime.SecondActivity.DB.SubwayDB.SubwayDataBase
-import com.example.your_precioustime.SecondActivity.DB.SubwayDB.SubwayEntity
 import com.example.your_precioustime.SecondActivity.DB.SubwayDB.SubwayNameEntity
 import com.example.your_precioustime.SecondActivity.DB.SubwayDB.TestFavoriteModel
 import com.example.your_precioustime.SecondActivity.FavoriteFragment.FavoriteAdapter
-import com.example.your_precioustime.SecondActivity.FavoriteFragment.FavroiteFragment
 import com.example.your_precioustime.SecondActivity.SubwayFragment.SubwayAdapter
-import com.example.your_precioustime.SecondActivity.SubwayFragment.SubwayFragment
 import com.example.your_precioustime.SecondActivity.subwayfavorite.SubwayFavorite_Adpater
 import com.example.your_precioustime.Util
 import com.example.your_precioustime.Util.Companion.TAG
 import com.example.your_precioustime.databinding.ActivitySecondBinding
-import com.example.your_precioustime.databinding.FavoritelistFragmentBinding
 
 @SuppressLint("StaticFieldLeak")
 class SecondActivity : AppCompatActivity(), OnDeleteInterFace, OnSubwayListDeleteInterFace {

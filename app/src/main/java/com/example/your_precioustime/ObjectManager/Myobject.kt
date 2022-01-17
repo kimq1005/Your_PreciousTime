@@ -1,18 +1,27 @@
-package com.example.your_precioustime
+package com.example.your_precioustime.ObjectManager
 
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.content.Intent
 import android.view.View
-import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.ContextCompat.startActivity
+import android.widget.EditText
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.your_precioustime.Model.StationBus
+import com.example.your_precioustime.Retrofit.Retrofit_Client
+import com.example.your_precioustime.Retrofit.Retrofit_InterFace
 import com.example.your_precioustime.SecondActivity.Busfragment.Bus_Activity
+import com.example.your_precioustime.SecondActivity.Busfragment.Bus_Station_Search_Adapter
 import com.example.your_precioustime.SecondActivity.SecondActivity
 import com.example.your_precioustime.SecondActivity.SubwayFragment.SubwayFragment
-import kotlin.coroutines.coroutineContext
+import com.example.your_precioustime.Url
+import com.example.your_precioustime.Util
+import retrofit2.Call
+import retrofit2.Response
 
 class Myobject {
+
+    private var retrofitInterface: Retrofit_InterFace =
+        Retrofit_Client.getClient(Url.BUS_MAIN_URL).create(Retrofit_InterFace::class.java)
 
     companion object {
         val myobject = Myobject()
@@ -53,9 +62,5 @@ class Myobject {
 
     }
 
-
-    fun suubwaynumbersend(i:String,completion:(String)->Unit){
-        completion(i)
-    }
 
 }

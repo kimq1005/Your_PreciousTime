@@ -1,25 +1,13 @@
 package com.example.your_precioustime.SecondActivity.SubwayFragment
 
 import android.annotation.SuppressLint
-import android.os.AsyncTask
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.Toast
-import androidx.core.view.get
 import androidx.recyclerview.widget.RecyclerView
-import androidx.room.Database
-import com.example.your_precioustime.App
 import com.example.your_precioustime.Model.SubwayItem
-import com.example.your_precioustime.Myobject
 import com.example.your_precioustime.R
-import com.example.your_precioustime.SecondActivity.DB.SubwayDB.SubwayDataBase
-import com.example.your_precioustime.SecondActivity.DB.SubwayDB.SubwayEntity
-import com.example.your_precioustime.SecondActivity.DB.SubwayDB.TestFavoriteModel
-import com.example.your_precioustime.Util.Companion.TAG
 import com.example.your_precioustime.databinding.SubwayItemBinding
-import kotlinx.coroutines.processNextEventInCurrentThread
 
 @SuppressLint("StaticFieldLeak")
 class SubwayAdapter : RecyclerView.Adapter<SubwayAdapter.MyViewHolder>() {

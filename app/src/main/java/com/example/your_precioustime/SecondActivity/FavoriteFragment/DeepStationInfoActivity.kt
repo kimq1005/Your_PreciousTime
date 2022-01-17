@@ -1,8 +1,6 @@
 package com.example.your_precioustime.SecondActivity.FavoriteFragment
 
-import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,15 +10,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.your_precioustime.App
 import com.example.your_precioustime.Model.Bus
 import com.example.your_precioustime.Model.Item
-import com.example.your_precioustime.Myobject
+import com.example.your_precioustime.ObjectManager.Myobject
 import com.example.your_precioustime.R
 import com.example.your_precioustime.Retrofit.Retrofit_Client
 import com.example.your_precioustime.Retrofit.Retrofit_InterFace
-import com.example.your_precioustime.SecondActivity.Busfragment.Bus_Activity
 import com.example.your_precioustime.SecondActivity.DB.*
 import com.example.your_precioustime.SecondActivity.DB.SubwayDB.TestFavoriteModel
-import com.example.your_precioustime.SecondActivity.SecondActivity
-import com.example.your_precioustime.SecondActivity.SubwayFragment.SubwayFragment
 import com.example.your_precioustime.Url
 import com.example.your_precioustime.Util.Companion.TAG
 import com.example.your_precioustime.databinding.ActivityDeepStationInfoBinding

@@ -1,25 +1,17 @@
 package com.example.your_precioustime.SecondActivity.Busfragment
 
-import android.animation.ObjectAnimator
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.your_precioustime.Model.StationBus
-import com.example.your_precioustime.Myobject
+import com.example.your_precioustime.ObjectManager.Myobject
 import com.example.your_precioustime.Retrofit.Retrofit_Client
 import com.example.your_precioustime.Retrofit.Retrofit_InterFace
-import com.example.your_precioustime.SecondActivity.SecondActivity
-import com.example.your_precioustime.SecondActivity.SubwayFragment.SubwayFragment
 import com.example.your_precioustime.Url
 import com.example.your_precioustime.Util
 import com.example.your_precioustime.databinding.ActivityBusBinding
-import com.example.your_precioustime.databinding.BusFragmentBinding
-import kotlinx.android.synthetic.main.activity_bus.*
-import kotlinx.coroutines.Job
 import retrofit2.Call
 import retrofit2.Response
 
@@ -62,7 +54,7 @@ class Bus_Activity : AppCompatActivity() {
             val StationEditName = SearchEditText2.text.toString()
             SetRecyclerView(suwoncitycode, StationEditName)
 //            hellomy(suwoncitycode,"GGB203000129")
-            //경
+            //버스 띄우고 지하철은 그림판가져와서 한번 해보자 내일이면 충분함 띄우는건 ㅇㅋ? 굳
         }
 
         SearchEditText.setOnClickListener {

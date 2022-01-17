@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.your_precioustime.SecondActivity.SecondActivity
+import com.example.your_precioustime.TestMapActivity.MapsActivity
 import com.example.your_precioustime.databinding.ActivityMainBinding
 
 
@@ -24,6 +25,11 @@ class MainActivity : AppCompatActivity() {
 //
             startActivity(intent)
 //            Toast.makeText(this,"gdgd",Toast.LENGTH_SHORT).show()
+        }
+
+        binding.mapGobtn.setOnClickListener {
+            val intent = Intent(this,MapsActivity::class.java)
+            startActivity(intent)
         }
 
     }

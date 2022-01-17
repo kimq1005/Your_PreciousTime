@@ -44,10 +44,12 @@ data class StationItems(
 data class StationItem(
     @PropertyElement(name="nodeid") var nodeid : String?,
     @PropertyElement(name="nodenm") var nodenm : String?,
-    @PropertyElement(name="nodeno") var nodeno : String?
+    @PropertyElement(name="nodeno") var nodeno : String?,
+    @PropertyElement(name="gpslati") var gpslati : String?,
+    @PropertyElement(name="gpslong") var gpslong : String?
 //    @PropertyElement(name="arrtime") var arrtime : Int? // 남은 시간
 
 ){
-    constructor() : this(null,null,null)
+    constructor() : this(null,null,null,null,null)
 }
 

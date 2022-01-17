@@ -2,11 +2,8 @@ package com.example.your_precioustime.SecondActivity.subwayfavorite
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.your_precioustime.Myobject
-import com.example.your_precioustime.Retrofit.Retrofit_Manager
+import com.example.your_precioustime.ObjectManager.Myobject
 import com.example.your_precioustime.Retrofit.Retrofit_Manager.Companion.retrofitManager
 import com.example.your_precioustime.SecondActivity.SubwayFragment.SubwayAdapter
 import com.example.your_precioustime.databinding.ActivitySubwayFavroiteDeevInfoBinding

@@ -76,13 +76,12 @@
         app:layout_constraintTop_toBottomOf="@+id/firstunderline" />
 
     <ImageView
-        app:layout_constraintTop_toTopOf="@+id/subtitleTextView"
-        app:layout_constraintBottom_toBottomOf="@id/subtitleTextView"
-        app:layout_constraintEnd_toStartOf="@id/subtitleTextView"
         android:id="@+id/subwayfavroiteAddImageView"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        />
+        app:layout_constraintBottom_toBottomOf="@id/subtitleTextView"
+        app:layout_constraintEnd_toStartOf="@id/subtitleTextView"
+        app:layout_constraintTop_toTopOf="@+id/subtitleTextView" />
 
 
     <androidx.recyclerview.widget.RecyclerView
