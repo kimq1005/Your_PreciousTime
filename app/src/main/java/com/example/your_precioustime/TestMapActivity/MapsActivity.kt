@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.your_precioustime.Model.StationBus
 import com.example.your_precioustime.R
@@ -18,11 +19,8 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 import com.example.your_precioustime.databinding.ActivityMapsBinding
-import com.google.android.gms.maps.model.CameraPosition
-import com.google.android.gms.maps.model.LatLngBounds
+import com.google.android.gms.maps.model.*
 import retrofit2.Call
 import retrofit2.Response
 import kotlin.math.log
@@ -51,6 +49,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         ClickSearchBtn()
 
 
+
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
@@ -70,9 +69,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             val StationEditName = SearchEditText2.text.toString()
             SetRecyclerView(suwoncitycode, StationEditName)
         }
-
     }
-
 
     fun SetRecyclerView(citycode: String, stationName: String?) = with(binding) {
 
@@ -98,38 +95,31 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         busStationSearchAdapter.submitList(hello)
                     }
 
-                    for(i in hello.indices){
+                    for (i in hello.indices) {
                         val xLocation = hello.get(i).gpslati?.toDouble()!!
                         val yLocation = hello.get(i).gpslong?.toDouble()!!
                         val mapStationname = hello.get(i).nodenm?.toString()!!
 
-                        val position = LatLng(xLocation,yLocation)
+                        val position = LatLng(xLocation, yLocation)
                         val marker = MarkerOptions().position(position).title(mapStationname)
 
                         Log.d(TAG, "onResponse: $mapStationname")
 
+
                         mMap.addMarker(marker)
-
-
-
                         myLocationlatlng.include(position)
 
-////
-//                        val camera = CameraUpdateFactory.newLatLngBounds(bounds,padding)
-//                        val mm = CameraUpdateFactory.newLatLngZoom(position,14f)
-//
-//                        mMap.moveCamera(camera)
-//                        mMap.moveCamera(mm)
-//
 
 
                     }
 
                     val bounds = myLocationlatlng.build()
                     val padding = 0
-                    val camera = CameraUpdateFactory.newLatLngBounds(bounds,padding)
+                    val camera = CameraUpdateFactory.newLatLngBounds(bounds, padding)
 
                     mMap.moveCamera(camera)
+
+
 
                 }
             }
@@ -143,4 +133,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
     }
+
+
 }
