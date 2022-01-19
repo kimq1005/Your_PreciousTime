@@ -29,6 +29,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
+    lateinit var testfuck : MutableList<StationBus>
+
+    private var mymarker : Marker? = null
+
 
     private var retrofitInterface: Retrofit_InterFace =
         Retrofit_Client.getClient(Url.BUS_MAIN_URL).create(Retrofit_InterFace::class.java)
@@ -41,11 +45,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        val mapFragment = supportFragmentManager
-            .findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this)
-
         ClickSearchBtn()
 
 
@@ -55,11 +54,22 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
+        setMap()
+
+        //마커가즈아
+
         // Add a marker in Sydney and move the camera
 //        val sydney = LatLng(-34.0, 151.0)
 //        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
 //        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
         //일단 제가 원하는건 api로 설정해서 내가 검색한 정류장에대한 위치가 지도에 표시가 되어야해요
+    }
+
+    private fun setMap(){
+
+        val mapFragment = supportFragmentManager
+            .findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
     }
 
     private fun ClickSearchBtn() = with(binding) {
@@ -70,6 +80,23 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             SetRecyclerView(suwoncitycode, StationEditName)
         }
     }
+
+//    private fun setupMarker(searchResult: SearchResultEntity): Marker? {
+//        Log.d(TAG, "setupMarker: ${searchResult.locationLatLng.latitude.toDouble()}")
+//        val positionLatLng = LatLng(
+//            searchResult.locationLatLng.latitude.toDouble(),
+//            searchResult.locationLatLng.longitued.toDouble()
+//        )
+//
+//        val markerOptions = MarkerOptions().apply {
+//            position(positionLatLng)
+//            title(searchResult.name)
+//            snippet(searchResult.fullAdress)
+//        }
+//
+//        map.moveCamera(CameraUpdateFactory.newLatLngZoom(positionLatLng, CAMERA_ZOOM_LEVEL))
+//        return map.addMarker(markerOptions)
+//    }
 
     fun SetRecyclerView(citycode: String, stationName: String?) = with(binding) {
 
@@ -99,17 +126,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         val xLocation = hello.get(i).gpslati?.toDouble()!!
                         val yLocation = hello.get(i).gpslong?.toDouble()!!
                         val mapStationname = hello.get(i).nodenm?.toString()!!
-
                         val position = LatLng(xLocation, yLocation)
+
                         val marker = MarkerOptions().position(position).title(mapStationname)
 
-                        Log.d(TAG, "onResponse: $mapStationname")
-
-
-                        mMap.addMarker(marker)
                         myLocationlatlng.include(position)
-
-
+                        mMap.addMarker(marker)
 
                     }
 
@@ -118,7 +140,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     val camera = CameraUpdateFactory.newLatLngBounds(bounds, padding)
 
                     mMap.moveCamera(camera)
-
 
 
                 }
