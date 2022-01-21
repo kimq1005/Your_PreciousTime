@@ -1,16 +1,24 @@
 package com.example.your_precioustime.TestMapActivity
 
+import android.annotation.SuppressLint
+import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.your_precioustime.App
+import com.example.your_precioustime.Model.Bus
+import com.example.your_precioustime.Model.Item
 import com.example.your_precioustime.Model.StationBus
 import com.example.your_precioustime.R
 import com.example.your_precioustime.Retrofit.Retrofit_Client
 import com.example.your_precioustime.Retrofit.Retrofit_InterFace
 import com.example.your_precioustime.SecondActivity.Busfragment.Bus_Station_Search_Adapter
+import com.example.your_precioustime.SecondActivity.DB.BusFavroiteDataBase
+import com.example.your_precioustime.SecondActivity.DB.SubwayDB.TestFavoriteModel
+import com.example.your_precioustime.SecondActivity.FavoriteFragment.UpAdpater
 import com.example.your_precioustime.Url
 import com.example.your_precioustime.Util
 import com.example.your_precioustime.Util.Companion.TAG
@@ -25,13 +33,18 @@ import retrofit2.Call
 import retrofit2.Response
 import kotlin.math.log
 
+@SuppressLint("StaticFieldLeak")
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
-    lateinit var testfuck : MutableList<StationBus>
+    lateinit var testfuck: MutableList<StationBus>
 
-    private var mymarker : Marker? = null
+    private var mymarker: Marker? = null
+    private lateinit var upAdpater: UpAdpater
+
+    lateinit var busFavoriteDB: BusFavroiteDataBase
+    lateinit var activitybusfavoriteEntity: List<TestFavoriteModel>
 
 
     private var retrofitInterface: Retrofit_InterFace =
@@ -42,11 +55,18 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        busFavoriteDB = BusFavroiteDataBase.getinstance(App.instance)!!
+
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        ClickSearchBtn()
 
+//        ClickSearchBtn()
+        setMap()
+        SetBusStationRecyclerView()
+        busFavoriteGetAll()
+        savemystation()
+        SetmapView()
 
 
     }
@@ -54,7 +74,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        setMap()
 
         //마커가즈아
 
@@ -65,21 +84,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         //일단 제가 원하는건 api로 설정해서 내가 검색한 정류장에대한 위치가 지도에 표시가 되어야해요
     }
 
-    private fun setMap(){
+    private fun setMap() {
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
     }
 
-    private fun ClickSearchBtn() = with(binding) {
-
-        clickhere.setOnClickListener {
-            val suwoncitycode: String = "31010"
-            val StationEditName = SearchEditText2.text.toString()
-            SetRecyclerView(suwoncitycode, StationEditName)
-        }
-    }
 
 //    private fun setupMarker(searchResult: SearchResultEntity): Marker? {
 //        Log.d(TAG, "setupMarker: ${searchResult.locationLatLng.latitude.toDouble()}")
@@ -98,11 +109,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 //        return map.addMarker(markerOptions)
 //    }
 
-    fun SetRecyclerView(citycode: String, stationName: String?) = with(binding) {
-
+    fun SetmapView() = with(binding) {
+        val stationname= intent.getStringExtra("stationName")
+        val stationnodenode = intent.getStringExtra("stationnodenode")
+        Log.d(TAG, "SetmapView: $stationname , $stationnodenode")
         val stationcalls = retrofitInterface.StationNameGet(
-            cityCode = citycode,
-            staionName = stationName
+            cityCode = "31010",
+            staionName = null,
+            nodeNo = stationnodenode
         )
 
         stationcalls.enqueue(object : retrofit2.Callback<StationBus> {
@@ -111,7 +125,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 val body = response.body()
 
                 val myLocationlatlng = LatLngBounds.Builder()
-//                Log.d(TAG, "onResponse: $body")
+                Log.d(TAG, "ㅇ우아왕아앙앙ㅇ: $body")
                 busStationSearchAdapter = Bus_Station_Search_Adapter()
 
                 body?.let { it ->
@@ -129,18 +143,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         val position = LatLng(xLocation, yLocation)
 
                         val marker = MarkerOptions().position(position).title(mapStationname)
-
-                        myLocationlatlng.include(position)
                         mMap.addMarker(marker)
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 17f))
+                        myLocationlatlng.include(position)
 
                     }
-
-                    val bounds = myLocationlatlng.build()
-                    val padding = 0
-                    val camera = CameraUpdateFactory.newLatLngBounds(bounds, padding)
-
-                    mMap.moveCamera(camera)
-
 
                 }
             }
@@ -153,6 +160,207 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         })
 
 
+    }
+
+
+    private fun SetBusStationRecyclerView() = with(binding) {
+
+        val stationName = intent.getStringExtra("stationName").toString()
+
+        binding.BusStationName.text = stationName
+
+        val stationNodeNumber = intent.getStringExtra("stationNodeNumber").toString()
+
+        val citycode: String = "31010"
+
+
+        val call = retrofitInterface.BusGet(citycode, stationNodeNumber)
+        call.enqueue(object : retrofit2.Callback<Bus> {
+            override fun onResponse(call: Call<Bus>, response: Response<Bus>) {
+                Log.d(TAG, "onResponse: ${response.body()}")
+                upAdpater = UpAdpater()
+
+                val body = response.body()
+
+                body?.let {
+                    val hello = body.body.items.item
+
+                    val hi = mutableListOf<Item>()
+
+                    for (i in hello.indices) {
+                        val busNm: String
+                        val waitbus: Int
+                        val waittime: Int
+
+                        busNm = hello.get(i).routeno!!
+                        waitbus = hello.get(i).arrprevstationcnt!!
+                        waittime = hello.get(i).arrtime!!
+
+                        hi.add(
+                            Item(
+                                busNm, waitbus, waittime
+                            )
+                        )
+
+                    }
+                    Log.d(TAG, "\n 전체값 리스트 : $hi \n")
+
+
+                    val firstList = hi.filterIndexed { index, i ->
+
+                        index % 2 == 0
+                    }
+
+//                    Log.d(TAG, "firstList: $firstList")
+
+                    val secondList = hi.filterIndexed { index, item ->
+                        index % 2 == 1
+                    }
+
+//                    Log.d(TAG, "secondList: $secondList")
+
+
+                    val ResultList = mutableListOf<Item>()
+
+                    firstList.forEach {
+                        val ARouteNo = it.routeno
+                        val AWaitstation = it.arrprevstationcnt
+                        val AWaitTime = it.arrtime
+
+
+
+
+                        secondList.forEach {
+                            val BRouteNo = it.routeno
+                            val BWaitstation = it.arrprevstationcnt
+
+                            if (ARouteNo == BRouteNo) {
+                                if (AWaitstation!! > BWaitstation!!) {
+                                    ResultList.add(
+                                        Item(
+                                            it.routeno,
+                                            it.arrprevstationcnt,
+                                            it.arrtime
+                                        )
+                                    )
+
+                                } else {
+                                    ResultList.add(Item(ARouteNo, AWaitstation, AWaitTime))
+                                }
+
+                            }
+
+
+                        }
+
+                        busreclerView.apply {
+                            adapter = upAdpater
+                            layoutManager = LinearLayoutManager(context)
+                            upAdpater.submitList(ResultList)
+                        }
+
+
+                    }
+
+                }
+
+            }
+
+            override fun onFailure(call: Call<Bus>, t: Throwable) {
+                Log.d(TAG, "onFailure: $t")
+            }
+
+        })
+
+
+    }
+
+    private fun BUSFravoriteInsert(busfavoriteEntity: TestFavoriteModel) {
+
+
+        var businsertTask = (object : AsyncTask<Unit, Unit, Unit>() {
+            override fun doInBackground(vararg params: Unit?) {
+
+                activitybusfavoriteEntity = busFavoriteDB.busFavoriteDAO().busFavoriteGetAll()
+
+                val stationnameList = mutableListOf<String>()
+                for (i in activitybusfavoriteEntity.indices) {
+                    val stationname = activitybusfavoriteEntity.get(i).stationName
+                    stationnameList.add(stationname)
+                }
+                if (binding.BusStationName.text !in stationnameList) {
+                    busFavoriteDB.busFavoriteDAO().busFavoriteInsert(busfavoriteEntity)
+                }
+
+
+            }
+
+
+            override fun onPostExecute(result: Unit?) {
+                super.onPostExecute(result)
+                val stationnameList = mutableListOf<String>()
+
+                for (i in activitybusfavoriteEntity.indices) {
+                    val stationname = activitybusfavoriteEntity.get(i).stationName
+                    stationnameList.add(stationname)
+                }
+
+                if (binding.BusStationName.text in stationnameList) {
+                    Toast.makeText(this@MapsActivity, "이미 즐겨찾기에 추가된 정류장입니다!", Toast.LENGTH_SHORT)
+                        .show()
+
+                } else {
+                    Toast.makeText(this@MapsActivity, "즐겨찾기에 추가 되었습니다!", Toast.LENGTH_SHORT).show()
+                    binding.countingstars.setImageResource(R.drawable.shinigstar)
+                }
+
+            }
+        }).execute()
+    }
+
+    private fun busFavoriteGetAll() {
+        val busGetAllTask = (object : AsyncTask<Unit, Unit, Unit>() {
+            override fun doInBackground(vararg params: Unit?) {
+                activitybusfavoriteEntity = busFavoriteDB.busFavoriteDAO().busFavoriteGetAll()
+            }
+
+            override fun onPostExecute(result: Unit?) {
+                super.onPostExecute(result)
+                val stationnameList = mutableListOf<String>()
+
+                for (i in activitybusfavoriteEntity.indices) {
+                    val stationname = activitybusfavoriteEntity.get(i).stationName
+                    stationnameList.add(stationname)
+                }
+
+                if (binding.BusStationName.text in stationnameList) {
+                    binding.countingstars.setImageResource(R.drawable.shinigstar)
+                } else {
+                    binding.countingstars.setImageResource(R.drawable.star)
+                }
+
+            }
+
+        }).execute()
+    }
+
+    private fun savemystation() = with(binding) {
+
+        countingstars.setOnClickListener {
+
+            val stationName = intent.getStringExtra("stationName").toString()
+            val stationNodeNumber = intent.getStringExtra("stationNodeNumber").toString()
+            val stationNodeNode = intent.getStringExtra("stationnodenode").toString()
+
+            val hello = TestFavoriteModel(
+                id = null,
+                checkBoolean = null,
+                stationnodenode = stationNodeNode,
+                stationName = stationName,
+                stationNodeNumber = stationNodeNumber
+            )
+            BUSFravoriteInsert(hello)
+        }
     }
 
 

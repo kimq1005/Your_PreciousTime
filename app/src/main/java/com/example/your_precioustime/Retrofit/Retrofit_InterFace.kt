@@ -28,6 +28,7 @@ interface Retrofit_InterFace {
     fun StationNameGet(
         @Query("cityCode") cityCode:String,
         @Query("nodeNm") staionName:String?,
+        @Query("nodeNo") nodeNo:String?
 //        @Query("nodeNo") nodeNo: Int?
     ) :Call<StationBus>
 

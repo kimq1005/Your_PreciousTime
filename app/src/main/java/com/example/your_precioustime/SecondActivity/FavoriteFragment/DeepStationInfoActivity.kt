@@ -21,20 +21,22 @@ import com.example.your_precioustime.Util.Companion.TAG
 import com.example.your_precioustime.databinding.ActivityDeepStationInfoBinding
 import retrofit2.Call
 import retrofit2.Response
+
 @SuppressLint("StaticFieldLeak")
 class DeepStationInfoActivity : AppCompatActivity() {
 
-    private var deepStationbinding:ActivityDeepStationInfoBinding? =null
+    private var deepStationbinding: ActivityDeepStationInfoBinding? = null
     private val binding get() = deepStationbinding!!
 
     private var isFabOpen = false
 
     private lateinit var upAdpater: UpAdpater
 
-    lateinit var busFavoriteDB : BusFavroiteDataBase
+    lateinit var busFavoriteDB: BusFavroiteDataBase
     lateinit var activitybusfavoriteEntity: List<TestFavoriteModel>
 
-    private val retrofitInterface: Retrofit_InterFace = Retrofit_Client.getClient(Url.BUS_MAIN_URL).create(Retrofit_InterFace::class.java)
+    private val retrofitInterface: Retrofit_InterFace =
+        Retrofit_Client.getClient(Url.BUS_MAIN_URL).create(Retrofit_InterFace::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,19 +68,17 @@ class DeepStationInfoActivity : AppCompatActivity() {
     }
 
 
-
-    private fun savemystation()=with(binding){
+    private fun savemystation() = with(binding) {
 
         countingstars.setOnClickListener {
-
             val stationName = intent.getStringExtra("stationName").toString()
             val stationNodeNumber = intent.getStringExtra("stationNodeNumber").toString()
             val stationNodeNode = intent.getStringExtra("stationnodenode").toString()
 
             val hello = TestFavoriteModel(
                 id = null,
-                checkBoolean =null,
-                stationnodenode=stationNodeNode,
+                checkBoolean = null,
+                stationnodenode = stationNodeNode,
                 stationName = stationName,
                 stationNodeNumber = stationNodeNumber
             )
@@ -87,49 +87,51 @@ class DeepStationInfoActivity : AppCompatActivity() {
     }
 
 
-    private fun SetBusStationRecyclerView()=with(binding) {
+    private fun SetBusStationRecyclerView() = with(binding) {
         val stationNodeNumber = intent.getStringExtra("stationNodeNumber").toString()
 
-        val citycode:String = "31010"
+        val citycode: String = "31010"
 
-        val call = retrofitInterface.BusGet(citycode,stationNodeNumber)
-        call.enqueue(object:retrofit2.Callback<Bus>{
+        val call = retrofitInterface.BusGet(citycode, stationNodeNumber)
+        call.enqueue(object : retrofit2.Callback<Bus> {
             override fun onResponse(call: Call<Bus>, response: Response<Bus>) {
                 Log.d(TAG, "onResponse: ${response.body()}")
                 upAdpater = UpAdpater()
 
                 val body = response.body()
 
-                body?.let{
-                    val hello =body.body.items.item
+                body?.let {
+                    val hello = body.body.items.item
 
                     val hi = mutableListOf<Item>()
 
-                    for(i in hello.indices){
-                        val busNm:String
-                        val waitbus:Int
-                        val waittime:Int
+                    for (i in hello.indices) {
+                        val busNm: String
+                        val waitbus: Int
+                        val waittime: Int
 
                         busNm = hello.get(i).routeno!!
                         waitbus = hello.get(i).arrprevstationcnt!!
                         waittime = hello.get(i).arrtime!!
 
-                        hi.add(Item(
-                            busNm,waitbus,waittime
-                        ))
+                        hi.add(
+                            Item(
+                                busNm, waitbus, waittime
+                            )
+                        )
 
                     }
                     Log.d(TAG, "\n 전체값 리스트 : $hi \n")
 
 
-                    val firstList= hi.filterIndexed { index, i ->
+                    val firstList = hi.filterIndexed { index, i ->
 
                         index % 2 == 0
                     }
 
 //                    Log.d(TAG, "firstList: $firstList")
 
-                    val secondList = hi.filterIndexed{index, item ->
+                    val secondList = hi.filterIndexed { index, item ->
                         index % 2 == 1
                     }
 
@@ -143,19 +145,22 @@ class DeepStationInfoActivity : AppCompatActivity() {
                         val AWaitstation = it.arrprevstationcnt
                         val AWaitTime = it.arrtime
 
-
-
-
                         secondList.forEach {
                             val BRouteNo = it.routeno
                             val BWaitstation = it.arrprevstationcnt
 
-                            if(ARouteNo==BRouteNo){
-                                if(AWaitstation!! > BWaitstation!!){
-                                    ResultList.add(Item(it.routeno,it.arrprevstationcnt,it.arrtime))
+                            if (ARouteNo == BRouteNo) {
+                                if (AWaitstation!! > BWaitstation!!) {
+                                    ResultList.add(
+                                        Item(
+                                            it.routeno,
+                                            it.arrprevstationcnt,
+                                            it.arrtime
+                                        )
+                                    )
 
-                                }else{
-                                    ResultList.add(Item(ARouteNo,AWaitstation,AWaitTime))
+                                } else {
+                                    ResultList.add(Item(ARouteNo, AWaitstation, AWaitTime))
                                 }
 
                             }
@@ -183,24 +188,22 @@ class DeepStationInfoActivity : AppCompatActivity() {
         })
 
 
-
-
     }
 
-    private fun BUSFravoriteInsert(busfavoriteEntity: TestFavoriteModel){
+    private fun BUSFravoriteInsert(busfavoriteEntity: TestFavoriteModel) {
 
 
-        var businsertTask = (object : AsyncTask<Unit, Unit, Unit>(){
+        var businsertTask = (object : AsyncTask<Unit, Unit, Unit>() {
             override fun doInBackground(vararg params: Unit?) {
 
                 activitybusfavoriteEntity = busFavoriteDB.busFavoriteDAO().busFavoriteGetAll()
 
                 val stationnameList = mutableListOf<String>()
-                for(i in activitybusfavoriteEntity.indices){
+                for (i in activitybusfavoriteEntity.indices) {
                     val stationname = activitybusfavoriteEntity.get(i).stationName
                     stationnameList.add(stationname)
                 }
-                if(binding.BusStationName.text !in stationnameList){
+                if (binding.BusStationName.text !in stationnameList) {
                     busFavoriteDB.busFavoriteDAO().busFavoriteInsert(busfavoriteEntity)
                 }
 
@@ -208,21 +211,28 @@ class DeepStationInfoActivity : AppCompatActivity() {
             }
 
 
-
             override fun onPostExecute(result: Unit?) {
                 super.onPostExecute(result)
                 val stationnameList = mutableListOf<String>()
 
-                for(i in activitybusfavoriteEntity.indices){
+                for (i in activitybusfavoriteEntity.indices) {
                     val stationname = activitybusfavoriteEntity.get(i).stationName
                     stationnameList.add(stationname)
                 }
 
-                if(binding.BusStationName.text in stationnameList){
-                    Toast.makeText(this@DeepStationInfoActivity,"이미 즐겨찾기에 추가된 정류장입니다!",Toast.LENGTH_SHORT).show()
+                if (binding.BusStationName.text in stationnameList) {
+                    Toast.makeText(
+                        this@DeepStationInfoActivity,
+                        "이미 즐겨찾기에 추가된 정류장입니다!",
+                        Toast.LENGTH_SHORT
+                    ).show()
 
-                }else{
-                    Toast.makeText(this@DeepStationInfoActivity,"즐겨찾기에 추가 되었습니다!",Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(
+                        this@DeepStationInfoActivity,
+                        "즐겨찾기에 추가 되었습니다!",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     binding.countingstars.setImageResource(R.drawable.shinigstar)
                 }
 
@@ -230,8 +240,8 @@ class DeepStationInfoActivity : AppCompatActivity() {
         }).execute()
     }
 
-    private fun busFavoriteGetAll(){
-        val busGetAllTask = (object: AsyncTask<Unit, Unit, Unit>(){
+    private fun busFavoriteGetAll() {
+        val busGetAllTask = (object : AsyncTask<Unit, Unit, Unit>() {
             override fun doInBackground(vararg params: Unit?) {
                 activitybusfavoriteEntity = busFavoriteDB.busFavoriteDAO().busFavoriteGetAll()
             }
@@ -240,14 +250,14 @@ class DeepStationInfoActivity : AppCompatActivity() {
                 super.onPostExecute(result)
                 val stationnameList = mutableListOf<String>()
 
-                for(i in activitybusfavoriteEntity.indices){
+                for (i in activitybusfavoriteEntity.indices) {
                     val stationname = activitybusfavoriteEntity.get(i).stationName
                     stationnameList.add(stationname)
                 }
 
-                if(binding.BusStationName.text in stationnameList){
+                if (binding.BusStationName.text in stationnameList) {
                     binding.countingstars.setImageResource(R.drawable.shinigstar)
-                }else{
+                } else {
                     binding.countingstars.setImageResource(R.drawable.star)
                 }
 

@@ -39,6 +39,7 @@ data class StationItems(
     @Element(name = "item")
     val item: List<StationItem>
 )
+
 //
 @Xml
 data class StationItem(

@@ -27,7 +27,7 @@ class RetrofitObject {
         clickhere.setOnClickListener {
             val suwoncitycode: String = "31010"
             val StationEditName = contextEditText.text.toString()
-            SetRecyclerView(suwoncitycode, StationEditName)
+//            SetRecyclerView(suwoncitycode, StationEditName)
 //            hellomy(suwoncitycode,"GGB203000129")
             //버스 띄우고 지하철은 그림판가져와서 한번 해보자 내일이면 충분함 띄우는건 ㅇㅋ? 굳
         }
@@ -35,28 +35,28 @@ class RetrofitObject {
     }
 
 
-    fun SetRecyclerView(citycode: String, stationName: String?) {
-
-        val stationcalls = retrofitInterface.StationNameGet(
-            cityCode = citycode,
-            staionName = stationName
-        )
-
-        stationcalls.enqueue(object : retrofit2.Callback<StationBus> {
-            override fun onResponse(call: Call<StationBus>, response: Response<StationBus>) {
-                val body = response.body()
-
-            }
-
-
-            override fun onFailure(call: Call<StationBus>, t: Throwable) {
-                android.util.Log.d(Util.TAG, "onFailure:$t")
-
-            }
-
-        })
-
-
-    }
+//    fun SetRecyclerView(citycode: String, stationName: String?) {
+//
+//        val stationcalls = retrofitInterface.StationNameGet(
+//            cityCode = citycode,
+//            staionName = stationName
+//        )
+//
+//        stationcalls.enqueue(object : retrofit2.Callback<StationBus> {
+//            override fun onResponse(call: Call<StationBus>, response: Response<StationBus>) {
+//                val body = response.body()
+//
+//            }
+//
+//
+//            override fun onFailure(call: Call<StationBus>, t: Throwable) {
+//                android.util.Log.d(Util.TAG, "onFailure:$t")
+//
+//            }
+//
+//        })
+//
+//
+//    }
 
 }

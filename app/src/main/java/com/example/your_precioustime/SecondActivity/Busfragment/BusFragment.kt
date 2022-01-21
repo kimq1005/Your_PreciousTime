@@ -88,7 +88,8 @@ class BusFragment:Fragment(R.layout.bus_fragment),CoroutineScope {
 
         val stationcalls= retrofitInterface.StationNameGet(
             cityCode = citycode,
-            staionName = stationName
+            staionName = stationName,
+            null
         )
 
         stationcalls.enqueue(object :retrofit2.Callback<StationBus>{
