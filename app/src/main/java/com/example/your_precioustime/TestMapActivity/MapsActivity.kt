@@ -91,28 +91,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mapFragment.getMapAsync(this)
     }
 
-
-//    private fun setupMarker(searchResult: SearchResultEntity): Marker? {
-//        Log.d(TAG, "setupMarker: ${searchResult.locationLatLng.latitude.toDouble()}")
-//        val positionLatLng = LatLng(
-//            searchResult.locationLatLng.latitude.toDouble(),
-//            searchResult.locationLatLng.longitued.toDouble()
-//        )
-//
-//        val markerOptions = MarkerOptions().apply {
-//            position(positionLatLng)
-//            title(searchResult.name)
-//            snippet(searchResult.fullAdress)
-//        }
-//
-//        map.moveCamera(CameraUpdateFactory.newLatLngZoom(positionLatLng, CAMERA_ZOOM_LEVEL))
-//        return map.addMarker(markerOptions)
-//    }
+    
 
     fun SetmapView() = with(binding) {
         val stationname= intent.getStringExtra("stationName")
         val stationnodenode = intent.getStringExtra("stationnodenode")
         Log.d(TAG, "SetmapView: $stationname , $stationnodenode")
+
         val stationcalls = retrofitInterface.StationNameGet(
             cityCode = "31010",
             staionName = null,
@@ -123,18 +108,19 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
             override fun onResponse(call: Call<StationBus>, response: Response<StationBus>) {
                 val body = response.body()
+                upAdpater = UpAdpater()
 
                 val myLocationlatlng = LatLngBounds.Builder()
-                Log.d(TAG, "ㅇ우아왕아앙앙ㅇ: $body")
+                Log.d(TAG, "setMapView: $body")
                 busStationSearchAdapter = Bus_Station_Search_Adapter()
 
                 body?.let { it ->
                     val hello = body.body.items.item
-                    busreclerView.apply {
-                        adapter = busStationSearchAdapter
-                        layoutManager = LinearLayoutManager(context)
-                        busStationSearchAdapter.submitList(hello)
-                    }
+//                    busreclerView.apply {
+//                        adapter = busStationSearchAdapter
+//                        layoutManager = LinearLayoutManager(context)
+//                        busStationSearchAdapter.submitList(hello)
+//                    }
 
                     for (i in hello.indices) {
                         val xLocation = hello.get(i).gpslati?.toDouble()!!
@@ -144,7 +130,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
                         val marker = MarkerOptions().position(position).title(mapStationname)
                         mMap.addMarker(marker)
-                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 17f))
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 20f))
                         myLocationlatlng.include(position)
 
                     }
@@ -166,18 +152,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun SetBusStationRecyclerView() = with(binding) {
 
         val stationName = intent.getStringExtra("stationName").toString()
-
         binding.BusStationName.text = stationName
 
         val stationNodeNumber = intent.getStringExtra("stationNodeNumber").toString()
-
         val citycode: String = "31010"
 
-
         val call = retrofitInterface.BusGet(citycode, stationNodeNumber)
+//        val call = retrofitInterface.BusGet("25","DJB8001793")
         call.enqueue(object : retrofit2.Callback<Bus> {
             override fun onResponse(call: Call<Bus>, response: Response<Bus>) {
-                Log.d(TAG, "onResponse: ${response.body()}")
+                Log.d(TAG, "좀되면안되겠니? 진짜로?: ${response.body()}")
                 upAdpater = UpAdpater()
 
                 val body = response.body()
@@ -222,12 +206,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
                     val ResultList = mutableListOf<Item>()
 
+
                     firstList.forEach {
                         val ARouteNo = it.routeno
                         val AWaitstation = it.arrprevstationcnt
                         val AWaitTime = it.arrtime
-
-
 
 
                         secondList.forEach {
@@ -251,6 +234,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                             }
 
 
+
+
                         }
 
                         busreclerView.apply {
@@ -267,7 +252,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             }
 
             override fun onFailure(call: Call<Bus>, t: Throwable) {
-                Log.d(TAG, "onFailure: $t")
+                Log.d(TAG, "이거오류맞지오잉히잉하잉: $t")
             }
 
         })

@@ -92,7 +92,8 @@ class DeepStationInfoActivity : AppCompatActivity() {
 
         val citycode: String = "31010"
 
-        val call = retrofitInterface.BusGet(citycode, stationNodeNumber)
+//        val call = retrofitInterface.BusGet(citycode, stationNodeNumber)
+        val call = retrofitInterface.BusGet("25", "DJB8001793")
         call.enqueue(object : retrofit2.Callback<Bus> {
             override fun onResponse(call: Call<Bus>, response: Response<Bus>) {
                 Log.d(TAG, "onResponse: ${response.body()}")
@@ -113,6 +114,12 @@ class DeepStationInfoActivity : AppCompatActivity() {
                         busNm = hello.get(i).routeno!!
                         waitbus = hello.get(i).arrprevstationcnt!!
                         waittime = hello.get(i).arrtime!!
+
+                        deepstationinfoRecyclerView.apply {
+                            adapter = upAdpater
+                            layoutManager = LinearLayoutManager(context)
+                            upAdpater.submitList(hello)
+                        }
 
                         hi.add(
                             Item(
@@ -168,11 +175,11 @@ class DeepStationInfoActivity : AppCompatActivity() {
 
                         }
 
-                        deepstationinfoRecyclerView.apply {
-                            adapter = upAdpater
-                            layoutManager = LinearLayoutManager(context)
-                            upAdpater.submitList(ResultList)
-                        }
+//                        deepstationinfoRecyclerView.apply {
+//                            adapter = upAdpater
+//                            layoutManager = LinearLayoutManager(context)
+//                            upAdpater.submitList(ResultList)
+//                        }
 
 
                     }

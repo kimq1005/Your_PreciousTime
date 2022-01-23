@@ -82,6 +82,7 @@ class FavroiteFragment:Fragment(R.layout.favoritelist_fragment), OnDeleteInterFa
                 busFavoriteDB.busFavoriteDAO().busFavoriteDelete(testFavoriteModel)
             }
 
+
             override fun onPostExecute(result: Unit?) {
                 super.onPostExecute(result)
                 getAll()
