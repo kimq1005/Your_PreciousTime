@@ -5,6 +5,8 @@ import android.content.Context
 import android.content.Intent
 import android.view.View
 import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.your_precioustime.Model.StationBus
 import com.example.your_precioustime.Retrofit.Retrofit_Client
@@ -20,8 +22,7 @@ import retrofit2.Response
 
 class Myobject {
 
-    private var retrofitInterface: Retrofit_InterFace =
-        Retrofit_Client.getClient(Url.BUS_MAIN_URL).create(Retrofit_InterFace::class.java)
+
 
     companion object {
         val myobject = Myobject()
@@ -58,6 +59,19 @@ class Myobject {
             val intent = Intent(context,Bus_Activity::class.java)
             context.startActivity(intent)
         }
+
+
+    }
+
+
+    fun changeSubwayText(mytext:String){
+        val hello:String
+        if(mytext.contains("")){
+            val one = mytext.replace("[", "")
+            val two = one.replace("]", "")
+            val substring = two.substring(0..5)
+        }
+
 
 
     }

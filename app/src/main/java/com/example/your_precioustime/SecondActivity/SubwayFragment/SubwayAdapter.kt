@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.your_precioustime.Model.SubwayItem
 import com.example.your_precioustime.R
 import com.example.your_precioustime.databinding.SubwayItemBinding
+import com.example.your_precioustime.ObjectManager.Myobject
 
 @SuppressLint("StaticFieldLeak")
 class SubwayAdapter : RecyclerView.Adapter<SubwayAdapter.MyViewHolder>() {
@@ -16,20 +17,21 @@ class SubwayAdapter : RecyclerView.Adapter<SubwayAdapter.MyViewHolder>() {
 //    lateinit var hi:MutableList<String>
 
 
-
     inner class MyViewHolder(val binding: SubwayItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(subwayItem: SubwayItem) {
+            val hello = subwayItem.arvlMsg2
+            Myobject.myobject.changeSubwayText(subwayItem.arvlMsg2.toString())
             binding.subwayitemSubwayId.text = subwayItem.subwayId
             binding.subwayitemTrainLineNm.text = subwayItem.trainLineNm
             binding.subwayitemBstatnNm.text = subwayItem.bstatnNm
             binding.subwayitemBarvlDt.text = subwayItem.arvlMsg2
+
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = SubwayItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-
         return MyViewHolder(view)
     }
 

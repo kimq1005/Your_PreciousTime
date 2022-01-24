@@ -116,11 +116,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
                 body?.let { it ->
                     val hello = body.body.items.item
-//                    busreclerView.apply {
-//                        adapter = busStationSearchAdapter
-//                        layoutManager = LinearLayoutManager(context)
-//                        busStationSearchAdapter.submitList(hello)
-//                    }
 
                     for (i in hello.indices) {
                         val xLocation = hello.get(i).gpslati?.toDouble()!!
@@ -130,7 +125,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
                         val marker = MarkerOptions().position(position).title(mapStationname)
                         mMap.addMarker(marker)
-                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 20f))
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 18f))
                         myLocationlatlng.include(position)
 
                     }
@@ -161,7 +156,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 //        val call = retrofitInterface.BusGet("25","DJB8001793")
         call.enqueue(object : retrofit2.Callback<Bus> {
             override fun onResponse(call: Call<Bus>, response: Response<Bus>) {
-                Log.d(TAG, "좀되면안되겠니? 진짜로?: ${response.body()}")
                 upAdpater = UpAdpater()
 
                 val body = response.body()
