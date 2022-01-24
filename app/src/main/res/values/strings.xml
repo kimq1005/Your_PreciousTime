@@ -3,4 +3,5 @@
     <string name="Bus"><u>Bus</u></string>
     <string name="odsay_key">ZkqhFIasLHBpaDaOdYx5CYwRwh8r2UFgYg7NazJgWXw</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="title_activity_test_maps2">testMapsActivity2</string>
 </resources>

@@ -35,6 +35,10 @@
             android:value="@string/google_maps_key" />
 
         <activity
+            android:name=".TestMapActivity.testMapsActivity2"
+            android:exported="false"
+            android:label="@string/title_activity_test_maps2" />
+        <activity
             android:name=".TestMapActivity.MapsActivity"
             android:exported="false"
             android:label="@string/title_activity_maps" />
