@@ -64,16 +64,27 @@ class Myobject {
     }
 
 
-    fun changeSubwayText(mytext:String){
-        val hello:String
-        if(mytext.contains("")){
+//    fun changeSubwayText(mytext:String){
+//        val hello:String
+//        if(mytext.contains("")){
+//            val one = mytext.replace("[", "")
+//            val two = one.replace("]", "")
+//            val substring = two.substring(0..5)
+//        }
+//    }
+
+    fun changeSubwayText(mytext:String):String {
+        if (mytext.contains("[")) {
             val one = mytext.replace("[", "")
-            val two = one.replace("]", "")
-            val substring = two.substring(0..5)
+            val two = one.replace("]","")
+            val three = two.replace("번째","")
+            val four = three.replace("역"," ")
+            val subString = four.substring(0..3)
+            return subString
+
+
         }
-
-
-
+        return mytext
     }
 
 

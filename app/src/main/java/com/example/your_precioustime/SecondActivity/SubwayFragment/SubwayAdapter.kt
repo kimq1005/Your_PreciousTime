@@ -21,11 +21,12 @@ class SubwayAdapter : RecyclerView.Adapter<SubwayAdapter.MyViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
         fun bind(subwayItem: SubwayItem) {
             val hello = subwayItem.arvlMsg2
-            Myobject.myobject.changeSubwayText(subwayItem.arvlMsg2.toString())
+            val mytext = Myobject.myobject.changeSubwayText(subwayItem.arvlMsg2.toString())
+
             binding.subwayitemSubwayId.text = subwayItem.subwayId
             binding.subwayitemTrainLineNm.text = subwayItem.trainLineNm
             binding.subwayitemBstatnNm.text = subwayItem.bstatnNm
-            binding.subwayitemBarvlDt.text = subwayItem.arvlMsg2
+            binding.subwayitemBarvlDt.text = mytext
 
         }
     }
