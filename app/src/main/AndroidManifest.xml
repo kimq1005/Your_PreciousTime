@@ -21,6 +21,9 @@
         android:theme="@style/Theme.Your_PreciousTime"
         tools:targetApi="n">
         <activity
+            android:name=".RealMainListActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainListActivity"
             android:exported="false" />
         <!--

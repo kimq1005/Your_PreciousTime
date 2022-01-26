@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -72,9 +71,9 @@
                 android:src="@drawable/ic_baseline_location_on_24" />
 
             <TextView
-                android:layout_marginStart="12dp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginStart="12dp"
                 android:gravity="center"
                 android:text="수원"
                 android:textColor="#FDD835"
@@ -92,9 +91,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginEnd="10dp"
                 android:gravity="center"
                 android:text="지역변경"
-                android:layout_marginEnd="10dp"
                 android:textColor="#5A595C" />
 
 
@@ -102,82 +101,79 @@
 
 
         <LinearLayout
-            android:gravity="center"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/locationIconLinearLayout"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:id="@+id/mainIconLinearLayout"
             android:layout_width="match_parent"
-            android:layout_height="0dp">
+            android:layout_height="0dp"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/locationIconLinearLayout">
 
             <LinearLayout
-                android:gravity="center"
-                android:background="@drawable/myrectangleicon_background"
-                android:orientation="vertical"
                 android:layout_width="110dp"
-                android:layout_height="70dp">
+                android:layout_height="70dp"
+                android:background="@drawable/myrectangleicon_background"
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <ImageView
-                    android:src="@drawable/whitesubway"
                     android:layout_width="40dp"
-                    android:layout_height="40dp"/>
+                    android:layout_height="40dp"
+                    android:src="@drawable/whitesubway" />
 
                 <TextView
-                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="지하철"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:textColor="@color/white" />
 
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginStart="20dp"
-                android:gravity="center"
-                android:background="@drawable/myrectangleicon_background"
-                android:orientation="vertical"
                 android:layout_width="110dp"
-                android:layout_height="70dp">
+                android:layout_height="70dp"
+                android:layout_marginStart="20dp"
+                android:background="@drawable/myrectangleicon_background"
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <ImageView
-                    android:src="@drawable/whitesubway"
                     android:layout_width="40dp"
-                    android:layout_height="40dp"/>
+                    android:layout_height="40dp"
+                    android:src="@drawable/whitesubway" />
 
                 <TextView
-                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="버스"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:textColor="@color/white" />
 
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginStart="20dp"
-                android:gravity="center"
-                android:background="@drawable/myrectangleicon_background"
-                android:orientation="vertical"
                 android:layout_width="110dp"
-                android:layout_height="70dp">
+                android:layout_height="70dp"
+                android:layout_marginStart="20dp"
+                android:background="@drawable/myrectangleicon_background"
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <ImageView
-                    android:src="@drawable/whitesubway"
                     android:layout_width="40dp"
-                    android:layout_height="40dp"/>
+                    android:layout_height="40dp"
+                    android:src="@drawable/whitesubway" />
 
                 <TextView
-                    android:textColor="@color/white"
-                    android:text="즐겨찾기"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:text="즐겨찾기"
+                    android:textColor="@color/white" />
 
 
             </LinearLayout>
-
-
-
 
 
         </LinearLayout>
@@ -186,15 +182,71 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="#F0F5FB"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/upconstarintLayout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"/>
+        android:layout_height="0dp"
+        android:background="#F0F5FB"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/upconstarintLayout">
+
+        <View
+            android:id="@+id/downView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/rectangle_down_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="@+id/downView"
+
+            app:layout_constraintStart_toStartOf="@+id/downView"
+            app:layout_constraintTop_toTopOf="@id/downView">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="새소식/공지사항"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="버퍼라인 가이드"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="gdgd"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="gdgd"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
 
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

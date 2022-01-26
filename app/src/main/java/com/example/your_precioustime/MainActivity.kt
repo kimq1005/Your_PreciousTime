@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.mapGobtn.setOnClickListener {
-            val intent = Intent(this,MainListActivity::class.java)
+            val intent = Intent(this,RealMainListActivity::class.java)
             startActivity(intent)
 //            retrofitcall()
         }
