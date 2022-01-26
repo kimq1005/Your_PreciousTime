@@ -8,9 +8,12 @@
         <entry key="app/src/main/res/drawable/fullstar.xml" value="0.24512820512820513" />
         <entry key="app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.2037037037037037" />
         <entry key="app/src/main/res/drawable/ic_baseline_directions_bus_24.xml" value="0.31145833333333334" />
+        <entry key="app/src/main/res/drawable/ic_baseline_directions_subway_24.xml" value="0.23055555555555557" />
+        <entry key="app/src/main/res/drawable/ic_baseline_location_on_24.xml" value="0.23055555555555557" />
         <entry key="app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/drawable/ic_baseline_subway_24.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.25416666666666665" />
+        <entry key="app/src/main/res/drawable/line1_background.xml" value="0.23055555555555557" />
         <entry key="app/src/main/res/drawable/line2_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/line3_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/line4_background.xml" value="0.1" />
@@ -28,6 +31,8 @@
         <entry key="app/src/main/res/drawable/line_sinbundang_background.xml" value="0.2515625" />
         <entry key="app/src/main/res/drawable/line_ui_background.xml" value="0.24947916666666667" />
         <entry key="app/src/main/res/drawable/mydialog.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/mymainlist_under_reactangle_background.xml" value="0.23055555555555557" />
+        <entry key="app/src/main/res/drawable/myrectangleicon_background.xml" value="0.23055555555555557" />
         <entry key="app/src/main/res/drawable/radious_background.xml" value="0.24947916666666667" />
         <entry key="app/src/main/res/drawable/rectangle_radious.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/drawable/rectangle_searchbackground.xml" value="0.25416666666666665" />
@@ -39,6 +44,7 @@
         <entry key="app/src/main/res/layout/activity_deep_station_info.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_favorite_deep_info.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_main_list.xml" value="0.375" />
         <entry key="app/src/main/res/layout/activity_maps.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_second.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_subway_favroite_deev_info.xml" value="0.165" />

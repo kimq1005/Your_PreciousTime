@@ -33,15 +33,14 @@ class MainActivity : AppCompatActivity() {
         binding.MainLogoDd.setOnClickListener {
 //            val intent = Intent(this,BusSubwayActivity::class.java)
             val intent = Intent(this,SecondActivity::class.java)
-//
             startActivity(intent)
 //            Toast.makeText(this,"gdgd",Toast.LENGTH_SHORT).show()
         }
 
         binding.mapGobtn.setOnClickListener {
-//            val intent = Intent(this,MapsActivity::class.java)
-//            startActivity(intent)
-            retrofitcall()
+            val intent = Intent(this,MainListActivity::class.java)
+            startActivity(intent)
+//            retrofitcall()
         }
 
 

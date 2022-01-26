@@ -39,10 +39,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
     lateinit var testfuck: MutableList<StationBus>
-
     private var mymarker: Marker? = null
     private lateinit var upAdpater: UpAdpater
-
     lateinit var busFavoriteDB: BusFavroiteDataBase
     lateinit var activitybusfavoriteEntity: List<TestFavoriteModel>
 
@@ -59,7 +57,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
 
 //        ClickSearchBtn()
         setMap()
@@ -91,10 +88,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mapFragment.getMapAsync(this)
     }
 
-    
 
     fun SetmapView() = with(binding) {
-        val stationname= intent.getStringExtra("stationName")
+        val stationname = intent.getStringExtra("stationName")
         val stationnodenode = intent.getStringExtra("stationnodenode")
         Log.d(TAG, "SetmapView: $stationname , $stationnodenode")
 
@@ -189,13 +185,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         index % 2 == 0
                     }
 
-//                    Log.d(TAG, "firstList: $firstList")
 
                     val secondList = hi.filterIndexed { index, item ->
                         index % 2 == 1
                     }
-
-//                    Log.d(TAG, "secondList: $secondList")
 
 
                     val ResultList = mutableListOf<Item>()
@@ -226,8 +219,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                                 }
 
                             }
-
-
 
 
                         }

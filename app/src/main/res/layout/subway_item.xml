@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
     android:id="@+id/subwayitem_root"
-    android:background="@color/maincolor"
-    android:layout_height="80dp">
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:background="@color/maincolor">
 
 
     <TextView
@@ -21,17 +21,15 @@
 
     <TextView
         android:id="@+id/subwayitem_subwayId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
+        android:gravity="center"
+        android:text="1"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/subwayitem_trainLineNm"
         app:layout_constraintStart_toEndOf="@+id/subwayitem_trainLineNm"
-        app:layout_constraintTop_toTopOf="@+id/subwayitem_trainLineNm"
-        android:text="1"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-
+        app:layout_constraintTop_toTopOf="@+id/subwayitem_trainLineNm" />
 
 
     <LinearLayout
@@ -52,7 +50,6 @@
             app:layout_constraintTop_toBottomOf="@+id/subwayitem_trainLineNm" />
 
         <TextView
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="행"
@@ -69,9 +66,7 @@
             android:textColor="@color/white" />
 
 
-
     </LinearLayout>
-
 
 
     <View
