@@ -22,8 +22,6 @@ import retrofit2.Response
 
 class Myobject {
 
-
-
     companion object {
         val myobject = Myobject()
     }
@@ -84,6 +82,19 @@ class Myobject {
 
 
         }
+        return mytext
+    }
+
+
+    fun changeSubwayResultText(mytext: String): String {
+        if (mytext.contains("-")) {
+            val one = mytext.replace(" ", "")
+            val two = one.split("-")
+            val three = two[1].replace("방면","")
+            return three
+        }
+
+
         return mytext
     }
 

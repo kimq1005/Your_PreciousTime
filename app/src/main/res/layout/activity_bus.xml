@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/maincolor"
+    android:background="@color/secondmaincolor"
     tools:context=".SecondActivity.Busfragment.Bus_Activity">
 
     <TextView
@@ -14,67 +14,44 @@
         android:gravity="center"
         android:padding="10dp"
         android:text="Bus Search"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.cardview.widget.CardView
 
-        android:id="@+id/topview1"
-        android:layout_width="match_parent"
-        android:layout_height="85dp"
-        app:cardBackgroundColor="#222222"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/SearchEditText"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:padding="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Bus_titleView">
+        app:layout_constraintTop_toBottomOf="@+id/Bus_titleView"
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/myconstraintView"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/SearchEditText2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:hint="검색"
+            android:textSize="10sp" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/SearchEditText"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:padding="15dp"
-                app:layout_constraintBottom_toBottomOf="@id/myconstraintView"
-                app:layout_constraintEnd_toEndOf="@+id/myconstraintView"
-                app:layout_constraintStart_toStartOf="@+id/myconstraintView"
-                app:layout_constraintTop_toTopOf="@id/myconstraintView"
+    </com.google.android.material.textfield.TextInputLayout>
 
 
-                >
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/SearchEditText2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="검색"
-                    android:textColor="@color/white"
-                    android:textSize="10sp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-            <ImageView
-                android:id="@+id/clickhere"
-                android:layout_width="50dp"
-                android:layout_height="35dp"
-                android:layout_marginRight="20dp"
-                android:src="@drawable/ic_baseline_search_24"
-                app:layout_constraintBottom_toBottomOf="@id/SearchEditText"
-                app:layout_constraintEnd_toEndOf="@+id/SearchEditText"
-                app:layout_constraintTop_toTopOf="@id/SearchEditText" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </androidx.cardview.widget.CardView>
+    <ImageView
+        android:id="@+id/clickhere"
+        android:layout_width="50dp"
+        android:layout_height="35dp"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/ic_baseline_search_24"
+        app:layout_constraintBottom_toBottomOf="@id/SearchEditText"
+        app:layout_constraintEnd_toEndOf="@+id/SearchEditText"
+        app:layout_constraintTop_toTopOf="@id/SearchEditText" />
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -86,7 +63,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topview1" />
+        app:layout_constraintTop_toBottomOf="@+id/SearchEditText" />
 
 
     <TextView
@@ -94,7 +71,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="2dp"
-        android:background="@color/white"
         android:gravity="center"
         android:padding="10dp"
         android:text="버스가 없어요 다시 입력하십쇼"
@@ -103,7 +79,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topview1"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
 
@@ -112,7 +88,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/white"
         android:src="@drawable/whitestar"
         app:borderWidth="0dp"
         app:fabSize="mini"
@@ -127,7 +103,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/white"
         android:src="@drawable/ic_baseline_subway_24"
         app:borderWidth="0dp"
         app:fabSize="mini"
@@ -142,7 +118,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/white"
         android:src="@drawable/ic_baseline_directions_bus_24"
         app:borderWidth="0dp"
         app:fabSize="mini"
@@ -157,7 +133,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="24dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/white"
         android:src="@drawable/ic_baseline_search_24"
         app:borderWidth="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

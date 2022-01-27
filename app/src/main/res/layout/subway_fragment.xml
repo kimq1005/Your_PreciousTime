@@ -4,22 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/maincolor"
+    android:background="@color/secondmaincolor"
     tools:context=".SecondActivity.SubwayFragment.SubwayFragment">
 
 
-    <TextView
-        android:id="@+id/Subway"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="Subway"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/SearchEditText"
@@ -27,16 +16,13 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:padding="15dp"
-        app:hintTextColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@+id/Subway">
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/SearchEditText2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="검색"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
+            android:hint="지하철역 검색"
             android:textSize="10sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -62,29 +48,51 @@
         app:layout_constraintEnd_toEndOf="@+id/SearchEditText"
         app:layout_constraintTop_toTopOf="@+id/SearchEditText" />
 
-    <TextView
-        android:id="@+id/subtitleTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:background="@color/white"
+        android:id="@+id/subtitleLienarlayout"
         android:gravity="center"
-        android:padding="5dp"
-        android:text=""
-        android:textColor="@color/white"
-        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/firstunderline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firstunderline" />
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
 
-    <ImageView
-        android:id="@+id/subwayfavroiteAddImageView"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        app:layout_constraintBottom_toBottomOf="@id/subtitleTextView"
-        app:layout_constraintEnd_toStartOf="@id/subtitleTextView"
-        app:layout_constraintTop_toTopOf="@+id/subtitleTextView" />
+        <TextView
+            android:layout_marginStart="10dp"
+            android:id="@+id/subtitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="매탄권선"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+
+        <ImageView
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/star"
+            android:id="@+id/subwayfavroiteAddImageView"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:layout_constraintBottom_toBottomOf="@id/subtitleTextView"
+            app:layout_constraintEnd_toStartOf="@id/subtitleTextView"
+            app:layout_constraintTop_toTopOf="@+id/subtitleTextView" />
+
+    </LinearLayout>
+
+
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:background="@color/white"
         android:id="@+id/subwayRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -94,7 +102,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/subtitleTextView"
+        app:layout_constraintTop_toBottomOf="@+id/subtitleLienarlayout"
         app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -102,7 +110,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/white"
         android:src="@drawable/whitestar"
         app:borderWidth="0dp"
         app:fabSize="mini"
@@ -117,7 +125,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/white"
         android:src="@drawable/ic_baseline_subway_24"
         app:borderWidth="0dp"
         app:fabSize="mini"
@@ -133,7 +141,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/white"
         android:src="@drawable/ic_baseline_directions_bus_24"
         app:borderWidth="0dp"
         app:fabSize="mini"
@@ -148,7 +156,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="24dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/white"
         android:src="@drawable/ic_baseline_search_24"
         app:borderWidth="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

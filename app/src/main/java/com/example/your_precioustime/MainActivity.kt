@@ -1,9 +1,12 @@
 package com.example.your_precioustime
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
+import androidx.core.content.ContextCompat.startActivity
 import com.example.your_precioustime.Model.Bus
 import com.example.your_precioustime.Retrofit.Retrofit_Client
 import com.example.your_precioustime.Retrofit.Retrofit_InterFace
@@ -18,12 +21,8 @@ import javax.security.auth.callback.Callback
 
 class MainActivity : AppCompatActivity() {
 
-    private var mainActivitybinding : ActivityMainBinding? = null
+    private var mainActivitybinding: ActivityMainBinding? = null
     private val binding get() = mainActivitybinding!!
-
-    private val retrofitInterface: Retrofit_InterFace = Retrofit_Client.getClient(Url.BUS_MAIN_URL).create(
-        Retrofit_InterFace::class.java)
-    //hi
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,33 +30,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.MainLogoDd.setOnClickListener {
-//            val intent = Intent(this,BusSubwayActivity::class.java)
-            val intent = Intent(this,SecondActivity::class.java)
-            startActivity(intent)
-//            Toast.makeText(this,"gdgd",Toast.LENGTH_SHORT).show()
-        }
-
-        binding.mapGobtn.setOnClickListener {
-            val intent = Intent(this,RealMainListActivity::class.java)
-            startActivity(intent)
-//            retrofitcall()
+            Handler().postDelayed({
+                fadeanimation(this)
+            }, 500)
         }
 
 
     }
 
-    private fun retrofitcall() {
-        val call =retrofitInterface.BusGet("25","DJB8001793")
-
-        call.enqueue(object :retrofit2.Callback<Bus>{
-            override fun onResponse(call: Call<Bus>, response: Response<Bus>) {
-                Log.d(TAG, "onResponse: ${response.body()}")
-            }
-
-            override fun onFailure(call: Call<Bus>, t: Throwable) {
-                Log.d(TAG, "onFailure: $t")
-            }
-        })
+    fun fadeanimation(activity: Activity) {
+        val intent = Intent(this, RealMainListActivity::class.java)
+        startActivity(intent)
+        activity.overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
     }
 
 
