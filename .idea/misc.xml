@@ -40,13 +40,13 @@
         <entry key="app/src/main/res/drawable/whitestar.xml" value="0.24512820512820513" />
         <entry key="app/src/main/res/layout-v21/activity_second.xml" value="0.1" />
         <entry key="app/src/main/res/layout-v21/subwayfavoritelist_item.xml" value="0.45" />
-        <entry key="app/src/main/res/layout/activity_bus.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_bus.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_bus_subway.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_deep_station_info.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_favorite_deep_info.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main_list.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/activity_maps.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_maps.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_real_main_list.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_second.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_subway_favroite_deev_info.xml" value="0.165" />
@@ -60,7 +60,7 @@
         <entry key="app/src/main/res/layout/favoritesbusitem_layout.xml" value="0.335" />
         <entry key="app/src/main/res/layout/mydialog.xml" value="0.25" />
         <entry key="app/src/main/res/layout/network_config.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/subway_fragment.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/subway_fragment.xml" value="0.165" />
         <entry key="app/src/main/res/layout/subway_item.xml" value="0.28926761953198427" />
         <entry key="app/src/main/res/layout/subwayfragment.xml" value="0.2953125" />
         <entry key="app/src/main/res/xml/network_config.xml" value="0.1" />

@@ -4,40 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/secondmaincolor"
+    android:background="@color/maincolor"
     tools:context=".SecondActivity.Busfragment.Bus_Activity">
-
-    <TextView
-        android:id="@+id/Bus_titleView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="Bus Search"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 
     <com.google.android.material.textfield.TextInputLayout
+        android:background="@color/subcolor"
         android:id="@+id/SearchEditText"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:padding="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Bus_titleView"
-
+        android:textColorHint="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
         >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:textColor="@color/white"
             android:id="@+id/SearchEditText2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="검색"
+            android:hint="버스 정류장 검색"
             android:textSize="10sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -52,6 +39,16 @@
         app:layout_constraintBottom_toBottomOf="@id/SearchEditText"
         app:layout_constraintEnd_toEndOf="@+id/SearchEditText"
         app:layout_constraintTop_toTopOf="@id/SearchEditText" />
+
+
+    <View
+        android:id="@+id/firstunderline"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SearchEditText" />
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -88,7 +85,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@color/black"
         android:src="@drawable/whitestar"
         app:borderWidth="0dp"
         app:fabSize="mini"
@@ -103,7 +100,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@color/black"
         android:src="@drawable/ic_baseline_subway_24"
         app:borderWidth="0dp"
         app:fabSize="mini"
@@ -118,7 +115,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@color/black"
         android:src="@drawable/ic_baseline_directions_bus_24"
         app:borderWidth="0dp"
         app:fabSize="mini"
@@ -133,7 +130,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="24dp"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@color/black"
         android:src="@drawable/ic_baseline_search_24"
         app:borderWidth="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

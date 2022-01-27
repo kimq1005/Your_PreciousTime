@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/secondmaincolor"
+    android:background="@color/maincolor"
     tools:context=".RealMainListActivity">
 
     <LinearLayout
@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="나는 전설이다"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="25sp"
             android:textStyle="bold" />
 
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="나는 전설이다 잘생겼고 성격좋다 질투나냐?"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="15sp" />
 
 
@@ -39,27 +39,29 @@
 
 
     <androidx.cardview.widget.CardView
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="30dp"
+        android:backgroundTint="@color/subcolor"
         android:id="@+id/locationView"
         android:layout_width="match_parent"
         android:layout_height="65dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="10dp"
 
         android:background="@drawable/rectangle_down_background"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleLinearLayout" >
+        app:layout_constraintTop_toBottomOf="@+id/titleLinearLayout">
 
         <LinearLayout
-            android:layout_margin="20dp"
-            app:layout_constraintBottom_toBottomOf="@id/locationView"
-            app:layout_constraintStart_toStartOf="@id/locationView"
-            app:layout_constraintEnd_toEndOf="@id/locationView"
-            app:layout_constraintTop_toTopOf="@id/locationView"
             android:id="@+id/locationIconLinearLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:layout_constraintBottom_toBottomOf="@id/locationView"
+            app:layout_constraintEnd_toEndOf="@id/locationView"
+            app:layout_constraintStart_toStartOf="@id/locationView"
+            app:layout_constraintTop_toTopOf="@id/locationView">
 
 
             <ImageView
@@ -73,9 +75,8 @@
                 android:layout_marginStart="12dp"
                 android:gravity="center"
                 android:text="수원"
-                android:textColor="@color/black"
-                android:textSize="18dp"
-                />
+                android:textColor="@color/white"
+                android:textSize="18dp" />
 
             <View
                 android:layout_width="0dp"
@@ -99,9 +100,6 @@
 
     </androidx.cardview.widget.CardView>
 
-
-
-
     <androidx.cardview.widget.CardView
         android:id="@+id/busView"
         android:layout_marginTop="10dp"
@@ -111,6 +109,7 @@
         android:layout_height="155dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@color/subcolor"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -131,7 +130,7 @@
 
                 <TextView
                     android:layout_marginTop="5dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:textSize="14sp"
                     android:text="정류장 검색"
@@ -162,23 +161,24 @@
         android:layout_height="155dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@color/subcolor"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <LinearLayout
                 android:id="@+id/SubwayLinearlayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:src="@drawable/color_subway"
                     android:layout_width="90dp"
-                    android:layout_height="90dp"/>
+                    android:layout_height="90dp"
+                    android:src="@drawable/color_subway" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -186,12 +186,11 @@
                     android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:text="지하철 검색"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="14sp" />
 
 
             </LinearLayout>
-
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -213,6 +212,7 @@
         android:layout_height="155dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@color/subcolor"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -233,7 +233,7 @@
 
                 <TextView
                     android:layout_marginTop="5dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:textSize="14sp"
                     android:text="즐겨찾기"
@@ -260,6 +260,7 @@
         android:layout_height="155dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@color/subcolor"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -280,7 +281,7 @@
 
                 <TextView
                     android:layout_marginTop="5dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:gravity="center"
                     android:textSize="14sp"
                     android:text="내 주변 정류장"
@@ -308,6 +309,7 @@
         android:layout_height="100dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@color/subcolor"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -332,7 +334,7 @@
                     android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:text="가이드"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="14sp" />
 
 
@@ -356,6 +358,7 @@
         android:layout_height="100dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@color/subcolor"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -380,7 +383,7 @@
                     android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:text="공지사항"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="14sp" />
 
 
@@ -404,6 +407,7 @@
         android:layout_height="100dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@color/subcolor"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -429,7 +433,7 @@
                     android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:text="요청사항"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="14sp" />
 
 

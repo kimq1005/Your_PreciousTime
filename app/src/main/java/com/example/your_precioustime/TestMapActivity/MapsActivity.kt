@@ -58,7 +58,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        ClickSearchBtn()
+        binding.backwowbtn.setOnClickListener {
+            onBackPressed()
+            finish()
+        }
+
         setMap()
         SetBusStationRecyclerView()
         busFavoriteGetAll()

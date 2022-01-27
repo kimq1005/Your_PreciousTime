@@ -90,7 +90,7 @@ class Myobject {
         if (mytext.contains("-")) {
             val one = mytext.replace(" ", "")
             val two = one.split("-")
-            val three = two[1].replace("방면","")
+            val three = two[1].replace("방면"," 방면")
             return three
         }
 

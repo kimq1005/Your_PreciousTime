@@ -125,23 +125,6 @@ class SubwayAdapter : RecyclerView.Adapter<SubwayAdapter.MyViewHolder>() {
             }
         }
 
-        holder.itemView.setOnClickListener {
-            Toast.makeText(holder.itemView.context , "되냐? : ${subwayItem.get(position).subwayId}",Toast.LENGTH_SHORT).show()
-        }
-
-
-//        holder.binding.saveBtn.setOnClickListener {
-//            val subwayId = subwayItem[position].subwayId.toString()
-//            val trainLineNm = subwayItem[position].trainLineNm
-//            val bstatnNm = subwayItem[position].bstatnNm
-//            val arvlMsg2 = subwayItem[position].arvlMsg2
-//
-//            val hi = SubwayEntity(null, subwayId, trainLineNm, bstatnNm, arvlMsg2)
-//
-//            subwayinsert(hi)
-//
-//            Toast.makeText(holder.itemView.context, "즐겨찾기에 등록 되었습니다.", Toast.LENGTH_SHORT).show()
-//        }
     }
 
 

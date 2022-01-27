@@ -26,6 +26,7 @@ class SubwayFavroiteDeevInfo : AppCompatActivity() {
 
         binding.backbtn.setOnClickListener {
             onBackPressed()
+            finish()
         }
 
         Myobject.myobject.ToggleSet(
