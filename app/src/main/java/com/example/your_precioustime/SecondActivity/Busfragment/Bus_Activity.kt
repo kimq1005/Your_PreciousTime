@@ -33,8 +33,9 @@ class Bus_Activity : AppCompatActivity() {
         setContentView(binding.root)
 
         val suwoncitycode: String = "31010"
+        val citycode :String = intent.getStringExtra("citycode").toString()
         val StationEditName = binding.SearchEditText2.text.toString()
-        SetRecyclerView(suwoncitycode, null)
+        SetRecyclerView(citycode, null)
         Myobject.myobject.ToggleSet(
             this,
             binding.floatingBtn,
@@ -51,10 +52,10 @@ class Bus_Activity : AppCompatActivity() {
 
         clickhere.setOnClickListener {
             val suwoncitycode: String = "31010"
+            val citycode :String = intent.getStringExtra("citycode").toString()
             val StationEditName = SearchEditText2.text.toString()
-            SetRecyclerView(suwoncitycode, StationEditName)
+            SetRecyclerView(citycode, StationEditName)
 //            hellomy(suwoncitycode,"GGB203000129")
-            //버스 띄우고 지하철은 그림판가져와서 한번 해보자 내일이면 충분함 띄우는건 ㅇㅋ? 굳
         }
 
         SearchEditText.setOnClickListener {

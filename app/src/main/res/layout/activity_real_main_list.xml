@@ -70,6 +70,7 @@
                 android:src="@drawable/colorlocationicon" />
 
             <TextView
+                android:id="@+id/citynameTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginStart="12dp"
@@ -86,12 +87,20 @@
                 />
 
 
-            <TextView
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginEnd="10dp"-->
+<!--                android:gravity="center"-->
+<!--                android:text="지역변경"-->
+<!--                android:textColor="#5A595C" />-->
+
+            <Spinner
+                android:theme="@style/SpinnerTheme"
+                android:id="@+id/mySpinner"
                 android:layout_width="wrap_content"
+                android:spinnerMode="dropdown"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="10dp"
-                android:gravity="center"
-                android:text="지역변경"
                 android:textColor="#5A595C" />
 
 
