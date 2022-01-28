@@ -8,6 +8,7 @@ import android.os.Handler
 import android.util.Log
 import androidx.core.content.ContextCompat.startActivity
 import com.example.your_precioustime.Model.Bus
+import com.example.your_precioustime.ObjectManager.citycodeSaveClass
 import com.example.your_precioustime.Retrofit.Retrofit_Client
 import com.example.your_precioustime.Retrofit.Retrofit_InterFace
 import com.example.your_precioustime.SecondActivity.SecondActivity
@@ -34,6 +35,11 @@ class MainActivity : AppCompatActivity() {
                 fadeanimation(this)
             }, 500)
         }
+
+//        binding.fuckyousiballoma.setOnClickListener {
+//            val fuckyou = binding.MainLogoDd.text.toString()
+//            citycodeSaveClass.citycodeSaveClass.setString("citycode",fuckyou)
+//        }
 
 
     }

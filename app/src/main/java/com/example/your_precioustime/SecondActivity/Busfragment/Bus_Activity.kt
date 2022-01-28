@@ -7,6 +7,7 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.your_precioustime.Model.StationBus
 import com.example.your_precioustime.ObjectManager.Myobject
+import com.example.your_precioustime.ObjectManager.citycodeSaveClass
 import com.example.your_precioustime.Retrofit.Retrofit_Client
 import com.example.your_precioustime.Retrofit.Retrofit_InterFace
 import com.example.your_precioustime.Url
@@ -32,10 +33,10 @@ class Bus_Activity : AppCompatActivity() {
         busBinding = ActivityBusBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val suwoncitycode: String = "31010"
-        val citycode :String = intent.getStringExtra("citycode").toString()
-        val StationEditName = binding.SearchEditText2.text.toString()
+        val citycode = citycodeSaveClass.citycodeSaveClass.Loadcitycode("citycode","citycode")
+
         SetRecyclerView(citycode, null)
+
         Myobject.myobject.ToggleSet(
             this,
             binding.floatingBtn,
@@ -52,7 +53,8 @@ class Bus_Activity : AppCompatActivity() {
 
         clickhere.setOnClickListener {
             val suwoncitycode: String = "31010"
-            val citycode :String = intent.getStringExtra("citycode").toString()
+//            val citycode :String = intent.getStringExtra("citycode").toString()
+            val citycode = citycodeSaveClass.citycodeSaveClass.Loadcitycode("citycode","citycode")
             val StationEditName = SearchEditText2.text.toString()
             SetRecyclerView(citycode, StationEditName)
 //            hellomy(suwoncitycode,"GGB203000129")

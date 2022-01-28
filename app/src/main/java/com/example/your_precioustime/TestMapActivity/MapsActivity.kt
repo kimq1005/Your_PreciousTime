@@ -12,6 +12,7 @@ import com.example.your_precioustime.App
 import com.example.your_precioustime.Model.Bus
 import com.example.your_precioustime.Model.Item
 import com.example.your_precioustime.Model.StationBus
+import com.example.your_precioustime.ObjectManager.citycodeSaveClass
 import com.example.your_precioustime.R
 import com.example.your_precioustime.Retrofit.Retrofit_Client
 import com.example.your_precioustime.Retrofit.Retrofit_InterFace
@@ -29,6 +30,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.example.your_precioustime.databinding.ActivityMapsBinding
 import com.google.android.gms.maps.model.*
+import kotlinx.android.synthetic.main.activity_real_main_list.*
 import retrofit2.Call
 import retrofit2.Response
 import kotlin.math.log
@@ -62,6 +64,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             onBackPressed()
             finish()
         }
+
 
         setMap()
         SetBusStationRecyclerView()
@@ -98,8 +101,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val stationnodenode = intent.getStringExtra("stationnodenode")
         Log.d(TAG, "SetmapView: $stationname , $stationnodenode")
 
+        val citycode = citycodeSaveClass.citycodeSaveClass.Loadcitycode("citycode","citycode")
+
         val stationcalls = retrofitInterface.StationNameGet(
-            cityCode = "31010",
+            cityCode = citycode,
             staionName = null,
             nodeNo = stationnodenode
         )
@@ -150,7 +155,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         binding.BusStationName.text = stationName
 
         val stationNodeNumber = intent.getStringExtra("stationNodeNumber").toString()
-        val citycode: String = "31010"
+        val citycode = citycodeSaveClass.citycodeSaveClass.Loadcitycode("citycode","citycode")
+//        val citycode: String = "31010"
 
         val call = retrofitInterface.BusGet(citycode, stationNodeNumber)
 //        val call = retrofitInterface.BusGet("25","DJB8001793")

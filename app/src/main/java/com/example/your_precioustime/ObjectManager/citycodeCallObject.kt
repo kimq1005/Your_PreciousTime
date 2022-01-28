@@ -1,5 +1,8 @@
 package com.example.your_precioustime.ObjectManager
 
+import android.content.Context
+import android.content.SharedPreferences
+
 class citycodeCallObject {
 
     companion object{
@@ -133,6 +136,12 @@ class citycodeCallObject {
         }
         return "31010"
     }
+
+
+
+
+
+
 
 
 }

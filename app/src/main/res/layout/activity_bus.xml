@@ -8,6 +8,15 @@
     tools:context=".SecondActivity.Busfragment.Bus_Activity">
 
 
+    <TextView
+        android:id="@+id/fuckyouTestMan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
     <com.google.android.material.textfield.TextInputLayout
         android:background="@color/subcolor"
         android:id="@+id/SearchEditText"
@@ -136,6 +145,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/citycodeTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

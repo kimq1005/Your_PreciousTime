@@ -10,11 +10,13 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.core.view.get
 import com.example.your_precioustime.ObjectManager.citycodeCallObject
+import com.example.your_precioustime.ObjectManager.citycodeSaveClass
 import com.example.your_precioustime.SecondActivity.Busfragment.Bus_Activity
 import com.example.your_precioustime.SecondActivity.SecondActivity
 import com.example.your_precioustime.SecondActivity.SubwayFragment.SubwayFragment
 import com.example.your_precioustime.databinding.ActivityMainListBinding
 import com.example.your_precioustime.databinding.ActivityRealMainListBinding
+import kotlinx.android.synthetic.main.activity_bus.*
 
 class RealMainListActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
@@ -31,9 +33,10 @@ class RealMainListActivity : AppCompatActivity(), AdapterView.OnItemSelectedList
         setSpinner(spinner)
 
         binding.busView.setOnClickListener {
-            val intent = Intent(this, Bus_Activity::class.java)
             val mycitycode:String = citycodeCallObject.citycodeCallObject.citycode(binding.citynameTextView.text.toString())
-            intent.putExtra("citycode",mycitycode)
+            citycodeSaveClass.citycodeSaveClass.Savecitycode("citycode",mycitycode)
+            Toast.makeText(this,"$mycitycode",Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, Bus_Activity::class.java)
             startActivity(intent)
         }
 
