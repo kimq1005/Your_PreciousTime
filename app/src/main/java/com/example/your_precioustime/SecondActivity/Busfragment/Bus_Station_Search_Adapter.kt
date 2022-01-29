@@ -10,20 +10,24 @@ import com.example.your_precioustime.SecondActivity.FavoriteFragment.DeepStation
 import com.example.your_precioustime.TestMapActivity.MapsActivity
 import com.example.your_precioustime.databinding.BusStationSearchitemLayoutBinding
 
-class Bus_Station_Search_Adapter:RecyclerView.Adapter<Bus_Station_Search_Adapter.MyViewHolder>() {
-    private var stationItem:List<StationItem>? = null
+class Bus_Station_Search_Adapter : RecyclerView.Adapter<Bus_Station_Search_Adapter.MyViewHolder>() {
+    private var stationItem: List<StationItem>? = null
 
-    inner class MyViewHolder(val binding: BusStationSearchitemLayoutBinding):RecyclerView.ViewHolder(binding.root){
+    inner class MyViewHolder(val binding: BusStationSearchitemLayoutBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(stationItem: StationItem){
+        fun bind(stationItem: StationItem) {
             binding.StationNameTextView.text = stationItem.nodenm
             binding.StationNodeIDTextView.text = stationItem.nodeno
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = BusStationSearchitemLayoutBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val view = BusStationSearchitemLayoutBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
 
         return MyViewHolder(view)
     }
@@ -35,15 +39,12 @@ class Bus_Station_Search_Adapter:RecyclerView.Adapter<Bus_Station_Search_Adapter
         val stationnodenode = stationItem?.get(position)?.nodeno.toString()
         val stationNodeNumber = stationItem?.get(position)?.nodeid.toString()
 
-
-        holder.itemView.setOnClickListener{
+        holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, MapsActivity::class.java)
-            intent.putExtra("citycode","ss")
-            intent.putExtra("stationName" , stationName)
+            intent.putExtra("stationName", stationName)
             intent.putExtra("stationnodenode", stationnodenode)
             intent.putExtra("stationNodeNumber", stationNodeNumber)
             holder.itemView.context.startActivity(intent)
-
         }
     }
 
@@ -52,8 +53,8 @@ class Bus_Station_Search_Adapter:RecyclerView.Adapter<Bus_Station_Search_Adapter
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun submitList(list:List<StationItem>){
-        stationItem= list
+    fun submitList(list: List<StationItem>) {
+        stationItem = list
         notifyDataSetChanged()
     }
 }

@@ -37,7 +37,6 @@ class SecondActivity : AppCompatActivity(), OnDeleteInterFace, OnSubwayListDelet
     lateinit var subwayNameEntity: List<SubwayNameEntity>
     lateinit var subwayfavoriteAdpater: SubwayFavorite_Adpater
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         secondBinding = ActivitySecondBinding.inflate(layoutInflater)
@@ -54,6 +53,7 @@ class SecondActivity : AppCompatActivity(), OnDeleteInterFace, OnSubwayListDelet
             binding.SubwayFloatBtn,
             binding.BusfloatBtn
         )
+        
         getAll()
         subwaygetAll()
 
@@ -93,7 +93,6 @@ class SecondActivity : AppCompatActivity(), OnDeleteInterFace, OnSubwayListDelet
 
 
     private fun getAll() {
-
         val getAllTask = (@SuppressLint("StaticFieldLeak")
         object : AsyncTask<Unit, Unit, Unit>() {
             override fun doInBackground(vararg params: Unit?) {
@@ -131,10 +130,10 @@ class SecondActivity : AppCompatActivity(), OnDeleteInterFace, OnSubwayListDelet
                 subwayDataBase.subwayNameDAO().subwayDelete(subwayNameEntity)
             }
 
+
             override fun onPostExecute(result: Unit?) {
                 super.onPostExecute(result)
                 subwaygetAll()
-
             }
 
         }).execute()
@@ -153,7 +152,6 @@ class SecondActivity : AppCompatActivity(), OnDeleteInterFace, OnSubwayListDelet
                         super.onPostExecute(result)
                         getAll()
                     }
-
                 }).execute()
     }
 
@@ -167,29 +165,4 @@ class SecondActivity : AppCompatActivity(), OnDeleteInterFace, OnSubwayListDelet
     }
 
 
-//    private fun ClickFragment() {
-//        supportFragmentManager.beginTransaction()
-//            .replace(R.id.SecondFragment, BusFragment())
-//            .commit()
-//
-//        binding.BusInfoBtn.setOnClickListener {
-//            supportFragmentManager.beginTransaction()
-//                .replace(R.id.SecondFragment, BusFragment())
-//                .commit()
-//        }
-//
-//        binding.SubwayinfoBtn.setOnClickListener {
-//            supportFragmentManager.beginTransaction()
-//                .replace(R.id.SecondFragment , SubwayFragment())
-//                .commit()
-//        }
-//
-//
-//        binding.FavoriteInfoBtn.setOnClickListener {
-//            supportFragmentManager.beginTransaction()
-//                .replace(R.id.SecondFragment, FavroiteFragment())
-//                .commit()
-//        }
-//
-//    }
 }

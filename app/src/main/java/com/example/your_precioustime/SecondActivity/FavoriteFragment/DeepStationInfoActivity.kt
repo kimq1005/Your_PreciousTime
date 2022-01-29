@@ -11,6 +11,7 @@ import com.example.your_precioustime.App
 import com.example.your_precioustime.Model.Bus
 import com.example.your_precioustime.Model.Item
 import com.example.your_precioustime.ObjectManager.Myobject
+import com.example.your_precioustime.ObjectManager.citycodeSaveClass
 import com.example.your_precioustime.R
 import com.example.your_precioustime.Retrofit.Retrofit_Client
 import com.example.your_precioustime.Retrofit.Retrofit_InterFace
@@ -44,7 +45,6 @@ class DeepStationInfoActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         busFavoriteDB = BusFavroiteDataBase.getinstance(App.instance)!!
-
         val stationName = intent.getStringExtra("stationName").toString()
 
 
@@ -61,7 +61,6 @@ class DeepStationInfoActivity : AppCompatActivity() {
             binding.BusfloatBtn
         )
 
-
         busFavoriteGetAll()
         SetBusStationRecyclerView()
         savemystation()
@@ -74,10 +73,11 @@ class DeepStationInfoActivity : AppCompatActivity() {
             val stationName = intent.getStringExtra("stationName").toString()
             val stationNodeNumber = intent.getStringExtra("stationNodeNumber").toString()
             val stationNodeNode = intent.getStringExtra("stationnodenode").toString()
+            val stationcitycode = citycodeSaveClass.citycodeSaveClass.Loadcitycode("citycode","citycode")
 
             val hello = TestFavoriteModel(
                 id = null,
-                checkBoolean = null,
+                citycode = stationcitycode,
                 stationnodenode = stationNodeNode,
                 stationName = stationName,
                 stationNodeNumber = stationNodeNumber

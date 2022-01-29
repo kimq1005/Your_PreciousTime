@@ -272,9 +272,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     busFavoriteDB.busFavoriteDAO().busFavoriteInsert(busfavoriteEntity)
                 }
 
-
             }
-
 
             override fun onPostExecute(result: Unit?) {
                 super.onPostExecute(result)
@@ -331,10 +329,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             val stationName = intent.getStringExtra("stationName").toString()
             val stationNodeNumber = intent.getStringExtra("stationNodeNumber").toString()
             val stationNodeNode = intent.getStringExtra("stationnodenode").toString()
-
+            val stationcitycode = citycodeSaveClass.citycodeSaveClass.Loadcitycode("citycode","citycode")
             val hello = TestFavoriteModel(
                 id = null,
-                checkBoolean = null,
+                citycode = stationcitycode,
                 stationnodenode = stationNodeNode,
                 stationName = stationName,
                 stationNodeNumber = stationNodeNumber

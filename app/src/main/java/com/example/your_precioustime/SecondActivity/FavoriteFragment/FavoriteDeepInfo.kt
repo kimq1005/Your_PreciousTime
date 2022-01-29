@@ -48,9 +48,11 @@ class FavoriteDeepInfo : AppCompatActivity() {
     private fun setApiRecyclerView()=with(binding) {
         val favoritenodenum  = intent.getStringExtra("favoritenodenum").toString()
         val favoriteStationName = intent.getStringExtra("favoriteStationName").toString()
+        val citycode = intent.getStringExtra("citycode").toString()
 
         BusStationName.text = favoriteStationName
-        val call = retrofitInterface.BusGet("31010",favoritenodenum)
+        val call = retrofitInterface.BusGet(citycode,favoritenodenum)
+//        val call = retrofitInterface.BusGet("31010",favoritenodenum)
 
         call.enqueue(object :retrofit2.Callback<Bus>{
             override fun onResponse(call: Call<Bus>, response: Response<Bus>) {

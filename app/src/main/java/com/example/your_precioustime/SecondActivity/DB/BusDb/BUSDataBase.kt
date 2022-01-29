@@ -74,7 +74,7 @@ abstract class BUSStationNameDataBase : RoomDatabase(){
     }
 }
 
-@Database(entities = arrayOf(TestFavoriteModel::class),version = 3)
+@Database(entities = arrayOf(TestFavoriteModel::class),version = 4)
 abstract class BusFavroiteDataBase : RoomDatabase(){
     abstract fun busFavoriteDAO() : BusFavoriteDAO
 

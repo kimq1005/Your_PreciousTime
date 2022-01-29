@@ -8,8 +8,7 @@ import androidx.room.PrimaryKey
 data class TestFavoriteModel (
     @PrimaryKey(autoGenerate = true)
     var id:Long?,
-
-    var checkBoolean: Boolean?,
+    var citycode:String?,
     var stationnodenode:String,
     var stationName:String,
     var stationNodeNumber:String
