@@ -21,7 +21,8 @@ class SubwayAdapter : RecyclerView.Adapter<SubwayAdapter.MyViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
         fun bind(subwayItem: SubwayItem) {
             val mytext = Myobject.myobject.changeSubwayText(subwayItem.arvlMsg2.toString())
-            val trainLineNmtext = Myobject.myobject.changeSubwayResultText(subwayItem.trainLineNm.toString())
+            val trainLineNmtext =
+                Myobject.myobject.changeSubwayResultText(subwayItem.trainLineNm.toString())
 
 
             binding.subwayitemSubwayId.text = subwayItem.subwayId
@@ -137,7 +138,6 @@ class SubwayAdapter : RecyclerView.Adapter<SubwayAdapter.MyViewHolder>() {
         subwayItem = list
         notifyDataSetChanged()
     }
-
 
 
 }

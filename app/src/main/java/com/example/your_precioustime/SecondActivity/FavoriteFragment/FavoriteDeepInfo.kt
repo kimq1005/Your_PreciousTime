@@ -22,11 +22,11 @@ class FavoriteDeepInfo : AppCompatActivity() {
 
     private val retrofitInterface: Retrofit_InterFace = Retrofit_Client.getClient(Url.BUS_MAIN_URL).create(Retrofit_InterFace::class.java)
     lateinit var DFadapter: DeepFavoriteAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         favroitebinding = ActivityFavoriteDeepInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         setApiRecyclerView()
 
         binding.backbtn.setOnClickListener {
@@ -52,7 +52,6 @@ class FavoriteDeepInfo : AppCompatActivity() {
 
         BusStationName.text = favoriteStationName
         val call = retrofitInterface.BusGet(citycode,favoritenodenum)
-//        val call = retrofitInterface.BusGet("31010",favoritenodenum)
 
         call.enqueue(object :retrofit2.Callback<Bus>{
             override fun onResponse(call: Call<Bus>, response: Response<Bus>) {
@@ -125,8 +124,6 @@ class FavoriteDeepInfo : AppCompatActivity() {
 
 
                         }
-
-
 
 
                     }

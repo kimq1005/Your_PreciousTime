@@ -27,6 +27,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:visibility="invisible"
             android:gravity="center"
             android:background="@drawable/line_bundang_background"
             android:id="@+id/Favorite_NodeID_TextView"
