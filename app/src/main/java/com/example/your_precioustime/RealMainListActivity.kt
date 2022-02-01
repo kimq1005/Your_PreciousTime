@@ -56,6 +56,8 @@ class RealMainListActivity : AppCompatActivity(), AdapterView.OnItemSelectedList
             startActivity(intent)
         }
 
+        //2월6일까지 완성예정
+
     }
 
     private fun setSpinner(spinner: Spinner) {
