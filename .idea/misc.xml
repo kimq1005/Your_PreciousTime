@@ -44,9 +44,11 @@
         <entry key="app/src/main/res/layout/activity_bus_subway.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_deep_station_info.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_favorite_deep_info.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_guide.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main_list.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_maps.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_mylocation_station.xml" value="0.10833333333333334" />
         <entry key="app/src/main/res/layout/activity_real_main_list.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_second.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_subway_favroite_deev_info.xml" value="0.165" />
@@ -58,6 +60,7 @@
         <entry key="app/src/main/res/layout/favoritelist_fragment.xml" value="0.23541666666666666" />
         <entry key="app/src/main/res/layout/favoritelist_item.xml" value="0.45" />
         <entry key="app/src/main/res/layout/favoritesbusitem_layout.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_my_location_station__activity.xml" value="0.2328125" />
         <entry key="app/src/main/res/layout/mydialog.xml" value="0.25" />
         <entry key="app/src/main/res/layout/network_config.xml" value="0.1" />
         <entry key="app/src/main/res/layout/subway_fragment.xml" value="0.375" />

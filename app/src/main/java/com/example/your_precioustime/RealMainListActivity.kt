@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.core.view.get
+import com.example.your_precioustime.GuideActivity.GuideActivity
 import com.example.your_precioustime.ObjectManager.citycodeCallObject
 import com.example.your_precioustime.ObjectManager.citycodeSaveClass
 import com.example.your_precioustime.SecondActivity.Busfragment.Bus_Activity
@@ -49,6 +50,12 @@ class RealMainListActivity : AppCompatActivity(), AdapterView.OnItemSelectedList
             val intent = Intent(this, SecondActivity::class.java)
             startActivity(intent)
         }
+
+        binding.guideView.setOnClickListener {
+            val intent = Intent(this, GuideActivity::class.java)
+            startActivity(intent)
+        }
+
 
     }
 

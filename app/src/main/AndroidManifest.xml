@@ -21,10 +21,7 @@
         android:theme="@style/Theme.Your_PreciousTime"
         tools:targetApi="n">
         <activity
-            android:name=".RealMainListActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainListActivity"
+            android:name=".GuideActivity.GuideActivity"
             android:exported="false" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -38,6 +35,16 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+        <activity
+            android:name=".MyLocationStationActivity.MapsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_maps" />
+        <activity
+            android:name=".RealMainListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainListActivity"
+            android:exported="false" />
         <activity
             android:name=".TestMapActivity.testMapsActivity2"
             android:exported="false"
