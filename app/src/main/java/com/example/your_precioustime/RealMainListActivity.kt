@@ -56,9 +56,7 @@ class RealMainListActivity : AppCompatActivity(), AdapterView.OnItemSelectedList
             startActivity(intent)
         }
 
-
     }
-
 
     private fun setSpinner(spinner: Spinner) {
         ArrayAdapter.createFromResource(
