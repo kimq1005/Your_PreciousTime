@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.your_precioustime.App
 import com.example.your_precioustime.Model.SubwayItem
 import com.example.your_precioustime.Model.SubwayModel.SubwayModel
 import com.example.your_precioustime.ObjectManager.Myobject
@@ -30,7 +31,8 @@ class SubwayFragment : AppCompatActivity() {
     private var subwayFragment: SubwayFragmentBinding? = null
     private val binding get() = subwayFragment!!
 
-    private var retrofitInterface = Retrofit_Client.getJsonClienet(SEOUL_SUBWAY_MAIN_URL).create(Retrofit_InterFace::class.java)
+    private var retrofitInterface =
+        Retrofit_Client.getJsonClienet(SEOUL_SUBWAY_MAIN_URL).create(Retrofit_InterFace::class.java)
 
     lateinit var subwayAdapter: SubwayAdapter
     lateinit var subwayDataBase: SubwayDataBase
@@ -54,10 +56,11 @@ class SubwayFragment : AppCompatActivity() {
 
         binding.clickhere.setOnClickListener {
             val searchtext = binding.SearchEditText2.text.toString()
-            binding.subtitleTextView.text = searchtext
+//            binding.subtitleTextView.text = searchtext
+//            subwayfavroiteAddImageView.visibility = View.VISIBLE
+//            subtitleTextView.visibility = View.VISIBLE
             getsubwayCall(searchtext)
-            subwayfavroiteAddImageView.visibility = View.VISIBLE
-            subtitleTextView.visibility = View.VISIBLE
+
 
             testgetAll()
 
@@ -99,24 +102,38 @@ class SubwayFragment : AppCompatActivity() {
 
         call.enqueue(object : retrofit2.Callback<SubwayModel> {
             override fun onResponse(call: Call<SubwayModel>, response: Response<SubwayModel>) {
+
+
+                Log.d(TAG, "onResponse: ${response.body()}")
+
+
                 val body = response.body()
                 val subwaymodel = mutableListOf<SubwayItem>()
 
-
                 body?.let {
-                    val hello = body.realtimeArrivalList!!
+                    val hello = body.realtimeArrivalList
 
-                    for (i in hello.indices) {
-                        val firstsubwayId = hello.get(i).subwayId!!
-                        val trainLineNm = hello.get(i).trainLineNm
-                        val bstatnNm = hello.get(i).bstatnNm
-                        val arvlMsg2 = hello.get(i).arvlMsg2
+                    if (hello != null) {
+                        for (i in hello.indices) {
+                            val firstsubwayId = hello.get(i).subwayId!!
+                            val trainLineNm = hello.get(i).trainLineNm
+                            val bstatnNm = hello.get(i).bstatnNm
+                            val arvlMsg2 = hello.get(i).arvlMsg2
 
-                        subwaymodel.add(
-                            SubwayItem(firstsubwayId, trainLineNm, bstatnNm, arvlMsg2)
-                        )
+                            subwaymodel.add(
+                                SubwayItem(firstsubwayId, trainLineNm, bstatnNm, arvlMsg2)
+                            )
 
+                            val searchtext = binding.SearchEditText2.text.toString()
+                            binding.subtitleTextView.text = searchtext
+                            subwayfavroiteAddImageView.visibility = View.VISIBLE
+                            subtitleTextView.visibility = View.VISIBLE
+                        }
+
+                    } else {
+                        Toast.makeText(App.instance, "역이름을 재입력 해주세요", Toast.LENGTH_SHORT).show()
                     }
+
 
                     Log.d(TAG, "onResponse: $subwaymodel")
 
@@ -188,10 +205,9 @@ class SubwayFragment : AppCompatActivity() {
                         }
                     }
 
-
                     setRecyclerView(subwaymodel)
-
                 }
+
 
             }
 
