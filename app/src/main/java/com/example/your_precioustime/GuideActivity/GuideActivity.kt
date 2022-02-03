@@ -7,7 +7,7 @@ import kotlinx.android.synthetic.main.activity_maps.*
 
 class GuideActivity : AppCompatActivity() {
 
-    private var guideBinding:ActivityGuideBinding?=null
+    private var guideBinding: ActivityGuideBinding? = null
     private val binding get() = guideBinding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +19,5 @@ class GuideActivity : AppCompatActivity() {
             onBackPressed()
             finish()
         }
-
-
     }
 }

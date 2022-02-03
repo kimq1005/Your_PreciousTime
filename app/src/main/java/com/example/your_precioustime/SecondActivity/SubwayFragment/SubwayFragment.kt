@@ -1,11 +1,11 @@
 package com.example.your_precioustime.SecondActivity.SubwayFragment
 
 import android.annotation.SuppressLint
+import android.opengl.Visibility
 import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.your_precioustime.App
@@ -55,14 +55,14 @@ class SubwayFragment : AppCompatActivity() {
 
 
         binding.clickhere.setOnClickListener {
-            val searchtext = binding.SearchEditText2.text.toString()
-//            binding.subtitleTextView.text = searchtext
-//            subwayfavroiteAddImageView.visibility = View.VISIBLE
-//            subtitleTextView.visibility = View.VISIBLE
-            getsubwayCall(searchtext)
-
 
             testgetAll()
+            val searchtext = binding.SearchEditText2.text.toString()
+            binding.subtitleTextView.text = searchtext
+            subwayfavroiteAddImageView.visibility = View.VISIBLE
+            subtitleTextView.visibility = View.VISIBLE
+            getsubwayCall(searchtext)
+
 
         }
 
@@ -124,14 +124,12 @@ class SubwayFragment : AppCompatActivity() {
                                 SubwayItem(firstsubwayId, trainLineNm, bstatnNm, arvlMsg2)
                             )
 
-                            val searchtext = binding.SearchEditText2.text.toString()
-                            binding.subtitleTextView.text = searchtext
-                            subwayfavroiteAddImageView.visibility = View.VISIBLE
-                            subtitleTextView.visibility = View.VISIBLE
                         }
 
                     } else {
-                        Toast.makeText(App.instance, "역이름을 재입력 해주세요", Toast.LENGTH_SHORT).show()
+                        Myobject.myobject.retrystation(binding.subwayFragmentActivity)
+                        binding.subtitleTextView.visibility = View.INVISIBLE
+                        binding.subwayfavroiteAddImageView.visibility = View.INVISIBLE
                     }
 
 
@@ -242,7 +240,6 @@ class SubwayFragment : AppCompatActivity() {
             override fun onPostExecute(result: Unit?) {
                 super.onPostExecute(result)
 
-
                 val stationnameList = mutableListOf<String>()
 
                 for (i in subwayNameListEntity.indices) {
@@ -251,13 +248,12 @@ class SubwayFragment : AppCompatActivity() {
                 }
 
                 if (binding.subtitleTextView.text in stationnameList) {
-                    Toast.makeText(this@SubwayFragment, "이미 즐겨찾기에 추가된 역입니다!", Toast.LENGTH_SHORT)
-                        .show()
+                    Myobject.myobject.alreadyFavroiteSnackBar(subwayFragment_Activity)
                 } else {
-                    Toast.makeText(this@SubwayFragment, "즐겨찾기에 추가 되었습니다!", Toast.LENGTH_SHORT)
-                        .show()
+                    Myobject.myobject.FavroiteSnackBar(subwayFragment_Activity)
                     binding.subwayfavroiteAddImageView.setImageResource(R.drawable.fullstar)
                 }
+
 
             }
 

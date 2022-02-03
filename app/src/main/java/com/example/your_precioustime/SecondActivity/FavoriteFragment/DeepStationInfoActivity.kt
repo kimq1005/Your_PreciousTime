@@ -234,12 +234,15 @@ class DeepStationInfoActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
 
+                    Myobject.myobject.alreadyFavroiteSnackBar(binding.DeepStationINfoActivity)
+
                 } else {
                     Toast.makeText(
                         this@DeepStationInfoActivity,
                         "즐겨찾기에 추가 되었습니다!",
                         Toast.LENGTH_SHORT
                     ).show()
+                    Myobject.myobject.FavroiteSnackBar(binding.DeepStationINfoActivity)
                     binding.countingstars.setImageResource(R.drawable.shinigstar)
                 }
 

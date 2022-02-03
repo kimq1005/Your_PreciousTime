@@ -6,12 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.your_precioustime.App
 import com.example.your_precioustime.Model.Bus
 import com.example.your_precioustime.Model.Item
 import com.example.your_precioustime.Model.StationBus
+import com.example.your_precioustime.ObjectManager.Myobject
 import com.example.your_precioustime.ObjectManager.citycodeSaveClass
 import com.example.your_precioustime.R
 import com.example.your_precioustime.Retrofit.Retrofit_Client
@@ -23,17 +23,14 @@ import com.example.your_precioustime.SecondActivity.FavoriteFragment.UpAdpater
 import com.example.your_precioustime.Url
 import com.example.your_precioustime.Util
 import com.example.your_precioustime.Util.Companion.TAG
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.example.your_precioustime.databinding.ActivityMapsBinding
 import com.google.android.gms.maps.model.*
-import kotlinx.android.synthetic.main.activity_real_main_list.*
 import retrofit2.Call
 import retrofit2.Response
-import kotlin.math.log
 
 @SuppressLint("StaticFieldLeak")
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -101,7 +98,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val stationnodenode = intent.getStringExtra("stationnodenode")
         Log.d(TAG, "SetmapView: $stationname , $stationnodenode")
 
-        val citycode = citycodeSaveClass.citycodeSaveClass.Loadcitycode("citycode","citycode")
+        val citycode = citycodeSaveClass.citycodeSaveClass.Loadcitycode("citycode", "citycode")
 
         val stationcalls = retrofitInterface.StationNameGet(
             cityCode = citycode,
@@ -155,7 +152,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         binding.BusStationName.text = stationName
 
         val stationNodeNumber = intent.getStringExtra("stationNodeNumber").toString()
-        val citycode = citycodeSaveClass.citycodeSaveClass.Loadcitycode("citycode","citycode")
+        val citycode = citycodeSaveClass.citycodeSaveClass.Loadcitycode("citycode", "citycode")
 //        val citycode: String = "31010"
 
         val call = retrofitInterface.BusGet(citycode, stationNodeNumber)
@@ -284,11 +281,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 }
 
                 if (binding.BusStationName.text in stationnameList) {
-                    Toast.makeText(this@MapsActivity, "이미 즐겨찾기에 추가된 정류장입니다!", Toast.LENGTH_SHORT)
-                        .show()
+
+                    Myobject.myobject.alreadyFavroiteSnackBar(binding.MapsActivity)
 
                 } else {
-                    Toast.makeText(this@MapsActivity, "즐겨찾기에 추가 되었습니다!", Toast.LENGTH_SHORT).show()
+                    Myobject.myobject.FavroiteSnackBar(binding.MapsActivity)
                     binding.countingstars.setImageResource(R.drawable.shinigstar)
                 }
 
@@ -329,7 +326,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             val stationName = intent.getStringExtra("stationName").toString()
             val stationNodeNumber = intent.getStringExtra("stationNodeNumber").toString()
             val stationNodeNode = intent.getStringExtra("stationnodenode").toString()
-            val stationcitycode = citycodeSaveClass.citycodeSaveClass.Loadcitycode("citycode","citycode")
+            val stationcitycode =
+                citycodeSaveClass.citycodeSaveClass.Loadcitycode("citycode", "citycode")
             val hello = TestFavoriteModel(
                 id = null,
                 citycode = stationcitycode,

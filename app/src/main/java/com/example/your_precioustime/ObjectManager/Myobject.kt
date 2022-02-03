@@ -17,6 +17,7 @@ import com.example.your_precioustime.SecondActivity.SecondActivity
 import com.example.your_precioustime.SecondActivity.SubwayFragment.SubwayFragment
 import com.example.your_precioustime.Url
 import com.example.your_precioustime.Util
+import com.google.android.material.snackbar.Snackbar
 import retrofit2.Call
 import retrofit2.Response
 
@@ -62,14 +63,6 @@ class Myobject {
     }
 
 
-//    fun changeSubwayText(mytext:String){
-//        val hello:String
-//        if(mytext.contains("")){
-//            val one = mytext.replace("[", "")
-//            val two = one.replace("]", "")
-//            val substring = two.substring(0..5)
-//        }
-//    }
 
     fun changeSubwayText(mytext:String):String {
         if (mytext.contains("[")) {
@@ -96,6 +89,21 @@ class Myobject {
 
 
         return mytext
+    }
+
+    fun FavroiteSnackBar(view:View){
+        val snackbar = Snackbar.make(view, "즐겨찾기에 등록되었습니다!", Snackbar.LENGTH_LONG)
+        snackbar.show()
+    }
+
+    fun alreadyFavroiteSnackBar(view:View){
+        val snackbar = Snackbar.make(view, "즐겨찾기에 등록된 정류장(역)입니다!", Snackbar.LENGTH_LONG)
+        snackbar.show()
+    }
+
+    fun retrystation(view:View){
+        val snackbar = Snackbar.make(view, "정류장(역)이름을 재입력 해주세요", Snackbar.LENGTH_LONG)
+        snackbar.show()
     }
 
 
