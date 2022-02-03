@@ -12,7 +12,7 @@
         android:id="@+id/Main_logo_dd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="나는 전설이다"
+        android:text="Legend"
         android:textColor="@color/white"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,24 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/fuckyousiballoma"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
 
-
-    <Button
-        android:id="@+id/mapGobtn"
-        android:text="맵이다싀발럼아"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="wrap_content"
-        android:visibility="invisible"
-        android:layout_height="wrap_content"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

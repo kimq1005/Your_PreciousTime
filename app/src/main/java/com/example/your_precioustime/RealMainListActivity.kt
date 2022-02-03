@@ -10,6 +10,8 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.core.view.get
 import com.example.your_precioustime.GuideActivity.GuideActivity
+import com.example.your_precioustime.NoticeActivity.NoticeActivity
+import com.example.your_precioustime.ObjectManager.Myobject
 import com.example.your_precioustime.ObjectManager.citycodeCallObject
 import com.example.your_precioustime.ObjectManager.citycodeSaveClass
 import com.example.your_precioustime.SecondActivity.Busfragment.Bus_Activity
@@ -36,7 +38,6 @@ class RealMainListActivity : AppCompatActivity(), AdapterView.OnItemSelectedList
         binding.busView.setOnClickListener {
             val mycitycode:String = citycodeCallObject.citycodeCallObject.citycode(binding.citynameTextView.text.toString())
             citycodeSaveClass.citycodeSaveClass.Savecitycode("citycode",mycitycode)
-            Toast.makeText(this,"$mycitycode",Toast.LENGTH_SHORT).show()
             val intent = Intent(this, Bus_Activity::class.java)
             startActivity(intent)
         }
@@ -54,6 +55,12 @@ class RealMainListActivity : AppCompatActivity(), AdapterView.OnItemSelectedList
         binding.guideView.setOnClickListener {
             val intent = Intent(this, GuideActivity::class.java)
             startActivity(intent)
+        }
+
+        binding.noticeView.setOnClickListener {
+            val intent = Intent(this, NoticeActivity::class.java)
+            startActivity(intent)
+
         }
 
 

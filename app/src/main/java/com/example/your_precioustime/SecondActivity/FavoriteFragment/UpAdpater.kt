@@ -17,6 +17,7 @@ import com.example.your_precioustime.SecondActivity.DB.*
 
 @SuppressLint("StaticFieldLeak")
 class UpAdpater:RecyclerView.Adapter<UpAdpater.MyViewHolder>() {
+
     private var item: List<Item>? = null
 
     lateinit var busstationnameDB : BUSStationNameDataBase

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="130dp"
+    android:layout_margin="20dp"
+    android:background="@drawable/rectangle_down_background"
+    android:elevation="10dp">
+
+    <TextView
+        android:id="@+id/newupdateAlarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:text="신규"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:textSize="16sp"
+        android:id="@+id/noticeTitleTextView"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        android:text="업데이트 제목"
+        app:layout_constraintStart_toStartOf="@+id/newupdateAlarm"
+        app:layout_constraintTop_toBottomOf="@+id/newupdateAlarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+    <TextView
+        android:id="@+id/noticeTimeTextView"
+        android:text="2022.2.03"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/noticeTitleTextView"
+        app:layout_constraintStart_toStartOf="@+id/noticeTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
