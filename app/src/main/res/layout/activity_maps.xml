@@ -11,7 +11,7 @@
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="60dp"
         android:background="@color/maincolor"
         app:layout_constraintBottom_toTopOf="@+id/map"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,15 +19,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/backwowbtn"
+        android:id="@+id/backbtn"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
         android:layout_marginEnd="20dp"
         android:src="@drawable/ic_baseline_arrow_back_24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/view"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/view" />
 
 
     <fragment
@@ -35,11 +35,10 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backwowbtn"
+        app:layout_constraintTop_toBottomOf="@+id/view"
         tools:context=".TestMapActivity.MapsActivity" />
 
 
@@ -93,7 +92,7 @@
             android:id="@+id/downunderline"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/underline"
+            android:background="@color/ovalcolor"
             app:layout_constraintEnd_toEndOf="@id/motionConstarintlayout"
             app:layout_constraintStart_toStartOf="@id/motionConstarintlayout"
             app:layout_constraintTop_toBottomOf="@id/maplinearlayout" />

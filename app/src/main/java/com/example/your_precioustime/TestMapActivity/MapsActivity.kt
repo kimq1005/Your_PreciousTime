@@ -57,7 +57,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.backwowbtn.setOnClickListener {
+        binding.backbtn.setOnClickListener {
             onBackPressed()
             finish()
         }

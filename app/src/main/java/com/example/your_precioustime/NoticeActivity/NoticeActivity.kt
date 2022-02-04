@@ -17,6 +17,11 @@ class NoticeActivity : AppCompatActivity() {
         noticeActivityBinding = ActivityNoticeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.backwowbtn.setOnClickListener {
+            onBackPressed()
+            finish()
+        }
+
         setRecylcerView()
     }
 
@@ -27,7 +32,8 @@ class NoticeActivity : AppCompatActivity() {
         binding.noticeRecyclerView.apply {
             adapter = noticeAdapter
             layoutManager = LinearLayoutManager(context)
-            noticeAdapter.submitList(listOf(
+            noticeAdapter.submitList(
+                listOf(
                 NoticeItem(
                     "나는 전설이다가 출시되었습니다!","2022.02.03"
                 )

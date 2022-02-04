@@ -36,8 +36,9 @@ class RealMainListActivity : AppCompatActivity(), AdapterView.OnItemSelectedList
         setSpinner(spinner)
 
         binding.busView.setOnClickListener {
-            val mycitycode:String = citycodeCallObject.citycodeCallObject.citycode(binding.citynameTextView.text.toString())
-            citycodeSaveClass.citycodeSaveClass.Savecitycode("citycode",mycitycode)
+            val mycitycode: String =
+                citycodeCallObject.citycodeCallObject.citycode(binding.citynameTextView.text.toString())
+            citycodeSaveClass.citycodeSaveClass.Savecitycode("citycode", mycitycode)
             val intent = Intent(this, Bus_Activity::class.java)
             startActivity(intent)
         }
@@ -63,6 +64,10 @@ class RealMainListActivity : AppCompatActivity(), AdapterView.OnItemSelectedList
 
         }
 
+        binding.helpView.setOnClickListener {
+
+        }
+
 
     }
 
@@ -85,8 +90,6 @@ class RealMainListActivity : AppCompatActivity(), AdapterView.OnItemSelectedList
     override fun onNothingSelected(parent: AdapterView<*>?) {
 
     }
-
-
 
 
 }

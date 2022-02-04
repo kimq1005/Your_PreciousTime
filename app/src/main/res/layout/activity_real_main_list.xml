@@ -1,26 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/maincolor"
+    android:background="@color/underline"
     tools:context=".RealMainListActivity">
 
 
+    <View
+        android:id="@+id/firstView"
+        android:background="@color/maincolor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+
+        android:layout_height="170dp"/>
+
+
     <LinearLayout
+        android:layout_marginStart="10dp"
         android:id="@+id/titleLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
         android:layout_marginTop="60dp"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toEndOf="@+id/firstView"
+        app:layout_constraintStart_toStartOf="@+id/firstView"
+        app:layout_constraintTop_toTopOf="@+id/firstView">
 
         <TextView
+            android:fontFamily="@font/nanumgothic_bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="나는 전설이다"
@@ -32,6 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:fontFamily="@font/nanumgothic_extrabold"
             android:text="나는 전설이다 잘생겼고 성격좋다 질투나냐?"
             android:textColor="@color/white"
             android:textSize="15sp" />
@@ -47,13 +59,10 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="10dp"
-        android:background="@drawable/rectangle_down_background"
-
-        android:backgroundTint="@color/subcolor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleLinearLayout">
+        app:layout_constraintTop_toBottomOf="@+id/firstView">
 
         <LinearLayout
             android:id="@+id/locationIconLinearLayout"
@@ -78,7 +87,7 @@
                 android:layout_marginStart="12dp"
                 android:gravity="center"
                 android:text="수원"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="18dp" />
 
             <View
@@ -89,14 +98,12 @@
                 />
 
 
-
             <Spinner
                 android:id="@+id/mySpinner"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:spinnerMode="dropdown"
-                android:textColor="#5A595C"
-                android:theme="@style/SpinnerTheme" />
+               />
 
 
         </LinearLayout>
@@ -114,8 +121,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/subcolor">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:id="@+id/busLinearLayout"
@@ -138,7 +144,7 @@
                     android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:text="정류장 검색"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="14sp" />
 
 
@@ -161,8 +167,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/subcolor">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:id="@+id/SubwayLinearlayout"
@@ -185,7 +190,7 @@
                     android:layout_marginTop="5dp"
                     android:gravity="center"
                     android:text="지하철 검색"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="14sp" />
 
 
@@ -209,8 +214,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/subcolor">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:id="@+id/favroiteLinearlayout"
@@ -232,7 +236,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="즐겨찾기"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="14sp" />
 
 
@@ -245,27 +249,25 @@
     </androidx.cardview.widget.CardView>
 
 
-
     <androidx.cardview.widget.CardView
-        app:layout_constraintStart_toStartOf="@id/FavroiteView"
-        app:layout_constraintTop_toBottomOf="@id/FavroiteView"
         android:id="@+id/guideView"
         android:layout_width="125dp"
         android:layout_height="100dp"
         android:layout_marginTop="30dp"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="10dp"
+        app:layout_constraintStart_toStartOf="@id/FavroiteView"
+        app:layout_constraintTop_toBottomOf="@id/FavroiteView">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/subcolor">
+            android:layout_height="match_parent">
 
             <LinearLayout
-                android:gravity="center"
-                android:orientation="vertical"
                 android:id="@+id/guideLinearlayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -281,7 +283,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="가이드"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="14sp" />
 
 
@@ -294,29 +296,27 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:layout_marginStart="10dp"
-        app:layout_constraintBottom_toBottomOf="@id/guideView"
-        app:layout_constraintStart_toEndOf="@+id/guideView"
-        app:layout_constraintTop_toTopOf="@+id/guideView"
         android:id="@+id/noticeView"
         android:layout_width="125dp"
         android:layout_height="100dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        >
+        app:layout_constraintBottom_toBottomOf="@id/guideView"
+        app:layout_constraintStart_toEndOf="@+id/guideView"
+        app:layout_constraintTop_toTopOf="@+id/guideView">
 
         <androidx.constraintlayout.widget.ConstraintLayout
 
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/subcolor">
+            android:layout_height="match_parent">
 
             <LinearLayout
-                android:gravity="center"
-                android:orientation="vertical"
                 android:id="@+id/noticeLinearlayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -332,7 +332,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="공지사항"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="14sp" />
 
 
@@ -345,27 +345,26 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        app:layout_constraintStart_toEndOf="@+id/noticeView"
-        android:layout_marginStart="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/FavroiteView"
-        app:layout_constraintTop_toTopOf="@id/guideView"
-        android:id="@+id/settingView"
+        android:id="@+id/helpView"
         android:layout_width="125dp"
         android:layout_height="100dp"
-        >
+        android:layout_marginStart="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/FavroiteView"
+        app:layout_constraintStart_toEndOf="@+id/noticeView"
+        app:layout_constraintTop_toTopOf="@id/guideView">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/subcolor">
+           >
 
 
             <LinearLayout
-                android:orientation="vertical"
-                android:gravity="center"
                 android:id="@+id/RequestLinearlayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -381,7 +380,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="요청사항"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="14sp" />
 
 

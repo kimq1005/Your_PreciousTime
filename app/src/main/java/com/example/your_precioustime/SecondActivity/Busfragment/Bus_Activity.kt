@@ -13,6 +13,7 @@ import com.example.your_precioustime.Retrofit.Retrofit_InterFace
 import com.example.your_precioustime.Url
 import com.example.your_precioustime.Util
 import com.example.your_precioustime.databinding.ActivityBusBinding
+import kotlinx.android.synthetic.main.activity_bus.*
 import retrofit2.Call
 import retrofit2.Response
 
@@ -33,9 +34,14 @@ class Bus_Activity : AppCompatActivity() {
         busBinding = ActivityBusBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val citycode = citycodeSaveClass.citycodeSaveClass.Loadcitycode("citycode","citycode")
+        val citycode = citycodeSaveClass.citycodeSaveClass.Loadcitycode("citycode", "citycode")
 
         SetRecyclerView(citycode, null)
+
+        binding.backbtn.setOnClickListener {
+            onBackPressed()
+            finish()
+        }
 
         Myobject.myobject.ToggleSet(
             this,
@@ -52,17 +58,11 @@ class Bus_Activity : AppCompatActivity() {
     private fun ClickSearchBtn() = with(binding) {
 
         clickhere.setOnClickListener {
-            val suwoncitycode: String = "31010"
-//            val citycode :String = intent.getStringExtra("citycode").toString()
-            val citycode = citycodeSaveClass.citycodeSaveClass.Loadcitycode("citycode","citycode")
-            val StationEditName = SearchEditText2.text.toString()
+            val citycode = citycodeSaveClass.citycodeSaveClass.Loadcitycode("citycode", "citycode")
+            val StationEditName = SearchEditText.text.toString()
             SetRecyclerView(citycode, StationEditName)
-//            hellomy(suwoncitycode,"GGB203000129")
         }
 
-        SearchEditText.setOnClickListener {
-            noResultTextView.visibility = View.INVISIBLE
-        }
 
     }
 
@@ -93,7 +93,7 @@ class Bus_Activity : AppCompatActivity() {
 
             override fun onFailure(call: Call<StationBus>, t: Throwable) {
                 Log.d(Util.TAG, "onFailure:$t")
-                noResultTextView.visibility = View.VISIBLE
+
 
             }
 

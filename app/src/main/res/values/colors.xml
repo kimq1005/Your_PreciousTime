@@ -13,5 +13,6 @@
     <color name="maincolor">#2D3038</color>
     <color name="subcolor">#27292E</color>
     <color name="ovalcolor">#222222</color>
+    <color name="edittextcolor">#D1D1D1</color>
     <color name="secondmaincolor">#F0F5FB</color>
 </resources>
