@@ -31,7 +31,6 @@ class SecondActivity : AppCompatActivity(), OnDeleteInterFace, OnSubwayListDelet
     lateinit var busfavoriteEntity: List<TestFavoriteModel>
 
     lateinit var favroiteAdapter: FavoriteAdapter
-    lateinit var testAdapter: SubwayAdapter
 
     lateinit var subwayDataBase: SubwayDataBase
     lateinit var subwayNameEntity: List<SubwayNameEntity>
@@ -45,6 +44,11 @@ class SecondActivity : AppCompatActivity(), OnDeleteInterFace, OnSubwayListDelet
         busFavoriteDB = BusFavroiteDataBase.getinstance(App.instance)!!
         subwayDataBase = SubwayDataBase.getinstance(App.instance)!!
 
+        binding.backwowbtn.setOnClickListener {
+            onBackPressed()
+            finish()
+        }
+
 
         Myobject.myobject.ToggleSet(
             this,
@@ -53,12 +57,9 @@ class SecondActivity : AppCompatActivity(), OnDeleteInterFace, OnSubwayListDelet
             binding.SubwayFloatBtn,
             binding.BusfloatBtn
         )
-        
+
         getAll()
         subwaygetAll()
-
-        testAdapter = SubwayAdapter()
-
 
     }
 

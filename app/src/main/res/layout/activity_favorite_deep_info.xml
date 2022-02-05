@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/maincolor"
     tools:context=".SecondActivity.FavoriteFragment.FavoriteDeepInfo">
 
 
     <View
         android:id="@+id/titleview"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:background="@color/maincolor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,8 +18,8 @@
 
     <ImageView
         android:id="@+id/backbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginStart="8dp"
         android:src="@drawable/ic_baseline_arrow_back_24"
         app:layout_constraintBottom_toBottomOf="@id/titleview"
@@ -29,20 +28,16 @@
         />
 
 
-
-
-
     <TextView
-
+        android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titleview"
         android:id="@+id/BusStationName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
         android:text="나는 전설이다 정류장"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         />
@@ -73,7 +68,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/white"
         android:src="@drawable/whitestar"
         app:borderWidth="0dp"
         app:fabSize="mini"
@@ -88,7 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/white"
         android:src="@drawable/ic_baseline_subway_24"
         app:borderWidth="0dp"
         app:fabSize="mini"
@@ -103,7 +98,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/white"
         android:src="@drawable/ic_baseline_directions_bus_24"
         app:borderWidth="0dp"
         app:fabSize="mini"
@@ -118,7 +113,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="24dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/white"
         android:src="@drawable/ic_baseline_search_24"
         app:borderWidth="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.your_precioustime.Model.Bus
 import com.example.your_precioustime.Model.Item
 import com.example.your_precioustime.ObjectManager.Myobject
@@ -118,7 +119,8 @@ class FavoriteDeepInfo : AppCompatActivity() {
 
                             FravroitestationinfoRecyclerView.apply {
                                 adapter = DFadapter
-                                layoutManager = GridLayoutManager(this@FavoriteDeepInfo,2,GridLayoutManager.VERTICAL,false)
+//                                layoutManager = GridLayoutManager(this@FavoriteDeepInfo,2,GridLayoutManager.VERTICAL,false)
+                                layoutManager = LinearLayoutManager(context)
                                 DFadapter.submitList(ResultList)
                             }
 

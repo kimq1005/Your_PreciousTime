@@ -1,29 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android=
-    "http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="80dp"
-    android:layout_margin="8dp"
-    >
+    android:layout_margin="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/subcolor">
+        android:layout_height="match_parent">
 
 
         <TextView
             android:id="@+id/Favorite_Name_TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="10dp"
             android:text="김승현 집앞 정류쟝"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="15sp"
-            app:layout_constraintBottom_toTopOf="@+id/Favorite_NodeID_TextView"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/Favorite_NodeID_TextView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,7 +32,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="10dp"
             android:text="111111"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="13sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/Favorite_Name_TextView"
@@ -43,16 +41,15 @@
             />
 
         <ImageView
-            android:src="@drawable/trashicon"
             android:id="@+id/stardeletebtn"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:textColor="#E53935"
             android:layout_marginEnd="15dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/trashicon"
+            android:textColor="#E53935"
             app:layout_constraintBottom_toBottomOf="parent"
-            />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

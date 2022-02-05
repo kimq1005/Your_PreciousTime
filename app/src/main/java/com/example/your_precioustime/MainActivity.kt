@@ -31,16 +31,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.MainLogoDd.setOnClickListener {
-            Handler().postDelayed({
-                fadeanimation(this)
-            }, 500)
+            val intent = Intent(this, RealMainListActivity::class.java)
+            startActivity(intent)
         }
-
-//        binding.fuckyousiballoma.setOnClickListener {
-//            val fuckyou = binding.MainLogoDd.text.toString()
-//            citycodeSaveClass.citycodeSaveClass.setString("citycode",fuckyou)
-//        }
-
 
     }
 
