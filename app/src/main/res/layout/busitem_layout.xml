@@ -2,115 +2,173 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="@color/white"
-    android:layout_height="90dp">
-
+    android:layout_height="90dp"
+    android:background="@color/white">
 
 
     <View
         android:layout_width="1dp"
         android:layout_height="match_parent"
         android:background="@color/underline"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <ImageView
-        android:layout_marginStart="10dp"
         android:id="@+id/busicon"
         android:layout_width="40dp"
         android:layout_height="50dp"
+        android:layout_marginStart="10dp"
         android:src="@drawable/ic_baseline_directions_bus_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        app:layout_constraintBottom_toBottomOf="@id/busicon"
-        android:textColor="#18551B"
         android:id="@+id/Bus_Number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:text="99"
+        android:textColor="#18551B"
         android:textSize="17sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/busicon"
         app:layout_constraintStart_toEndOf="@+id/busicon"
         app:layout_constraintTop_toTopOf="@+id/busicon" />
 
     <TextView
-        android:textSize="17sp"
+        android:id="@+id/gd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:textColor="@color/black"
-        android:id="@+id/gd"
+        android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="@+id/Bus_Number"
         app:layout_constraintStart_toEndOf="@+id/Bus_Number"
-        app:layout_constraintTop_toTopOf="@+id/Bus_Number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        app:layout_constraintTop_toTopOf="@+id/Bus_Number" />
 
     <LinearLayout
-        android:layout_marginEnd="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/restStationLayout"
-        app:layout_constraintTop_toTopOf="@+id/restStationLayout"
-        app:layout_constraintEnd_toStartOf="@+id/restStationLayout"
         android:id="@+id/restTimeLayout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/restStationLayout"
+        app:layout_constraintEnd_toStartOf="@+id/restStationLayout"
+        app:layout_constraintTop_toTopOf="@+id/restStationLayout">
 
 
         <TextView
-            android:textColor="@color/black"
-            android:text="약 "
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
+            android:layout_height="wrap_content"
+            android:text="약 "
+            android:textColor="@color/black" />
 
 
         <TextView
             android:id="@+id/waitTime"
-            android:textColor="@color/black"
-            android:text="55"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="55"
+            android:textColor="@color/black" />
 
 
         <TextView
-            android:textColor="@color/black"
-            android:text="분"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-
-
+            android:layout_height="wrap_content"
+            android:text="분"
+            android:textColor="@color/black" />
 
 
     </LinearLayout>
 
 
     <LinearLayout
-        android:layout_marginEnd="20dp"
         android:id="@+id/restStationLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/busicon"
-        app:layout_constraintBottom_toBottomOf="@id/busicon"
+        android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/busicon">
+
+
+        <TextView
+            android:id="@+id/waitBusNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5 "
+            android:textSize="12dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="번째 전"
+            android:textSize="12dp" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/secondrestTimeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintStart_toStartOf="@+id/restTimeLayout"
+        app:layout_constraintTop_toBottomOf="@+id/restTimeLayout"
+        app:layout_constraintBottom_toBottomOf="@id/busicon"
+
         >
 
 
         <TextView
-            android:textSize="12dp"
-            android:id="@+id/waitBusNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5 " />
+            android:text="약 "
+            android:textColor="@color/black" />
+
 
         <TextView
-            android:textSize="12dp"
+            android:id="@+id/secondwaitTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="번째 전" />
+            android:text="55"
+            android:textColor="@color/black" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="분"
+            android:textColor="@color/black" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/secondrestStationLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/restStationLayout"
+        app:layout_constraintTop_toTopOf="@+id/secondrestTimeLayout"
+        app:layout_constraintBottom_toBottomOf="@+id/secondrestTimeLayout"
+
+        >
+
+
+        <TextView
+            android:id="@+id/secondwaitBusNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5 "
+            android:textSize="12dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="번째 전"
+            android:textSize="12dp" />
 
 
     </LinearLayout>

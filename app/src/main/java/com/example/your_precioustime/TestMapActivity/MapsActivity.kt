@@ -199,6 +199,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
                     val ResultList = mutableListOf<Item>()
+                    val SecondResultList = mutableListOf<Item>()
 
 
                     firstList.forEach {
@@ -244,7 +245,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             }
 
             override fun onFailure(call: Call<Bus>, t: Throwable) {
-                Log.d(TAG, "이거오류맞지오잉히잉하잉: $t")
+                Log.d(TAG, "오류: $t")
             }
 
         })
