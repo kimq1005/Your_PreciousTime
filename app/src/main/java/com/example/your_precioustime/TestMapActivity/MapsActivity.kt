@@ -225,9 +225,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                                 } else {
                                     ResultList.add(Item(ARouteNo, AWaitstation, AWaitTime))
                                 }
-
                             }
-
 
                         }
 
@@ -254,8 +252,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun BUSFravoriteInsert(busfavoriteEntity: TestFavoriteModel) {
-
-
         var businsertTask = (object : AsyncTask<Unit, Unit, Unit>() {
             override fun doInBackground(vararg params: Unit?) {
 

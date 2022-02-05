@@ -57,7 +57,7 @@ class SubwayFragment : AppCompatActivity() {
         binding.clickhere.setOnClickListener {
 
             testgetAll()
-            val searchtext = binding.SearchEditText2.text.toString()
+            val searchtext = binding.SearchEditText.text.toString()
             binding.subtitleTextView.text = searchtext
             subwayfavroiteAddImageView.visibility = View.VISIBLE
             subtitleTextView.visibility = View.VISIBLE
@@ -251,7 +251,7 @@ class SubwayFragment : AppCompatActivity() {
                     Myobject.myobject.alreadyFavroiteSnackBar(subwayFragment_Activity)
                 } else {
                     Myobject.myobject.FavroiteSnackBar(subwayFragment_Activity)
-                    binding.subwayfavroiteAddImageView.setImageResource(R.drawable.fullstar)
+                    binding.subwayfavroiteAddImageView.setImageResource(R.drawable.shinigstar)
                 }
 
 
@@ -277,7 +277,7 @@ class SubwayFragment : AppCompatActivity() {
                 }
 
                 if (binding.subtitleTextView.text in stationnameList) {
-                    binding.subwayfavroiteAddImageView.setImageResource(R.drawable.fullstar)
+                    binding.subwayfavroiteAddImageView.setImageResource(R.drawable.shinigstar)
                 } else {
                     binding.subwayfavroiteAddImageView.setImageResource(R.drawable.star)
                 }
