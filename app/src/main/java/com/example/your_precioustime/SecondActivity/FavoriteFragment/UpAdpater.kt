@@ -16,24 +16,23 @@ import com.example.your_precioustime.SecondActivity.DB.*
 
 
 @SuppressLint("StaticFieldLeak")
-class UpAdpater:RecyclerView.Adapter<UpAdpater.MyViewHolder>() {
+class UpAdpater : RecyclerView.Adapter<UpAdpater.MyViewHolder>() {
 
     private var item: List<Item>? = null
 
-    lateinit var busstationnameDB : BUSStationNameDataBase
-    lateinit var busstationnameEntity : List<BUSStationNameEntity>
+    lateinit var busstationnameDB: BUSStationNameDataBase
+    lateinit var busstationnameEntity: List<BUSStationNameEntity>
 
 
-    class MyViewHolder(val binding:BusitemLayoutBinding): RecyclerView.ViewHolder(binding.root){
+    class MyViewHolder(val binding: BusitemLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
 
 
-
-        fun bind(item: Item){
+        fun bind(item: Item) {
 
             val mytime = item.arrtime!!
-            val second = mytime/60
+            val second = mytime / 60
 
-            binding.BusNumber.text =item.routeno.toString()
+            binding.BusNumber.text = item.routeno.toString()
             binding.waitBusNumber.text = item.arrprevstationcnt.toString()
             binding.waitTime.text = second.toString()
         }
@@ -41,7 +40,7 @@ class UpAdpater:RecyclerView.Adapter<UpAdpater.MyViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = BusitemLayoutBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val view = BusitemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MyViewHolder(view)
     }
 
@@ -50,8 +49,7 @@ class UpAdpater:RecyclerView.Adapter<UpAdpater.MyViewHolder>() {
             holder.bind(it)
         }
 
-        var checkstars:Boolean = true
-
+        var checkstars: Boolean = true
 
 
 //        holder.itemView.stars.setOnClickListener {
@@ -80,15 +78,11 @@ class UpAdpater:RecyclerView.Adapter<UpAdpater.MyViewHolder>() {
 //        }
 
 
-
-
-
     }
 
 
-
     @SuppressLint("NotifyDataSetChanged")
-    fun submitList(list:List<Item>){
+    fun submitList(list: List<Item>) {
         item = list
         notifyDataSetChanged()
     }
@@ -96,8 +90,6 @@ class UpAdpater:RecyclerView.Adapter<UpAdpater.MyViewHolder>() {
     override fun getItemCount(): Int {
         return item?.size!!
     }
-
-
 
 
 //    private fun businsert(busEntity: BUSEntity){
@@ -151,12 +143,12 @@ class UpAdpater:RecyclerView.Adapter<UpAdpater.MyViewHolder>() {
 //    }
 
 
-    private fun BUSnumInsert(busStationNameEntity: BUSStationNameEntity){
+    private fun BUSnumInsert(busStationNameEntity: BUSStationNameEntity) {
 
         busstationnameDB = BUSStationNameDataBase.getinstance(App.instance)!!
 
 
-        var businsertTask = (object : AsyncTask<Unit,Unit,Unit>(){
+        var businsertTask = (object : AsyncTask<Unit, Unit, Unit>() {
             override fun doInBackground(vararg params: Unit?) {
                 busstationnameDB.busstationnameDao().busStationNameInsert(busStationNameEntity)
             }
@@ -169,8 +161,8 @@ class UpAdpater:RecyclerView.Adapter<UpAdpater.MyViewHolder>() {
 
     }
 
-    private fun busstationnameGetAll(){
-        val busGetAllTask = (object:AsyncTask<Unit,Unit,Unit>(){
+    private fun busstationnameGetAll() {
+        val busGetAllTask = (object : AsyncTask<Unit, Unit, Unit>() {
             override fun doInBackground(vararg params: Unit?) {
                 busstationnameEntity = busstationnameDB.busstationnameDao().busStationNameGetAll()
             }
@@ -182,9 +174,6 @@ class UpAdpater:RecyclerView.Adapter<UpAdpater.MyViewHolder>() {
             }
         }).execute()
     }
-
-
-
 
 
 }
