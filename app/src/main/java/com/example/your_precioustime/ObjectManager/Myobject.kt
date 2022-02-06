@@ -30,6 +30,7 @@ class Myobject {
         val myobject = Myobject()
     }
 
+
     fun ToggleSet(
         context: Context,
         floatbtn: View,

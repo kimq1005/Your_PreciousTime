@@ -53,6 +53,11 @@ class SubwayFragment : AppCompatActivity() {
             binding.BusfloatBtn
         )
 
+        binding.backbtn.setOnClickListener {
+            onBackPressed()
+            finish()
+        }
+
 
         binding.clickhere.setOnClickListener {
 

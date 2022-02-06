@@ -16,7 +16,6 @@ class DeepFavoriteAdapter:ListAdapter<Item, DeepFavoriteAdapter.myViewHolder>(di
 //            Log.d(Util.TAG, "bind: $mytime")
             val second = mytime/60
 //            Log.d(Util.TAG, "bind: $second")
-
             binding.BusNumber.text = item.routeno
             binding.waitBusNumber.text = item.arrprevstationcnt.toString()
             binding.waitTime.text = second.toString()
