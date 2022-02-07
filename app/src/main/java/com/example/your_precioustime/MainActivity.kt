@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         binding.MainLogoDd.setOnClickListener {
             val intent = Intent(this, RealMainListActivity::class.java)
             startActivity(intent)
-            //2월 7일 실험 푸쉬하고 받아봐한번
+            //2월 7일 실험 푸쉬하고 받아봐한번ㅇㅇ
         }
 
     }
