@@ -20,6 +20,7 @@ interface Retrofit_InterFace {
 //        @Header("serviceKey") serviceKey:String,
         @Query("cityCode") cityCode:String,
         @Query("nodeId") nodeId:String
+    //주석
 
     ): Call<Bus>
 
