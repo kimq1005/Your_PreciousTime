@@ -5,24 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/underline"
+    android:background="@color/maincolor"
     tools:context=".MainActivity">
 
-    <EditText
-        android:layout_marginStart="20dp"
-        android:background="@drawable/edittext_background"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"/>
 
     <TextView
         android:id="@+id/Main_logo_dd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Legend"
-        android:textColor="@color/black"
+        android:text="Icon"
+        android:textColor="@color/white"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
