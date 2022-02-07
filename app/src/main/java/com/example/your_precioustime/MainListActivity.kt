@@ -11,5 +11,6 @@ class MainListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mainListBinding = ActivityMainListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        //주석ㅎㅇ
     }
 }
