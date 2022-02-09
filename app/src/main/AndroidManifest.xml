@@ -22,13 +22,22 @@
         android:theme="@style/Theme.Your_PreciousTime"
         tools:targetApi="n">
         <activity
-            android:name=".HelpActivity.HelpActivity"
+            android:name=".ActivityListPackage.FavoriteActivity.BusFavroite_DeepInfo.Bus_FavroiteDeepInfo_Activity"
             android:exported="false" />
         <activity
-            android:name=".NoticeActivity.NoticeActivity"
+            android:name=".ActivityListPackage.FavoriteActivity.BusFavroite_DeepInfo.FuckingTest2"
             android:exported="false" />
         <activity
-            android:name=".GuideActivity.GuideActivity"
+            android:name=".FuckingTestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityListPackage.HelpActivity.HelpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityListPackage.NoticeActivity.NoticeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityListPackage.GuidActivity.GuideActivity"
             android:exported="false" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -57,29 +66,27 @@
             android:exported="false"
             android:label="@string/title_activity_test_maps2" />
         <activity
-            android:name=".TestMapActivity.MapsActivity"
+            android:name=".ActivityListPackage.BusActivity.MapsActivity"
             android:exported="false"
             android:label="@string/title_activity_maps" />
         <activity
-            android:name=".SecondActivity.subwayfavorite.SubwayFavroiteDeevInfo"
+            android:name=".Subwayfavorite_DeepInfo.SubwayFavroiteDeevInfo"
             android:exported="false" />
         <activity
-            android:name=".SecondActivity.Busfragment.Bus_Activity"
+            android:name=".ActivityListPackage.BusActivity.Bus_Activity"
             android:exported="false" />
         <activity
-            android:name=".SecondActivity.FavoriteFragment.FavoriteDeepInfo"
+            android:name=".ActivityListPackage.FavoriteActivity.FavoriteDeepInfo"
             android:exported="false" />
         <activity
-            android:name=".SecondActivity.FavoriteFragment.DeepStationInfoActivity"
+            android:name=".ActivityListPackage.FavoriteActivity.DeepStationInfoActivity"
             android:exported="false" />
         <activity
-            android:name=".SecondActivity.SubwayFragment.SubwayFragment"
+            android:name=".ActivityListPackage.SubwayActivity.SubwayFragment"
             android:exported="false" />
         <activity
-            android:name=".SecondActivity.SecondActivity"
+            android:name=".ActivityListPackage.FavoriteActivity.FavroiteActivity"
             android:exported="false" />
-
-
         <activity
             android:name=".MainActivity"
             android:exported="true">

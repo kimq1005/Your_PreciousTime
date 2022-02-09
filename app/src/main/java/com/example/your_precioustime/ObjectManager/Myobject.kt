@@ -1,28 +1,13 @@
 package com.example.your_precioustime.ObjectManager
 
 import android.animation.ObjectAnimator
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.view.View
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.your_precioustime.Model.StationBus
-import com.example.your_precioustime.NoticeActivity.NoticeActivity
-import com.example.your_precioustime.Retrofit.Retrofit_Client
-import com.example.your_precioustime.Retrofit.Retrofit_InterFace
-import com.example.your_precioustime.SecondActivity.Busfragment.Bus_Activity
-import com.example.your_precioustime.SecondActivity.Busfragment.Bus_Station_Search_Adapter
-import com.example.your_precioustime.SecondActivity.SecondActivity
-import com.example.your_precioustime.SecondActivity.SubwayFragment.SubwayFragment
-import com.example.your_precioustime.Url
-import com.example.your_precioustime.Util
+import com.example.your_precioustime.ActivityListPackage.BusActivity.Bus_Activity
+import com.example.your_precioustime.ActivityListPackage.FavoriteActivity.FavroiteActivity
+import com.example.your_precioustime.ActivityListPackage.SubwayActivity.SubwayFragment
 import com.google.android.material.snackbar.Snackbar
-import retrofit2.Call
-import retrofit2.Response
 
 class Myobject {
 
@@ -55,7 +40,7 @@ class Myobject {
         }
 
         fvfloatBtn.setOnClickListener {
-            val intent = Intent(context, SecondActivity::class.java)
+            val intent = Intent(context, FavroiteActivity::class.java)
             context.startActivity(intent)
         }
 

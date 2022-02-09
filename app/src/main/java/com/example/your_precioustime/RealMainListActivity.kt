@@ -7,19 +7,14 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import android.widget.Toast
-import androidx.core.view.get
-import com.example.your_precioustime.GuideActivity.GuideActivity
-import com.example.your_precioustime.NoticeActivity.NoticeActivity
-import com.example.your_precioustime.ObjectManager.Myobject
+import com.example.your_precioustime.ActivityListPackage.GuidActivity.GuideActivity
+import com.example.your_precioustime.ActivityListPackage.NoticeActivity.NoticeActivity
 import com.example.your_precioustime.ObjectManager.citycodeCallObject
 import com.example.your_precioustime.ObjectManager.citycodeSaveClass
-import com.example.your_precioustime.SecondActivity.Busfragment.Bus_Activity
-import com.example.your_precioustime.SecondActivity.SecondActivity
-import com.example.your_precioustime.SecondActivity.SubwayFragment.SubwayFragment
-import com.example.your_precioustime.databinding.ActivityMainListBinding
+import com.example.your_precioustime.ActivityListPackage.BusActivity.Bus_Activity
+import com.example.your_precioustime.ActivityListPackage.FavoriteActivity.FavroiteActivity
+import com.example.your_precioustime.ActivityListPackage.SubwayActivity.SubwayFragment
 import com.example.your_precioustime.databinding.ActivityRealMainListBinding
-import kotlinx.android.synthetic.main.activity_bus.*
 
 class RealMainListActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
@@ -49,7 +44,7 @@ class RealMainListActivity : AppCompatActivity(), AdapterView.OnItemSelectedList
         }
 
         binding.FavroiteView.setOnClickListener {
-            val intent = Intent(this, SecondActivity::class.java)
+            val intent = Intent(this, FavroiteActivity::class.java)
             startActivity(intent)
         }
 

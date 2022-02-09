@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityListPackage.BusActivity.Bus_Activity">
-
+    tools:context=".ActivityListPackage.FavoriteActivity.BusFavroite_DeepInfo.Bus_FavroiteDeepInfo_Activity">
 
     <View
-        android:id="@+id/view"
+        android:id="@+id/titleview"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:background="@color/maincolor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,52 +19,48 @@
         android:id="@+id/backbtn"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="8dp"
         android:src="@drawable/ic_baseline_arrow_back_24"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toTopOf="@+id/view" />
+        app:layout_constraintBottom_toBottomOf="@id/titleview"
+        app:layout_constraintStart_toStartOf="@id/titleview"
+        app:layout_constraintTop_toTopOf="@id/titleview"
+        />
 
 
-    <EditText
-        android:textColorHint="@color/white"
-        android:textColor="@color/white"
-        android:id="@+id/SearchEditText"
-        android:layout_width="0dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/edittext_background"
-        android:hint="정류장 입력"
-        android:padding="10dp"
-        android:textSize="13sp"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintEnd_toStartOf="@+id/clickhere"
-        app:layout_constraintStart_toEndOf="@+id/backbtn"
-        app:layout_constraintTop_toTopOf="@+id/view" />
+    <TextView
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleview"
+        android:id="@+id/BusStationName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="나는 전설이다 정류장"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        />
 
 
-    <ImageView
-        android:id="@+id/clickhere"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginEnd="10dp"
-        android:src="@drawable/ic_baseline_search_24"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="@+id/view"
-        app:layout_constraintTop_toTopOf="@id/view" />
+    <View
+        android:layout_marginTop="15dp"
+        android:id="@+id/downunderline"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/ovalcolor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/BusStationName" />
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/busRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="2dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/FravroitestationinfoRecyclerView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view" />
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/downunderline"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/FavroiteFloatBtn"
@@ -123,26 +118,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="ContentDescription" />
-
-    <View
-        android:id="@+id/underview"
-        android:background="@color/secondmaincolor"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/busRecyclerView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_width="0dp"
-        android:layout_height="0dp"/>
-
-    <TextView
-        android:padding="10dp"
-        android:textSize="10sp"
-        android:text="버스 도착정보는 교통 및 버스 운행상황에 따라 다를 수 있으며,\n버스 이용 시 참고용으로만 활용 바랍니다."
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/underview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

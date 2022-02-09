@@ -1,20 +1,12 @@
 package com.example.your_precioustime.Retrofit
 
 import android.util.Log
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.your_precioustime.Model.*
 import com.example.your_precioustime.Model.SubwayModel.SubwayModel
-import com.example.your_precioustime.SecondActivity.BusItem
-import com.example.your_precioustime.SecondActivity.SubwayFragment.SubwayAdapter
 import com.example.your_precioustime.Url
 import com.example.your_precioustime.Util.Companion.TAG
-import com.google.gson.JsonElement
-import com.tickaroo.tikxml.TikXml
-import org.xmlpull.v1.builder.XmlElement
 import retrofit2.Call
 import retrofit2.Response
-import retrofit2.create
-import java.lang.Exception
 
 class Retrofit_Manager {
 //    lateinit var upAdpater: UpAdpater

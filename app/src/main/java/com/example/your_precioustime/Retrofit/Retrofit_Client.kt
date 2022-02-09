@@ -93,11 +93,6 @@ object Retrofit_Client {
             .baseUrl(baseurl)
             .client(client.build())
             .addConverterFactory(TikXmlConverterFactory.create(TikXml.Builder().exceptionOnUnreadXml(false).build()))
-//            .addConverterFactory(SimpleXmlConverterFactory.create())
-//            .addConverterFactory(GsonConverterFactory.create())
-
-
-//            .addConverterFactory(JaxbConverterFactory.create())
             .build()
 
         return retrofitFuckClient
