@@ -63,8 +63,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         busFavoriteGetAll()
         savemystation()
         SetmapView()
+        BusrefreshView()
 
 
+    }
+
+    private fun BusrefreshView() {
+        binding.myrefreshView.setOnRefreshListener {
+            SetBusStationRecyclerView()
+            binding.myrefreshView.isRefreshing = false
+        }
     }
 
     override fun onMapReady(googleMap: GoogleMap) {

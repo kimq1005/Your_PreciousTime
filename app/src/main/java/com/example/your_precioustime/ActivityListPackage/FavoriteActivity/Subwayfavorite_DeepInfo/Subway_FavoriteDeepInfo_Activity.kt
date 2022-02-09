@@ -67,24 +67,4 @@ class Subway_FravoriteDeepInfo_Activity : AppCompatActivity() {
 
     }
 
-//    private fun subwaySetRecyclerView(subwayNm: String) {
-//
-//        val subwayname = intent.getStringExtra("")
-//
-//        val call = retrofitInterface.SUBWAYGET(statnNm = subwayNm)
-//
-//        call.enqueue(object :retrofit2.Callback<SubwayModel>{
-//            override fun onResponse(
-//                call: retrofit2.Call<SubwayModel>,
-//                response: retrofit2.Response<SubwayModel>
-//            ) {
-//                Log.d(TAG, "testsetststsetsetststse: ${response.body()}")
-//            }
-//
-//            override fun onFailure(call: retrofit2.Call<SubwayModel>, t: Throwable) {
-//                Log.d(TAG, "onFailure: $t")
-//            }
-//        })
-//
-//    }
 }
