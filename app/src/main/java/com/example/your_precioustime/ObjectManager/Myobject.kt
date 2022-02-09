@@ -4,9 +4,11 @@ import android.animation.ObjectAnimator
 import android.content.Context
 import android.content.Intent
 import android.view.View
+import android.widget.Button
 import com.example.your_precioustime.ActivityListPackage.BusActivity.Bus_Activity
 import com.example.your_precioustime.ActivityListPackage.FavoriteActivity.FavroiteActivity
 import com.example.your_precioustime.ActivityListPackage.SubwayActivity.SubwayFragment
+import com.example.your_precioustime.R
 import com.google.android.material.snackbar.Snackbar
 
 class Myobject {
@@ -101,6 +103,9 @@ class Myobject {
     }
 
 
+    fun refreshView(refreshview: View) {
+
+    }
 
 
 }
