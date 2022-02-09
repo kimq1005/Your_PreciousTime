@@ -6,7 +6,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.your_precioustime.MainActivity
+import com.example.your_precioustime.ActivityListPackage.FavoriteActivity.Subwayfavorite_DeepInfo.Subway_FavroiteDeevInfo_test
+import com.example.your_precioustime.ActivityListPackage.FavoriteActivity.Subwayfavorite_DeepInfo.Subway_FravoriteDeepInfo_Activity
 import com.example.your_precioustime.SecondActivity.DB.OnSubwayListDeleteInterFace
 import com.example.your_precioustime.SecondActivity.DB.SubwayNameEntity
 import com.example.your_precioustime.databinding.SubwayfavoritelistItemBinding
@@ -35,8 +36,8 @@ class SubwayFavorite_Adpater(var onSubwayListDeleteInterFace: OnSubwayListDelete
         holder.itemView.setOnClickListener {
 
             Toast.makeText(holder.itemView.context, "$subwayname",Toast.LENGTH_SHORT).show()
-            val intent = Intent(holder.itemView.context, MainActivity::class.java)
-//            intent.putExtra("subwayname", subwayname)
+            val intent = Intent(holder.itemView.context, Subway_FravoriteDeepInfo_Activity::class.java)
+            intent.putExtra("subwayname", subwayname)
             holder.itemView.context.startActivity(intent)
 
         }
