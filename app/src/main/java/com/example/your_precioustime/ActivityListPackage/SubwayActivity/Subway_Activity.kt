@@ -17,17 +17,16 @@ import com.example.your_precioustime.SecondActivity.DB.SubwayDataBase
 import com.example.your_precioustime.SecondActivity.DB.SubwayNameEntity
 import com.example.your_precioustime.Url.Companion.SEOUL_SUBWAY_MAIN_URL
 import com.example.your_precioustime.Util.Companion.TAG
-import com.example.your_precioustime.databinding.SubwayFragmentBinding
-import kotlinx.android.synthetic.main.subway_fragment.*
+import com.example.your_precioustime.databinding.ActivitySubwayBinding
 import retrofit2.Call
 import retrofit2.Response
 
 
 @SuppressLint("StaticFieldLeak")
-class SubwayFragment : AppCompatActivity() {
+class Subway_Activity : AppCompatActivity() {
 
-    private var subwayFragment: SubwayFragmentBinding? = null
-    private val binding get() = subwayFragment!!
+    private var subwayBinding: ActivitySubwayBinding ? = null
+    private val binding get() = subwayBinding!!
 
     private var retrofitInterface =
         Retrofit_Client.getJsonClienet(SEOUL_SUBWAY_MAIN_URL).create(Retrofit_InterFace::class.java)
@@ -38,7 +37,7 @@ class SubwayFragment : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        subwayFragment = SubwayFragmentBinding.inflate(layoutInflater)
+        subwayBinding = ActivitySubwayBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         subwayDataBase = SubwayDataBase.getinstance(this)!!
@@ -56,14 +55,24 @@ class SubwayFragment : AppCompatActivity() {
             finish()
         }
 
+        binding.subwaySwipe.setOnRefreshListener {
+            val searchtext = binding.SearchEditText.text.toString()
+            binding.subtitleTextView.text = searchtext
+            binding.subwayfavroiteAddImageView.visibility = View.VISIBLE
+            binding.subtitleTextView.visibility = View.VISIBLE
+            getsubwayCall(searchtext)
+
+            binding.subwaySwipe.isRefreshing = false
+        }
+
 
         binding.clickhere.setOnClickListener {
 
             testgetAll()
             val searchtext = binding.SearchEditText.text.toString()
             binding.subtitleTextView.text = searchtext
-            subwayfavroiteAddImageView.visibility = View.VISIBLE
-            subtitleTextView.visibility = View.VISIBLE
+            binding.subwayfavroiteAddImageView.visibility = View.VISIBLE
+            binding.subtitleTextView.visibility = View.VISIBLE
             getsubwayCall(searchtext)
 
 
@@ -130,7 +139,7 @@ class SubwayFragment : AppCompatActivity() {
                         }
 
                     } else {
-                        Myobject.myobject.retrystation(binding.subwayFragmentActivity)
+                        Myobject.myobject.retrystation(binding.subwayActivity)
                         binding.subtitleTextView.visibility = View.INVISIBLE
                         binding.subwayfavroiteAddImageView.visibility = View.INVISIBLE
                     }
@@ -251,9 +260,9 @@ class SubwayFragment : AppCompatActivity() {
                 }
 
                 if (binding.subtitleTextView.text in stationnameList) {
-                    Myobject.myobject.alreadyFavroiteSnackBar(subwayFragment_Activity)
+                    Myobject.myobject.alreadyFavroiteSnackBar(binding.subwayActivity)
                 } else {
-                    Myobject.myobject.FavroiteSnackBar(subwayFragment_Activity)
+                    Myobject.myobject.FavroiteSnackBar(binding.subwayActivity)
                     binding.subwayfavroiteAddImageView.setImageResource(R.drawable.shinigstar)
                 }
 

@@ -13,7 +13,7 @@ import com.example.your_precioustime.ObjectManager.citycodeCallObject
 import com.example.your_precioustime.ObjectManager.citycodeSaveClass
 import com.example.your_precioustime.ActivityListPackage.BusActivity.Bus_Activity
 import com.example.your_precioustime.ActivityListPackage.FavoriteActivity.FavroiteActivity
-import com.example.your_precioustime.ActivityListPackage.SubwayActivity.SubwayFragment
+import com.example.your_precioustime.ActivityListPackage.SubwayActivity.Subway_Activity
 import com.example.your_precioustime.databinding.ActivityRealMainListBinding
 
 class RealMainListActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
@@ -39,7 +39,7 @@ class RealMainListActivity : AppCompatActivity(), AdapterView.OnItemSelectedList
         }
 
         binding.SubwayView.setOnClickListener {
-            val intent = Intent(this, SubwayFragment::class.java)
+            val intent = Intent(this, Subway_Activity::class.java)
             startActivity(intent)
         }
 

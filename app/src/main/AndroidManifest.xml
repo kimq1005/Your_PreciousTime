@@ -85,7 +85,7 @@
             android:name=".ActivityListPackage.FavoriteActivity.DeepStationInfoActivity"
             android:exported="false" />
         <activity
-            android:name=".ActivityListPackage.SubwayActivity.SubwayFragment"
+            android:name=".ActivityListPackage.SubwayActivity.Subway_Activity"
             android:exported="false" />
         <activity
             android:name=".ActivityListPackage.FavoriteActivity.FavroiteActivity"

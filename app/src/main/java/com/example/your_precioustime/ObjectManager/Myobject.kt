@@ -4,11 +4,9 @@ import android.animation.ObjectAnimator
 import android.content.Context
 import android.content.Intent
 import android.view.View
-import android.widget.Button
 import com.example.your_precioustime.ActivityListPackage.BusActivity.Bus_Activity
 import com.example.your_precioustime.ActivityListPackage.FavoriteActivity.FavroiteActivity
-import com.example.your_precioustime.ActivityListPackage.SubwayActivity.SubwayFragment
-import com.example.your_precioustime.R
+import com.example.your_precioustime.ActivityListPackage.SubwayActivity.Subway_Activity
 import com.google.android.material.snackbar.Snackbar
 
 class Myobject {
@@ -47,7 +45,7 @@ class Myobject {
         }
 
         subwayfloatbtn.setOnClickListener {
-            val intent = Intent(context, SubwayFragment::class.java)
+            val intent = Intent(context, Subway_Activity::class.java)
             context.startActivity(intent)
         }
 

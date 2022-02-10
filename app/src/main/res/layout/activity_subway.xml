@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/subwayFragment_Activity"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/subway_Activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityListPackage.SubwayActivity.SubwayFragment">
+    tools:context=".ActivityListPackage.SubwayActivity.Subway_Activity">
 
 
     <View
@@ -30,15 +30,15 @@
 
 
     <EditText
-        android:textColor="@color/white"
         android:id="@+id/SearchEditText"
         android:layout_width="0dp"
-        android:layout_height="37dp"
+        android:layout_height="48dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/edittext_background"
         android:hint="지하철역 입력"
         android:padding="10dp"
+        android:textColor="@color/white"
         android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintEnd_toStartOf="@+id/clickhere"
@@ -57,9 +57,6 @@
         app:layout_constraintTop_toTopOf="@id/view" />
 
 
-
-
-
     <LinearLayout
         android:id="@+id/subtitleLienarlayout"
         android:layout_width="match_parent"
@@ -70,16 +67,16 @@
         app:layout_constraintTop_toBottomOf="@+id/view">
 
         <TextView
-            android:visibility="invisible"
             android:id="@+id/subtitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:gravity="center"
-            android:padding="5dp"
+            android:padding="20dp"
             android:text="매탄권선"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:visibility="invisible" />
 
         <View
             android:layout_width="0dp"
@@ -88,12 +85,12 @@
 
 
         <ImageView
-            android:visibility="invisible"
             android:id="@+id/subwayfavroiteAddImageView"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="30dp"
             android:src="@drawable/star"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="@id/subtitleTextView"
             app:layout_constraintEnd_toStartOf="@id/subtitleTextView"
             app:layout_constraintTop_toTopOf="@+id/subtitleTextView" />
@@ -110,33 +107,43 @@
         app:layout_constraintTop_toBottomOf="@+id/subtitleLienarlayout" />
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/subwayRecyclerView"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/subway_swipe"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/secondunderline" />
+        app:layout_constraintTop_toBottomOf="@+id/secondunderline"
+        app:layout_constraintBottom_toTopOf="@+id/underview">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/subwayRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
     <View
         android:id="@+id/underview"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
         android:background="@color/secondmaincolor"
+        app:layout_constraintTop_toBottomOf="@id/subway_swipe"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/subwayRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_width="0dp"
-        android:layout_height="0dp"/>
+       />
 
     <TextView
-        android:padding="10dp"
-        android:textSize="10sp"
-        android:text="지하철 도착정보는 교통 및 버스 운행상황에 따라 다를 수 있으며,\n지하철 이용 시 참고용으로만 활용 바랍니다."
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/underview"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="지하철 도착정보는 교통 및 지하철 운행상황에 따라 다를 수 있으며,\n지하철 이용 시 참고용으로만 활용 바랍니다."
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/underview" />
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -152,7 +159,7 @@
         app:layout_constraintEnd_toEndOf="@id/floatingBtn"
         app:layout_constraintStart_toStartOf="@id/floatingBtn"
         app:layout_constraintTop_toTopOf="@id/floatingBtn"
-        tools:ignore="ContentDescription" />
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck,DuplicateClickableBoundsCheck" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/SubwayFloatBtn"
@@ -167,7 +174,7 @@
         app:layout_constraintEnd_toEndOf="@id/floatingBtn"
         app:layout_constraintStart_toStartOf="@id/floatingBtn"
         app:layout_constraintTop_toTopOf="@id/floatingBtn"
-        tools:ignore="ContentDescription" />
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -183,7 +190,7 @@
         app:layout_constraintEnd_toEndOf="@id/floatingBtn"
         app:layout_constraintStart_toStartOf="@id/floatingBtn"
         app:layout_constraintTop_toTopOf="@id/floatingBtn"
-        tools:ignore="ContentDescription" />
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingBtn"
@@ -195,7 +202,7 @@
         app:borderWidth="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="ContentDescription" />
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

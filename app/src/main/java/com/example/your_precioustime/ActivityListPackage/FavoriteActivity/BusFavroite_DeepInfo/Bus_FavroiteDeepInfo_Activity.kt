@@ -18,22 +18,30 @@ import retrofit2.Response
 
 //새로만든 엑티비티
 class Bus_FavroiteDeepInfo_Activity : AppCompatActivity() {
-    private var busFavroiteDeepInfoBinding: ActivityBusFavroiteDeepInfoBinding?=null
+    private var busFavroiteDeepInfoBinding: ActivityBusFavroiteDeepInfoBinding? = null
     private val binding get() = busFavroiteDeepInfoBinding!!
 
-    private val retrofitInterface: Retrofit_InterFace = Retrofit_Client.getClient(Url.BUS_MAIN_URL).create(
-        Retrofit_InterFace::class.java)
+    private val retrofitInterface: Retrofit_InterFace =
+        Retrofit_Client.getClient(Url.BUS_MAIN_URL).create(
+            Retrofit_InterFace::class.java
+        )
     lateinit var DFadapter: Bus_DeepFavoriteAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        busFavroiteDeepInfoBinding =ActivityBusFavroiteDeepInfoBinding.inflate(layoutInflater)
+        busFavroiteDeepInfoBinding = ActivityBusFavroiteDeepInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 
         setApiRecyclerView()
         binding.backbtn.setOnClickListener {
             onBackPressed()
+        }
+
+        binding.BusFavroiteSwipe.setOnRefreshListener {
+            setApiRecyclerView()
+
+            binding.BusFavroiteSwipe.isRefreshing = false
         }
 
         Myobject.myobject.ToggleSet(
@@ -45,18 +53,17 @@ class Bus_FavroiteDeepInfo_Activity : AppCompatActivity() {
         )
 
 
-
     }
 
-    private fun setApiRecyclerView()=with(binding) {
-        val favoritenodenum  = intent.getStringExtra("favoritenodenum").toString()
+    private fun setApiRecyclerView() = with(binding) {
+        val favoritenodenum = intent.getStringExtra("favoritenodenum").toString()
         val favoriteStationName = intent.getStringExtra("favoriteStationName").toString()
         val citycode = intent.getStringExtra("citycode").toString()
 
         BusStationName.text = favoriteStationName
-        val call = retrofitInterface.BusGet(citycode,favoritenodenum)
+        val call = retrofitInterface.BusGet(citycode, favoritenodenum)
 
-        call.enqueue(object :retrofit2.Callback<Bus>{
+        call.enqueue(object : retrofit2.Callback<Bus> {
             override fun onResponse(call: Call<Bus>, response: Response<Bus>) {
                 Log.d(Util.TAG, "onResponse: ${response.body()}")
                 val body = response.body()
@@ -65,10 +72,10 @@ class Bus_FavroiteDeepInfo_Activity : AppCompatActivity() {
                     val wow = body.body.items.item
                     val mylist = mutableListOf<Item>()
 
-                    for(i in wow.indices){
-                        val busNm:String
-                        val waitbus:Int
-                        val waittime:Int
+                    for (i in wow.indices) {
+                        val busNm: String
+                        val waitbus: Int
+                        val waittime: Int
 
                         busNm = wow.get(i).routeno!!
                         waitbus = wow.get(i).arrprevstationcnt!!
@@ -77,17 +84,17 @@ class Bus_FavroiteDeepInfo_Activity : AppCompatActivity() {
 
                         mylist.add(
                             Item(
-                            busNm,waitbus,waittime
-                        )
+                                busNm, waitbus, waittime
+                            )
                         )
 
-                        val firstList= mylist.filterIndexed { index, i ->
+                        val firstList = mylist.filterIndexed { index, i ->
 //                        Log.d(TAG, "인덱스값이 뭔지 확인하기 : $index , $i")
-                            index % 2 ==0    //이건 그냥 말그대로 짝수만을 가져온거야
+                            index % 2 == 0    //이건 그냥 말그대로 짝수만을 가져온거야
                         }
 
-                        val secondList = mylist.filterIndexed{index, item ->
-                            index % 2 ==1
+                        val secondList = mylist.filterIndexed { index, item ->
+                            index % 2 == 1
                         }
 
                         val ResultList = mutableListOf<Item>()
@@ -104,12 +111,18 @@ class Bus_FavroiteDeepInfo_Activity : AppCompatActivity() {
                                 val BWaitstation = it.arrprevstationcnt
                                 val BWaitTime = it.arrtime
 
-                                if(ARouteNo==BRouteNo){
-                                    if(AWaitstation!! > BWaitstation!!){
-                                        ResultList.add(Item(it.routeno,it.arrprevstationcnt,it.arrtime))
+                                if (ARouteNo == BRouteNo) {
+                                    if (AWaitstation!! > BWaitstation!!) {
+                                        ResultList.add(
+                                            Item(
+                                                it.routeno,
+                                                it.arrprevstationcnt,
+                                                it.arrtime
+                                            )
+                                        )
 
-                                    }else{
-                                        ResultList.add(Item(ARouteNo,AWaitstation,AWaitTime))
+                                    } else {
+                                        ResultList.add(Item(ARouteNo, AWaitstation, AWaitTime))
                                     }
 
 //                                    Log.d(TAG, "지막 그거여 확인혀: $ResultList")
@@ -123,7 +136,6 @@ class Bus_FavroiteDeepInfo_Activity : AppCompatActivity() {
 
                             FravroitestationinfoRecyclerView.apply {
                                 adapter = DFadapter
-//                                layoutManager = GridLayoutManager(this@FavoriteDeepInfo,2,GridLayoutManager.VERTICAL,false)
                                 layoutManager = LinearLayoutManager(context)
                                 DFadapter.submitList(ResultList)
                             }
