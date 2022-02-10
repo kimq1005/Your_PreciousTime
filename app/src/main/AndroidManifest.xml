@@ -22,6 +22,9 @@
         android:theme="@style/Theme.Your_PreciousTime"
         tools:targetApi="n">
         <activity
+            android:name=".ActivityListPackage.BusActivity.Bus_StationInfo_Activity"
+            android:exported="false" />
+        <activity
             android:name=".ActivityListPackage.FavoriteActivity.Subwayfavorite_DeepInfo.Subway_FravoriteDeepInfo_Activity"
             android:exported="false" />
         <activity
