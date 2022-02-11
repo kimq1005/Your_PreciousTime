@@ -13,7 +13,6 @@ class Bus_Station_Search_Adapter : RecyclerView.Adapter<Bus_Station_Search_Adapt
 
     inner class MyViewHolder(val binding: BusStationSearchitemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
         fun bind(stationItem: StationItem) {
             binding.StationNameTextView.text = stationItem.nodenm
             binding.StationNodeIDTextView.text = stationItem.nodeno
@@ -26,7 +25,6 @@ class Bus_Station_Search_Adapter : RecyclerView.Adapter<Bus_Station_Search_Adapt
             parent,
             false
         )
-
         return MyViewHolder(view)
     }
 

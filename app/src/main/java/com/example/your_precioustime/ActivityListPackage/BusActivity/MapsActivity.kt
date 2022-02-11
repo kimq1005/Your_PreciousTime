@@ -5,6 +5,7 @@ import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.your_precioustime.App
 import com.example.your_precioustime.DB.BusFavroiteDataBase
@@ -81,13 +82,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun setMap() {
-
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
     }
 
 
+    //맵 정보 펼치기
     fun SetmapView() = with(binding) {
         val stationname = intent.getStringExtra("stationName")
         val stationnodenode = intent.getStringExtra("stationnodenode")
@@ -122,7 +123,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
                         val marker = MarkerOptions().position(position).title(mapStationname)
                         mMap.addMarker(marker)
-                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 18f))
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 17f))
                         myLocationlatlng.include(position)
 
                     }
@@ -148,10 +149,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val stationNodeNumber = intent.getStringExtra("stationNodeNumber").toString()
         val citycode = citycodeSaveClass.citycodeSaveClass.Loadcitycode("citycode", "citycode")
-//        val citycode: String = "31010"
-
         val call = retrofitInterface.BusGet(citycode, stationNodeNumber)
-//        val call = retrofitInterface.BusGet("25","DJB8001793")
+
         call.enqueue(object : retrofit2.Callback<Bus> {
             override fun onResponse(call: Call<Bus>, response: Response<Bus>) {
                 busMaps_Adapater = BusMaps_Adpater()
@@ -183,18 +182,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
                     val firstList = hi.filterIndexed { index, i ->
-
                         index % 2 == 0
                     }
-
 
                     val secondList = hi.filterIndexed { index, item ->
                         index % 2 == 1
                     }
-
-
                     val ResultList = mutableListOf<Item>()
-                    val SecondResultList = mutableListOf<Item>()
 
 
                     firstList.forEach {

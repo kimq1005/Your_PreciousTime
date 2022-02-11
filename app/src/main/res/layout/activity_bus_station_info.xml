@@ -90,7 +90,7 @@
 
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/locationcardView"
+        android:id="@+id/sharecardView"
         android:layout_width="50dp"
         android:layout_height="55dp"
         android:layout_marginEnd="20dp"
@@ -124,13 +124,13 @@
 
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/sharecardView"
+        android:id="@+id/locationcardView"
         android:layout_width="50dp"
         android:layout_height="55dp"
         android:layout_marginEnd="2dp"
-        app:layout_constraintBottom_toBottomOf="@id/locationcardView"
-        app:layout_constraintEnd_toStartOf="@id/locationcardView"
-        app:layout_constraintTop_toTopOf="@id/locationcardView">
+        app:layout_constraintBottom_toBottomOf="@id/sharecardView"
+        app:layout_constraintEnd_toStartOf="@id/sharecardView"
+        app:layout_constraintTop_toTopOf="@id/sharecardView">
 
         <LinearLayout
             android:layout_width="wrap_content"

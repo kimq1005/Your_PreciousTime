@@ -1,10 +1,12 @@
 package com.example.your_precioustime.ActivityListPackage.BusActivity
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.your_precioustime.App
 import com.example.your_precioustime.DB.BusFavroiteDataBase
@@ -46,6 +48,23 @@ class Bus_StationInfo_Activity : AppCompatActivity() {
         binding.backbtn.setOnClickListener {
             onBackPressed()
             finish()
+        }
+
+        binding.locationcardView.setOnClickListener {
+            val stationName = intent.getStringExtra("stationName")
+            val stationnodenode = intent.getStringExtra("stationnodenode")
+            val stationNodeNumnder = intent.getStringExtra("stationNodeNumber")
+
+            val intent = Intent(this, MapsActivity::class.java)
+            intent.putExtra("stationName", stationName)
+            intent.putExtra("stationnodenode", stationnodenode)
+            intent.putExtra("stationNodeNumber", stationNodeNumnder)
+            startActivity(intent)
+            //retrofitcall할 필요가없음? ㄴㄴ할필요있음 ㅇㅇ
+        }
+
+        binding.sharecardView.setOnClickListener {
+
         }
 
 
@@ -92,9 +111,7 @@ class Bus_StationInfo_Activity : AppCompatActivity() {
 
                 body?.let {
                     val hello = body.body.items.item
-
                     val hi = mutableListOf<Item>()
-
                     for (i in hello.indices) {
                         val busNm: String
                         val waitbus: Int
