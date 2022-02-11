@@ -159,6 +159,7 @@
 
 
     <View
+        android:elevation="20dp"
         android:id="@+id/titleEndview"
         android:layout_width="match_parent"
         android:layout_height="1dp"

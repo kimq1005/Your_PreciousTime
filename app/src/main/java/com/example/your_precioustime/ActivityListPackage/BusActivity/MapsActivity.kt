@@ -58,7 +58,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             finish()
         }
 
-
         setMap()
         SetBusStationRecyclerView()
         busFavoriteGetAll()
