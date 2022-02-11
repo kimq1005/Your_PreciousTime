@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivityListPackage.BusActivity.Bus_StationInfo_Activity">
+    tools:context=".ActivityListPackage.BusActivity.Bus_StationInfo_Activity"
+    android:id="@+id/Bus_StationInfo_Activity">
 
 
     <View
-        android:id="@+id/view"
+        android:id="@+id/titleview"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/maincolor"
@@ -23,117 +24,138 @@
         android:layout_marginStart="5dp"
         android:layout_marginEnd="20dp"
         android:src="@drawable/ic_baseline_arrow_back_24"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toTopOf="@+id/view" />
+        app:layout_constraintBottom_toBottomOf="@+id/titleview"
+        app:layout_constraintStart_toStartOf="@+id/titleview"
+        app:layout_constraintTop_toTopOf="@+id/titleview" />
+
+    <TextView
+        android:id="@+id/titleview_titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="우남퍼스트빌"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/titleview"
+        app:layout_constraintEnd_toEndOf="@id/titleview"
+        app:layout_constraintStart_toStartOf="@id/titleview"
+        app:layout_constraintTop_toTopOf="@id/titleview" />
+
+    <ImageView
+        android:id="@+id/favroiteaddImage"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/whitestar"
+        app:layout_constraintBottom_toBottomOf="@id/titleview"
+        app:layout_constraintEnd_toEndOf="@+id/titleview"
+        app:layout_constraintTop_toTopOf="@id/titleview" />
 
 
     <View
         android:id="@+id/Bus_Info_View"
         android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_height="130dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view" />
-
-    <TextView
-        android:id="@+id/Bus_Info_Number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:text="04013"
-        app:layout_constraintEnd_toEndOf="@id/Bus_Info_View"
-        app:layout_constraintStart_toStartOf="@+id/Bus_Info_View"
-        app:layout_constraintTop_toTopOf="@+id/Bus_Info_View" />
-
-    <TextView
-        android:id="@+id/Bus_info_titleTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="우남 퍼스트빌"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="@id/Bus_Info_View"
-        app:layout_constraintStart_toStartOf="@+id/Bus_Info_View"
-        app:layout_constraintTop_toBottomOf="@+id/Bus_Info_Number" />
+        app:layout_constraintTop_toBottomOf="@+id/titleview" />
 
 
     <LinearLayout
-        android:layout_marginTop="23dp"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Bus_info_titleTextView">
+        android:layout_marginStart="15dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@id/Bus_Info_View"
+        app:layout_constraintStart_toStartOf="@id/Bus_Info_View"
+        app:layout_constraintTop_toTopOf="@id/Bus_Info_View">
 
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/Bus_info_titleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:text="우남 퍼스트빌"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
 
-            <ImageView
-
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:src="@drawable/ic_baseline_location_on_24" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="정류장 위치" />
-
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/Bus_Info_Number"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:src="@drawable/ic_baseline_location_on_24" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="공유" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:src="@drawable/ic_baseline_location_on_24" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="즐겨찾기" />
-
-
-        </LinearLayout>
+            android:text="04013"
+            app:layout_constraintTop_toTopOf="@id/Bus_Info_View" />
 
 
     </LinearLayout>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/locationcardView"
+        android:layout_width="50dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="@id/Bus_Info_View"
+        app:layout_constraintEnd_toEndOf="@id/Bus_Info_View"
+        app:layout_constraintTop_toTopOf="@id/Bus_Info_View">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/kakao_talk" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="공유 하기"
+                android:textSize="11sp" />
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/sharecardView"
+        android:layout_width="50dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="2dp"
+        app:layout_constraintBottom_toBottomOf="@id/locationcardView"
+        app:layout_constraintEnd_toStartOf="@id/locationcardView"
+        app:layout_constraintTop_toTopOf="@id/locationcardView">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/location" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="2dp"
+                android:text="위치 보기"
+                android:textSize="11sp" />
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
 
 
     <View
@@ -145,34 +167,101 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Bus_Info_View" />
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        app:layout_constraintEnd_toEndOf="parent"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/Bus_Info_Station_SwipeLayout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleEndview"
-        android:id="@+id/Bus_StationInfo_RecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleEndview"
+        app:layout_constraintBottom_toTopOf="@id/underview"
+        android:layout_width="0dp"
+        android:layout_height="0dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/Bus_StationInfo_RecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
     <View
         android:id="@+id/underview"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Bus_StationInfo_RecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@color/secondmaincolor"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"/>
+        app:layout_constraintTop_toBottomOf="@id/Bus_Info_Station_SwipeLayout" />
 
 
     <TextView
-        android:padding="10dp"
-        android:textSize="10sp"
-        android:text="버스 도착정보는 교통 및 버스 운행상황에 따라 다를 수 있으며,\n버스 이용 시 참고용으로만 활용 바랍니다."
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/underview"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="버스 도착정보는 교통 및 버스 운행상황에 따라 다를 수 있으며,\n버스 이용 시 참고용으로만 활용 바랍니다."
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/underview" />
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/FavroiteFloatBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/whitestar"
+        app:borderWidth="0dp"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toBottomOf="@id/floatingBtn"
+        app:layout_constraintEnd_toEndOf="@id/floatingBtn"
+        app:layout_constraintStart_toStartOf="@id/floatingBtn"
+        app:layout_constraintTop_toTopOf="@id/floatingBtn"
+        tools:ignore="ContentDescription" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/SubwayFloatBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/ic_baseline_subway_24"
+        app:borderWidth="0dp"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toBottomOf="@id/floatingBtn"
+        app:layout_constraintEnd_toEndOf="@id/floatingBtn"
+        app:layout_constraintStart_toStartOf="@id/floatingBtn"
+        app:layout_constraintTop_toTopOf="@id/floatingBtn"
+        tools:ignore="ContentDescription" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/BusfloatBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/ic_baseline_directions_bus_24"
+        app:borderWidth="0dp"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toBottomOf="@id/floatingBtn"
+        app:layout_constraintEnd_toEndOf="@id/floatingBtn"
+        app:layout_constraintStart_toStartOf="@id/floatingBtn"
+        app:layout_constraintTop_toTopOf="@id/floatingBtn"
+        tools:ignore="ContentDescription" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/ic_baseline_search_24"
+        app:borderWidth="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="ContentDescription" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

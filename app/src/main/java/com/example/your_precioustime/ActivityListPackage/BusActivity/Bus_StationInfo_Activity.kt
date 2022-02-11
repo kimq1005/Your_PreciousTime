@@ -1,13 +1,18 @@
 package com.example.your_precioustime.ActivityListPackage.BusActivity
 
+import android.annotation.SuppressLint
+import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.your_precioustime.App
 import com.example.your_precioustime.DB.BusFavroiteDataBase
 import com.example.your_precioustime.Model.Bus
 import com.example.your_precioustime.Model.Item
+import com.example.your_precioustime.ObjectManager.Myobject
 import com.example.your_precioustime.ObjectManager.citycodeSaveClass
+import com.example.your_precioustime.R
 import com.example.your_precioustime.Retrofit.Retrofit_Client
 import com.example.your_precioustime.Retrofit.Retrofit_InterFace
 import com.example.your_precioustime.SecondActivity.DB.SubwayDB.TestFavoriteModel
@@ -17,6 +22,7 @@ import com.example.your_precioustime.databinding.ActivityBusStationInfoBinding
 import retrofit2.Call
 import retrofit2.Response
 
+@SuppressLint("StaticFieldLeak")
 class Bus_StationInfo_Activity : AppCompatActivity() {
 
     private var busStationinfoBinding: ActivityBusStationInfoBinding? = null
@@ -29,21 +35,42 @@ class Bus_StationInfo_Activity : AppCompatActivity() {
     private var retrofitInterface: Retrofit_InterFace =
         Retrofit_Client.getClient(Url.BUS_MAIN_URL).create(Retrofit_InterFace::class.java)
 
-    lateinit var busStationSearchAdapter: Bus_Station_Search_Adapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         busStationinfoBinding = ActivityBusStationInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        busFavoriteDB = BusFavroiteDataBase.getinstance(App.instance)!!
+
         binding.backbtn.setOnClickListener {
             onBackPressed()
             finish()
         }
 
+
+        SetFreshView()
         SetBusStationRecyclerView()
+        busFavoriteGetAll()
+        savemystation()
+        //즐겨찾기
+
+        Myobject.myobject.ToggleSet(
+            this,
+            binding.floatingBtn,
+            binding.FavroiteFloatBtn,
+            binding.SubwayFloatBtn,
+            binding.BusfloatBtn
+        )
 
 
+    }
+
+    private fun SetFreshView() {
+        binding.BusInfoStationSwipeLayout.setOnRefreshListener {
+            SetBusStationRecyclerView()
+            binding.BusInfoStationSwipeLayout.isRefreshing = false
+        }
     }
 
 
@@ -51,13 +78,12 @@ class Bus_StationInfo_Activity : AppCompatActivity() {
 
         val stationName = intent.getStringExtra("stationName").toString()
         binding.BusInfoTitleTextView.text = stationName
+        binding.titleviewTitleTextView.text = stationName
 
         val stationNodeNumber = intent.getStringExtra("stationNodeNumber").toString()
         val citycode = citycodeSaveClass.citycodeSaveClass.Loadcitycode("citycode", "citycode")
-//        val citycode: String = "31010"
 
         val call = retrofitInterface.BusGet(citycode, stationNodeNumber)
-//        val call = retrofitInterface.BusGet("25","DJB8001793")
         call.enqueue(object : retrofit2.Callback<Bus> {
             override fun onResponse(call: Call<Bus>, response: Response<Bus>) {
                 busMaps_Adapater = BusMaps_Adpater()
@@ -150,5 +176,91 @@ class Bus_StationInfo_Activity : AppCompatActivity() {
         })
 
 
+    }
+
+
+    private fun BUSFravoriteInsert(busfavoriteEntity: TestFavoriteModel) {
+        var businsertTask = (object : AsyncTask<Unit, Unit, Unit>() {
+            override fun doInBackground(vararg params: Unit?) {
+
+                activitybusfavoriteEntity = busFavoriteDB.busFavoriteDAO().busFavoriteGetAll()
+
+                val stationnameList = mutableListOf<String>()
+                for (i in activitybusfavoriteEntity.indices) {
+                    val stationname = activitybusfavoriteEntity.get(i).stationName
+                    stationnameList.add(stationname)
+                }
+                if (binding.BusInfoTitleTextView.text !in stationnameList) {
+                    busFavoriteDB.busFavoriteDAO().busFavoriteInsert(busfavoriteEntity)
+                }
+
+            }
+
+            override fun onPostExecute(result: Unit?) {
+                super.onPostExecute(result)
+                val stationnameList = mutableListOf<String>()
+
+                for (i in activitybusfavoriteEntity.indices) {
+                    val stationname = activitybusfavoriteEntity.get(i).stationName
+                    stationnameList.add(stationname)
+                }
+
+                if (binding.BusInfoTitleTextView.text in stationnameList) {
+                    Myobject.myobject.alreadyFavroiteSnackBar(binding.BusStationInfoActivity)
+
+                } else {
+                    Myobject.myobject.FavroiteSnackBar(binding.BusStationInfoActivity)
+                    binding.favroiteaddImage.setImageResource(R.drawable.fullstar)
+                }
+
+            }
+        }).execute()
+    }
+
+    private fun busFavoriteGetAll() {
+        val busGetAllTask = (object : AsyncTask<Unit, Unit, Unit>() {
+            override fun doInBackground(vararg params: Unit?) {
+                activitybusfavoriteEntity = busFavoriteDB.busFavoriteDAO().busFavoriteGetAll()
+            }
+
+            override fun onPostExecute(result: Unit?) {
+                super.onPostExecute(result)
+                val stationnameList = mutableListOf<String>()
+
+                for (i in activitybusfavoriteEntity.indices) {
+                    val stationname = activitybusfavoriteEntity.get(i).stationName
+                    stationnameList.add(stationname)
+                }
+
+                if (binding.BusInfoTitleTextView.text in stationnameList) {
+                    binding.favroiteaddImage.setImageResource(R.drawable.fullstar)
+                } else {
+                    binding.favroiteaddImage.setImageResource(R.drawable.whitestar)
+                }
+
+            }
+
+        }).execute()
+    }
+
+    private fun savemystation() = with(binding) {
+
+        favroiteaddImage.setOnClickListener {
+
+            val stationName = intent.getStringExtra("stationName").toString()
+            val stationNodeNumber = intent.getStringExtra("stationNodeNumber").toString()
+            val stationNodeNode = intent.getStringExtra("stationnodenode").toString()
+            val stationcitycode =
+                citycodeSaveClass.citycodeSaveClass.Loadcitycode("citycode", "citycode")
+
+            val FavroiteModel = TestFavoriteModel(
+                id = null,
+                citycode = stationcitycode,
+                stationnodenode = stationNodeNode,
+                stationName = stationName,
+                stationNodeNumber = stationNodeNumber
+            )
+            BUSFravoriteInsert(FavroiteModel)
+        }
     }
 }
