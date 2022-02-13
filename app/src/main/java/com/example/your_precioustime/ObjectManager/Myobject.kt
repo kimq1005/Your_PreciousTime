@@ -16,6 +16,7 @@ class Myobject {
     }
 
 
+    //토글버튼 함수
     fun ToggleSet(
         context: Context,
         floatbtn: View,
@@ -26,9 +27,9 @@ class Myobject {
         var myBolean = false
         floatbtn.setOnClickListener {
             if (myBolean == false) {
-                ObjectAnimator.ofFloat(fvfloatBtn, "translationY", -150f).apply { start() }
-                ObjectAnimator.ofFloat(subwayfloatbtn, "translationY", -300f).apply { start() }
-                ObjectAnimator.ofFloat(busfloatbtn, "translationY", -450f).apply { start() }
+                ObjectAnimator.ofFloat(fvfloatBtn, "translationY", -200f).apply { start() }
+                ObjectAnimator.ofFloat(subwayfloatbtn, "translationY", -380f).apply { start() }
+                ObjectAnimator.ofFloat(busfloatbtn, "translationY", -580f).apply { start() }
                 myBolean = true
 
             } else {
