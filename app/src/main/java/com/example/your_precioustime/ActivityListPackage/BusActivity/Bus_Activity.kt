@@ -19,7 +19,6 @@ class Bus_Activity : AppCompatActivity() {
 
     private var busBinding: ActivityBusBinding? = null
     private val binding get() = busBinding!!
-    private var isFabOpen = false
 
     lateinit var busStationSearchAdapter: Bus_Station_Search_Adapter
 

@@ -56,6 +56,7 @@ class Subway_FravoriteDeepInfo_Activity : AppCompatActivity() {
             binding.BusfloatBtn
         )
 
+
     }
 
     private fun setRecyclearView() {

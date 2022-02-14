@@ -31,6 +31,7 @@ class RealMainListActivity : AppCompatActivity(), AdapterView.OnItemSelectedList
         setSpinner(spinner)
 
         binding.busView.setOnClickListener {
+            //설정한 지역에 대한 citycode를 저장
             val mycitycode: String = citycodeCallObject.citycodeCallObject.citycode(binding.citynameTextView.text.toString())
             citycodeSaveClass.citycodeSaveClass.Savecitycode("citycode", mycitycode)
 
@@ -66,6 +67,7 @@ class RealMainListActivity : AppCompatActivity(), AdapterView.OnItemSelectedList
 
     }
 
+    //지역선택 스피너 함수
     private fun setSpinner(spinner: Spinner) {
         ArrayAdapter.createFromResource(
             this,
