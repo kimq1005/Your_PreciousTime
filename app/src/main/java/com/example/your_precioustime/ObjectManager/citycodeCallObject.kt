@@ -20,7 +20,7 @@ class citycodeCallObject {
                 return "31020"
             }
 
-            "안양 "->{
+            "안양"->{
                 return "31040"
             }
 
@@ -135,6 +135,134 @@ class citycodeCallObject {
 
         }
         return "31010"
+    }
+
+
+    fun returncitynamecode(cityname:String): String {
+        when(cityname){
+            "31010"->{
+                return "수원"
+            }
+
+            "31020"->{
+                return "성남"
+            }
+
+            "31040"->{
+                return "안양"
+            }
+
+            "31050"->{
+                return "부천"
+            }
+
+            "31060"->{
+                return "광명"
+            }
+
+            "31070"->{
+                return "평택"
+            }
+
+            "31080"->{
+                return "동두천"
+            }
+
+            "31090"->{
+                return "안산"
+            }
+
+            "31100"->{
+                return "고양"
+            }
+            "31110"->{
+                return "과천"
+            }
+
+            "31120"->{
+                return "구리"
+            }
+
+            "31130"->{
+                return "남양주"
+            }
+
+            "31140"->{
+                return "오산"
+            }
+
+            "31150"->{
+                return "시흥"
+            }
+
+            "31160"->{
+                return "군포"
+            }
+
+            "31170"->{
+                return "의왕"
+            }
+
+            "31180"->{
+                return "하남"
+            }
+
+            "31190"->{
+                return "용인"
+            }
+
+            "31200"->{
+                return "파주"
+            }
+
+            "31210"->{
+                return "이천"
+            }
+
+            "31220"->{
+                return "안성"
+            }
+
+            "31230"->{
+                return "김포"
+            }
+
+            "31240"->{
+                return "화성"
+            }
+
+
+            "31250"->{
+                return "광주"
+            }
+
+            "31260"->{
+                return "양주"
+            }
+
+            "31270"->{
+                return "포천"
+            }
+
+            "31320"->{
+                return "여주"
+            }
+
+            "31350"->{
+                return "연천"
+            }
+
+            "31370"->{
+                return "가평"
+            }
+
+            "31380"->{
+                return "양평"
+            }
+
+
+        }
+        return "Error"
     }
 
 

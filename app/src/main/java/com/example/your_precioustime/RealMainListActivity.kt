@@ -31,9 +31,9 @@ class RealMainListActivity : AppCompatActivity(), AdapterView.OnItemSelectedList
         setSpinner(spinner)
 
         binding.busView.setOnClickListener {
-            val mycitycode: String =
-                citycodeCallObject.citycodeCallObject.citycode(binding.citynameTextView.text.toString())
+            val mycitycode: String = citycodeCallObject.citycodeCallObject.citycode(binding.citynameTextView.text.toString())
             citycodeSaveClass.citycodeSaveClass.Savecitycode("citycode", mycitycode)
+
             val intent = Intent(this, Bus_Activity::class.java)
             startActivity(intent)
         }

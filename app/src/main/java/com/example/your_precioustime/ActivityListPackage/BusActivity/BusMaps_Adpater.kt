@@ -5,10 +5,13 @@ import android.os.AsyncTask
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.your_precioustime.App
 import com.example.your_precioustime.DB.BUSStationNameDataBase
 import com.example.your_precioustime.Model.Item
+import com.example.your_precioustime.ObjectManager.citycodeCallObject
+import com.example.your_precioustime.ObjectManager.citycodeSaveClass
 import com.example.your_precioustime.SecondActivity.DB.BUSStationNameEntity
 import com.example.your_precioustime.Util.Companion.TAG
 import com.example.your_precioustime.databinding.BusitemLayoutBinding
@@ -31,9 +34,13 @@ class BusMaps_Adpater : RecyclerView.Adapter<BusMaps_Adpater.MyViewHolder>() {
 
             val mytime = item.arrtime!!
             val second = mytime / 60
+
+            val citycode =citycodeSaveClass.citycodeSaveClass.Loadcitycode("citycode","citycode")
+            val cityname = citycodeCallObject.citycodeCallObject.returncitynamecode(citycode)
             binding.BusNumber.text = item.routeno.toString()
             binding.waitBusNumber.text = item.arrprevstationcnt.toString()
             binding.waitTime.text = second.toString()
+            binding.BusCityname.text = cityname
 
         }
 
@@ -49,6 +56,11 @@ class BusMaps_Adpater : RecyclerView.Adapter<BusMaps_Adpater.MyViewHolder>() {
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         item?.get(position)?.let {
             holder.bind(it)
+        }
+
+        holder.itemView.setOnClickListener {
+            val hi =citycodeSaveClass.citycodeSaveClass.Loadcitycode("citycode","citycode")
+            Toast.makeText(holder.itemView.context, "$hi",Toast.LENGTH_SHORT).show()
         }
 
 

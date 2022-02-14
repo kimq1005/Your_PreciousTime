@@ -23,10 +23,7 @@
         android:src="@drawable/ic_baseline_arrow_back_24"
         app:layout_constraintBottom_toBottomOf="@id/titleview"
         app:layout_constraintStart_toStartOf="@id/titleview"
-        app:layout_constraintTop_toTopOf="@id/titleview"
-        />
-
-
+        app:layout_constraintTop_toTopOf="@id/titleview" />
 
 
     <TextView
@@ -55,15 +52,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/SubwayStationName" />
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/SubwayFVDeepInFoRecyclerView"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/SubwayFavroiteSwipe"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/downunderline" />
+        app:layout_constraintTop_toBottomOf="@+id/downunderline">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/SubwayFVDeepInFoRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

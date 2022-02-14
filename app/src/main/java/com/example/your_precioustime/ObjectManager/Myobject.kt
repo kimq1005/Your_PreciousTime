@@ -102,9 +102,5 @@ class Myobject {
     }
 
 
-    fun refreshView(refreshview: View) {
-
-    }
-
 
 }

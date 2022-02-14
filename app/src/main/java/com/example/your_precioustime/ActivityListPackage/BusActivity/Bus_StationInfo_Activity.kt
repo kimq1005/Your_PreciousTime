@@ -30,6 +30,7 @@ class Bus_StationInfo_Activity : AppCompatActivity() {
     private var busStationinfoBinding: ActivityBusStationInfoBinding? = null
     private val binding get() = busStationinfoBinding!!
 
+
     private lateinit var busMaps_Adapater: BusMaps_Adpater
     lateinit var busFavoriteDB: BusFavroiteDataBase
     lateinit var activitybusfavoriteEntity: List<TestFavoriteModel>

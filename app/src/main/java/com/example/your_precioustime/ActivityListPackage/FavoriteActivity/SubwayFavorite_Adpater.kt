@@ -13,29 +13,34 @@ import com.example.your_precioustime.SecondActivity.DB.SubwayNameEntity
 import com.example.your_precioustime.databinding.SubwayfavoritelistItemBinding
 
 
-class SubwayFavorite_Adpater(var onSubwayListDeleteInterFace: OnSubwayListDeleteInterFace):RecyclerView.Adapter<SubwayFavorite_Adpater.SubwayFVHolder>() {
+class SubwayFavorite_Adpater(var onSubwayListDeleteInterFace: OnSubwayListDeleteInterFace) :
+    RecyclerView.Adapter<SubwayFavorite_Adpater.SubwayFVHolder>() {
     lateinit var subwaynameEntity: List<SubwayNameEntity>
 
-    inner class SubwayFVHolder(val binding: SubwayfavoritelistItemBinding)
-        :RecyclerView.ViewHolder(binding.root){
-        fun bind(subwaynameEntity: SubwayNameEntity){
+    inner class SubwayFVHolder(val binding: SubwayfavoritelistItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(subwaynameEntity: SubwayNameEntity) {
             binding.SubwayFavoriteNameTextView.text = subwaynameEntity.subwayName
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SubwayFVHolder {
-        val view = SubwayfavoritelistItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val view = SubwayfavoritelistItemBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
 
         return SubwayFVHolder(view)
     }
 
     override fun onBindViewHolder(holder: SubwayFVHolder, position: Int) {
         val subway_delete_List = subwaynameEntity[position]
-        val subwayname=subwaynameEntity[position].subwayName
+        val subwayname = subwaynameEntity[position].subwayName
+
         holder.bind(subwaynameEntity[position])
         holder.itemView.setOnClickListener {
 
-            Toast.makeText(holder.itemView.context, "$subwayname",Toast.LENGTH_SHORT).show()
             val intent = Intent(holder.itemView.context, Subway_FravoriteDeepInfo_Activity::class.java)
             intent.putExtra("subwayname", subwayname)
             holder.itemView.context.startActivity(intent)
@@ -53,7 +58,7 @@ class SubwayFavorite_Adpater(var onSubwayListDeleteInterFace: OnSubwayListDelete
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun submitList(list:List<SubwayNameEntity>){
+    fun submitList(list: List<SubwayNameEntity>) {
         subwaynameEntity = list
         notifyDataSetChanged()
     }

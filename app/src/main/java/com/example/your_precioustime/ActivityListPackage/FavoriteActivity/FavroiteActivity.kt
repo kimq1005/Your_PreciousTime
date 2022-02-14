@@ -107,7 +107,6 @@ class FavroiteActivity : AppCompatActivity(), OnDeleteInterFace, OnSubwayListDel
         }).execute()
     }
 
-
     private fun setRecyclerViewfuck() = with(binding) {
 
         favroiteAdapterBus = BusFavorite_Adapter(this@FavroiteActivity)

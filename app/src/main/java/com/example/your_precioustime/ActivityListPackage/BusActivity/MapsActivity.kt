@@ -86,7 +86,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mapFragment.getMapAsync(this)
     }
 
-
     //맵 정보 펼치기
     fun SetmapView() = with(binding) {
         val stationname = intent.getStringExtra("stationName")

@@ -41,6 +41,11 @@ class Subway_FravoriteDeepInfo_Activity : AppCompatActivity() {
             finish()
         }
 
+        binding.SubwayFavroiteSwipe.setOnRefreshListener {
+            setRecyclearView()
+            binding.SubwayFavroiteSwipe.isRefreshing = false
+        }
+
         setRecyclearView()
 
         Myobject.myobject.ToggleSet(
