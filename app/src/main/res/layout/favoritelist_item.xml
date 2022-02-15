@@ -37,8 +37,16 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/Favorite_Name_TextView"
             app:layout_constraintTop_toBottomOf="@+id/Favorite_Name_TextView"
-
             />
+
+        <TextView
+            android:id="@+id/Favroite_citycode"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
         <ImageView
             android:id="@+id/stardeletebtn"

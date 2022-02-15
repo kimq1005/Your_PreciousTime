@@ -23,30 +23,28 @@
         android:src="@drawable/ic_baseline_arrow_back_24"
         app:layout_constraintBottom_toBottomOf="@id/titleview"
         app:layout_constraintStart_toStartOf="@id/titleview"
-        app:layout_constraintTop_toTopOf="@id/titleview"
-        />
+        app:layout_constraintTop_toTopOf="@id/titleview" />
 
 
     <TextView
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titleview"
         android:id="@+id/BusStationName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="나는 전설이다 정류장"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleview" />
 
 
     <View
-        android:layout_marginTop="15dp"
         android:id="@+id/downunderline"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_marginTop="15dp"
         android:background="@color/ovalcolor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,12 +52,12 @@
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/BusFavroiteSwipe"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/downunderline"
         android:layout_width="0dp"
-        android:layout_height="0dp">
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/downunderline">
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -68,10 +66,7 @@
             android:layout_height="match_parent" />
 
 
-
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

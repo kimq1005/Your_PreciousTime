@@ -9,8 +9,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.your_precioustime.ActivityListPackage.FavoriteActivity.BusFavroite_DeepInfo.Bus_FavoriteDeepInfo_test
 import com.example.your_precioustime.ActivityListPackage.FavoriteActivity.BusFavroite_DeepInfo.Bus_FavroiteDeepInfo_Activity
+import com.example.your_precioustime.ObjectManager.Myobject
+import com.example.your_precioustime.ObjectManager.citycodeSaveClass
 import com.example.your_precioustime.SecondActivity.DB.OnDeleteInterFace
 import com.example.your_precioustime.SecondActivity.DB.SubwayDB.TestFavoriteModel
+import com.example.your_precioustime.databinding.ActivityBusFavroiteDeepInfoBinding
 
 import com.example.your_precioustime.databinding.FavoritelistItemBinding
 
@@ -19,13 +22,16 @@ class BusFavorite_Adapter(var onDeleteInterFace: OnDeleteInterFace) :
     ListAdapter<TestFavoriteModel, BusFavorite_Adapter.SubwayViewHolder>(diffUtil) {
 
     lateinit var testFavoriteModel: List<TestFavoriteModel>
+    private var busFavroiteDeepInfoBinding: ActivityBusFavroiteDeepInfoBinding? = null
+    private val ff get() = busFavroiteDeepInfoBinding!!
 
     class SubwayViewHolder(val binding: FavoritelistItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(testFavoriteModel: TestFavoriteModel) {
+
+
             binding.FavoriteNameTextView.text = testFavoriteModel.stationName
             binding.FavoriteNodeIDTextView.text = testFavoriteModel.stationnodenode
-
         }
     }
 
@@ -45,6 +51,8 @@ class BusFavorite_Adapter(var onDeleteInterFace: OnDeleteInterFace) :
 
 
         holder.itemView.setOnClickListener {
+            citycodeSaveClass.citycodeSaveClass.Savecitycode("favroitebuscitycode",citycode.toString())
+
             val intent = Intent(holder.itemView.context, Bus_FavroiteDeepInfo_Activity::class.java).apply {
                 putExtra("citycode",citycode)
                 putExtra("favoriteStationName", favoriteStationName)

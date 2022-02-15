@@ -13,8 +13,10 @@ import com.example.your_precioustime.ObjectManager.citycodeCallObject
 import com.example.your_precioustime.ObjectManager.citycodeSaveClass
 import com.example.your_precioustime.ActivityListPackage.BusActivity.Bus_Activity
 import com.example.your_precioustime.ActivityListPackage.FavoriteActivity.FavroiteActivity
+import com.example.your_precioustime.ActivityListPackage.HelpActivity.HelpActivity
 import com.example.your_precioustime.ActivityListPackage.SubwayActivity.Subway_Activity
 import com.example.your_precioustime.databinding.ActivityRealMainListBinding
+import com.google.android.material.snackbar.Snackbar
 
 class RealMainListActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
@@ -31,7 +33,6 @@ class RealMainListActivity : AppCompatActivity(), AdapterView.OnItemSelectedList
         setSpinner(spinner)
 
         binding.busView.setOnClickListener {
-            //설정한 지역에 대한 citycode를 저장
             val mycitycode: String = citycodeCallObject.citycodeCallObject.citycode(binding.citynameTextView.text.toString())
             citycodeSaveClass.citycodeSaveClass.Savecitycode("citycode", mycitycode)
 
@@ -57,13 +58,12 @@ class RealMainListActivity : AppCompatActivity(), AdapterView.OnItemSelectedList
         binding.noticeView.setOnClickListener {
             val intent = Intent(this, NoticeActivity::class.java)
             startActivity(intent)
-
         }
 
         binding.helpView.setOnClickListener {
-
+            val snackbar = Snackbar.make(binding.helpView, "준비중입니다.", Snackbar.LENGTH_LONG)
+            snackbar.show()
         }
-
 
     }
 

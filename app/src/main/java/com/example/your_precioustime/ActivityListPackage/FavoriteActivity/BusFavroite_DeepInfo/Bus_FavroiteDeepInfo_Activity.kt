@@ -44,6 +44,8 @@ class Bus_FavroiteDeepInfo_Activity : AppCompatActivity() {
             binding.BusFavroiteSwipe.isRefreshing = false
         }
 
+
+
         Myobject.myobject.ToggleSet(
             this,
             binding.floatingBtn,
@@ -59,6 +61,7 @@ class Bus_FavroiteDeepInfo_Activity : AppCompatActivity() {
         val favoritenodenum = intent.getStringExtra("favoritenodenum").toString()
         val favoriteStationName = intent.getStringExtra("favoriteStationName").toString()
         val citycode = intent.getStringExtra("citycode").toString()
+
 
         BusStationName.text = favoriteStationName
         val call = retrofitInterface.BusGet(citycode, favoritenodenum)
@@ -125,8 +128,6 @@ class Bus_FavroiteDeepInfo_Activity : AppCompatActivity() {
                                         ResultList.add(Item(ARouteNo, AWaitstation, AWaitTime))
                                     }
 
-//                                    Log.d(TAG, "지막 그거여 확인혀: $ResultList")
-                                    Log.d(Util.TAG, "onResponse:내가 뭘할까 이련아")
                                 }
 
 
@@ -140,10 +141,7 @@ class Bus_FavroiteDeepInfo_Activity : AppCompatActivity() {
                                 DFadapter.submitList(ResultList)
                             }
 
-
                         }
-
-
                     }
 
 

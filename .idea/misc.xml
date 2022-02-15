@@ -45,7 +45,7 @@
         <entry key="app/src/main/res/layout-v21/subwayfavoritelist_item.xml" value="0.375" />
         <entry key="app/src/main/res/layout/activity_Subway.xml" value="0.2328125" />
         <entry key="app/src/main/res/layout/activity_bus.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/activity_bus_favroite_deep_info.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_bus_favroite_deep_info.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_bus_station_info.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_bus_subway.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_deep_station_info.xml" value="0.25" />

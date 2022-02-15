@@ -10,8 +10,7 @@ class citycodeSaveClass(context: Context) {
         val citycodeSaveClass = citycodeSaveClass(App.instance)
     }
 
-    private val prefs: SharedPreferences =
-        context.getSharedPreferences("prefs_name", Context.MODE_PRIVATE)
+    private val prefs: SharedPreferences = context.getSharedPreferences("prefs_name", Context.MODE_PRIVATE)
 
     fun Savecitycode(key: String, str: String) {
         prefs.edit().putString(key, str).apply()
@@ -20,7 +19,5 @@ class citycodeSaveClass(context: Context) {
     fun Loadcitycode(key: String, defValue: String): String {
         return prefs.getString(key, defValue).toString()
     }
-
-
 
 }

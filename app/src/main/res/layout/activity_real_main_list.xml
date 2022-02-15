@@ -34,7 +34,7 @@
             android:fontFamily="@font/nanumgothic_bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="나는 전설이다"
+            android:text="Your PreicousTime"
             android:textColor="@color/white"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -42,9 +42,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/nanumgothic_extrabold"
-            android:text="나는 전설이다 잘생겼고 성격좋다 질투나냐?"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/nanumgothic_regular"
+            android:text="당신을 위한 교통정보앱"
             android:textColor="@color/white"
             android:textSize="15sp" />
 

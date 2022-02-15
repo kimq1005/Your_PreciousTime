@@ -61,7 +61,6 @@ class Bus_StationInfo_Activity : AppCompatActivity() {
             intent.putExtra("stationnodenode", stationnodenode)
             intent.putExtra("stationNodeNumber", stationNodeNumnder)
             startActivity(intent)
-            //retrofitcall할 필요가없음? ㄴㄴ할필요있음 ㅇㅇ
         }
 
         binding.sharecardView.setOnClickListener {
@@ -268,8 +267,7 @@ class Bus_StationInfo_Activity : AppCompatActivity() {
             val stationName = intent.getStringExtra("stationName").toString()
             val stationNodeNumber = intent.getStringExtra("stationNodeNumber").toString()
             val stationNodeNode = intent.getStringExtra("stationnodenode").toString()
-            val stationcitycode =
-                citycodeSaveClass.citycodeSaveClass.Loadcitycode("citycode", "citycode")
+            val stationcitycode = citycodeSaveClass.citycodeSaveClass.Loadcitycode("citycode", "citycode")
 
             val FavroiteModel = TestFavoriteModel(
                 id = null,

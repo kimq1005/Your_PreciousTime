@@ -22,8 +22,7 @@ class Bus_Activity : AppCompatActivity() {
 
     lateinit var busStationSearchAdapter: Bus_Station_Search_Adapter
 
-    private var retrofitInterface: Retrofit_InterFace =
-        Retrofit_Client.getClient(Url.BUS_MAIN_URL).create(Retrofit_InterFace::class.java)
+    private var retrofitInterface: Retrofit_InterFace = Retrofit_Client.getClient(Url.BUS_MAIN_URL).create(Retrofit_InterFace::class.java)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

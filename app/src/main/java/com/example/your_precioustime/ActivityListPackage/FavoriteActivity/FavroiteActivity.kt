@@ -101,13 +101,13 @@ class FavroiteActivity : AppCompatActivity(), OnDeleteInterFace, OnSubwayListDel
                 super.onPostExecute(result)
 
                 Log.d(Util.TAG, "버스 태그 확인: $busfavoriteEntity")
-                setRecyclerViewfuck()
+                setBusFavroiteRecyclerView()
 
             }
         }).execute()
     }
 
-    private fun setRecyclerViewfuck() = with(binding) {
+    private fun setBusFavroiteRecyclerView() = with(binding) {
 
         favroiteAdapterBus = BusFavorite_Adapter(this@FavroiteActivity)
 
