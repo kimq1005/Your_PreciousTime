@@ -45,7 +45,7 @@
         android:id="@+id/motionConstarintlayout"
         android:layout_width="wrap_content"
         android:layout_height="200dp"
-        android:background="@color/secondmaincolor"
+        android:background="@color/mapsmaincolor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">

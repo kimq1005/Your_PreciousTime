@@ -29,7 +29,7 @@ class Myobject {
             if (myBolean == false) {
                 ObjectAnimator.ofFloat(fvfloatBtn, "translationY", -200f).apply { start() }
                 ObjectAnimator.ofFloat(subwayfloatbtn, "translationY", -380f).apply { start() }
-                ObjectAnimator.ofFloat(busfloatbtn, "translationY", -580f).apply { start() }
+                ObjectAnimator.ofFloat(busfloatbtn, "translationY", -560f).apply { start() }
                 myBolean = true
 
             } else {

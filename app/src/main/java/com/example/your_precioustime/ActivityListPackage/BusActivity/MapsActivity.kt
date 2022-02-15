@@ -121,7 +121,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
                         val marker = MarkerOptions().position(position).title(mapStationname)
                         mMap.addMarker(marker)
-                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 17f))
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 18f))
                         myLocationlatlng.include(position)
 
                     }

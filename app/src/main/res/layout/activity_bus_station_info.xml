@@ -175,7 +175,7 @@
         app:layout_constraintTop_toBottomOf="@id/titleEndview"
         app:layout_constraintBottom_toTopOf="@id/underview"
         android:layout_width="0dp"
-        android:layout_height="0dp">
+        android:layout_height="400dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/Bus_StationInfo_RecyclerView"

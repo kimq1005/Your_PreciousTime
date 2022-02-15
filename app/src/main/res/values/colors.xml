@@ -15,4 +15,5 @@
     <color name="ovalcolor">#222222</color>
     <color name="edittextcolor">#D1D1D1</color>
     <color name="secondmaincolor">#F0F5FB</color>
+    <color name="mapsmaincolor">#E0F0F5FB</color>
 </resources>

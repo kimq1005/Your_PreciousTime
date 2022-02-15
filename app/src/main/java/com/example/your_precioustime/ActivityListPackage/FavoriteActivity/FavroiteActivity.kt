@@ -16,13 +16,13 @@ import com.example.your_precioustime.SecondActivity.DB.SubwayNameEntity
 import com.example.your_precioustime.SecondActivity.DB.SubwayDB.TestFavoriteModel
 import com.example.your_precioustime.Util
 import com.example.your_precioustime.Util.Companion.TAG
-import com.example.your_precioustime.databinding.ActivitySecondBinding
+import com.example.your_precioustime.databinding.ActivityFavroiteBinding
 
 @SuppressLint("StaticFieldLeak")
 class FavroiteActivity : AppCompatActivity(), OnDeleteInterFace, OnSubwayListDeleteInterFace {
 
-    private var secondBinding: ActivitySecondBinding? = null
-    private val binding get() = secondBinding!!
+    private var favroiteBinding: ActivityFavroiteBinding? = null
+    private val binding get() = favroiteBinding!!
 
     lateinit var busFavoriteDB: BusFavroiteDataBase
     lateinit var busfavoriteEntity: List<TestFavoriteModel>
@@ -35,7 +35,7 @@ class FavroiteActivity : AppCompatActivity(), OnDeleteInterFace, OnSubwayListDel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        secondBinding = ActivitySecondBinding.inflate(layoutInflater)
+        favroiteBinding = ActivityFavroiteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         busFavoriteDB = BusFavroiteDataBase.getinstance(App.instance)!!

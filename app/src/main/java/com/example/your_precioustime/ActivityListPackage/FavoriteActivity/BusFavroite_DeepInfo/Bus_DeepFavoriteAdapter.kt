@@ -24,10 +24,6 @@ import com.example.your_precioustime.databinding.BusitemLayoutBinding
 @SuppressLint("StaticFieldLeak")
 class Bus_DeepFavoriteAdapter : ListAdapter<Item, Bus_DeepFavoriteAdapter.myViewHolder>(diffUtil) {
 
-    lateinit var activitybusfavoriteEntity: List<TestFavoriteModel>
-    lateinit var busFavoriteDB: BusFavroiteDataBase
-
-
     inner class myViewHolder(var binding: BusitemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
