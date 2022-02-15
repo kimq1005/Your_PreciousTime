@@ -249,7 +249,7 @@
 
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/guideView"
+        android:id="@+id/noticeView"
         android:layout_width="125dp"
         android:layout_height="100dp"
         android:layout_marginTop="30dp"
@@ -258,55 +258,6 @@
         app:layout_constraintTop_toBottomOf="@id/FavroiteView">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:id="@+id/guideLinearlayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/color_guide" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="가이드"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-
-
-            </LinearLayout>
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/noticeView"
-        android:layout_width="125dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="@id/guideView"
-        app:layout_constraintStart_toEndOf="@+id/guideView"
-        app:layout_constraintTop_toTopOf="@+id/guideView">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -348,18 +299,19 @@
         android:layout_width="125dp"
         android:layout_height="100dp"
         android:layout_marginStart="10dp"
-        app:layout_constraintEnd_toEndOf="@+id/FavroiteView"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/noticeView"
         app:layout_constraintStart_toEndOf="@+id/noticeView"
-        app:layout_constraintTop_toTopOf="@id/guideView">
+        app:layout_constraintTop_toTopOf="@+id/noticeView">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-           >
 
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <LinearLayout
-                android:id="@+id/RequestLinearlayout"
+                android:id="@+id/helpLinearlayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -379,6 +331,54 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="요청사항"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/EmailinquiriesView"
+        android:layout_width="125dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/FavroiteView"
+        app:layout_constraintStart_toEndOf="@+id/helpView"
+        app:layout_constraintTop_toTopOf="@id/helpView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+           >
+
+
+            <LinearLayout
+                android:id="@+id/emailInquiriesLinearlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/gmail" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="기타 문의"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 

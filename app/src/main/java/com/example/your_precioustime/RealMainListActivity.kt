@@ -50,10 +50,6 @@ class RealMainListActivity : AppCompatActivity(), AdapterView.OnItemSelectedList
             startActivity(intent)
         }
 
-        binding.guideView.setOnClickListener {
-            val intent = Intent(this, GuideActivity::class.java)
-            startActivity(intent)
-        }
 
         binding.noticeView.setOnClickListener {
             val intent = Intent(this, NoticeActivity::class.java)
@@ -63,6 +59,11 @@ class RealMainListActivity : AppCompatActivity(), AdapterView.OnItemSelectedList
         binding.helpView.setOnClickListener {
             val snackbar = Snackbar.make(binding.helpView, "준비중입니다.", Snackbar.LENGTH_LONG)
             snackbar.show()
+        }
+
+        binding.emailInquiriesLinearlayout.setOnClickListener {
+            val intent = Intent(this, GuideActivity::class.java)
+            startActivity(intent)
         }
 
     }
