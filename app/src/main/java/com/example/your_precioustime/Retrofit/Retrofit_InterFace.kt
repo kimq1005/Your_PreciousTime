@@ -20,8 +20,6 @@ interface Retrofit_InterFace {
 //        @Header("serviceKey") serviceKey:String,
         @Query("cityCode") cityCode:String,
         @Query("nodeId") nodeId:String
-    //주석
-
     ): Call<Bus>
 
 
@@ -30,31 +28,7 @@ interface Retrofit_InterFace {
         @Query("cityCode") cityCode:String,
         @Query("nodeNm") staionName:String?,
         @Query("nodeNo") nodeNo:String?
-//        @Query("nodeNo") nodeNo: Int?
     ) :Call<StationBus>
-
-
-
-    @GET(Url.BUS_CITY_URL)
-    fun CityGet(
-//        @Query("serviceKey") serviceKey:String
-    ) :Call<City>
-
-    @GET(Url.TMAP_LOCATION_URL)
-    fun MapLocationGet(
-        @Query("version") version:Int=1,
-        @Query("appKey") appKey:String= Url.TMAP_API_KEY,
-        @Query("searchKeyword") searchKeyword:String
-    ): Call<MapPoiModel>
-
-    @GET(Url.ODSAY_POI_URL)
-    fun ODSAYMapLocationGet(
-//        @Query("apiKey") apiKey:String ="ZkqhFIasLHBpaDaOdYx5CYwRwh8r2UFgYg7NazJgWXw",
-        @Query("lang") lang:Int = 0,
-        @Query("x") xm:Double?,
-        @Query("y") ym:Double?,
-//        @Query("stationClass") stationClass:Int = 2
-    ):Call<JsonElement>
 
 
     @GET(Url.SUBWAY_PATH_URL)
@@ -66,6 +40,22 @@ interface Retrofit_InterFace {
         @Path("END_INDEX") END_INDEX:Int = 5,
         @Path("statnNm") statnNm:String
     ):Call<SubwayModel>
+
+
+
+    @GET(Url.TMAP_LOCATION_URL)
+    fun MapLocationGet(
+        @Query("version") version:Int=1,
+        @Query("appKey") appKey:String= Url.TMAP_API_KEY,
+        @Query("searchKeyword") searchKeyword:String
+    ): Call<MapPoiModel>
+
+    @GET(Url.ODSAY_POI_URL)
+    fun ODSAYMapLocationGet(
+        @Query("lang") lang:Int = 0,
+        @Query("x") xm:Double?,
+        @Query("y") ym:Double?,
+    ):Call<JsonElement>
 
 
 

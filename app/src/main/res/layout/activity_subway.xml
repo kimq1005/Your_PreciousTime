@@ -101,6 +101,7 @@
         android:id="@+id/secondunderline"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:visibility="invisible"
         android:background="@color/underline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -25,7 +25,7 @@ import retrofit2.Response
 @SuppressLint("StaticFieldLeak")
 class Subway_Activity : AppCompatActivity() {
 
-    private var subwayBinding: ActivitySubwayBinding ? = null
+    private var subwayBinding: ActivitySubwayBinding? = null
     private val binding get() = subwayBinding!!
 
     private var retrofitInterface =
@@ -61,20 +61,18 @@ class Subway_Activity : AppCompatActivity() {
             binding.subwayfavroiteAddImageView.visibility = View.VISIBLE
             binding.subtitleTextView.visibility = View.VISIBLE
             getsubwayCall(searchtext)
-
             binding.subwaySwipe.isRefreshing = false
         }
 
 
         binding.clickhere.setOnClickListener {
-
             testgetAll()
             val searchtext = binding.SearchEditText.text.toString()
             binding.subtitleTextView.text = searchtext
             binding.subwayfavroiteAddImageView.visibility = View.VISIBLE
             binding.subtitleTextView.visibility = View.VISIBLE
+            binding.secondunderline.visibility = View.VISIBLE
             getsubwayCall(searchtext)
-
 
         }
 

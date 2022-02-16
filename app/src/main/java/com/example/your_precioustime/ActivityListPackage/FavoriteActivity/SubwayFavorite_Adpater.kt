@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.your_precioustime.ActivityListPackage.FavoriteActivity.Subwayfavorite_DeepInfo.Subway_FavroiteDeevInfo_test
 import com.example.your_precioustime.ActivityListPackage.FavoriteActivity.Subwayfavorite_DeepInfo.Subway_FravoriteDeepInfo_Activity
+import com.example.your_precioustime.ObjectManager.Myobject
 import com.example.your_precioustime.SecondActivity.DB.OnSubwayListDeleteInterFace
 import com.example.your_precioustime.SecondActivity.DB.SubwayNameEntity
 import com.example.your_precioustime.databinding.SubwayfavoritelistItemBinding
@@ -49,6 +50,7 @@ class SubwayFavorite_Adpater(var onSubwayListDeleteInterFace: OnSubwayListDelete
 
         holder.binding.stardeletebtn.setOnClickListener {
             onSubwayListDeleteInterFace.onDeleteSubwayList(subway_delete_List)
+            Myobject.myobject.deletestation(holder.itemView)
         }
 
     }

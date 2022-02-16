@@ -9,7 +9,6 @@ import retrofit2.Call
 import retrofit2.Response
 
 class Retrofit_Manager {
-//    lateinit var upAdpater: UpAdpater
 
     companion object{
         val retrofitManager = Retrofit_Manager()

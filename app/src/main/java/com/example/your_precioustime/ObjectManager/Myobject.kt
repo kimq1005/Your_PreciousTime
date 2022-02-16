@@ -81,9 +81,11 @@ class Myobject {
             val three = two[1].replace("방면", " 방면")
             return three
         }
+        else{
+            return "Error"
+        }
 
 
-        return mytext
     }
 
     fun FavroiteSnackBar(view: View) {
@@ -98,6 +100,11 @@ class Myobject {
 
     fun retrystation(view: View) {
         val snackbar = Snackbar.make(view, "정류장(역)이름을 재입력 해주세요", Snackbar.LENGTH_LONG)
+        snackbar.show()
+    }
+
+    fun deletestation(view:View){
+        val snackbar = Snackbar.make(view, "즐겨찾기에서 삭제 되었습니다!",Snackbar.LENGTH_LONG)
         snackbar.show()
     }
 

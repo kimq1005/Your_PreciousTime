@@ -18,12 +18,9 @@ import retrofit2.create
 
 object Retrofit_Client {
 
-    val Retrofit_Object: Coroutines_InterFace by lazy{ getClient(Url.BUS_MAIN_URL).create(Coroutines_InterFace::class.java)}
-
-    fun getClient(baseurl:String):Retrofit{
+    fun getClient(baseurl: String): Retrofit {
 
         val client = OkHttpClient.Builder()
-
 
         val baseInterceptor: Interceptor = (object : Interceptor {
             override fun intercept(chain: Interceptor.Chain): Response {
@@ -33,7 +30,7 @@ object Retrofit_Client {
                 val goaddurl = realRequest
                     .url()
                     .newBuilder()
-                    .addQueryParameter("serviceKey",BUS_API_KEY)
+                    .addQueryParameter("serviceKey", BUS_API_KEY)
                     .build()
 
                 val lastRequest = realRequest.newBuilder()
@@ -44,24 +41,25 @@ object Retrofit_Client {
             }
 
         })
-
 
         client.addInterceptor(baseInterceptor)
 
         val retrofitClient = Retrofit.Builder()
             .baseUrl(baseurl)
             .client(client.build())
-            .addConverterFactory(TikXmlConverterFactory.create(TikXml.Builder().exceptionOnUnreadXml(false).build()))
-//            .addConverterFactory(SimpleXmlConverterFactory.create())
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .addConverterFactory(JaxbConverterFactory.create())
+            .addConverterFactory(
+                TikXmlConverterFactory.create(
+                    TikXml.Builder().exceptionOnUnreadXml(false).build()
+                )
+            )
             .build()
 
         return retrofitClient
 
     }
 
-    fun getFuckClient(baseurl:String):Retrofit{
+
+    fun getJsonClienet(baseUrl: String): Retrofit {
 
         val client = OkHttpClient.Builder()
 
@@ -70,46 +68,6 @@ object Retrofit_Client {
             override fun intercept(chain: Interceptor.Chain): Response {
 
                 val realRequest = chain.request()
-
-                val goaddurl = realRequest
-                    .url()
-                    .newBuilder()
-                    .addQueryParameter("serviceKey",BUS_API_KEY)
-                    .build()
-
-                val lastRequest = realRequest.newBuilder()
-                    .url(goaddurl)
-                    .build()
-
-                return chain.proceed(lastRequest)
-            }
-
-        })
-
-
-        client.addInterceptor(baseInterceptor)
-
-        val retrofitFuckClient = Retrofit.Builder()
-            .baseUrl(baseurl)
-            .client(client.build())
-            .addConverterFactory(TikXmlConverterFactory.create(TikXml.Builder().exceptionOnUnreadXml(false).build()))
-            .build()
-
-        return retrofitFuckClient
-
-    }
-
-    fun getJsonClienet(baseUrl:String) :Retrofit{
-
-        val client = OkHttpClient.Builder()
-
-
-        val baseInterceptor: Interceptor = (object : Interceptor {
-            override fun intercept(chain: Interceptor.Chain): Response {
-
-                val realRequest = chain.request()
-
-
 
                 val goaddurl = realRequest
                     .url()
@@ -137,8 +95,6 @@ object Retrofit_Client {
 
         return retrofitclient
     }
-
-
 
 
 }

@@ -64,7 +64,7 @@ class BusFavorite_Adapter(var onDeleteInterFace: OnDeleteInterFace) :
 
         holder.binding.stardeletebtn.setOnClickListener {
             onDeleteInterFace.onDeleteFavroitelist(favoriteModelList)
-            Toast.makeText(holder.itemView.context, "즐겨찾기에서 삭제 되었습니다.", Toast.LENGTH_SHORT).show()
+            Myobject.myobject.deletestation(holder.itemView)
         }
     }
 

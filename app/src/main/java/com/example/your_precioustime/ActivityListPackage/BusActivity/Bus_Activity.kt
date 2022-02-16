@@ -52,7 +52,6 @@ class Bus_Activity : AppCompatActivity() {
     }
 
     private fun ClickSearchBtn() = with(binding) {
-
         clickhere.setOnClickListener {
             val citycode = citycodeSaveClass.citycodeSaveClass.Loadcitycode("citycode", "citycode")
             val StationEditName = SearchEditText.text.toString()
