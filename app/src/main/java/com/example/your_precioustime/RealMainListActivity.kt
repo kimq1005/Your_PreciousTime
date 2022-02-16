@@ -1,12 +1,15 @@
 package com.example.your_precioustime
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
 import com.example.your_precioustime.ActivityListPackage.GuidActivity.GuideActivity
 import com.example.your_precioustime.ActivityListPackage.NoticeActivity.NoticeActivity
 import com.example.your_precioustime.ObjectManager.citycodeCallObject
@@ -33,7 +36,8 @@ class RealMainListActivity : AppCompatActivity(), AdapterView.OnItemSelectedList
         setSpinner(spinner)
 
         binding.busView.setOnClickListener {
-            val mycitycode: String = citycodeCallObject.citycodeCallObject.citycode(binding.citynameTextView.text.toString())
+            val mycitycode: String =
+                citycodeCallObject.citycodeCallObject.citycode(binding.citynameTextView.text.toString())
             citycodeSaveClass.citycodeSaveClass.Savecitycode("citycode", mycitycode)
 
             val intent = Intent(this, Bus_Activity::class.java)
@@ -62,11 +66,29 @@ class RealMainListActivity : AppCompatActivity(), AdapterView.OnItemSelectedList
         }
 
         binding.emailInquiriesLinearlayout.setOnClickListener {
-            val intent = Intent(this, GuideActivity::class.java)
-            startActivity(intent)
+            shareEmail()
         }
 
     }
+
+
+    //이메일 공유함수
+    @SuppressLint("QueryPermissionsNeeded")
+    private fun shareEmail() {
+        val shareintent = Intent().apply {
+            action = Intent.ACTION_SENDTO
+            type = "text/plain"
+            data = Uri.parse("mailto:")
+            putExtra(Intent.EXTRA_EMAIL, arrayOf("tpwnd103502@naver.com"))
+
+        }
+
+        startActivity(Intent.createChooser(shareintent, null))
+
+
+
+    }
+
 
     //지역선택 스피너 함수
     private fun setSpinner(spinner: Spinner) {
