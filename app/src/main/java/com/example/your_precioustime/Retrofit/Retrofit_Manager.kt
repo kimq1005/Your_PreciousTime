@@ -10,7 +10,7 @@ import retrofit2.Response
 
 class Retrofit_Manager {
 
-    companion object{
+    companion object {
         val retrofitManager = Retrofit_Manager()
     }
 
@@ -18,8 +18,7 @@ class Retrofit_Manager {
         .create(Retrofit_InterFace::class.java)
 
 
-
-    fun getsubwayCall(statNm: String, mymodel:(MutableList<SubwayItem>)->Unit) {
+    fun getsubwayCall(statNm: String, mymodel: (MutableList<SubwayItem>) -> Unit) {
 
         val call = retrofitInterface.SUBWAYGET(
             statnNm = statNm
@@ -29,8 +28,7 @@ class Retrofit_Manager {
             override fun onResponse(call: Call<SubwayModel>, response: Response<SubwayModel>) {
                 val body = response.body()
                 val subwaymodel = mutableListOf<SubwayItem>()
-                val resultsubwaymodel = mutableListOf<SubwayItem>()
-
+                //이력서 너무 어려워요 ㅠㅠㅠㅠ
 
                 body?.let {
                     val hello = body.realtimeArrivalList!!
@@ -119,9 +117,6 @@ class Retrofit_Manager {
                     }
 
                     mymodel(subwaymodel)
-
-
-
 
 
                 }
