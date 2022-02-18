@@ -34,11 +34,12 @@ class Retrofit_Manager {
                     val hello = body.realtimeArrivalList!!
 
                     for (i in hello.indices) {
-                        val firstsubwayId = hello.get(i).subwayId!!
 
+                        val firstsubwayId = hello.get(i).subwayId!!
                         val trainLineNm = hello.get(i).trainLineNm
                         val bstatnNm = hello.get(i).bstatnNm
                         val arvlMsg2 = hello.get(i).arvlMsg2
+
 
                         subwaymodel.add(
                             SubwayItem(firstsubwayId, trainLineNm, bstatnNm, arvlMsg2)
