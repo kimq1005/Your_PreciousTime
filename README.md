@@ -36,6 +36,11 @@
 * Xml데이터를 파싱하는 법을 알게 되었음
 * Retrofit2로 가져온 공공데이터들(XML , Json)을 원하는 뷰에 처리할 수 있음 (https://kimq1005.tistory.com/4)
 
+
+#스크린샷
+
+
+
   
 
   
