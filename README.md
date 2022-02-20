@@ -38,6 +38,11 @@
 * Retrofit2로 가져온 공공데이터들(XML , Json)을 원하는 뷰에 처리할 수 있음 (https://kimq1005.tistory.com/4)
 
 
+
+# 프로젝트를 진행하면서 개선사항 및 깨달은 점
+* 티스토리 https://kimq1005.tistory.com/4
+
+
 # 스크린샷
 * 메인 화면  
 
