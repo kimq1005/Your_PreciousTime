@@ -41,7 +41,10 @@
 # 스크린샷
 * 메인 화면  
 
-  <img src = "https://user-images.githubusercontent.com/68366753/154833313-2a0e1467-56d8-444a-8d4e-65f875c1fce5.png" width="30%" height="30%">  
+  <img src = "https://user-images.githubusercontent.com/68366753/154833313-2a0e1467-56d8-444a-8d4e-65f875c1fce5.png" width="30%" height="30%">   
+    
+      
+      
   
   
 * 버스정류소 검색
