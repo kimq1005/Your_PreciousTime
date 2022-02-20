@@ -40,7 +40,7 @@
   어떤 UI디자인이 보기 편할지에 대한 UI/UX또한 중요하게 고려할점 중 하나라는 것을 깨닫게 되었습니다.
   
 * **공공데이터처리**  
-
- Retrofit2로 가져온 공공데이터들(XML , Json)을 원하는 뷰에 처리할 수 있음 (https://kimq1005.tistory.com/4)
+  
+  Retrofit2로 가져온 공공데이터들(XML , Json)을 원하는 뷰에 처리할 수 있음 (https://kimq1005.tistory.com/4)
 
 
