@@ -8,24 +8,22 @@
 2차. 기존 코드에 코루틴, mvvm패턴을 도입해 성능향상
 
 
-### Key Function
+
+
+
+# 주요 기능
 * 도착정보가 알고싶은 버스정류장, 지하철역의 이름을 검색가능
 * 해당 정류장(역)에 대한 버스(지하철) 정보들을 확인가능
 * 원하는 정류장(역)을 즐겨찾기에 추가할 수 있으며, 한눈에 확인 가능
 
 
-#### 
-1. 필요에 따라서 교통관련 서비스 추가(ex. 전국학교셔틀버스 등등)
-2. 자주쓰는 노선 즐겨찾기
-3. 예상 도착 시간 추가
-4. 지정 경로에 대한 즐겨찾기 추가
 
+# Tech Stack
+* Kotlin
+* MVC
+* Retrofit2, OKHttp, Gson
+* RoomDB
+* GoogleMap
 
-
-####  --
-- Android Studio(Native App)
-- Kotlin
-- REST API
-- Room
 
 
