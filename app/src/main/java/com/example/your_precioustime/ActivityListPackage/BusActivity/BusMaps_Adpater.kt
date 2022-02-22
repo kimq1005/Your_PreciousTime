@@ -17,7 +17,6 @@ import com.example.your_precioustime.Util.Companion.TAG
 import com.example.your_precioustime.databinding.BusitemLayoutBinding
 
 
-
 @SuppressLint("StaticFieldLeak")
 class BusMaps_Adpater : RecyclerView.Adapter<BusMaps_Adpater.MyViewHolder>() {
 
@@ -31,11 +30,11 @@ class BusMaps_Adpater : RecyclerView.Adapter<BusMaps_Adpater.MyViewHolder>() {
 
 
         fun bind(item: Item) {
-
+            //성능개선 ㄲ
             val mytime = item.arrtime!!
             val second = mytime / 60
 
-            val citycode =citycodeSaveClass.citycodeSaveClass.Loadcitycode("citycode","citycode")
+            val citycode = citycodeSaveClass.citycodeSaveClass.Loadcitycode("citycode", "citycode")
             val cityname = citycodeCallObject.citycodeCallObject.returncitynamecode(citycode)
             binding.BusNumber.text = item.routeno.toString()
             binding.waitBusNumber.text = item.arrprevstationcnt.toString()
@@ -43,7 +42,6 @@ class BusMaps_Adpater : RecyclerView.Adapter<BusMaps_Adpater.MyViewHolder>() {
             binding.BusCityname.text = cityname
 
         }
-
 
 
     }
@@ -59,8 +57,8 @@ class BusMaps_Adpater : RecyclerView.Adapter<BusMaps_Adpater.MyViewHolder>() {
         }
 
         holder.itemView.setOnClickListener {
-            val hi =citycodeSaveClass.citycodeSaveClass.Loadcitycode("citycode","citycode")
-            Toast.makeText(holder.itemView.context, "$hi",Toast.LENGTH_SHORT).show()
+            val hi = citycodeSaveClass.citycodeSaveClass.Loadcitycode("citycode", "citycode")
+            Toast.makeText(holder.itemView.context, "$hi", Toast.LENGTH_SHORT).show()
         }
 
 
@@ -72,7 +70,6 @@ class BusMaps_Adpater : RecyclerView.Adapter<BusMaps_Adpater.MyViewHolder>() {
         item = list
         notifyDataSetChanged()
     }
-
 
 
     override fun getItemCount(): Int {
